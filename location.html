@@ -206,15 +206,18 @@
     this.popupText = document.getElementById("name").value;
   }
 
-   const listDisplay = ()=>{
-    markers.map((marker,index)=>{
-    list.innerHTML = `${marker.popupText}`
-    console.log(markers[0].popupText)
-    })
+const listDisplay = () => {
+  const list = document.querySelector('.list'); 
 
+  // Loop through the markers array
+  markers.map((marker, index) => {
+    const div = document.createElement("div");
+    div.innerHTML = `<h1>${marker.popupText}</h1><button class="singleRemove">remove</button>`; 
+        list.appendChild(div);
+  });
+}
 
-
- }
+// single clicker
 
   // Adding marker on submit
   submit.addEventListener("click", (e) => {
@@ -231,12 +234,12 @@
     console.log(markers); 
   });
 
-  // Optional: Remove all markers (clear from map and array)
+  // delete all
   remove.addEventListener("click", () => {
     markers.forEach((markerData) => {
-      map.removeLayer(markerData); // remove markers from the map
+      map.removeLayer(markerData); 
     });
-    markers.length = 0; // clear the markers array
+    markers.length = 0;
     console.log("All markers removed");
   });
 
@@ -245,14 +248,11 @@
   remove.addEventListener("click", () => {
     const nameToRemove = prompt("Enter the name of the marker to remove:");
 
-    // Find the marker with the given name
-    const markerIndex = markers.findIndex((m) => m.name === nameToRemove);
+    const markerIndex = markers.findIndex((m) => m.popupText === nameToRemove);
 
     if (markerIndex !== -1) {
-      // Remove the marker from the map
       map.removeLayer(markers[markerIndex].marker);
 
-      // Remove the marker from the array
       markers.splice(markerIndex, 1);
 
       console.log("Marker removed:", nameToRemove);
