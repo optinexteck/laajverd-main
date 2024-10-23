@@ -46,6 +46,10 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    
+    <!-- input card -->
+    <link href="assets/css/location.css" rel="stylesheet" />
+
 
     <!-- leaflet -->
     <link
@@ -93,33 +97,38 @@
     </div>
   </section>
 
-  <!-- Add a form for adding new locations -->
-  <section id="add-location" class="section">
-    <div class="container">
-      <h2>Add New Location</h2>
-      <form id="location-form">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="latitude">Latitude:</label>
-          <input type="number" id="latitude" name="latitude" step="any" required>
-        </div>
-        <div class="form-group">
-          <label for="longitude">Longitude:</label>
-          <input type="number" id="longitude" name="longitude" step="any" required>
-        </div>
-        <div class="form-group">
-          <label for="description">Description:</label>
-          <textarea id="description" name="description" required></textarea>
-        </div>
-        <button class="submit">Add Location</button>
-      </form>
-    </div>
-  </section>
-  <div class="list"></div>
+<div class="lists-cover">
+    <!-- location create card -->
+   <form class="login-form section" action="javascript:void(0);" id="add-location">
+  <h1>Create a Marker</h1>
+  <div class="form-input-material">
+    <input  id="name" name="name" placeholder="Name" autocomplete="off" class="form-control-material" required />
+    <label for="username" >Name</label>
+  </div>
+  <div class="form-input-material">
+    <input  name="latitude" id="latitude" placeholder="latitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">latitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="longitude" id="longitude" placeholder="longitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">longitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
+    <label for="username">description</label>
+  </div>
 
+  <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
+  <button type="submit" class="remove btn btn-primary btn-ghost">Delete All</button>
+</form>
+ 
+<!-- location list -->
+  <div class="list">
+  <h1>Create a Marker</h1>
+  <div class="innerList"></div>
+  </div>
+
+</div>
 
  
     <!-- footer area -->
@@ -195,7 +204,7 @@
 
   const submit = document.querySelector(".submit");
   const remove = document.querySelector(".remove");
-  const list = document.querySelector(".list");
+  const list = document.querySelector(".innerList");
   const markers = [];
 
   function Data() {
@@ -206,63 +215,109 @@
     this.popupText = document.getElementById("name").value;
   }
 
-const listDisplay = () => {
-  const list = document.querySelector('.list'); 
+  // Display the list of markers with edit and remove options
+  function listDisplay() {
+    list.innerHTML = ''; // Clear the existing list
 
-  // Loop through the markers array
-  markers.map((marker, index) => {
-    const div = document.createElement("div");
-    div.innerHTML = `<h1>${marker.popupText}</h1><button class="singleRemove">remove</button>`; 
-        list.appendChild(div);
-  });
-}
+    markers.forEach((markerObj, index) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <h1>${markerObj.popupText}</h1>
+        <div>
+        <button class="editMarker btn">edit</button>
+        <button class="singleRemove btn">remove</button>  
+        </div>`;
+      div.setAttribute('data-marker-id', index); // Set a unique identifier for each div
+      list.appendChild(div);
 
-// single clicker
+      // Attach remove button event handler
+      const removeButton = div.querySelector('.singleRemove');
+      removeButton.addEventListener('click', () => {
+        removeMarker(markerObj.popupText, div); // Pass the div to the removeMarker function
+      });
+
+      // Attach edit button event handler
+      const editButton = div.querySelector('.editMarker');
+      editButton.addEventListener('click', () => {
+        editMarker(markerObj, div); // Pass the marker object and div to editMarker function
+      });
+    });
+  }
 
   // Adding marker on submit
   submit.addEventListener("click", (e) => {
     e.preventDefault();
 
-    // marker constructor
+    // Marker constructor
     const markerData = new Data();
-    markers.push(markerData);
 
     // Add marker to the map
     const marker = L.marker(markerData.coords).addTo(map);
     marker.bindPopup(markerData.popupText);
+
+    // Store both the marker object and popupText in the markers array
+    markers.push({ marker, popupText: markerData.popupText });
+
     listDisplay();
     console.log(markers); 
   });
 
-  // delete all
+  // Delete all
   remove.addEventListener("click", () => {
-    markers.forEach((markerData) => {
-      map.removeLayer(markerData); 
+    markers.forEach((markerObj) => {
+      map.removeLayer(markerObj.marker); // Correctly remove marker from the map
     });
     markers.length = 0;
+    listDisplay(); // Clear the displayed list
     console.log("All markers removed");
   });
 
-
-  // remove specific
-  remove.addEventListener("click", () => {
-    const nameToRemove = prompt("Enter the name of the marker to remove:");
-
-    const markerIndex = markers.findIndex((m) => m.popupText === nameToRemove);
+  // Remove specific marker
+  function removeMarker(markerText, markerDiv) {
+    const markerIndex = markers.findIndex((m) => m.popupText === markerText);
 
     if (markerIndex !== -1) {
-      map.removeLayer(markers[markerIndex].marker);
+      // Remove the marker from the map
+      map.removeLayer(markers[markerIndex].marker); // Correctly access the marker object
 
+      // Remove the marker from the array
       markers.splice(markerIndex, 1);
 
-      console.log("Marker removed:", nameToRemove);
+      // Remove the corresponding div from the DOM
+      markerDiv.remove(); // Remove the specific div element
+
+      console.log("Marker removed:", markerText);
     } else {
       console.log("Marker not found");
     }
-  });
+  }
 
+  // Edit specific marker
+  function editMarker(markerObj, markerDiv) {
+    // Prompt the user to enter new values for the marker
+    const newName = prompt("Enter the new name for the marker:", markerObj.popupText);
+    const newLat = prompt("Enter the new latitude:", markerObj.marker.getLatLng().lat);
+    const newLng = prompt("Enter the new longitude:", markerObj.marker.getLatLng().lng);
+
+    if (newName && newLat && newLng) {
+      // Update marker's position on the map
+      const newCoords = [parseFloat(newLat), parseFloat(newLng)];
+      markerObj.marker.setLatLng(newCoords);
+
+      // Update the marker's popup text
+      markerObj.marker.bindPopup(newName);
+      markerObj.popupText = newName;
+
+      // Update the display list
+      listDisplay();
+      console.log("Marker updated:", newName);
+    } else {
+      console.log("Marker update canceled");
+    }
+  }
 
 </script>
+
 
 
   </body>
