@@ -233,13 +233,12 @@
       // Attach remove button event handler
       const removeButton = div.querySelector('.singleRemove');
       removeButton.addEventListener('click', () => {
-        removeMarker(markerObj.popupText, div); // Pass the div to the removeMarker function
+        removeMarker(markerObj.popupText, div); 
       });
 
-      // Attach edit button event handler
       const editButton = div.querySelector('.editMarker');
       editButton.addEventListener('click', () => {
-        editMarker(markerObj, div); // Pass the marker object and div to editMarker function
+        editMarker(markerObj, div); 
       });
     });
   }
@@ -255,7 +254,6 @@
     const marker = L.marker(markerData.coords).addTo(map);
     marker.bindPopup(markerData.popupText);
 
-    // Store both the marker object and popupText in the markers array
     markers.push({ marker, popupText: markerData.popupText });
 
     listDisplay();
@@ -265,10 +263,10 @@
   // Delete all
   remove.addEventListener("click", () => {
     markers.forEach((markerObj) => {
-      map.removeLayer(markerObj.marker); // Correctly remove marker from the map
+      map.removeLayer(markerObj.marker);
     });
     markers.length = 0;
-    listDisplay(); // Clear the displayed list
+    listDisplay(); 
     console.log("All markers removed");
   });
 
@@ -277,14 +275,11 @@
     const markerIndex = markers.findIndex((m) => m.popupText === markerText);
 
     if (markerIndex !== -1) {
-      // Remove the marker from the map
-      map.removeLayer(markers[markerIndex].marker); // Correctly access the marker object
+      map.removeLayer(markers[markerIndex].marker); 
 
-      // Remove the marker from the array
       markers.splice(markerIndex, 1);
 
-      // Remove the corresponding div from the DOM
-      markerDiv.remove(); // Remove the specific div element
+      markerDiv.remove(); 
 
       console.log("Marker removed:", markerText);
     } else {
@@ -294,21 +289,20 @@
 
   // Edit specific marker
   function editMarker(markerObj, markerDiv) {
-    // Prompt the user to enter new values for the marker
     const newName = prompt("Enter the new name for the marker:", markerObj.popupText);
     const newLat = prompt("Enter the new latitude:", markerObj.marker.getLatLng().lat);
     const newLng = prompt("Enter the new longitude:", markerObj.marker.getLatLng().lng);
 
     if (newName && newLat && newLng) {
-      // Update marker's position on the map
+      // Update marker's position
       const newCoords = [parseFloat(newLat), parseFloat(newLng)];
       markerObj.marker.setLatLng(newCoords);
 
-      // Update the marker's popup text
+      // Update text
       markerObj.marker.bindPopup(newName);
       markerObj.popupText = newName;
 
-      // Update the display list
+      // updating display
       listDisplay();
       console.log("Marker updated:", newName);
     } else {
