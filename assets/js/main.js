@@ -539,3 +539,44 @@ $(document).on('click', function (e) {
       $('.offcanvas-backdrop').removeClass('show');
   }
 });
+
+// Function to create glossary terms dynamically
+function createGlossaryTerms(terms) {
+    const container = document.querySelector('.glossary-text-container');
+    
+    terms.forEach(term => {
+        const termSpan = document.createElement('span');
+        termSpan.className = 'glossary-term';
+        termSpan.innerHTML = `
+            ${term.word}
+            <div class="glossary-tooltip">
+                ${term.definition}
+            </div>
+        `;
+        container.appendChild(termSpan);
+        // Add a space after each term
+        container.appendChild(document.createTextNode(' '));
+    });
+}
+
+// Handle tooltip positioning
+document.addEventListener('DOMContentLoaded', () => {
+    const terms = document.querySelectorAll('.glossary-term');
+    
+    terms.forEach(term => {
+        term.addEventListener('mouseenter', (e) => {
+            const tooltip = term.querySelector('.glossary-tooltip');
+            const rect = term.getBoundingClientRect();
+            
+            // Adjust tooltip position if it goes off-screen
+            if (rect.left < 0) {
+                tooltip.style.left = '0';
+                tooltip.style.transform = 'translateX(0)';
+            } else if (rect.right > window.innerWidth) {
+                tooltip.style.left = 'auto';
+                tooltip.style.right = '0';
+                tooltip.style.transform = 'translateX(0)';
+            }
+        });
+    });
+});
