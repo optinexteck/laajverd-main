@@ -42,14 +42,14 @@ h1, h2 {
   }
 
 .header {
-  background: rgba(42, 44, 57, 0.9);
+  background: #cdcdcd;
   transition: all 0.5s;
   z-index: 997;
   height: 90px;
 }
 
 .header.header-scrolled {
-  background: rgba(42, 44, 57, 0.9);
+  background: #cdcdcd;
   height: 70px;
 }
 
@@ -86,10 +86,10 @@ h1, h2 {
   background-color: #333541;
   color: white;
 }
-.filterCover {
+/* .filterCover {
   margin-top: 20px;
   padding: 20px;
-}
+} */
 .filters {
   display: flex;
   margin: 16px 0px;
@@ -366,20 +366,21 @@ select::-ms-expand {
 
 /* Header styling - with higher specificity */
 #header.header {
-  background: rgba(42, 44, 57, 0.9) !important;  /* Using !important to override */
+  color: #cdcdcd;
+  background: #cdcdcd !important;  /* Using !important to override */
   transition: all 0.5s;
   z-index: 997;
   padding: 15px 0;
 }
 
 #header.header.scrolled {
-  background: rgba(42, 44, 57, 0.9) !important;
+  background: #cdcdcd !important;
   padding: 15px 0;
 }
 
 /* Remove any white background on initial load */
 #header.fixed-top {
-  background: rgba(42, 44, 57, 0.9) !important;
+  background: #cdcdcd !important;
 }
 
 
@@ -391,6 +392,7 @@ select::-ms-expand {
   width: 100%;
   max-width: 100%;
   margin: 0;
+  background-color: #f6f6f6;
 }
 
 .row {
@@ -399,19 +401,21 @@ select::-ms-expand {
 }
 
 .archive-card {
-  background: #fff;
-  border-radius: 8px;
+  background: #ffffff;
+  border-radius: 4px;
   padding: 20px;
   height: 100%;
   position: relative;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   font-size: 14px;
   margin: 10px 5px;
+  border: none;  /* Remove border */
+  box-shadow: none;
 }
 
 .archive-card:hover {
   transform: translateY(-5px);
+  transform: none;
 }
 
 .archive-card .icon {
@@ -427,6 +431,8 @@ select::-ms-expand {
 .archive-card .icon:hover {
   transform: rotate(90deg);
   color: #000;
+  /* transform: none;
+  color: #333; */
 }
 
 .archive-card h4 {
@@ -616,4 +622,18 @@ select::-ms-expand {
   .card {
     width: 90%;
   }
+}
+
+.form-select-sm {
+    max-width: 150px;
+}
+
+.filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.pg-1 {
+    margin-bottom: 20px;
 }

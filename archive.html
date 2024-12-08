@@ -60,11 +60,13 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="./index.html">Home</a></li>
-          <li><a href="./glossary.html">Glossary</a></li>
-          <li><a href="./archive.html" class="active">Archive</a></li>
           <li><a href="./map.html">Location</a></li>
+          <li><a href="./archive.html" class="active">Archive</a></li>
+          <li><a href="./glossary.html">Glossary</a></li>
+          
+          
           <!-- <li><a href="./archive1.html">Archive</a></li> -->
-          <li><a href="./contact.html">Contact</a></li>
+          <!-- <li><a href="./contact.html">Contact</a></li> -->
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -234,7 +236,7 @@
     </main>
     <!-- footer area -->
 
-    <footer id="footer" class="footer dark-background">
+    <footer id="footer" class="footer" style="background-color: #cdcdcd;">
     <div class="container">
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
@@ -296,47 +298,47 @@
     <script src="assets/js/filter.js"></script>
     <!-- card -->
     <script>
-      // Define an array of card data
-      const cardData = [
-        { title: 'Reference', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '67 Records' },
-        { title: 'Reference1', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '57 Records' },
-        { title: 'Reference2', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/epherma-1.jpg', records: '56 Records' },
-        { title: 'Reference3', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/periodical.jpg', records: '7 Records' },
-        { title: 'Reference4', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/reference.jpg', records: '756 Records' },
-        { title: 'Reference5', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/artist-monographs.jpg', records: '675 Records' },
-        { title: 'Reference6', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '234 Records' },
-        { title: 'Reference7', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '432 Records' }
-      ];
+      // // Define an array of card data
+      // const cardData = [
+      //   { title: 'Reference', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '67 Records' },
+      //   { title: 'Reference1', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '57 Records' },
+      //   { title: 'Reference2', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/epherma-1.jpg', records: '56 Records' },
+      //   { title: 'Reference3', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/periodical.jpg', records: '7 Records' },
+      //   { title: 'Reference4', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/reference.jpg', records: '756 Records' },
+      //   { title: 'Reference5', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/artist-monographs.jpg', records: '675 Records' },
+      //   { title: 'Reference6', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '234 Records' },
+      //   { title: 'Reference7', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '432 Records' }
+      // ];
 
-      // Function to create and append cards
-      function generateCards(data) {
-        const container = document.getElementById('cards-container');
-        data.forEach((card) => {
-          try {
-            const cardElement = document.createElement('div');
-            cardElement.classList.add('card');
+      // // Function to create and append cards
+      // function generateCards(data) {
+      //   const container = document.getElementById('cards-container');
+      //   data.forEach((card) => {
+      //     try {
+      //       const cardElement = document.createElement('div');
+      //       cardElement.classList.add('card');
 
-            cardElement.innerHTML = `
-          <div class="img" style="width:100%;overflow:hidden;height:auto">
-            <img src="${card.imageUrl}" alt="" style="width:100%">
-            <div class="hidden" style="opacity: 0;">
-              <h3>${card.title}</h3>
-              <p>${card.description}</p>
-            </div>
-            <div class="overlay" style="opacity: 0;"></div>
-          </div>
-          <p>${card.records}</p>
-          <h3>${card.title}</h3>
-        `;
-            container.appendChild(cardElement);
-          } catch (err) {
-            console.log('card not found');
-          }
-        });
-      }
+      //       cardElement.innerHTML = `
+      //     <div class="img" style="width:100%;overflow:hidden;height:auto">
+      //       <img src="${card.imageUrl}" alt="" style="width:100%">
+      //       <div class="hidden" style="opacity: 0;">
+      //         <h3>${card.title}</h3>
+      //         <p>${card.description}</p>
+      //       </div>
+      //       <div class="overlay" style="opacity: 0;"></div>
+      //     </div>
+      //     <p>${card.records}</p>
+      //     <h3>${card.title}</h3>
+      //   `;
+      //       container.appendChild(cardElement);
+      //     } catch (err) {
+      //       console.log('card not found');
+      //     }
+      //   });
+      // }
 
-      // Generate cards on page load
-      generateCards(cardData);
+      // // Generate cards on page load
+      // generateCards(cardData);
 
       // Add hover effect for each card
       document.addEventListener('DOMContentLoaded', () => {

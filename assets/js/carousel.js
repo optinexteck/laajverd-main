@@ -191,3 +191,11 @@ document.addEventListener("DOMContentLoaded", () => {
   new PhotoCarousel();
   new EpochsCarousel();
 });
+
+// Add this to your main.js or carousel.js
+document.addEventListener('DOMContentLoaded', function() {
+  var heroCarousel = new bootstrap.Carousel(document.querySelector('#hero-carousel'), {
+    interval: 5000,  // 2 seconds
+    wrap: true       // Continuous loop
+  });
+});

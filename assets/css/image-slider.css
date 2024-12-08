@@ -1,0 +1,72 @@
+/* Create a new CSS file specifically for the Rail Park slider */
+.rail-park-slider {
+    padding: 20px 0;
+    background-color: #f5f5f5;
+}
+
+.rail-park-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.rail-park-mission {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.rail-park-mission h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.rail-park-mission p {
+    font-size: 18px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.rail-park-gallery {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.rail-park-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s ease;
+}
+
+.rail-park-slide {
+    flex: 0 0 300px;
+    position: relative;
+    transform: rotate(-5deg);
+    transition: all 0.3s ease;
+}
+
+.rail-park-slide img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.rail-park-slide:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 2;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .rail-park-slide {
+        flex: 0 0 250px;
+    }
+    
+    .rail-park-slide img {
+        height: 350px;
+    }
+}

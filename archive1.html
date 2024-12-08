@@ -56,11 +56,13 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="./index.html">Home</a></li>
-                    <li><a href="./glossary.html">Glossary</a></li>
-                    <li><a href="./archive1.html">Archive</a></li>
                     <li><a href="./map.html">Location</a></li>
+                    <li><a href="./archive1.html">Archive</a></li>
+                    <li><a href="./glossary.html">Glossary</a></li>
+                    
+                    
                     <!-- <li><a href="./service-details.html">Archive</a></li> -->
-                    <li><a href="./contact.html">Contact</a></li>
+                    <!-- <li><a href="./contact.html">Contact</a></li> -->
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -68,7 +70,7 @@
         </div>
     </header>
 
-    <main class="main" style="height: auto;">
+    <main class="main" style="height: auto; padding-top: 0;">
 
         <!-- Hero Section -->
         <!-- <section id="hero" class="hero section dark-background">
@@ -107,22 +109,60 @@
 
         <!-- Services Section -->
         <div class="container archive-container">
+            <div class="pg-1 d-flex justify-content-center align-items-center" style="padding-top: 0px;">
+                <div class="collection">
+                    <div class="filterCover">
+                        <div class="filters d-flex align-items-center gap-2">
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Access Level</option>
+                                <option value="online">Online</option>
+                                <option value="onsite">On Site</option>
+                            </select>
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Collection Type</option>
+                                <option value="online">Research Collection</option>
+                                <option value="onsite">Library Collection</option>
+                            </select>
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Content Type</option>
+                                <option value="online">Anthology</option>
+                                <option value="onsite">Artist Book</option>
+                                <option value="onsite">Artist Monograph</option>
+                            </select>
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Format</option>
+                                <option value="online">Format</option>
+                                <option value="onsite">CS/DVD</option>
+                                <option value="onsite">Digitised Material</option>
+                                <option value="onsite">Printed Matter</option>
+                                <option value="onsite">File</option>
+                            </select>
+                            <input type="text" class="form-control form-control-sm" placeholder="Make a search" style="max-width: 200px;">
+                            <button class="btn btn-sm">Search</button>
+                            <button class="btn btn-sm">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <!-- Card 1 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="himalayan">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Himalayan region</h4>
-                        <p><strong>Location:</strong>Sermik, Kharmang, Baltistan</p>
+                        <p><strong>Location:</strong>Sermik, Baltistan</p>
                         <p><strong class="post-date">Year:</strong>2023</p>
                         <p><strong>Supported by:</strong>Major Award UK</p>
                         <p><strong class="post-author">Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Ifrah Asif<br> Syed Kamran Ali Rizvi<br> 
+                        <p><strong>Team:</strong>Ifrah Asif<br> </p> 
                     </div>
                 </div>
 
                 <!-- Modal 1 -->
-                <div class="popup-overlay" id="projectPopup">
+                <!-- <div class="popup-overlay" id="projectPopup">
                     <div class="popup-container">
                         <div class="popup-header">
                             <h2 class="popup-title"></h2>
@@ -131,7 +171,7 @@
                         <div class="popup-content">
                             <div class="popup-gallery">
                                 <img src="./assets/img/blog/comments-1.jpg" alt="Project Image" class="popup-image">
-                                <!-- Add more images here if needed -->
+                                
                             </div>
                             <div class="popup-info">
                                 <div class="info-section">
@@ -145,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Modal 1 -->
 
                 <!-- Modal 1 -->
@@ -171,7 +211,7 @@
                                 </div>
                                 <div class="archive-asset-infobox">
                                     <h4>Description</h4>
-                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of Kharmang district. 
+                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of district. 
                                         It provided recommendations for prioritized actions necessary to preserve the mosque. The project further aimed to document the existing structure and woodwork details in the mosque, 
                                         conducted a detailed condition assessment, and analyzed the damage that had occurred. Recommendations for preservation were provided based on the findings. Involving the community throughout the documentation 
                                         and analysis process was a key element in the project, as their knowledge about the history of the site and vernacular construction techniques proved invaluable.
@@ -179,7 +219,7 @@
                                 </div>
                                 <div class="archive-asset-infobox">
                                     <h4>Description</h4>
-                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of Kharmang district. 
+                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of district. 
                                         It provided recommendations for prioritized actions necessary to preserve the mosque. The project further aimed to document the existing structure and woodwork details in the mosque, 
                                         conducted a detailed condition assessment, and analyzed the damage that had occurred. Recommendations for preservation were provided based on the findings. Involving the community throughout the documentation 
                                         and analysis process was a key element in the project, as their knowledge about the history of the site and vernacular construction techniques proved invaluable.
@@ -193,13 +233,15 @@
                 <!-- Card 2 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
                         <p><strong>Supported by:</strong>Local elders</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi <br> Mason Maqsood</p>
+                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi</p>
                     </div>
                 </div>
 
@@ -226,7 +268,7 @@
                                 </div>
                                 <div class="archive-asset-infobox">
                                     <h4>Description</h4>
-                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of Kharmang district. 
+                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of district. 
                                         It provided recommendations for prioritized actions necessary to preserve the mosque. The project further aimed to document the existing structure and woodwork details in the mosque, 
                                         conducted a detailed condition assessment, and analyzed the damage that had occurred. Recommendations for preservation were provided based on the findings. Involving the community throughout the documentation 
                                         and analysis process was a key element in the project, as their knowledge about the history of the site and vernacular construction techniques proved invaluable.
@@ -240,78 +282,90 @@
                 <!-- Card 3 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="earthing">
-                        <i class="bi bi-plus icon"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Earthing Narratives</h4>
                         <p><strong>Location:</strong>Various, Baltistan</p>
                         <p class="post-date"><strong>Year:</strong>2022 - 2023</p>
                         <p><strong>Supported by:</strong>Laajverd; LVS</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Various, Laajverd, LVS<br> FHE, CCL</p>
+                        <p><strong>Team:</strong>Various, Laajverd, LVS</p>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="earthing">
-                        <i class="bi bi-plus icon"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Earthing Narratives</h4>
                         <p><strong>Location:</strong>Various, Baltistan</p>
                         <p class="post-date"><strong>Year:</strong>2022 - 2023</p>
                         <p><strong>Supported by:</strong>Laajverd; LVS</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Various, Laajverd, LVS<br> FHE, CCL</p>
+                        <p><strong>Team:</strong>Various, Laajverd, LVS</p>
                     </div>
                 </div>
 
                 <!-- Card 5 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
                         <p><strong>Supported by:</strong>Local elders</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi <br> Mason Maqsood</p>
+                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi</p>
                     </div>
                 </div>
 
                 <!-- Card 6 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
                         <p><strong>Supported by:</strong>Local elders</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi <br> Mason Maqsood</p>
+                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi</p>
                     </div>
                 </div>
 
                 <!-- Card 7 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
                         <p><strong>Supported by:</strong>Local elders</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi <br> Mason Maqsood</p>
+                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi</p>
                     </div>
                 </div>
 
                 <!-- Card 8 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
                         <p><strong>Supported by:</strong>Local elders</p>
                         <p class="post-author"><strong>Project Lead:</strong>Dr. Zahra Hussain</p>
-                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi <br> Mason Maqsood</p>
+                        <p><strong>Team:</strong>Syed Kamran Ali Rizvi</p>
                     </div>
                 </div>
 
@@ -338,7 +392,7 @@
                                 </div>
                                 <div class="archive-asset-infobox">
                                     <h4>Description</h4>
-                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of Kharmang district. 
+                                    <p>The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque in Sermik village of district. 
                                         It provided recommendations for prioritized actions necessary to preserve the mosque. The project further aimed to document the existing structure and woodwork details in the mosque, 
                                         conducted a detailed condition assessment, and analyzed the damage that had occurred. Recommendations for preservation were provided based on the findings. Involving the community throughout the documentation 
                                         and analysis process was a key element in the project, as their knowledge about the history of the site and vernacular construction techniques proved invaluable.
@@ -357,36 +411,32 @@
     </main>
     <!-- footer area -->
 
-    <footer id="footer" class="footer dark-background">
-        <div class="container">
-          <h3 class="sitename">LAAJVERD</h3>
-          <p>
-            CCL believes that collaboration is essential for achieving large-scale
-            conservation impact.
-          </p>
-          <div class="social-links d-flex justify-content-center">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-skype"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
-          </div>
-          <div class="container">
-            <div class="copyright">
-              <span>Copyright</span>
-              <strong class="px-1 sitename">LAAJVERD</strong>
-              <span>All Rights Reserved</span>
-            </div>
-            <div class="credits">
-              <!-- All the links in the footer should remain intact. -->
-              <!-- You can delete the links only if you've purchased the pro version. -->
-              <!-- Licensing information: https://bootstrapmade.com/license/ -->
-              <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-              <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-            </div>
-          </div>
+  <footer id="footer" class="footer " style="background-color: #cdcdcd;">
+    <div class="container">
+      <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span>
+      <!-- <h3 class="sitename">LAAJVERD</h3>
+      <p>
+        CCL believes that collaboration is essential for achieving large-scale
+        conservation impact.
+      </p>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div> -->
+        <!-- <div class="copyright">
+          <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span>
         </div>
-      </footer>
+        <div class="credits"> -->
+        </div>
+    </div>
+  </footer>
 
 
     <!-- Scroll Top -->
