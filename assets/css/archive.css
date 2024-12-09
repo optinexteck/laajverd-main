@@ -81,6 +81,7 @@ h1, h2 {
   transition: 0.3s;
   border-radius: 6px;
 }
+
 .colTabs > div:hover {
   border: 1px solid #333541;
   background-color: #333541;

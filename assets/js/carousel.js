@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Add this to your main.js or carousel.js
 document.addEventListener('DOMContentLoaded', function() {
   var heroCarousel = new bootstrap.Carousel(document.querySelector('#hero-carousel'), {
-    interval: 5000,  // 2 seconds
+    interval: 3000,  // 2 seconds
     wrap: true       // Continuous loop
   });
 });
