@@ -514,7 +514,7 @@ body {
 
 .column {
   flex: 1;
-  max-width: 350px;
+  max-width: 280px;
 }
 
 .column h2 {
@@ -526,7 +526,7 @@ body {
 }
 
 .column p {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.6;
   color: #000;
 }
