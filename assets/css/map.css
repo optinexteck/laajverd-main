@@ -58,7 +58,22 @@ body {
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 } */
-
+.horizontal-line, .vertical-line {
+    position: absolute;
+    background-color: #000; /* Line color */
+    display: none;
+    z-index: 9999;
+  }
+  
+  .horizontal-line {
+    height: 1px;
+    width: 100%; 
+  }
+  
+  .vertical-line {
+    width: 1px;
+    height: 100%; 
+  }
 .control-buttons {
     display: flex;
     gap: 10px;

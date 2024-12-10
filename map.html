@@ -177,7 +177,7 @@
 
 <script>
   // Function to create a point with a detail tooltip
-  function createPoint(x, y, color, detail) {
+  function createPoint(x, y, color, detail,link) {
     const point = document.createElement('div'); // Create a new div element for the point
     point.style.position = 'absolute'; // Set position to absolute
     point.style.zIndex = "99999"; // Ensure it's on top
@@ -197,10 +197,10 @@
     tooltip.style.padding = '5px'; // Padding around the text
     tooltip.style.borderRadius = '5px'; // Rounded corners
     tooltip.style.visibility = 'hidden'; // Initially hidden
-    tooltip.style.whiteSpace = 'nowrap'; // Prevent text wrapping
+    tooltip.style.whiteSpace = 'wrap'; // Prevent text wrapping
     tooltip.style.zIndex = "100000"; // Ensure it's on top of everything
     tooltip.style.textWrap = "wrap"; // Ensure it's on top of everything
-    tooltip.style.width = "200px"; // Ensure it's on top of everything
+    tooltip.style.width = "260px"; // Ensure it's on top of everything
 
 
     // Position the tooltip above the point
@@ -220,12 +220,42 @@
     point.addEventListener('mouseleave', () => {
       tooltip.style.visibility = 'hidden'; // Hide tooltip
     });
+
+    point.addEventListener('click',()=>{
+      window.location.href = link;
+    })
+
+
+    // x and y coordinates
+const horizontalLine = document.createElement('div');
+horizontalLine.classList.add('horizontal-line');
+document.body.appendChild(horizontalLine);
+
+const verticalLine = document.createElement('div');
+verticalLine.classList.add('vertical-line');
+document.body.appendChild(verticalLine);
+
+point.addEventListener('mouseover', () => {
+  horizontalLine.style.display = 'block';
+  verticalLine.style.display = 'block';
+});
+
+point.addEventListener('mousemove', (e) => {
+  horizontalLine.style.top = `${e.clientY}px`;
+  verticalLine.style.left = `${e.clientX}px`;
+});
+
+point.addEventListener('mouseleave', () => {
+  horizontalLine.style.display = 'none';
+  verticalLine.style.display = 'none';
+});
+
   }
 
 
   // Create points with details
-  createPoint(500, 300, 'red', 'This place specializes in custom woodwork, including handcrafted furniture, cabinetry, and decorative wood art. Skilled artisans create bespoke pieces using high-quality materials, tailored to individual styles and needs. From modern designs to classic finishes, the work includes dining tables, shelves, and intricate wood carvings for both residential and commercial spaces'); // First point with detail
-  createPoint(1000, 200, 'blue', 'This place offers expert woodwork services, creating custom furniture, cabinets, and unique wood designs. Skilled craftsmen use high-quality materials to produce personalized pieces that blend style and functionality. From modern furnishings to timeless classics, the work includes tables, shelves, and intricate wood carvings for homes and businesses alike.'); // Second point with detail
+  createPoint(500, 300, 'red', 'For more info: thesubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirely',"https://factagency.blogspot.com/"); // First point with detail
+  createPoint(1000, 200, 'blue', 'For more info: thesubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirely',"index.html"); // Second point with detail
 </script>
   <!-- <script>
   // Function to create a point
