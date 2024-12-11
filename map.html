@@ -278,7 +278,7 @@ point.addEventListener('mouseleave', () => {
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docs.forEach(doc => {
         const pointData= doc.data();
-        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.title,pointData.url); // Second point with detail
+        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.title,pointData.url); 
         console.log(doc.id, " => ", doc.data());
       });
     });
