@@ -181,46 +181,42 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getFirestore, collection, query, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
   // Function to create a point with a detail tooltip
-  function createPoint(x, y, color, detail,link) {
-    const point = document.createElement('div'); // Create a new div element for the point
-    point.style.position = 'absolute'; // Set position to absolute
-    point.style.zIndex = "99999"; // Ensure it's on top
-    point.style.width = '10px'; // Set width of the point
-    point.style.height = '10px'; // Set height of the point
-    point.style.borderRadius = '50%'; // Make it a circle
-    point.style.backgroundColor = color; // Set the color of the point
-    point.style.top = `${y}px`; // Set the vertical position
-    point.style.left = `${x}px`; // Set the horizontal position
+  function createPoint(x, y, color, detail) {
+    const point = document.createElement('div');
+    point.style.position = 'absolute'; 
+    point.style.zIndex = "99999"; 
+    point.style.width = '10px'; 
+    point.style.height = '10px';
+    point.style.borderRadius = '50%';
+    point.style.backgroundColor = color; 
+    point.style.top = `${y}px`;
+    point.style.left = `${x}px`;
 
-    // Create a tooltip for the detail
     const tooltip = document.createElement('div');
-    tooltip.innerText = detail; // Set the text of the tooltip
-    tooltip.style.position = 'absolute'; // Position it absolutely
-    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Dark background
-    tooltip.style.color = 'white'; // White text
-    tooltip.style.padding = '5px'; // Padding around the text
-    tooltip.style.borderRadius = '5px'; // Rounded corners
-    tooltip.style.visibility = 'hidden'; // Initially hidden
-    tooltip.style.whiteSpace = 'wrap'; // Prevent text wrapping
-    tooltip.style.zIndex = "100000"; // Ensure it's on top of everything
-    tooltip.style.textWrap = "wrap"; // Ensure it's on top of everything
-    tooltip.style.width = "260px"; // Ensure it's on top of everything
+    tooltip.innerText = detail;
+    tooltip.style.position = 'absolute'; 
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '5px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.visibility = 'hidden'; 
+    tooltip.style.whiteSpace = 'wrap'; 
+    tooltip.style.zIndex = "100000"; 
+    tooltip.style.textWrap = "wrap"; 
+    tooltip.style.width = "260px"; 
 
 
-    // Position the tooltip above the point
-    tooltip.style.top = `${y - 30}px`; // Position above the point
-    tooltip.style.left = `${x + 15}px`; // Position to the right of the point
+   
+    tooltip.style.top = `${y }px`; 
+    tooltip.style.left = `${x }px`; 
 
-    // Append the point and tooltip to the body
     document.body.appendChild(point);
     document.body.appendChild(tooltip);
 
-    // Show tooltip on hover
     point.addEventListener('mouseenter', () => {
       tooltip.style.visibility = 'visible'; // Show tooltip
     });
 
-    // Hide tooltip when not hovering
     point.addEventListener('mouseleave', () => {
       tooltip.style.visibility = 'hidden'; // Hide tooltip
     });
@@ -268,18 +264,17 @@ point.addEventListener('mouseleave', () => {
     measurementId: "G-ZS0JV6362J"
   };
 
-  // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // Fetch data from Firestore's 'map' collection
   function fetchData() {
     const q = query(collection(db, 'map'));
     onSnapshot(q, (querySnapshot) => {
       querySnapshot.docs.forEach(doc => {
         const pointData= doc.data();
-        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.title,pointData.url); 
-        console.log(doc.id, " => ", doc.data());
+        console.log("point data = ",pointData)
+        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.description); 
+
       });
     });
   }
@@ -288,8 +283,7 @@ point.addEventListener('mouseleave', () => {
   window.onload = fetchData;
 
 
-  // Create points with details
-  // createPoint(500, 300, 'red', 'For more info: thesubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirely',"https://factagency.blogspot.com/"); // First point with detail
+
 </script>
  
 
