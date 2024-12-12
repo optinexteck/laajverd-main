@@ -1012,6 +1012,20 @@
                 // });
             });
         });
+
+        // footer fixing
+
+        const div = document.getElementById('services');
+        const footer =document.getElementById('footer')
+        if(div.style.height<'80vw'){
+            footer.style.position = 'fixed';
+            footer.style.bottom = '0px';
+            footer.style.width ='100%'
+        }
+        else{
+            footer.style.position = 'relative';
+            footer.style.widows ='100%'
+        }
     </script>
 
     <!-- Main JS File -->

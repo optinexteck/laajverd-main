@@ -945,7 +945,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    padding-top: 90px; /* Only for header */
+    padding-top: 60px; /* Only for header */
     min-height: 100vh;
     display: flex;
     flex-direction: column;

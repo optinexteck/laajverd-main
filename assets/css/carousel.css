@@ -514,11 +514,11 @@ body {
 
 .column {
   flex: 1;
-  max-width: 280px;
+  max-width: 300px;
 }
 
 .column h2 {
-  font-size: 24px;
+  font-size: 22px;
   margin-bottom: 20px;
   color: #000;
   font-family: aaa-inktraps;

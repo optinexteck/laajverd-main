@@ -193,7 +193,17 @@
     point.style.left = `${x}px`;
 
     const tooltip = document.createElement('div');
-    tooltip.innerText = detail;
+    // Create an h1 element and append it to the tooltip
+  const header = document.createElement("h1");
+  header.style.color = 'white'
+  const paragraph = document.createElement("p");
+
+    header.innerHTML = "Contact";
+    paragraph.innerHTML = detail;
+
+    tooltip.appendChild(header);
+    tooltip.appendChild(paragraph);
+    // tooltip.innerText = detail;
     tooltip.style.position = 'absolute'; 
     tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     tooltip.style.color = 'white';
