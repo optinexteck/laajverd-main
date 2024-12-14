@@ -273,36 +273,61 @@
 
 
 <!-- slider -->
-<section id="hero" class="hero section background-color: white;"
-style=" background-color: white;background-size: cover; height: 100vh;background-position: center;">
+<section id="hero" class="hero section" style="background-color: white; height: 100vh;">
+    <div id="hero-carousel" class="container carousel slide carousel-fade" data-bs-ride="carousel" style="width: 100vw; height: 100%; margin-left: -20px;">
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg'); width: 100vw; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;">
+        </div>
 
-<div id="hero-carousel" class="container carousel slide carousel-fade" data-bs-ride="carousel"
-style="width: 100vw; height: 100%; margin-left: -20px;">
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg'); width: 100vw; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;">
+        </div>
 
-  <!-- Slide 1 -->
-  <div class="carousel-item active"
-    style="background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg'); width: 100vw; height: 100%; background-size: contain; background-position: center; background-repeat: no-repeat;">
-  </div>
+        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
 
-  <!-- Slide 2 -->
-  <div class="carousel-item"
-    style="background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg'); width: 100vw; height: 100%; background-size: contain; background-position: center; background-repeat: no-repeat;">
-  </div>
-
-  <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-  </a>
-
-  <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-  </a>
-
-</div>
-
-
-
-
+        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+    </div>
 </section>
+
+<style>
+    .carousel-item {
+        transition: background-size 0.5s ease-in-out, background-position 0.5s ease-in-out;
+    }
+
+    .carousel-item:hover {
+        background-size: 150%; /* Increase the size for zoom effect */
+    }
+</style>
+
+<script>
+    document.querySelectorAll('.carousel-item').forEach(item => {
+        item.addEventListener('mousemove', (e) => {
+            const rect = item.getBoundingClientRect();
+            const x = e.clientX - rect.left; // x position within the element
+            const y = e.clientY - rect.top;  // y position within the element
+
+            // Calculate the background position based on mouse position
+            const xPercent = (x / rect.width) * 100;
+            const yPercent = (y / rect.height) * 100;
+
+            // Adjust the background position to center the hovered point
+            const offsetX = 50 - (xPercent / 2);
+            const offsetY = 50 - (yPercent / 2);
+
+            item.style.backgroundPosition = `${offsetX}% ${offsetY}%`;
+        });
+
+        item.addEventListener('mouseleave', () => {
+            // Reset background position when mouse leaves
+            item.style.backgroundPosition = 'center';
+        });
+    });
+</script>
+
 <!-- New Image Slider Section -->
 <!-- <section class="rail-park-slider">
     <div class="rail-park-container">

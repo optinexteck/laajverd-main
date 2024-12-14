@@ -505,7 +505,7 @@ body {
 }
 
 .content-container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   gap: 40px;
@@ -514,11 +514,11 @@ body {
 
 .column {
   flex: 1;
-  max-width: 300px;
+  max-width: 450px;
 }
 
 .column h2 {
-  font-size: 22px;
+  font-size: 28px;
   margin-bottom: 20px;
   color: #000;
   font-family: aaa-inktraps;
@@ -526,7 +526,7 @@ body {
 }
 
 .column p {
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
   color: #000;
 }
