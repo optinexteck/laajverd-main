@@ -3420,7 +3420,7 @@ section,
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .summary .carousel-item {
-    height: 300px;
+    margin-top: 500px;
   }
   
   .summary .carousel-control-prev,
