@@ -181,7 +181,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getFirestore, collection, query, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
   // Function to create a point with a detail tooltip
-  function createPoint(x, y, color, detail) {
+  function createPoint(x, y, color, detail, imageUrl) {
     const point = document.createElement('div');
     point.style.position = 'absolute'; 
     point.style.zIndex = "99999"; 
@@ -193,73 +193,92 @@
     point.style.left = `${x}px`;
 
     const tooltip = document.createElement('div');
-    // Create an h1 element and append it to the tooltip
-  const header = document.createElement("h1");
-  header.style.color = 'white'
-  const paragraph = document.createElement("p");
-
-    header.innerHTML = "Contact";
-    paragraph.innerHTML = detail;
-
-    tooltip.appendChild(header);
-    tooltip.appendChild(paragraph);
-    // tooltip.innerText = detail;
+    tooltip.classList.add('libHeading'); // Use class for styling
+    tooltip.style.width = '100%';
     tooltip.style.position = 'absolute'; 
     tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
     tooltip.style.color = 'white';
     tooltip.style.padding = '5px';
     tooltip.style.borderRadius = '5px';
     tooltip.style.visibility = 'hidden'; 
-    tooltip.style.whiteSpace = 'wrap'; 
     tooltip.style.zIndex = "100000"; 
-    tooltip.style.textWrap = "wrap"; 
     tooltip.style.width = "260px"; 
 
+    const leftDiv = document.createElement('div');
+    leftDiv.classList.add('lft');
 
-   
-    tooltip.style.top = `${y }px`; 
-    tooltip.style.left = `${x }px`; 
+    const headingDiv = document.createElement('div');
+    headingDiv.classList.add('heading');
+
+    const paragraph = document.createElement('p');
+    paragraph.textContent = '57 COLLECTIONS';
+
+    const header = document.createElement('h1');
+    header.textContent = 'Research Collections';
+    header.style.color = 'white'
+
+    headingDiv.appendChild(paragraph);
+    headingDiv.appendChild(header);
+    leftDiv.appendChild(headingDiv);
+
+    const rightDiv = document.createElement('div');
+    rightDiv.classList.add('rght');
+
+    const description = document.createElement('p');
+    description.textContent = detail;
+
+    const image = document.createElement('img');
+    image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+    image.style.width = '100%'; // Adjust as needed
+    image.style.borderRadius = '5px'; // Match tooltip style
+
+    rightDiv.appendChild(image);
+    rightDiv.appendChild(description);
+
+    tooltip.appendChild(leftDiv);
+    tooltip.appendChild(rightDiv);
+
+    tooltip.style.top = `${y}px`; 
+    tooltip.style.left = `${x}px`; 
 
     document.body.appendChild(point);
     document.body.appendChild(tooltip);
 
     point.addEventListener('mouseenter', () => {
-      tooltip.style.visibility = 'visible'; // Show tooltip
+        tooltip.style.visibility = 'visible'; // Show tooltip
     });
 
     point.addEventListener('mouseleave', () => {
-      tooltip.style.visibility = 'hidden'; // Hide tooltip
+        tooltip.style.visibility = 'hidden'; // Hide tooltip
     });
 
-    point.addEventListener('click',()=>{
-      window.location.href = link;
-    })
-
+    point.addEventListener('click', () => {
+        window.location.href = link;
+    });
 
     // x and y coordinates
-const horizontalLine = document.createElement('div');
-horizontalLine.classList.add('horizontal-line');
-document.body.appendChild(horizontalLine);
+    const horizontalLine = document.createElement('div');
+    horizontalLine.classList.add('horizontal-line');
+    document.body.appendChild(horizontalLine);
 
-const verticalLine = document.createElement('div');
-verticalLine.classList.add('vertical-line');
-document.body.appendChild(verticalLine);
+    const verticalLine = document.createElement('div');
+    verticalLine.classList.add('vertical-line');
+    document.body.appendChild(verticalLine);
 
-point.addEventListener('mouseover', () => {
-  horizontalLine.style.display = 'block';
-  verticalLine.style.display = 'block';
-});
+    point.addEventListener('mouseover', () => {
+        horizontalLine.style.display = 'block';
+        verticalLine.style.display = 'block';
+    });
 
-point.addEventListener('mousemove', (e) => {
-  horizontalLine.style.top = `${e.clientY}px`;
-  verticalLine.style.left = `${e.clientX}px`;
-});
+    point.addEventListener('mousemove', (e) => {
+        horizontalLine.style.top = `${e.clientY}px`;
+        verticalLine.style.left = `${e.clientX}px`;
+    });
 
-point.addEventListener('mouseleave', () => {
-  horizontalLine.style.display = 'none';
-  verticalLine.style.display = 'none';
-});
-
+    point.addEventListener('mouseleave', () => {
+        horizontalLine.style.display = 'none';
+        verticalLine.style.display = 'none';
+    });
   }
 
   //firebase
@@ -283,7 +302,7 @@ point.addEventListener('mouseleave', () => {
       querySnapshot.docs.forEach(doc => {
         const pointData= doc.data();
         console.log("point data = ",pointData)
-        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.description); 
+        createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.description, pointData.imageUrl); 
 
       });
     });
