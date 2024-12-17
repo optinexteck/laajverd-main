@@ -34,6 +34,9 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- input cards -->
+  <link href="assets/css/location.css" rel="stylesheet" />
+
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <!-- Bootstrap Icons -->
@@ -99,6 +102,32 @@
         <div class="markers-container"></div>
     </section>
   </main>
+  <div class="lists-cover"></div>
+    <!-- location create card -->
+   <form class="login-form section" action="javascript:void(0);" id="add-location">
+  <h1>Create a Route</h1>
+  <div class="form-input-material">
+    <input  id="name" name="name" placeholder="Name" autocomplete="off" class="form-control-material" required />
+    <label for="username" >Name</label>
+  </div>
+  <div class="form-input-material">
+    <input  name="latitude" id="latitude" placeholder="latitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">latitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="longitude" id="longitude" placeholder="longitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">longitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
+    <label for="username">description</label>
+  </div>
+
+  <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
+  <button type="submit" class="remove btn btn-primary btn-ghost">Delete All</button>
+</form>
+ 
+
 
   <!-- footer area -->
   <footer id="footer" class="footer" style="background-color: #cdcdcd;">
@@ -152,6 +181,164 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
   <script src="assets/js/map.js"></script>
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script>
+    // Function to create a point with a detail tooltip
+    function createPoint(x, y, placeName, distance, description) {
+    const point = document.createElement('div'); // Use a div for the marker
+    point.style.position = 'absolute'; 
+    point.style.zIndex = "99999"; 
+    point.style.width = '0'; 
+    point.style.height = '0'; 
+    point.style.borderLeft = '10px solid transparent';
+    point.style.borderRight = '10px solid transparent';
+    point.style.borderBottom = '20px solid red'; // Marker color
+    point.style.top = `${y - 20}px`; // Adjust position to center the marker
+    point.style.left = `${x - 10}px`; // Adjust position to center the marker
+
+    // Create a tooltip
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('libHeading'); // Use class for styling
+    tooltip.style.width = '100%';
+    tooltip.style.position = 'absolute'; 
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '5px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.visibility = 'hidden'; 
+    tooltip.style.zIndex = "100000"; 
+    tooltip.style.width = "260px"; 
+    tooltip.style.top = `${y}px`; // Position tooltip above the marker
+    tooltip.style.left = `${x}px`; 
+
+    const leftDiv = document.createElement('div');
+    leftDiv.classList.add('lft');
+
+    const headingDiv = document.createElement('div');
+    headingDiv.classList.add('heading');
+
+    const placeParagraph = document.createElement('p');
+    placeParagraph.textContent = placeName; // Display the place name
+
+    const distanceParagraph = document.createElement('p');
+    distanceParagraph.textContent = `Distance: ${distance} km`; // Display the distance
+
+    const header = document.createElement('h1');
+    header.textContent = 'Details'; // Title for area details
+    header.style.color = 'white';
+
+    headingDiv.appendChild(placeParagraph);
+    headingDiv.appendChild(distanceParagraph);
+    headingDiv.appendChild(header);
+    leftDiv.appendChild(headingDiv);
+
+    const rightDiv = document.createElement('div');
+    rightDiv.classList.add('rght');
+
+    const descriptionParagraph = document.createElement('p');
+    descriptionParagraph.textContent = description; // Show description
+
+    rightDiv.appendChild(descriptionParagraph);
+
+    tooltip.appendChild(leftDiv);
+    tooltip.appendChild(rightDiv);
+
+    document.body.appendChild(point);
+    document.body.appendChild(tooltip);
+
+    point.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible'; // Show tooltip
+    });
+
+    point.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden'; // Hide tooltip
+    });
+
+    // Optional: Add click functionality if needed
+    point.addEventListener('click', () => {
+        // Implement any click functionality if required
+    });
+
+    // x and y coordinates for lines
+    const horizontalLine = document.createElement('div');
+    horizontalLine.classList.add('horizontal-line');
+    document.body.appendChild(horizontalLine);
+
+    const verticalLine = document.createElement('div');
+    verticalLine.classList.add('vertical-line');
+    document.body.appendChild(verticalLine);
+
+    point.addEventListener('mouseover', () => {
+        horizontalLine.style.display = 'block';
+        verticalLine.style.display = 'block';
+    });
+
+    point.addEventListener('mousemove', (e) => {
+        horizontalLine.style.top = `${e.clientY}px`;
+        verticalLine.style.left = `${e.clientX}px`;
+    });
+
+    point.addEventListener('mouseleave', () => {
+        horizontalLine.style.display = 'none';
+        verticalLine.style.display = 'none';
+    });
+}
+    // Get the form and its elements
+    const form = document.getElementById('add-location');
+    const nameInput = document.getElementById('name');
+    const latitudeInput = document.getElementById('latitude');
+    const longitudeInput = document.getElementById('longitude');
+    const descriptionInput = document.getElementById('description');
+  
+    // Create a flash message element
+    const flashMessage = document.createElement('div');
+    flashMessage.style.position = 'fixed';
+    flashMessage.style.top = '20px';
+    flashMessage.style.right = '20px';
+    flashMessage.style.backgroundColor = '#28a745'; // Green background
+    flashMessage.style.color = 'white';
+    flashMessage.style.padding = '10px';
+    flashMessage.style.borderRadius = '5px';
+    flashMessage.style.zIndex = '1000';
+    flashMessage.style.display = 'none'; // Initially hidden
+    document.body.appendChild(flashMessage);
+  
+    // Handle form submission
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent the default form submission
+  
+      // Get values from the form
+      const placeName = nameInput.value; // Use place name from the input
+      const latitude = parseFloat(latitudeInput.value);
+      const longitude = parseFloat(longitudeInput.value);
+      const areaDetail = descriptionInput.value; // Use area detail from the input
+  
+      // Create a new marker point
+      createPoint(longitude, latitude, 'red', placeName, areaDetail);
+  
+      // Show flash message
+      flashMessage.textContent = 'Marker added successfully!';
+      flashMessage.style.display = 'block';
+  
+      // Hide flash message after 3 seconds
+      setTimeout(() => {
+        flashMessage.style.display = 'none';
+      }, 3000);
+  
+      // Clear the form fields
+      nameInput.value = '';
+      latitudeInput.value = '';
+      longitudeInput.value = '';
+      descriptionInput.value = '';
+    });
+  
+    // Optional: Handle the delete all button
+    const deleteButton = document.querySelector('.remove');
+    deleteButton.addEventListener('click', function() {
+      // Clear all markers from the map and Firestore
+      // Implement your logic to delete all markers here
+      console.log('Delete all markers functionality not implemented yet.');
+    });
+  </script>
   <script>
     // Get all alphabet buttons and service items
     const alphabetButtons = document.querySelectorAll('.alphabet');

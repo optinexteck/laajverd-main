@@ -386,7 +386,7 @@ body {
   justify-content: center;
   padding: 60px;
   /* background-color: #f1ca01; */
-  background-image: url('../img/bg.gif');
+  /* background-image: url('../img/bg.gif'); */
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -514,7 +514,7 @@ body {
 
 .column {
   flex: 1;
-  max-width: 450px;
+  max-width: 550px;
 }
 
 .column h2 {
@@ -528,6 +528,7 @@ body {
 .column p {
   font-size: 15px;
   line-height: 1.6;
+  max-width: 400px;
   color: #000;
 }
 

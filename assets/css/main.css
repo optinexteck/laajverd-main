@@ -3643,9 +3643,17 @@ section,
   --text-3xl: 30px;
   --text-4xl: 36px;
 }
-
+.c {
+  text-align: start;
+  margin-bottom: 40px;
+  font-family: aaa-inktraps;
+  font-weight: bolder;
+  font-size: 72px;
+  color: #333;
+  padding-top: 40px;
+}
 .main-heading {
-    text-align: center;
+    text-align: start;
     margin-bottom: 40px;
     font-family: aaa-inktraps;
     font-weight: 400;
