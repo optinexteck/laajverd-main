@@ -293,6 +293,26 @@
             <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
         </a>
     </div>
+
+    <!-- Fixed Form on Slider -->
+    <div class="fixed-form" style="position: absolute; bottom: 20px; right: 20px; z-index: 1000; background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+        <h3>Upload Image</h3>
+        <form id="uploadForm">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input type="file" class="form-control" id="image" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
 </section>
 
 <style>
@@ -904,6 +924,119 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/carousel.js"></script>
   <script src="./firebase.js"></script>
+
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
+        authDomain: "laajverd-42a3f.firebaseapp.com",
+        projectId: "laajverd-42a3f",
+        storageBucket: "laajverd-42a3f.appspot.com",
+        messagingSenderId: "654657065769",
+        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
+        measurementId: "G-ZS0JV6362J"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Initialize services
+    const db = getFirestore(app);
+
+    async function resizeImage(file, maxWidth, maxHeight) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                img.src = event.target.result;
+            };
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let width = img.width;
+                let height = img.height;
+
+                // Calculate the new dimensions
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg')); // Convert to Base64
+            };
+
+            img.onerror = (error) => {
+                reject(error);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+
+    // Form submission handling
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const imageFile = document.getElementById('image').files[0];
+
+        // Resize the image before uploading
+        const base64Image = await resizeImage(imageFile, 800, 800); // Resize to max 800x800
+
+        // Upload to Firestore
+        await uploadToFirestore(title, description, base64Image);
+    });
+
+    async function uploadToFirestore(title, description, base64Image) {
+        try {
+            // Add a new document with a generated ID in the "images" collection
+            await addDoc(collection(db, "images"), {
+                title: title,
+                description: description,
+                image: base64Image
+            });
+            alert("Data uploaded successfully!");
+            // Reset the form
+            document.getElementById('uploadForm').reset();
+        } catch (error) {
+            console.error("Error uploading data: ", error);
+        }
+    }
+  </script>
 
 </body>
 

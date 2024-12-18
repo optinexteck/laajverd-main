@@ -11,6 +11,13 @@
     font-weight: 400;
     font-style: normal;
 }
+:root {
+    --default-font: AvenirNext;
+    --heading-font: "AvenirNext",  aaa-inktraps;
+    --nav-font: "Poppins",  sans-serif;
+    --main-font: "Open Sans", sans-serif;
+  }
+  
 h1, h2 {
   font-family: aaa-inktraps;  /* Check if headings are consistent */
   font-weight: 400;  /* Set all headings to font weight 400 */

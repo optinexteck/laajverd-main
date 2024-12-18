@@ -119,8 +119,8 @@
     <label for="username">longitude</label>
   </div>
     <div class="form-input-material">
-    <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
-    <label for="username">description</label>
+    <input  name="distance" id="distance" placeholder="distance" autocomplete="off" class="form-control-material" required />
+    <label for="username">Distance</label>
   </div>
 
   <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
@@ -183,7 +183,7 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script>
     // Function to create a point with a detail tooltip
-    function createPoint(x, y, placeName, distance, description) {
+    function createPoint(x, y, placeName, description, distance) {
     const point = document.createElement('div'); // Use a div for the marker
     point.style.position = 'absolute'; 
     point.style.zIndex = "99999"; 
@@ -206,7 +206,7 @@
     tooltip.style.borderRadius = '5px';
     tooltip.style.visibility = 'hidden'; 
     tooltip.style.zIndex = "100000"; 
-    tooltip.style.width = "260px"; 
+    tooltip.style.width = "300px"; 
     tooltip.style.top = `${y}px`; // Position tooltip above the marker
     tooltip.style.left = `${x}px`; 
 
@@ -217,13 +217,13 @@
     headingDiv.classList.add('heading');
 
     const placeParagraph = document.createElement('p');
-    placeParagraph.textContent = placeName; // Display the place name
+    placeParagraph.textContent = ""; // Display the place name
 
     const distanceParagraph = document.createElement('p');
     distanceParagraph.textContent = `Distance: ${distance} km`; // Display the distance
 
     const header = document.createElement('h1');
-    header.textContent = 'Details'; // Title for area details
+    header.textContent = placeName; 
     header.style.color = 'white';
 
     headingDiv.appendChild(placeParagraph);
@@ -235,7 +235,7 @@
     rightDiv.classList.add('rght');
 
     const descriptionParagraph = document.createElement('p');
-    descriptionParagraph.textContent = description; // Show description
+    descriptionParagraph.textContent = `${x} - x axis  , ${y} - y - axis`; // Show description
 
     rightDiv.appendChild(descriptionParagraph);
 
@@ -287,7 +287,7 @@
     const nameInput = document.getElementById('name');
     const latitudeInput = document.getElementById('latitude');
     const longitudeInput = document.getElementById('longitude');
-    const descriptionInput = document.getElementById('description');
+    const distanceInput = document.getElementById('distance');
   
     // Create a flash message element
     const flashMessage = document.createElement('div');
@@ -310,10 +310,10 @@
       const placeName = nameInput.value; // Use place name from the input
       const latitude = parseFloat(latitudeInput.value);
       const longitude = parseFloat(longitudeInput.value);
-      const areaDetail = descriptionInput.value; // Use area detail from the input
+      const areaDetail = distanceInput.value; // Use area detail from the input
   
       // Create a new marker point
-      createPoint(longitude, latitude, 'red', placeName, areaDetail);
+      createPoint(longitude, latitude, placeName,'red' , areaDetail);
   
       // Show flash message
       flashMessage.textContent = 'Marker added successfully!';
@@ -328,7 +328,7 @@
       nameInput.value = '';
       latitudeInput.value = '';
       longitudeInput.value = '';
-      descriptionInput.value = '';
+      distanceInput.value = '';
     });
   
     // Optional: Handle the delete all button
@@ -389,7 +389,7 @@
     tooltip.style.borderRadius = '5px';
     tooltip.style.visibility = 'hidden'; 
     tooltip.style.zIndex = "100000"; 
-    tooltip.style.width = "260px"; 
+    tooltip.style.width = "300px"; 
 
     const leftDiv = document.createElement('div');
     leftDiv.classList.add('lft');
