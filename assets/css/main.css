@@ -3642,6 +3642,7 @@ section,
 }
 .c {
   text-align: start;
+  width: 100px;
   margin-bottom: 40px;
   font-family: aaa-inktraps;
   font-weight: bolder;
