@@ -194,8 +194,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Add this to your main.js or carousel.js
 document.addEventListener('DOMContentLoaded', function() {
-  var heroCarousel = new bootstrap.Carousel(document.querySelector('#hero-carousel'), {
-    interval: 3000,  // 2 seconds
-    wrap: true       // Continuous loop
+  const heroCarousel = new bootstrap.Carousel(document.querySelector('#hero-carousel'), {
+    interval: false,  // Disable automatic cycling
+    wrap: true        // Allow continuous loop
+  });
+
+  // Add event listeners for the custom controls
+  document.querySelector('.carousel-control-prev').addEventListener('click', () => {
+    heroCarousel.prev(); // Move to the previous slide
+  });
+
+  document.querySelector('.carousel-control-next').addEventListener('click', () => {
+    heroCarousel.next(); // Move to the next slide
   });
 });

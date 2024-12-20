@@ -3665,6 +3665,38 @@ section,
     margin-top: 20px;
 }
 
+.add-route-button {
+    position: fixed; /* Fixed position for the button */
+    bottom: 20px; /* Position from the bottom */
+    right: 20px; /* Position from the right */
+    z-index: 1000; /* Ensure it's above other elements */
+    padding: 10px 20px; /* Button padding */
+    background-color: #007bff; /* Button color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Optional: rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.route-form {
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to the top */
+    right: -50%; /* Start off-screen to the right */
+    width: 50%; /* Width of the form */
+    height: 100%; /* Full height */
+    background-color: white; /* Background color */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    transition: right 0.3s ease; /* Smooth transition */
+    border-radius: 0; /* Remove border radius */
+    padding: 20px; /* Padding inside the form */
+    display: none; /* Initially hidden */
+}
+
+.route-form.active {
+    right: 0; /* Slide in to the viewport */
+    display: block; /* Show the form */
+}
+
 
 
 

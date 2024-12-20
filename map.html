@@ -102,7 +102,6 @@
         <div class="markers-container"></div>
     </section>
   </main>
-  <div class="lists-cover"></div>
     <!-- location create card -->
    <form class="login-form section" action="javascript:void(0);" id="add-location">
   <h1>Create a Route</h1>
@@ -161,6 +160,7 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
+    <button id="addRouteButton" class="add-route-button">Add Route</button>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -503,6 +503,32 @@
 </script>
  
 
+<script>
+  var display = false;
+  const Form = document.querySelector(".login-form");
+  const addRoute = document.querySelector(".add-route-button");
+
+  addRoute.addEventListener("click", () => {
+    console.log("clicked");
+    display = !display;
+    console.log(display);
+    // if (display == false) {
+    //   addRoute.textContent = 'Add Route';
+    //   Form.style.marginRight = "0%";
+    // } else {
+    //   addRoute.textContent = 'Close';
+    //   Form.style.marginRight = "100%";
+    // }
+    // Move the conditional logic inside the event listener
+    if (display == false) {
+      addRoute.textContent = 'Add Route';
+      Form.style.marginRight = "100%";
+    } else {
+      addRoute.textContent = 'Close';
+      Form.style.marginRight = "0%";
+    }
+  });
+</script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>

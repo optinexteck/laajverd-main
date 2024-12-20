@@ -726,3 +726,35 @@ body {
 
   }
 }
+.carousel-control-prev {
+  width: 5%; /* Adjust width as needed */
+  display: flex; /* Ensure they are displayed as flex items */
+  align-items: center; /* Center the icons vertically */
+  justify-content: center; /* Center the icons horizontally */
+  top: 50%; /* Position them vertically centered */
+  left: 0%;
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  z-index: 10; /* Ensure they are above other elements */
+}
+
+.carousel-control-next {
+    width: 5%; /* Adjust width as needed */
+    display: flex; /* Ensure they are displayed as flex items */
+    align-items: center; /* Center the icons vertically */
+    justify-content: center; /* Center the icons horizontally */
+    top: 50%; /* Position them vertically centered */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    z-index: 10; /* Ensure they are above other elements */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Rounded background */
+    padding: 10px; /* Padding around the icon */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Change background on hover */
+}
