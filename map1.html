@@ -202,49 +202,104 @@
   
     // Function to create a point (blue dots)
     function createPoint(x, y, color, detail) {
-  const point = document.createElement('div');
-  point.style.position = 'absolute'; 
-  point.style.zIndex = "99999"; 
-  point.style.width = '10px'; 
-  point.style.height = '10px';
-  point.style.borderRadius = '50%';
-  point.style.backgroundColor = color; 
-  point.style.zIndex = 1; 
-  point.style.top = `${y}px`;
-  point.style.left = `${x}px`;
-
-  // Make sure other elements aren't blocked
-  point.style.pointerEvents = 'auto'; // Allow interactions with this point element
-
-  const tooltip = document.createElement('div');
-  tooltip.classList.add('libHeading');
-  tooltip.style.width = '100%';
-  tooltip.style.position = 'absolute'; 
-  tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-  tooltip.style.color = 'white';
-  tooltip.style.padding = '5px';
-  tooltip.style.borderRadius = '5px';
-  tooltip.style.visibility = 'hidden'; 
-  tooltip.style.zIndex = "100000"; 
-  tooltip.style.width = "300px"; 
-  tooltip.style.top = `${y}px`; 
-  tooltip.style.left = `${x}px`;
-
-  // Append the tooltip to the point
-  point.appendChild(tooltip);
-  document.body.appendChild(point);
-
-  // Tooltip hover functionality
-  point.addEventListener('mouseover', function(e) {
-    e.stopPropagation();
-    tooltip.style.visibility = 'visible';
-  });
-  point.addEventListener('mouseout', function(e) {
-    e.stopPropagation();
-    tooltip.style.visibility = 'hidden';
-  });
-}
-
+      const point = document.createElement('div');
+      point.style.position = 'absolute'; 
+      point.style.zIndex = "99999"; 
+      point.style.width = '10px'; 
+      point.style.height = '10px';
+      point.style.borderRadius = '50%';
+      point.style.backgroundColor = color; 
+      point.style.zIndex = 1; 
+      point.style.top = ${y}px;
+      point.style.left = ${x}px;
+  
+      const tooltip = document.createElement('div');
+      tooltip.classList.add('libHeading');
+      tooltip.style.width = '100%';
+      tooltip.style.position = 'absolute'; 
+      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      tooltip.style.color = 'white';
+      tooltip.style.padding = '5px';
+      tooltip.style.borderRadius = '5px';
+      tooltip.style.visibility = 'hidden'; 
+      tooltip.style.zIndex = "100000"; 
+      tooltip.style.width = "300px"; 
+      tooltip.style.top = ${y}px; 
+      tooltip.style.left = ${x}px; 
+  
+      const leftDiv = document.createElement('div');
+      leftDiv.classList.add('lft');
+  
+      const headingDiv = document.createElement('div');
+      headingDiv.classList.add('heading');
+  
+      const paragraph = document.createElement('p');
+      paragraph.textContent = '57 COLLECTIONS';
+  
+      const header = document.createElement('h1');
+      header.textContent = 'Research Collections';
+      header.style.color = 'white'
+  
+      headingDiv.appendChild(paragraph);
+      headingDiv.appendChild(header);
+      leftDiv.appendChild(headingDiv);
+  
+      const rightDiv = document.createElement('div');
+      rightDiv.classList.add('rght');
+  
+      const description = document.createElement('p');
+      description.textContent = detail;
+  
+      const image = document.createElement('img');
+      image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+      image.style.width = '100%'; 
+      image.style.borderRadius = '5px'; 
+  
+      rightDiv.appendChild(image);
+      rightDiv.appendChild(description);
+  
+      tooltip.appendChild(leftDiv);
+      tooltip.appendChild(rightDiv);
+  
+      document.body.appendChild(point);
+      document.body.appendChild(tooltip);
+  
+      point.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible'; 
+      });
+  
+      point.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden'; 
+      });
+  
+      point.addEventListener('click', () => {
+        window.location.href = link;
+      });
+  
+      const horizontalLine = document.createElement('div');
+      horizontalLine.classList.add('horizontal-line');
+      document.body.appendChild(horizontalLine);
+  
+      const verticalLine = document.createElement('div');
+      verticalLine.classList.add('vertical-line');
+      document.body.appendChild(verticalLine);
+  
+      point.addEventListener('mouseover', () => {
+        horizontalLine.style.display = 'block';
+        verticalLine.style.display = 'block';
+      });
+  
+      point.addEventListener('mousemove', (e) => {
+        horizontalLine.style.top = ${e.clientY}px;
+        verticalLine.style.left = ${e.clientX}px;
+      });
+  
+      point.addEventListener('mouseleave', () => {
+        horizontalLine.style.display = 'none';
+        verticalLine.style.display = 'none';
+      });
+    }
+  
     const points = []; 
 
     function createRoute(x, y, placeName, description) {
@@ -256,8 +311,8 @@
       point.style.borderLeft = '10px solid transparent';
       point.style.borderRight = '10px solid transparent';
       point.style.borderBottom = '20px solid red'; 
-      point.style.top = `${y - 20}px`; 
-      point.style.left = `${x - 10}px`; 
+      point.style.top = ${y - 20}px; 
+      point.style.left = ${x - 10}px; 
   
       const tooltip = document.createElement('div');
       tooltip.classList.add('libHeading');
@@ -268,8 +323,8 @@
       tooltip.style.borderRadius = '5px';
       tooltip.style.visibility = 'hidden'; 
       tooltip.style.width = "300px"; 
-      tooltip.style.top = `${y}px`; 
-      tooltip.style.left = `${x}px`; 
+      tooltip.style.top = ${y}px; 
+      tooltip.style.left = ${x}px; 
   
       const leftDiv = document.createElement('div');
       leftDiv.classList.add('lft');
@@ -296,14 +351,11 @@
       document.body.appendChild(point);
       document.body.appendChild(tooltip);
   
-      point.addEventListener('mouseenter', (e) => {
-        e.stopPropagation(); // This might prevent events from bubbling up
+      point.addEventListener('mouseenter', () => {
         tooltip.style.visibility = 'visible'; 
       });
   
-      point.addEventListener('mouseleave', (e) => {
-        e.stopPropagation(); // This might prevent events from bubbling up
-
+      point.addEventListener('mouseleave', () => {
         tooltip.style.visibility = 'hidden'; 
       });
 
@@ -334,7 +386,7 @@ function drawLine(x1, y1, x2, y2) {
     const controlY2 = y2 + getRandomInt(100,500); // Increase the value for a stronger curve
     
     // SVG path for cubic Bezier curve
-    const pathData = `M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2}`;
+    const pathData = M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2};
 
     line.setAttribute('d', pathData);
     line.setAttribute('stroke', 'red');
@@ -384,8 +436,6 @@ function drawLine(x1, y1, x2, y2) {
     const descriptionInput = document.getElementById('description');
   
     form.addEventListener('submit', async (e) => {
-      e.stopPropagation(); // This might prevent events from bubbling up
-
       e.preventDefault();
       try {
         await addDoc(collection(db, 'routes'), {
@@ -413,9 +463,7 @@ function drawLine(x1, y1, x2, y2) {
     const serviceItems = document.querySelectorAll('.isotope-container');
 
     alphabetButtons.forEach(button => {
-      button.addEventListener('click', function (e) {
-        e.stopPropagation(); // This might prevent events from bubbling up
-
+      button.addEventListener('click', function () {
         // Remove 'active' class from all buttons and add to the clicked one
         alphabetButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
@@ -452,7 +500,7 @@ function drawLine(x1, y1, x2, y2) {
   Form.style.zIndex = "999";
   
   // Handle button click
-  addRoute.addEventListener("click", (e) => {
+  addRoute.addEventListener("click", () => {
     console.log("clicked");
     display = !display; // Toggle form visibility
     

@@ -72,7 +72,13 @@ h1, h2 {
   background-color: #007bff;
   position: relative;
 }
-
+/* line */
+.line {
+  position: absolute;
+  width: 3px; /* Thickness of the line */
+  background-color: black;
+  transform-origin: top left;
+}
 .btn::before {
   position: absolute;
   content: "";
@@ -103,23 +109,6 @@ h1, h2 {
   --input-default-border-color: white;
   --input-border-bottom-color: white;
 }
-
-.form-input-material input {
-  color: white;
-  border: none;
-  border-bottom: 2px solid var(--input-border-bottom-color);
-  background: transparent;
-  padding: 10px;
-  font-size: 16px;
-  width: 100%;
-  outline: none;
-  transition: border-color 0.3s ease;
-}
-
-.form-input-material input:focus {
-  border-color: var(--primary-color);
-}
-
 .login-form {
   position: fixed; /* Fix the position so the form can slide from the side */
   z-index: 99;
@@ -155,6 +144,23 @@ h1, h2 {
   width: 100%;
   margin: 18px 0 9px 0;
 }
+
+.form-input-material input {
+  color: white;
+  border: none;
+  border-bottom: 2px solid var(--input-border-bottom-color);
+  background: transparent;
+  padding: 10px;
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form-input-material input:focus {
+  border-color: var(--primary-color);
+}
+
 
 
 @media screen and (max-width: 800px) {
