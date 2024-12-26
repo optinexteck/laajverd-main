@@ -724,28 +724,26 @@ section,
 .hero .carousel-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   flex-direction: column;
   text-align: center;
-  position: relative;
   min-height: 75vh;
-  padding-top: 60px;
+  padding-top: 100px;
 }
 
 .hero h2 {
   margin-bottom: 30px;
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 400;
+  width: 100%;
+  text-align: center;
 }
 
-.hero h2 span {
-  text-decoration: underline;
-}
+
 
 .hero p {
-  max-width: 80%;
+  text-align: center;
   animation-delay: 0.4s;
-  margin: 0 auto 30px auto;
 }
 
 /* .hero .carousel-item {
@@ -812,8 +810,17 @@ section,
 }
 
 @media (min-width: 1024px) {
+  .hero h2 {
+    margin-bottom: 30px;
+    font-weight: 400;
+    width: 40%;
+    text-align: start;
+
+  }
   .hero p {
-    max-width: 60%;
+    max-width: 40%;
+    text-align: start;
+
   }
 
   .hero .carousel-control-prev,

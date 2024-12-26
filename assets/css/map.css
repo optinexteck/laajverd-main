@@ -968,10 +968,11 @@ body {
 
 /* Map section to fill entire space */
 .map-section {
+    overflow: hidden;
     flex: 1;
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 90px); /* Full viewport minus header */
+    min-height: 100vh; /* Full viewport minus header */
     margin: 0;
     padding: 0;
 }

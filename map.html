@@ -43,6 +43,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- Custom Map CSS -->
   <link rel="stylesheet" href="assets/css/map.css">
+  
 </head>
 
 <body class="index-page">
@@ -75,7 +76,7 @@
   <main class="main">
     <section class="map-section">
         <!-- Map with your image -->
-        <img src="assets/img/map_convert.jpg" alt="Mountain Map" class="base-map">
+        <img src="assets/img/location-image.jpg" alt="Mountain Map" class="base-map">
         
         <!-- Controls with existing functionality -->
         <!-- <div class="map-controls">
@@ -130,7 +131,7 @@
 
 
   <!-- footer area -->
-  <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+  <footer id="footer" class="footer" style="background-color: #cdcdcd; position: relative;bottom: 0%;">
     <div class="container">
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
@@ -352,7 +353,7 @@ function drawLine(x1, y1, x2, y2) {
         svg.style.position = 'absolute';
         svg.style.top = '0';
         svg.style.left = '0';
-        svg.style.zIndex = '1000'; // Ensure it's above the map
+        svg.style.zIndex = '2'; 
         document.body.appendChild(svg);
         return svg;
     }
@@ -433,12 +434,7 @@ function drawLine(x1, y1, x2, y2) {
       });
     });
   </script>
-  <script>
 
-
-
-
-  </script>
 
  
 
