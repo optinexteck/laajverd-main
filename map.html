@@ -202,50 +202,110 @@
     const db = getFirestore(app);
   
     // Function to create a point (blue dots)
-    function createPoint(x, y, color, detail) {
-  const point = document.createElement('div');
-  point.style.position = 'absolute'; 
-  point.style.zIndex = "4"; 
-  point.style.width = '10px'; 
-  point.style.height = '10px';
-  point.style.borderRadius = '50%';
-  point.style.backgroundColor = color; 
-  point.style.zIndex = 1; 
-  point.style.top = `${y}px`;
-  point.style.left = `${x}px`;
+    function createPoint(x, y, placeName, distance, description) {
+    const point = document.createElement('div'); // Use a div for the marker
+    point.style.position = 'absolute'; 
+    point.style.zIndex = "9999"; 
+    point.style.width = '15px'; 
+    point.style.height = '15px'; 
+    point.style.background = 'blue'; 
+    point.style.borderRadius = '50%'; 
+    point.style.top = `${y - 20}px`; // Adjust position to center the marker
+    point.style.left = `${x - 10}px`; // Adjust position to center the marker
 
-  // Make sure other elements aren't blocked
-  point.style.pointerEvents = 'auto'; // Allow interactions with this point element
+    // Create a tooltip
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('libHeading'); // Use class for styling
+    tooltip.style.width = '100%';
+    tooltip.style.position = 'absolute'; 
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '5px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.visibility = 'hidden'; 
+    tooltip.style.zIndex = "100000"; 
+    tooltip.style.width = "260px"; 
+    tooltip.style.top = `${y}px`; // Position tooltip above the marker
+    tooltip.style.left = `${x}px`; 
 
-  const tooltip = document.createElement('div');
-  tooltip.classList.add('libHeading');
-  tooltip.style.width = '100%';
-  tooltip.style.position = 'absolute'; 
-  tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-  tooltip.style.color = 'white';
-  tooltip.style.padding = '5px';
-  tooltip.style.borderRadius = '5px';
-  tooltip.style.visibility = 'hidden'; 
-  tooltip.style.zIndex = "100000"; 
-  tooltip.style.width = "300px"; 
-  tooltip.style.top = `${y}px`; 
-  tooltip.style.left = `${x}px`;
+    const leftDiv = document.createElement('div');
+    leftDiv.classList.add('lft');
 
-  // Append the tooltip to the point
-  point.appendChild(tooltip);
-  document.body.appendChild(point);
+    const headingDiv = document.createElement('div');
+    headingDiv.classList.add('heading');
 
-  // Tooltip hover functionality
-  point.addEventListener('mouseover', function(e) {
-    e.stopPropagation();
-    tooltip.style.visibility = 'visible';
-  });
-  point.addEventListener('mouseout', function(e) {
-    e.stopPropagation();
-    tooltip.style.visibility = 'hidden';
-  });
+    const placeParagraph = document.createElement('p');
+    placeParagraph.textContent = placeName; // Display the place name
+
+    const distanceParagraph = document.createElement('p');
+    distanceParagraph.textContent = `Description: ${distance} km`; // Display the distance
+
+    const image = document.createElement('img');
+    image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+    image.style.width ="100%"
+    const header = document.createElement('h1');
+    header.textContent = 'Details'; // Title for area details
+    header.style.color = 'white';
+
+    headingDiv.appendChild(placeParagraph);
+    headingDiv.appendChild(distanceParagraph);
+    headingDiv.appendChild(image);
+
+    headingDiv.appendChild(header);
+    leftDiv.appendChild(headingDiv);
+
+    const rightDiv = document.createElement('div');
+    rightDiv.classList.add('rght');
+
+    const descriptionParagraph = document.createElement('p');
+    descriptionParagraph.textContent = description; // Show description
+
+    rightDiv.appendChild(descriptionParagraph);
+
+    tooltip.appendChild(leftDiv);
+    tooltip.appendChild(rightDiv);
+
+    document.body.appendChild(point);
+    document.body.appendChild(tooltip);
+
+    point.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible'; // Show tooltip
+    });
+
+    point.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden'; // Hide tooltip
+    });
+
+    // Optional: Add click functionality if needed
+    point.addEventListener('click', () => {
+        // Implement any click functionality if required
+    });
+
+    // x and y coordinates for lines
+    const horizontalLine = document.createElement('div');
+    horizontalLine.classList.add('horizontal-line');
+    document.body.appendChild(horizontalLine);
+
+    const verticalLine = document.createElement('div');
+    verticalLine.classList.add('vertical-line');
+    document.body.appendChild(verticalLine);
+
+    point.addEventListener('mouseover', () => {
+        horizontalLine.style.display = 'block';
+        verticalLine.style.display = 'block';
+    });
+
+    point.addEventListener('mousemove', (e) => {
+        horizontalLine.style.top = `${e.clientY}px`;
+        verticalLine.style.left = `${e.clientX}px`;
+    });
+
+    point.addEventListener('mouseleave', () => {
+        horizontalLine.style.display = 'none';
+        verticalLine.style.display = 'none';
+    });
 }
-
+    
     const points = []; 
 
     function createRoute(x, y, placeName, description) {
