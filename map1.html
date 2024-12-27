@@ -34,6 +34,10 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.css" />
+
   <!-- input cards -->
   <link href="assets/css/location.css" rel="stylesheet" />
 
@@ -43,6 +47,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- Custom Map CSS -->
   <link rel="stylesheet" href="assets/css/map.css">
+  
 </head>
 
 <body class="index-page">
@@ -73,34 +78,7 @@
   </header>
 
   <main class="main">
-    <section class="map-section">
-        <!-- Map with your image -->
-        <img src="assets/img/map_convert.jpg" alt="Mountain Map" class="base-map">
-        
-        <!-- Controls with existing functionality -->
-        <!-- <div class="map-controls">
-            <div class="control-buttons-vertical">
-                <button id="marker-btn" class="control-btn">
-                    <i class="bi bi-geo-alt"></i> Add Marker
-                </button>
-                <button id="line-btn" class="control-btn">
-                    <i class="bi bi-slash-lg"></i> Draw Line
-                </button>
-                <button id="polygon-btn" class="control-btn">
-                    <i class="bi bi-pentagon"></i> Draw Area
-                </button>
-                <button id="measure-btn" class="control-btn">
-                    <i class="bi bi-rulers"></i> Measure
-                </button>
-                <button id="clear-btn" class="control-btn">
-                    <i class="bi bi-trash"></i> Clear All
-                </button>
-            </div>
-        </div> -->
-        
-        <!-- Markers container for functionality -->
-        <div class="markers-container"></div>
-    </section>
+    <div id="map" style="height: 500px; width: 100%;"></div>
   </main>
 
     <!-- location create card -->
@@ -130,7 +108,7 @@
 
 
   <!-- footer area -->
-  <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+  <footer id="footer" class="footer" style="background-color: #cdcdcd; position: relative;bottom: 0%;">
     <div class="container">
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
@@ -161,7 +139,7 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-    <button id="addRouteButton" class="add-route-button"><</button>
+    <!-- <button id="addRouteButton" class="add-route-button"><</button> -->
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -181,11 +159,13 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
   <script src="assets/js/map.js"></script>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
     import { getFirestore, collection, query, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-    
+  
     // Firebase Configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
@@ -200,262 +180,108 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
   
-    // Function to create a point (blue dots)
-    function createPoint(x, y, color, detail) {
-      const point = document.createElement('div');
-      point.style.position = 'absolute'; 
-      point.style.zIndex = "99999"; 
-      point.style.width = '10px'; 
-      point.style.height = '10px';
-      point.style.borderRadius = '50%';
-      point.style.backgroundColor = color; 
-      point.style.zIndex = 1; 
-      point.style.top = ${y}px;
-      point.style.left = ${x}px;
+    // Initialize the map and set the initial view
+    const map = L.map('map').setView([30.3753, 69.3451], 7);
   
-      const tooltip = document.createElement('div');
-      tooltip.classList.add('libHeading');
-      tooltip.style.width = '100%';
-      tooltip.style.position = 'absolute'; 
-      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      tooltip.style.color = 'white';
-      tooltip.style.padding = '5px';
-      tooltip.style.borderRadius = '5px';
-      tooltip.style.visibility = 'hidden'; 
-      tooltip.style.zIndex = "100000"; 
-      tooltip.style.width = "300px"; 
-      tooltip.style.top = ${y}px; 
-      tooltip.style.left = ${x}px; 
+    // Add OpenStreetMap Tile Layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
   
-      const leftDiv = document.createElement('div');
-      leftDiv.classList.add('lft');
+    // Function to create a marker for each point
+    function createPoint(x, y, placeName, distance, description) {
+      const marker = L.marker([x, y]).addTo(map);
+      marker.bindPopup(`<b>${placeName}</b><br>${description}<br>Distance: ${distance} km`).openPopup();
   
-      const headingDiv = document.createElement('div');
-      headingDiv.classList.add('heading');
-  
-      const paragraph = document.createElement('p');
-      paragraph.textContent = '57 COLLECTIONS';
-  
-      const header = document.createElement('h1');
-      header.textContent = 'Research Collections';
-      header.style.color = 'white'
-  
-      headingDiv.appendChild(paragraph);
-      headingDiv.appendChild(header);
-      leftDiv.appendChild(headingDiv);
-  
-      const rightDiv = document.createElement('div');
-      rightDiv.classList.add('rght');
-  
-      const description = document.createElement('p');
-      description.textContent = detail;
-  
-      const image = document.createElement('img');
-      image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
-      image.style.width = '100%'; 
-      image.style.borderRadius = '5px'; 
-  
-      rightDiv.appendChild(image);
-      rightDiv.appendChild(description);
-  
-      tooltip.appendChild(leftDiv);
-      tooltip.appendChild(rightDiv);
-  
-      document.body.appendChild(point);
-      document.body.appendChild(tooltip);
-  
-      point.addEventListener('mouseenter', () => {
-        tooltip.style.visibility = 'visible'; 
-      });
-  
-      point.addEventListener('mouseleave', () => {
-        tooltip.style.visibility = 'hidden'; 
-      });
-  
-      point.addEventListener('click', () => {
-        window.location.href = link;
-      });
-  
-      const horizontalLine = document.createElement('div');
-      horizontalLine.classList.add('horizontal-line');
-      document.body.appendChild(horizontalLine);
-  
-      const verticalLine = document.createElement('div');
-      verticalLine.classList.add('vertical-line');
-      document.body.appendChild(verticalLine);
-  
-      point.addEventListener('mouseover', () => {
-        horizontalLine.style.display = 'block';
-        verticalLine.style.display = 'block';
-      });
-  
-      point.addEventListener('mousemove', (e) => {
-        horizontalLine.style.top = ${e.clientY}px;
-        verticalLine.style.left = ${e.clientX}px;
-      });
-  
-      point.addEventListener('mouseleave', () => {
-        horizontalLine.style.display = 'none';
-        verticalLine.style.display = 'none';
-      });
+      // Create a circle marker around the point
+      const circle = L.circle([x, y], {
+        color: 'blue',
+        fillColor: '#30a0ff',
+        fillOpacity: 0.3,
+        radius: 5000 // Radius in meters
+      }).addTo(map);
     }
   
-    const points = []; 
-
-    function createRoute(x, y, placeName, description) {
-      const point = document.createElement('div');
-      point.style.position = 'absolute'; 
-      point.style.zIndex = "99999"; 
-      point.style.width = '0'; 
-      point.style.height = '0'; 
-      point.style.borderLeft = '10px solid transparent';
-      point.style.borderRight = '10px solid transparent';
-      point.style.borderBottom = '20px solid red'; 
-      point.style.top = ${y - 20}px; 
-      point.style.left = ${x - 10}px; 
+    const mapQuery = query(collection(db, 'map'));
+    onSnapshot(mapQuery, (querySnapshot) => {
+      const waypoints = [];
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const { latitude, longitude, title, description } = data;
+        const latLng = L.latLng(latitude, longitude);
+        waypoints.push(latLng);
   
-      const tooltip = document.createElement('div');
-      tooltip.classList.add('libHeading');
-      tooltip.style.position = 'absolute'; 
-      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      tooltip.style.color = 'white';
-      tooltip.style.padding = '5px';
-      tooltip.style.borderRadius = '5px';
-      tooltip.style.visibility = 'hidden'; 
-      tooltip.style.width = "300px"; 
-      tooltip.style.top = ${y}px; 
-      tooltip.style.left = ${x}px; 
-  
-      const leftDiv = document.createElement('div');
-      leftDiv.classList.add('lft');
-  
-      const headingDiv = document.createElement('div');
-      headingDiv.classList.add('heading');
-  
-      const placeParagraph = document.createElement('p');
-      placeParagraph.textContent = "x - axis : " + x +" y - axis :"+y;
-  
-      const descriptionParagraph = document.createElement('p');
-      descriptionParagraph.textContent = description;
-  
-      const header = document.createElement('h1');
-      header.textContent = placeName; 
-      header.style.color = 'white';
-  
-      headingDiv.appendChild(placeParagraph);
-      headingDiv.appendChild(descriptionParagraph);
-      headingDiv.appendChild(header);
-      leftDiv.appendChild(headingDiv);
-  
-      tooltip.appendChild(leftDiv);
-      document.body.appendChild(point);
-      document.body.appendChild(tooltip);
-  
-      point.addEventListener('mouseenter', () => {
-        tooltip.style.visibility = 'visible'; 
+        // Create a marker and circle for each point
+        createPoint(latitude, longitude, title, 0, description);
       });
   
-      point.addEventListener('mouseleave', () => {
-        tooltip.style.visibility = 'hidden'; 
-      });
-
-      // Store the point's position
-      points.push({ x, y });
-
-      if (points.length > 1) {
-        const prevPoint = points[points.length - 2];
-        drawLine(prevPoint.x, prevPoint.y, x, y);
+      // Create a route using the fetched waypoints
+      if (waypoints.length > 1) {
+        L.Routing.control({
+          waypoints: waypoints,
+          routeWhileDragging: true
+        }).addTo(map);
       }
-    }
-
-    function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-    // Function to draw a Bezier curve connecting points
-// Function to draw a Bezier curve connecting points with more pronounced curves
-function drawLine(x1, y1, x2, y2) {
-    const svg = document.querySelector('svg') || createSvgElement();
-    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    
-    // Control points for the Bezier curve (adjust these values to control the curve)
-    const controlX1 = x1 + (x2 - x1) / 3;
-    const controlY1 = y1 - getRandomInt(100,500); // Make the curve more pronounced by increasing the value
-    const controlX2 = x1 + (x2 - x1) * 2 / 3 + getRandomInt(100,500);
-    const controlY2 = y2 + getRandomInt(100,500); // Increase the value for a stronger curve
-    
-    // SVG path for cubic Bezier curve
-    const pathData = M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2};
-
-    line.setAttribute('d', pathData);
-    line.setAttribute('stroke', 'red');
-    line.setAttribute('stroke-width', '2');
-    line.setAttribute('fill', 'transparent');
-    
-    svg.appendChild(line);
-}
-
-    // Function to create an SVG element if it doesn't exist
-    function createSvgElement() {
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        svg.setAttribute('width', '100%');
-        svg.setAttribute('height', '100%');
-        svg.style.position = 'absolute';
-        svg.style.top = '0';
-        svg.style.left = '0';
-        svg.style.zIndex = '1000'; // Ensure it's above the map
-        document.body.appendChild(svg);
-        return svg;
-    }
-
-    // Fetch data from Firestore (blue points and routes)
-    function fetchData() {
-      const mapQuery = query(collection(db, 'map'));
-      onSnapshot(mapQuery, (querySnapshot) => {
-        querySnapshot.docs.forEach(doc => {
-          const pointData = doc.data();
-          createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.description);
-        });
-      });
-  
-      const routeQuery = query(collection(db, 'routes'));
-      onSnapshot(routeQuery, (querySnapshot) => {
-        querySnapshot.docs.forEach(doc => {
-          const routeData = doc.data();
-          createRoute(routeData.longitude, routeData.latitude, routeData.placeName, routeData.description);
-        });
-      });
-    }
-  
-    // Handle form submission to add a new route
-    const form = document.getElementById('add-location');
-    const nameInput = document.getElementById('name');
-    const latitudeInput = document.getElementById('latitude');
-    const longitudeInput = document.getElementById('longitude');
-    const descriptionInput = document.getElementById('description');
-  
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      try {
-        await addDoc(collection(db, 'routes'), {
-          placeName: nameInput.value,
-          latitude: parseFloat(latitudeInput.value),
-          longitude: parseFloat(longitudeInput.value),
-          description: descriptionInput.value,
-        });
-      } catch (err) {
-        console.error('Error adding document: ', err);
-      }
-      form.reset();
     });
+  </script>
+  
 
-    fetchData();
-</script>
   
   
   
-  
+  <script>
+    // Initialize the Leaflet Map
+// const map = L.map('map').setView([30.3753, 69.3451], 7); // Coordinates for Pakistan
+
+// Add OpenStreetMap Tile Layer
+// L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+//   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+// }).addTo(map);
+
+  // const marker = L.marker([30.3456, 69.3451]).addTo(map);
+  // marker.bindPopup(`<b>${name}</b><br>${description}`).openPopup();
+
+// Firebase Integration
+// const addLocationForm = document.getElementById('add-location');
+
+// Listen for form submissions to add markers
+// addLocationForm.addEventListener('submit', async (e) => {
+//   e.preventDefault();
+
+//   const name = document.getElementById('name').value;
+//   const latitude = parseFloat(document.getElementById('latitude').value);
+//   const longitude = parseFloat(document.getElementById('longitude').value);
+//   const description = document.getElementById('description').value;
+
+//   // Add marker to map
+//   const marker = L.marker([latitude, longitude]).addTo(map);
+//   marker.bindPopup(`<b>${name}</b><br>${description}`).openPopup();
+
+//   // Save to Firebase Firestore
+//   try {
+//     await addDoc(collection(db, 'locations'), {
+//       name,
+//       latitude,
+//       longitude,
+//       description
+//     });
+//     alert('Location added successfully!');
+//   } catch (error) {
+//     console.error('Error adding location: ', error);
+//   }
+// });
+
+// Retrieve Locations from Firebase
+// const q = query(collection(db, 'map'));
+// onSnapshot(q, (querySnapshot) => {
+//   querySnapshot.forEach((doc) => {
+//     const { latitude, longitude, name, description } = doc.data();
+//     const marker = L.marker([latitude, longitude]).addTo(map);
+//     marker.bindPopup(`<b>${name}</b><br>${description}`);
+//   });
+// });
+
+  </script>
   
   <script>
     // Get all alphabet buttons and service items
@@ -463,7 +289,9 @@ function drawLine(x1, y1, x2, y2) {
     const serviceItems = document.querySelectorAll('.isotope-container');
 
     alphabetButtons.forEach(button => {
-      button.addEventListener('click', function () {
+      button.addEventListener('click', function (e) {
+        e.stopPropagation(); // This might prevent events from bubbling up
+
         // Remove 'active' class from all buttons and add to the clicked one
         alphabetButtons.forEach(btn => btn.classList.remove('active'));
         this.classList.add('active');
@@ -481,12 +309,7 @@ function drawLine(x1, y1, x2, y2) {
       });
     });
   </script>
-  <script>
 
-
-
-
-  </script>
 
  
 
@@ -500,7 +323,7 @@ function drawLine(x1, y1, x2, y2) {
   Form.style.zIndex = "999";
   
   // Handle button click
-  addRoute.addEventListener("click", () => {
+  addRoute.addEventListener("click", (e) => {
     console.log("clicked");
     display = !display; // Toggle form visibility
     
