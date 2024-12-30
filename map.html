@@ -274,7 +274,7 @@
     function createPoint(x, y, placeName, description) {
       const marker = L.marker([x, y]).addTo(map);
       marker.bindPopup(`<b>${placeName}</b><br>${description}`).openPopup();
-  
+    
       // Create a circle marker around the point
       L.circle([x, y], {
         color: 'blue',
@@ -282,7 +282,7 @@
         fillOpacity: 0.3,
         radius: 5000 // Radius in meters
       }).addTo(map);
-  
+    
       return marker; // Return the marker to attach event listeners outside this function
     }
     
@@ -297,11 +297,12 @@
     
         // Create a marker and circle for each point
         const marker = createPoint(latitude, longitude, title, description);
+    
         // Add event listeners outside the createPoint function
         marker.on('mouseover', function () {
           marker.openPopup();
         });
-  
+    
         marker.on('mouseout', function () {
           marker.closePopup();
         });
@@ -309,21 +310,43 @@
     
       // Create a route using the fetched waypoints
       if (waypoints.length > 1) {
-        L.Routing.control({
+        const routingControl = L.Routing.control({
           waypoints: waypoints,
           routeWhileDragging: true,
+          createMarker: function() {
+          return null; 
+           },
           formatter: new L.Routing.Formatter({
-            // Customize the format to reduce instruction verbosity
             language: 'en',
             createInstruction: (step) => {
               return step.text || ''; // Show minimal text
             }
           }),
-          show: false // Disable default instruction display
+          show: false 
         }).addTo(map);
+    
+        const routeLayer = routingControl.getPlan().getRoute();
+    
+        // Listen for mouseover event on the route (polyline)
+        routeLayer.on('mouseover', function (event) {
+          const latlng = event.latlng;
+          const popupContent = `<b>Route Info</b><br>Latitude: ${latlng.lat.toFixed(4)}<br>Longitude: ${latlng.lng.toFixed(4)}`;
+    
+          // Display the popup on the hovered point
+          L.popup()
+            .setLatLng(latlng)
+            .setContent(popupContent)
+            .openOn(map);
+        });
+    
+        routeLayer.on('mouseout', function () {
+          // Close popup when mouse leaves the route
+          map.closePopup();
+        });
       }
     });
   </script>
+  
   
   
   
