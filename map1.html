@@ -34,10 +34,6 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
-  <!-- leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.css" />
-
   <!-- input cards -->
   <link href="assets/css/location.css" rel="stylesheet" />
 
@@ -47,63 +43,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- Custom Map CSS -->
   <link rel="stylesheet" href="assets/css/map.css">
-
-  <!-- in page css -->
-  <style>
-    h3{
-      color: #fff !important;
-    }
-    .leaflet-routing-alternatives-container {
-      display: none !important;
-    }
-    .leaflet-popup {
-  z-index: 10000; /* Ensure the popup is above other elements */
-}
-.updates{
-  width: 100%;
-}
-.button-slider{
-  height: 100px;
-  overflow: auto;
-  width: 100%;
-  scroll-behavior: smooth;
-}
-.button{
-  border:1px solid #fff;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  padding: 5px;
-  width: 100%;
-  cursor: pointer;
-}
-.summry{
-  width: 100%;
-}
-.summry p{
-  height: 100px;
-  overflow: auto;
-  scroll-behavior: auto;
-}
-.contact-div{
-  width: 100%;
-}
-.contact-div p{
-  height: 100px;
-  overflow: auto;
-  scroll-behavior: auto;
-}
-.form-data{
-    height: 200px;
-  overflow: auto;
-  scroll-behavior: auto;
-  width: 100%;
-}
-.submit{
-  width: 40%;
-}
-  </style>
-  
   
 </head>
 
@@ -135,55 +74,57 @@
   </header>
 
   <main class="main">
-    <div id="map" style="height: 90vh; width: 100%;"></div>
+    <section class="map-section">
+        <!-- Map with your image -->
+        <img src="assets/img/location-image.jpg" alt="Mountain Map" class="base-map">
+        
+        <!-- Controls with existing functionality -->
+        <!-- <div class="map-controls">
+            <div class="control-buttons-vertical">
+                <button id="marker-btn" class="control-btn">
+                    <i class="bi bi-geo-alt"></i> Add Marker
+                </button>
+                <button id="line-btn" class="control-btn">
+                    <i class="bi bi-slash-lg"></i> Draw Line
+                </button>
+                <button id="polygon-btn" class="control-btn">
+                    <i class="bi bi-pentagon"></i> Draw Area
+                </button>
+                <button id="measure-btn" class="control-btn">
+                    <i class="bi bi-rulers"></i> Measure
+                </button>
+                <button id="clear-btn" class="control-btn">
+                    <i class="bi bi-trash"></i> Clear All
+                </button>
+            </div>
+        </div> -->
+        
+        <!-- Markers container for functionality -->
+        <div class="markers-container"></div>
+    </section>
   </main>
 
     <!-- location create card -->
    <form class="login-form section" action="javascript:void(0);" id="add-location">
+  <h1>Create a Route</h1>
+  <div class="form-input-material">
+    <input  id="name" name="name" placeholder="Name" autocomplete="off" class="form-control-material" required />
+    <label for="username" >Name</label>
+  </div>
+  <div class="form-input-material">
+    <input  name="latitude" id="latitude" placeholder="latitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">latitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="longitude" id="longitude" placeholder="longitude" autocomplete="off" class="form-control-material" required />
+    <label for="username">longitude</label>
+  </div>
+    <div class="form-input-material">
+    <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
+    <label for="username">description</label>
+  </div>
 
-    <div class="updates">
-      <h3>updates</h3>
-      <div class="button-slider">
-        <div class="button">Border Cast Berlin</div>
-        <div class="button">Border Cast Berlin</div>
-        <div class="button">Border Cast Berlin</div>
-        <div class="button">Border Cast Berlin</div>
-      </div>
-    </div>
-    <div class="summry">
-      <h3>Summary</h3>
-      <p>
-        At the 309th meeting on 10th August 1947, the UN Security Council decided to invite a representative from the Indian National Congress and All India Muslim League to participate with vote in the discussion of the subcontinent.This meeting was attended by.
-      </p>
-    </div>
-    <div class="contact-div">
-     <h3>Contact</h3> 
-     <p>
-        For more info: thesubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirelyubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirely
-     </p>
-    </div>
-    <hr/>
-   <div class="form-data">
-    <h3>Create a Route</h3>
-    <div class="form-input-material">
-      <input  id="name" name="name" placeholder="Name" autocomplete="off" class="form-control-material" required />
-      <label for="username" >Name</label>
-    </div>
-    <div class="form-input-material">
-      <input  name="latitude" id="latitude" placeholder="latitude" autocomplete="off" class="form-control-material" required />
-      <label for="username">latitude</label>
-    </div>
-      <div class="form-input-material">
-      <input  name="longitude" id="longitude" placeholder="longitude" autocomplete="off" class="form-control-material" required />
-      <label for="username">longitude</label>
-    </div>
-      <div class="form-input-material">
-      <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
-      <label for="username">description</label>
-    </div>
-  
-    <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
-   </div>
+  <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
   <!-- <button type="submit" class="remove btn btn-primary btn-ghost">Delete All</button> -->
 </form>
  
@@ -221,7 +162,7 @@
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
-    <button id="addRouteButton" class="add-route-button"><</button>
+    <!-- <button id="addRouteButton" class="add-route-button"><</button> -->
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -241,12 +182,10 @@
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
   <script src="assets/js/map.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
-
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getFirestore, collection, query, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+    import { getFirestore, collection, query, onSnapshot, addDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
     
     // Firebase Configuration
     const firebaseConfig = {
@@ -258,79 +197,276 @@
       appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
       measurementId: "G-ZS0JV6362J"
     };
-    
+  
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
-    
-    // Initialize the map and set the initial view
-    const map = L.map('map').setView([30.3753, 69.3451], 7);
-    
-    // Add OpenStreetMap Tile Layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    
-    // Function to create a marker for each point
-    function createPoint(x, y, placeName, description) {
-      const marker = L.marker([x, y]).addTo(map);
-      marker.bindPopup(`<b>${placeName}</b><br>${description}`).openPopup();
   
-      // Create a circle marker around the point
-      L.circle([x, y], {
-        color: 'blue',
-        fillColor: '#30a0ff',
-        fillOpacity: 0.3,
-        radius: 5000 // Radius in meters
-      }).addTo(map);
+    // Function to create a point (blue dots)
+    function createPoint(x, y, placeName, distance, description) {
+    const point = document.createElement('div'); // Use a div for the marker
+    point.style.position = 'absolute'; 
+    point.style.zIndex = "9999"; 
+    point.style.width = '15px'; 
+    point.style.height = '15px'; 
+    point.style.background = 'blue'; 
+    point.style.borderRadius = '50%'; 
+    point.style.top = `${y - 20}px`; // Adjust position to center the marker
+    point.style.left = `${x - 10}px`; // Adjust position to center the marker
+
+    // Create a tooltip
+    const tooltip = document.createElement('div');
+    tooltip.classList.add('libHeading'); // Use class for styling
+    tooltip.style.width = '100%';
+    tooltip.style.position = 'absolute'; 
+    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    tooltip.style.color = 'white';
+    tooltip.style.padding = '5px';
+    tooltip.style.borderRadius = '5px';
+    tooltip.style.visibility = 'hidden'; 
+    tooltip.style.zIndex = "100000"; 
+    tooltip.style.width = "260px"; 
+    tooltip.style.top = `${y}px`; // Position tooltip above the marker
+    tooltip.style.left = `${x}px`; 
+
+    const leftDiv = document.createElement('div');
+    leftDiv.classList.add('lft');
+
+    const headingDiv = document.createElement('div');
+    headingDiv.classList.add('heading');
+
+    const placeParagraph = document.createElement('p');
+    placeParagraph.textContent = placeName; // Display the place name
+
+    const distanceParagraph = document.createElement('p');
+    distanceParagraph.textContent = `Description: ${distance} km`; // Display the distance
+
+    const image = document.createElement('img');
+    image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+    image.style.width ="100%"
+    const header = document.createElement('h1');
+    header.textContent = 'Details'; // Title for area details
+    header.style.color = 'white';
+
+    headingDiv.appendChild(placeParagraph);
+    headingDiv.appendChild(distanceParagraph);
+    headingDiv.appendChild(image);
+
+    headingDiv.appendChild(header);
+    leftDiv.appendChild(headingDiv);
+
+    const rightDiv = document.createElement('div');
+    rightDiv.classList.add('rght');
+
+    const descriptionParagraph = document.createElement('p');
+    descriptionParagraph.textContent = description; // Show description
+
+    rightDiv.appendChild(descriptionParagraph);
+
+    tooltip.appendChild(leftDiv);
+    tooltip.appendChild(rightDiv);
+
+    document.body.appendChild(point);
+    document.body.appendChild(tooltip);
+
+    point.addEventListener('mouseenter', () => {
+        tooltip.style.visibility = 'visible'; // Show tooltip
+    });
+
+    point.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden'; // Hide tooltip
+    });
+
+    // Optional: Add click functionality if needed
+    point.addEventListener('click', () => {
+        // Implement any click functionality if required
+    });
+
+    // x and y coordinates for lines
+    const horizontalLine = document.createElement('div');
+    horizontalLine.classList.add('horizontal-line');
+    document.body.appendChild(horizontalLine);
+
+    const verticalLine = document.createElement('div');
+    verticalLine.classList.add('vertical-line');
+    document.body.appendChild(verticalLine);
+
+    point.addEventListener('mouseover', () => {
+        horizontalLine.style.display = 'block';
+        verticalLine.style.display = 'block';
+    });
+
+    point.addEventListener('mousemove', (e) => {
+        horizontalLine.style.top = `${e.clientY}px`;
+        verticalLine.style.left = `${e.clientX}px`;
+    });
+
+    point.addEventListener('mouseleave', () => {
+        horizontalLine.style.display = 'none';
+        verticalLine.style.display = 'none';
+    });
+}
+    
+    const points = []; 
+
+    function createRoute(x, y, placeName, description) {
+      const point = document.createElement('div');
+      point.style.position = 'absolute'; 
+      point.style.zIndex = "99999"; 
+      point.style.width = '0'; 
+      point.style.height = '0'; 
+      point.style.borderLeft = '10px solid transparent';
+      point.style.borderRight = '10px solid transparent';
+      point.style.borderBottom = '20px solid red'; 
+      point.style.top = `${y - 20}px`; 
+      point.style.left = `${x - 10}px`; 
   
-      return marker; // Return the marker to attach event listeners outside this function
+      const tooltip = document.createElement('div');
+      tooltip.classList.add('libHeading');
+      tooltip.style.position = 'absolute'; 
+      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+      tooltip.style.color = 'white';
+      tooltip.style.padding = '5px';
+      tooltip.style.borderRadius = '5px';
+      tooltip.style.visibility = 'hidden'; 
+      tooltip.style.width = "300px"; 
+      tooltip.style.top = `${y}px`; 
+      tooltip.style.left = `${x}px`; 
+  
+      const leftDiv = document.createElement('div');
+      leftDiv.classList.add('lft');
+  
+      const headingDiv = document.createElement('div');
+      headingDiv.classList.add('heading');
+  
+      const placeParagraph = document.createElement('p');
+      placeParagraph.textContent = "x - axis : " + x +" y - axis :"+y;
+  
+      const descriptionParagraph = document.createElement('p');
+      descriptionParagraph.textContent = description;
+  
+      const header = document.createElement('h1');
+      header.textContent = placeName; 
+      header.style.color = 'white';
+  
+      headingDiv.appendChild(placeParagraph);
+      headingDiv.appendChild(descriptionParagraph);
+      headingDiv.appendChild(header);
+      leftDiv.appendChild(headingDiv);
+  
+      tooltip.appendChild(leftDiv);
+      document.body.appendChild(point);
+      document.body.appendChild(tooltip);
+  
+      point.addEventListener('mouseenter', (e) => {
+        e.stopPropagation(); // This might prevent events from bubbling up
+        tooltip.style.visibility = 'visible'; 
+      });
+  
+      point.addEventListener('mouseleave', (e) => {
+        e.stopPropagation(); // This might prevent events from bubbling up
+
+        tooltip.style.visibility = 'hidden'; 
+      });
+
+      // Store the point's position
+      points.push({ x, y });
+
+      if (points.length > 1) {
+        const prevPoint = points[points.length - 2];
+        drawLine(prevPoint.x, prevPoint.y, x, y);
+      }
     }
+
+    function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+    // Function to draw a Bezier curve connecting points
+// Function to draw a Bezier curve connecting points with more pronounced curves
+function drawLine(x1, y1, x2, y2) {
+    const svg = document.querySelector('svg') || createSvgElement();
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     
-    const mapQuery = query(collection(db, 'map'));
-    onSnapshot(mapQuery, (querySnapshot) => {
-      const waypoints = [];
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        const { latitude, longitude, title, description } = data;
-        const latLng = L.latLng(latitude, longitude);
-        waypoints.push(latLng);
+    // Control points for the Bezier curve (adjust these values to control the curve)
+    const controlX1 = x1 + (x2 - x1) / 3;
+    const controlY1 = y1 - getRandomInt(100,500); // Make the curve more pronounced by increasing the value
+    const controlX2 = x1 + (x2 - x1) * 2 / 3 + getRandomInt(100,500);
+    const controlY2 = y2 + getRandomInt(100,500); // Increase the value for a stronger curve
     
-        // Create a marker and circle for each point
-        const marker = createPoint(latitude, longitude, title, description);
-        // Add event listeners outside the createPoint function
-        marker.on('mouseover', function () {
-          marker.openPopup();
-        });
-  
-        marker.on('mouseout', function () {
-          marker.closePopup();
+    // SVG path for cubic Bezier curve
+    const pathData = `M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2}`;
+
+    line.setAttribute('d', pathData);
+    line.setAttribute('stroke', 'red');
+    line.setAttribute('stroke-width', '2');
+    line.setAttribute('fill', 'transparent');
+    
+    svg.appendChild(line);
+}
+
+    // Function to create an SVG element if it doesn't exist
+    function createSvgElement() {
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('height', '100%');
+        svg.style.position = 'absolute';
+        svg.style.top = '0';
+        svg.style.left = '0';
+        svg.style.zIndex = '2'; 
+        document.body.appendChild(svg);
+        return svg;
+    }
+
+    // Fetch data from Firestore (blue points and routes)
+    function fetchData() {
+      const mapQuery = query(collection(db, 'map'));
+      onSnapshot(mapQuery, (querySnapshot) => {
+        querySnapshot.docs.forEach(doc => {
+          const pointData = doc.data();
+          createPoint(pointData.longitude, pointData.latitude, 'blue', pointData.description);
         });
       });
-    
-      // Create a route using the fetched waypoints
-      if (waypoints.length > 1) {
-        L.Routing.control({
-          waypoints: waypoints,
-          routeWhileDragging: true,
-          formatter: new L.Routing.Formatter({
-            // Customize the format to reduce instruction verbosity
-            language: 'en',
-            createInstruction: (step) => {
-              return step.text || ''; // Show minimal text
-            }
-          }),
-          show: false // Disable default instruction display
-        }).addTo(map);
+  
+      const routeQuery = query(collection(db, 'routes'));
+      onSnapshot(routeQuery, (querySnapshot) => {
+        querySnapshot.docs.forEach(doc => {
+          const routeData = doc.data();
+          createRoute(routeData.longitude, routeData.latitude, routeData.placeName, routeData.description);
+        });
+      });
+    }
+  
+    // Handle form submission to add a new route
+    const form = document.getElementById('add-location');
+    const nameInput = document.getElementById('name');
+    const latitudeInput = document.getElementById('latitude');
+    const longitudeInput = document.getElementById('longitude');
+    const descriptionInput = document.getElementById('description');
+  
+    form.addEventListener('submit', async (e) => {
+      e.stopPropagation(); // This might prevent events from bubbling up
+
+      e.preventDefault();
+      try {
+        await addDoc(collection(db, 'routes'), {
+          placeName: nameInput.value,
+          latitude: parseFloat(latitudeInput.value),
+          longitude: parseFloat(longitudeInput.value),
+          description: descriptionInput.value,
+        });
+      } catch (err) {
+        console.error('Error adding document: ', err);
       }
+      form.reset();
     });
-  </script>
-  
-  
-  
 
+    fetchData();
+</script>
   
   
-
+  
+  
   
   <script>
     // Get all alphabet buttons and service items
@@ -347,6 +483,14 @@
 
         const filter = this.getAttribute('data-filter');
 
+        // serviceItems.forEach(item => {
+        //     // Show all if filter is '*', otherwise show only matching classes
+        //     if (filter === '*' || item.classList.contains(filter.substring(1))) {
+        //         item.style.display = 'block';
+        //     } else {
+        //         item.style.display = 'none';
+        //     }
+        // });
       });
     });
   </script>
@@ -371,16 +515,10 @@
     // Toggle the form's position based on the display flag
     if (display) {
       addRoute.textContent = '>';
-      Form.style.right = "0%"; 
-      addRoute.style.right = "500px"; 
-      addRoute.style.transition = 'right 1.3s ease-in-out';
-
-
+      Form.style.right = "0%"; // Show the form by sliding it in
     } else {
       addRoute.textContent = '<';
-      Form.style.right = "-100%"; 
-      addRoute.style.right="0px"
-      addRoute.style.transition = 'right 0.7s ease-in-out';
+      Form.style.right = "-100%"; // Hide the form by sliding it out
     }
   });
 </script>
