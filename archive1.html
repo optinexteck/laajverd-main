@@ -9,7 +9,7 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/lg.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Fonts -->
@@ -33,6 +33,7 @@
     <link href="assets/css/archive.css" rel="stylesheet">
 
 
+
     <!-- =======================================================
   * Template Name: Selecao
   * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
@@ -40,6 +41,11 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+      .hidden {
+    display: none !important;
+  }
+  </style>
 </head>
 
 <body class="index-page">
@@ -50,17 +56,19 @@
             <a href="index.html" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="assets/img/lg.png" style="width: 100px;object-fit: cover;" alt="">      
-            </a>
+                <img src="assets/img/lg.png" style="width: 100px;object-fit: cover;" alt="">      
+              </a>
 
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="./index.html">Home</a></li>
-                    <li><a href="./glossary.html">Glossary</a></li>
-                    <li><a href="./archive.html">Archive</a></li>
                     <li><a href="./map.html">Location</a></li>
+                    <li><a href="./archive1.html">Archive</a></li>
+                    <li><a href="./glossary.html">Glossary</a></li>
+                    
+                    
                     <!-- <li><a href="./service-details.html">Archive</a></li> -->
-                    <li><a href="./contact.html">Contact</a></li>
+                    <!-- <li><a href="./contact.html">Contact</a></li> -->
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -68,7 +76,7 @@
         </div>
     </header>
 
-    <main class="main" style="height: auto;">
+    <main id="main" class="main" style="height: auto; padding-top: 0;">
 
         <!-- Hero Section -->
         <!-- <section id="hero" class="hero section dark-background">
@@ -107,11 +115,48 @@
 
         <!-- Services Section -->
         <div class="container archive-container">
+            <div class="pg-1 d-flex justify-content-center align-items-center" style="padding-top: 0px;">
+                <div class="collection">
+                    <div class="filterCover">
+                        <div class="filters d-flex align-items-center gap-2">
+                            <!-- <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Access Level</option>
+                                <option value="online">Online</option>
+                                <option value="onsite">On Site</option>
+                            </select> -->
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Supported by</option>
+                                <option value="local Elders">local Elders</option>
+                                <option value="Major Award UK">Major Award UK</option>
+                                <option value="Laajverd">Laajverd</option>
+                            </select>
+                            <select class="form-select form-select-sm">
+                                <option value="Location" hidden selected>Location</option>
+                                <option value="Chitral">Chitral</option>
+                                <option value="Baltistan">Baltistan</option>
+                            </select>
+                            
+                            <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Year</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                            </select>
+                            <input id="search-input" type="text" class="form-control form-select-sm" placeholder="Make a search" style="max-width: 200px;"/>
+                            <button id="search" class="archiveBtn" style="padding: 6px;">Search</button>
+                            <button id="reset" class="archiveBtn" style="padding: 6px">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <!-- Card 1 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="himalayan">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Himalayan region</h4>
                         <p><strong>Location:</strong>Sermik, Baltistan</p>
                         <p><strong class="post-date">Year:</strong>2023</p>
@@ -122,7 +167,7 @@
                 </div>
 
                 <!-- Modal 1 -->
-                <div class="popup-overlay" id="projectPopup">
+                <!-- <div class="popup-overlay" id="projectPopup">
                     <div class="popup-container">
                         <div class="popup-header">
                             <h2 class="popup-title"></h2>
@@ -131,7 +176,7 @@
                         <div class="popup-content">
                             <div class="popup-gallery">
                                 <img src="./assets/img/blog/comments-1.jpg" alt="Project Image" class="popup-image">
-                                <!-- Add more images here if needed -->
+                                
                             </div>
                             <div class="popup-info">
                                 <div class="info-section">
@@ -145,7 +190,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Modal 1 -->
 
                 <!-- Modal 1 -->
@@ -193,7 +238,9 @@
                 <!-- Card 2 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
@@ -240,7 +287,9 @@
                 <!-- Card 3 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="earthing">
-                        <i class="bi bi-plus icon"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Earthing Narratives</h4>
                         <p><strong>Location:</strong>Various, Baltistan</p>
                         <p class="post-date"><strong>Year:</strong>2022 - 2023</p>
@@ -253,7 +302,9 @@
                 <!-- Card 4 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card" data-project="earthing">
-                        <i class="bi bi-plus icon"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Earthing Narratives</h4>
                         <p><strong>Location:</strong>Various, Baltistan</p>
                         <p class="post-date"><strong>Year:</strong>2022 - 2023</p>
@@ -266,7 +317,9 @@
                 <!-- Card 5 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
@@ -279,7 +332,9 @@
                 <!-- Card 6 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
@@ -292,7 +347,9 @@
                 <!-- Card 7 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
@@ -305,7 +362,9 @@
                 <!-- Card 8 -->
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="archive-card">
-                        <i class="bi bi-plus icon open-offcanvas"></i>
+                        <a href="archive.html" class="icon-link">
+                            <i class="bi bi-plus icon open-offcanvas"></i>
+                        </a>
                         <h4 class="post-title">Vernacular Prototype</h4>
                         <p><strong>Location:</strong>Brep, Upper Chitral</p>
                         <p class="post-date"><strong>Year:</strong>2022</p>
@@ -427,6 +486,7 @@
                 //     }
                 // });
             });
+
         });
 
     </script>
@@ -436,34 +496,107 @@
     <script src="assets/js/filter.js"></script>
     <script src="assets/js/archive.js"></script>
     <script>
+         
+    // searching code
 
-        // Function to encode URI components (to handle spaces and special characters)
-        function encodeQueryParams(params) {
-            return Object.keys(params)
-                .map(
-                    (key) =>
-                        `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
-                )
-                .join("&");
+       var search;
+        const dropdown = document.querySelectorAll('.form-select');
+        const allCards = document.querySelectorAll(".archive-card");
+        const mainElement = document.getElementById("main");
+        const footer = document.getElementById("footer");
+        const searchButton = document.getElementById('search');
+        const resetButton = document.getElementById('reset');
+        const searchInput = document.getElementById("search-input");
+
+        function adjustFooter() {
+            const mainHeight = mainElement.offsetHeight;
+            console.log("Current main height:", mainHeight);
+            
+            if(mainHeight < 900) {
+                footer.style.position = 'fixed';
+                footer.style.bottom = '0';
+                footer.style.width = '100%';
+            } else {
+                footer.style.position = 'relative';
+                footer.style.width = '100%';
+            }
         }
 
-        // Add click event listener to each article link
+        // For dropdowns
+        dropdown.forEach((list, index) => {
+            list.addEventListener("change", (e) => {  
+                search = e.target.value.toLowerCase();
+                allCards.forEach((card) => {
+                    const data = card.textContent.toLowerCase();
+                    if (!data.includes(search) && search !== '') {
+                        card.classList.add('hidden');
+                    } else {
+                        card.classList.remove('hidden');
+                    }
+                });
+                setTimeout(adjustFooter, 100);
+            });
+        });
 
-        const sideTitle = document.getElementById("side-title")
-        console.log(sideTitle)
+        // For search button
+        searchButton.addEventListener('click', () => {
+            search = searchInput.value.toLowerCase();
+            allCards.forEach((card) => {
+                const data = card.textContent.toLowerCase();
+                if (!data.includes(search) && search !== '') {
+                    card.classList.add('hidden');
+                } else {
+                    card.classList.remove('hidden');
+                }
+            });
+            setTimeout(adjustFooter, 100);
+        });
+
+        // For reset button
+        resetButton.addEventListener("click", () => {
+            search = "";
+            searchInput.value = "";
+            // Reset dropdowns
+            dropdown.forEach(select => {
+                select.selectedIndex = 0;
+            });
+            // Show all cards
+            allCards.forEach((card) => {
+                card.classList.remove('hidden');
+            });
+            setTimeout(adjustFooter, 100);
+        });
+
+        // For search on enter key
+        searchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                search = searchInput.value.toLowerCase();
+                allCards.forEach((card) => {
+                    const data = card.textContent.toLowerCase();
+                    if (!data.includes(search) && search !== '') {
+                        card.classList.add('hidden');
+                    } else {
+                        card.classList.remove('hidden');
+                    }
+                });
+                setTimeout(adjustFooter, 100);
+            }
+        });
+
+        // Initial footer adjustment
+        adjustFooter();
+
+        // Keep your existing article click functionality
+        const sideTitle = document.getElementById("side-title");
         document.querySelectorAll(".archive-card").forEach((article) => {
             article.addEventListener("click", function (event) {
                 event.preventDefault();
-                console.log(article)
-
                 const title = article.querySelector(".post-title")?.textContent || "Title not found";
                 const category = article.querySelector(".post-category")?.textContent || "Category not found";
                 const author = article.querySelector(".post-author")?.textContent || "Author not found";
                 const date = article.querySelector(".post-date")?.textContent || "Date not found";
                 const postImg = article.querySelector(".post-img img")?.src || "Post image not found";
                 const authorImg = article.querySelector(".authorImg")?.src || "Author image not found";
-
-
 
                 const queryParams = {
                     title,
@@ -473,15 +606,10 @@
                     postImg,
                     authorImg
                 };
-                sideTitle.innerText = queryParams.title
-                console.log(sideTitle.textContent)
-                console.log(queryParams)
-                //   const queryString = encodeQueryParams(queryParams);
-
-                //   const dynamicURL = `blog-details.html?${queryString}`;
-
-                // Redirect the user to the new URL
-                //   window.location.href = dynamicURL;
+                if(sideTitle) {
+                    sideTitle.innerText = queryParams.title;
+                }
+                console.log(queryParams);
             });
         });
     </script>

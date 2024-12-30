@@ -11,6 +11,13 @@
     font-weight: 400;
     font-style: normal;
 }
+:root {
+    --default-font: AvenirNext;
+    --heading-font: "AvenirNext",  aaa-inktraps;
+    --nav-font: "Poppins",  sans-serif;
+    --main-font: "Open Sans", sans-serif;
+  }
+  
 h1, h2 {
   font-family: aaa-inktraps;  /* Check if headings are consistent */
   font-weight: 400;  /* Set all headings to font weight 400 */
@@ -58,7 +65,22 @@ body {
     box-shadow: 0 2px 15px rgba(0,0,0,0.1);
     margin-bottom: 20px;
 } */
-
+.horizontal-line, .vertical-line {
+    position: absolute;
+    background-color: #000; /* Line color */
+    display: none;
+    z-index: 9999;
+  }
+  
+  .horizontal-line {
+    height: 1px;
+    width: 100%; 
+  }
+  
+  .vertical-line {
+    width: 1px;
+    height: 100%; 
+  }
 .control-buttons {
     display: flex;
     gap: 10px;
@@ -930,7 +952,7 @@ body {
 body {
     margin: 0;
     padding: 0;
-    padding-top: 90px; /* Only for header */
+    padding-top: 60px; /* Only for header */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -946,10 +968,11 @@ body {
 
 /* Map section to fill entire space */
 .map-section {
+    overflow: hidden;
     flex: 1;
     position: relative;
     width: 100%;
-    min-height: calc(100vh - 90px); /* Full viewport minus header */
+    min-height: 100vh; /* Full viewport minus header */
     margin: 0;
     padding: 0;
 }

@@ -9,7 +9,7 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/lg.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Fonts -->
@@ -19,8 +19,10 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
 
+    
   <!-- Vendor CSS Files -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -36,26 +38,70 @@
 }
    </style>
   <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/image-slider.css" rel="stylesheet">
   <link href="assets/css/carousel.css" rel="stylesheet">
+
+  <style>
+    
+    .login-form {
+  position: fixed; /* Fix the position so the form can slide from the side */
+  z-index: 99;
+  display: flex;
+  width: 500px;
+  height: 700px;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 40px;
+  color: white;
+  background: #2a2c39;
+  height: 100%;
+  top: 0;
+  right: -100%; /* Initially hidden off the right side */
+  box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+    0 1px 1px rgba(128, 128, 128, 0.155),
+    0 2.1px 2.1px rgba(128, 128, 128, 0.195),
+    0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+    0 12px 12px rgba(128, 128, 128, 0.35);
+  transition: right 1s ease-in-out; /* Smooth sliding transition */
+}
+
+
+.login-form h1 {
+  color: white;
+  margin: 0 0 24px 0;
+}
+
+.login-form .form-input-material {
+  margin: 12px 0;
+}
+
+.login-form .btn {
+  width: 100%;
+  margin: 18px 0 9px 0;
+}
+
+  </style>
 </head>
 
 <body class="index-page">
 
-  <header id="header" class="header d-flex align-items-center fixed-top">
+  <header id="header" style="z-index: 100; position: fixed;" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.png" alt=""> -->
         <img src="assets/img/lg.png" style="width: 100px;object-fit: cover;" alt="">      
+        <h1>C ommunity Conservation Lab</h1>
+        
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero">Home</a></li>
-          <li><a href="./glossary.html">Glossary</a></li>
-          <li><a href="./archive1.html">Archive</a></li>
           <li><a href="./map.html">Location</a></li>
+          <li><a href="./archive1.html">Archive</a></li>
+          <li><a href="./glossary.html">Glossary</a></li>
           <!-- <li><a href="#team">Team</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -75,7 +121,7 @@
               <li><a href="#">Dropdown 4</a></li>
             </ul>
           </li> -->
-          <li><a href="./contact.html">Contact</a></li>
+          <!-- <li><a href="./contact.html">Contact</a></li> -->
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -88,64 +134,53 @@
     
     <!-- Hero Section -->
     <section id="hero" class="hero section dark-background"
-      style=" background-size: cover; height: 100vh;background-position: center;">
-
-      <div id="hero-carousel" class="container carousel slide carousel-fade" data-bs-ride="carousel"
-      style="width: 100vw; height: 100%;margin-left: -20px;">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active"
-          style="background-image: url('./assets/img/hero-carousel/hero-carousel-5.gif');width: 100vw; height: 100%; background-size: cover; background-position: center;">
-          <div class="carousel-container">
+    style="background-size: cover; height: 100vh;background-position: center;">
+  
+    <div id="hero-carousel" class="container carousel slide carousel-fade" data-bs-ride="carousel"
+      style="width: 100vw; height: 100%; margin-left: -20px;">
+  
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
+          aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+  
+      <!-- Slide 1 -->
+      <div class="carousel-item active"
+        style="background-image: url('./assets/img/AssetPanels/Landing-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
+        <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Welcome to <span>LAAJVERD</span></h2>
           <p class="animate__animated animate__fadeInUp">We dedicated to identifying and documenting community
-              heritage, producing guidelines, methods, and strategies for care, maintenance, and long-term preservation
-              in collaboration with local communities.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
+            heritage, producing guidelines, methods, and strategies for care, maintenance, and long-term preservation
+            in collaboration with local communities.</p>
         </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item"
-          style="background-image: url('./assets/img/hero-carousel/hero-carousel-6.gif');width: 100vw; height: 100%; background-size: cover; background-position: center;">
-          <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Community Conservation Lab (CCL)</h2>
-            <p class="animate__animated animate__fadeInUp">Our mission is to empower communities to take an active role
-              in managing and protecting their natural environments by providing the tools, knowledge, and support
-              needed for sustainable development.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item"
-          style="background-image: url('./assets/img/hero-carousel/hero-carousel-8.gif');width: 100vw; height: 100%; background-size: cover; background-position: center;">
-          <div class="carousel-container">
-            <h2 class="animate__animated animate__fadeInDown">Helped local communities</h2>
-            <p class="animate__animated animate__fadeInUp">Our mission is to empower communities to take an active role
-              in managing and protecting their natural environments by providing the tools, knowledge, and support
-              needed for sustainable development.</p>
-            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-          </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
+      </div>
+  
+      <!-- Slide 2 -->
+      <div class="carousel-item"
+        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
 
       </div>
+  
+      <!-- Slide 3 -->
+      <div class="carousel-item"
+        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
+        <div class="carousel-container">
+      
+        </div>
+      </div>
 
-
-
-    </section>
+  
+    </div>
+  
+  </section>
+  
     <!-- /Hero Section -->
 
     <!-- About Section -->
-    <section style="height: 100vh;" id="about" class="about section">
+    <!-- <section style="height: 100vh;" id="about" class="about section">
 
       <div class="container">
 
@@ -160,42 +195,7 @@
               <p>The Community Conservation Lab, located in the Hindu Kush Himalaya mountain region, promotes
                 collaborative and inclusive heritage conservation, focusing on preserving community heritage, including
                 buildings, At CCL enhance livelihoods, and build resilience to environmental challenges. We believe that conservation is most effective when it is locally driven, culturally relevant, and inclusive of all stakeholders.</p>
-              <!-- <div class="border rounded p-4">
-                <nav>
-                  <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-                    <button class="nav-link fw-semi-bold active" id="nav-story-tab" data-bs-toggle="tab"
-                      data-bs-target="#nav-story" type="button" role="tab" aria-controls="nav-story"
-                      aria-selected="true">Story</button>
-                    <button class="nav-link fw-semi-bold text-default-color active" id="nav-mission-tab"
-                      data-bs-toggle="tab" data-bs-target="#nav-mission" type="button" role="tab"
-                      aria-controls="nav-mission" aria-selected="true">Mission</button>
-                    <button class="nav-link fw-semi-bold text-default-color" id="nav-vision-tab" data-bs-toggle="tab"
-                      data-bs-target="#nav-vision" type="button" role="tab" aria-controls="nav-vision"
-                      aria-selected="false">Vision</button>
-                  </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-mission" role="tabpanel"
-                    aria-labelledby="nav-mission-tab">
-                    <p>At CCL enhance livelihoods, and build resilience to environmental challenges. We believe that
-                      conservation is most effective when it is locally driven, culturally relevant, and inclusive of
-                      all stakeholders.</p>
-                    <p class="mb-0">Dedicated team, ensuring that our clients' logistics needs are met with precision
-                      and care.</p>
-                  </div>
-                  <div class="tab-pane fade" id="nav-vision" role="tabpanel" aria-labelledby="nav-vision-tab">
-                    <p>we envision a world where communities are at the forefront of conservation, working in harmony
-                      with nature to safeguard biodiversity.</p>
-                    <p class="mb-0">We are continuously enhancing our skills and knowledge to cater to the diverse needs
-                      of our customers.</p>
-                  </div>
-                </div>
-              </div> -->
-
-              <!-- <div class="watch-video d-flex align-items-center position-relative">
-                <i class="bi bi-play-circle"></i>
-                <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox stretched-link">Watch Video</a>
-              </div> -->
+              
             </div>
           </div>
 
@@ -203,7 +203,7 @@
 
       </div>
 
-    </section>
+    </section> -->
 
       <!-- Service Cards Section -->
 <!-- <section id="service" style="height: 100vh" class="service-cards section">
@@ -263,9 +263,11 @@
 <div class="hero-section">
   <!-- Current/New Design -->
   <div class="info-container">
+    <img src="./assets/img/AssetPanels/final logoo.png" class="c">C</img> 
+    <!-- <h2 class="main-heading">WHAT IS</h2>  -->
     <div class="content-container">
       <div class="column">
-        <h2>WHAT IS AN ARTEFACT?</h2>
+        <h2>WHAT IS ARTEFACT?</h2>
         <p>The conservation lab covers a wide range of artifacts, encompassing both material and immaterial heritage. These include stories, techniques, buildings and objects. Our approach to artefact considers its affiliations with human, non-human and spiritual entities; whilst acknowledging its agency in the natural ecology and landscape and produces guidelines, methods, and strategies for care, maintenance and long-term preservation in collaboration with local communities.</p>
       </div>
 
@@ -275,7 +277,7 @@
       </div>
 
       <div class="column">
-        <h2>CONSERVATION PRACTICE?</h2>
+        <h2> CONSERVATION PRACTICE?</h2>
         <p>We work collaboratively with local communities in the entire process of thinking and practicing conservation. This includes choosing artefacts and determining conservation methods, encompassing documentation, condition assessment, preservation, and upkeep. Our approach involves finding synergies between scientific and local conservation techniques; we learn from each other in terms of how to read, understand and engage with the materials and assets and how to assess risks, decay and deterioration.</p>
       </div>
     </div><!-- ... current design content ... -->
@@ -307,9 +309,104 @@
 
 
 
-<section id="heritage-ecologies" class="heritage-ecologies section">
+<!-- slider -->
+<section id="hero1" class="hero section" style="background-color: white; height: 100vh; position: relative;">
+  <div id="hero-carousel" class="container carousel slide carousel-fade" data-bs-ride="carousel" 
+       style="width: 100vw; height: 100%; margin-left: -20px;">
+    
+    <!-- Carousel Indicators -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active" 
+         style="background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg'); width: 100vw; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="carousel-item" 
+         style="background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg'); width: 100vw; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+
+
+  </div>
+
+  <!-- Location Create Card -->
+  <form id="uploadForm" class="login-form" action="javascript:void(0);" 
+        style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); width: 300px; z-index: 1050;">
+    <h1 style="font-size: 18px; text-align: center; color: #333;">Upload Image</h1>
+
+    <div class="mb-3" style="width: 100%;">
+      <label for="title" class="form-label" style="font-size: 14px; color: #555;">Title</label>
+      <input type="text" class="form-control" id="title" placeholder="Laajverd" required 
+             style="width: 100%; border-radius: 4px; padding: 8px; border: 1px solid #ccc;">
+    </div>
+    <div class="mb-3" style="width: 100%;">
+      <label for="description" class="form-label" style="font-size: 14px; color: #555;">Description</label>
+      <textarea class="form-control" id="description" rows="3" placeholder="we know that" required 
+                style="width: 100%; border-radius: 4px; padding: 8px; border: 1px solid #ccc;"></textarea>
+    </div>
+    <div class="mb-3" style="width: 100%;">
+      <label for="image" class="form-label" style="font-size: 14px; color: #555;">Image</label>
+      <input type="file" class="form-control" id="image" accept="image/*" required 
+             style="width: 100%; border-radius: 4px; padding: 8px; border: 1px solid #ccc;">
+    </div>
+    <div style="width: 100%; text-align: start;">
+      <button type="submit" class="btn btn-primary" 
+              style="width: 40%; background-color: rgb(42, 44, 57); color: white; border: none; padding: 10px; border-radius: 4px; cursor: pointer; font-size: 14px;">
+        Upload
+      </button>
+    </div>
+  </form>
+
+  <!-- Add Route Button -->
+  <button id="addRouteButton" class="add-route-button" 
+          style="position: fixed; width: 60px; height: 40px; bottom: 20px; right: 20px;  color: #fff; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-size: 16px; text-align: center;">
+    &lt;
+  </button>
+</section>
+
+
+
+
+
+
+
+
+</section>
+<!-- New Image Slider Section -->
+<!-- <section class="rail-park-slider">
+    <div class="rail-park-container">
+        <div class="rail-park-mission">
+            <h2>We're on a journey to breathe life into the Rail Park</h2>
+            <p>Creating a vibrant space for connection, culture, and community.</p>
+        </div>
+        
+        <div class="rail-park-gallery">
+            <div class="rail-park-track">
+                <div class="rail-park-slide">
+                    <img src="assets/img/image1.png" alt="Rail Park Image 1">
+                </div>
+                <div class="rail-park-slide">
+                  <img src="assets/img/image2.png" alt="Rail Park Image 1">
+              </div>
+              <div class="rail-park-slide">
+                <img src="assets/img/image3.png" alt="Rail Park Image 1">
+            </div>
+            <div class="rail-park-slide">
+              <img src="assets/img/image5.png" alt="Rail Park Image 1">
+          </div> -->
+                <!-- ... other slides ... -->
+            <!-- </div>
+        </div>
+    </div>
+</section> -->
+
+
+
+<!-- <section id="heritage-ecologies" class="heritage-ecologies section">
   <div class="container">
-    <!-- Left Section -->
     <div class="heritage-left">
       <h2>FRAGILE HERITAGE ECOLOGIES</h2>
       <p>Fragile heritage ecologies explore how heritage is made, lost, sustained and adapted in landscapes that are shifting and transforming due to the effects of climate change. We try to understand how communities experience change and loss of heritage in multiple ways; the material loss of vernacular homes, significant places within the landscape and the immaterial loss of practices of everyday life, cultural practices and engagement with the landscape. This project specifically focuses on mountain communities settled in Hindukush-Himalaya mountain region that are important sites historically and culturally. Traces of the ancient Silk Road connecting China to South Asia can be spotted in these mountains, where exchanges of material and immaterial cultures, leaving legacies in language, forts, inscriptions, practices and ideas, show the affinities with the greater Karakoram region connecting Afghanistan in the West, Khirgiz and Uirgus in the North and, Baltistan and Himalayas in the East. Both the natural and cultural landscape are historically unstable and in motion where heritage diminishes over time or survives due to different forms of affiliation; spiritual attachment and sense of identity, or through processes of adaptation or lives through cache.</p>
@@ -320,11 +417,8 @@
         <span>KALASH</span>
       </div>
     </div>
-
-    <!-- Right Section with Scroll -->
     <div class="heritage-right">
       <div class="scroll-container">
-        <!-- <div class="scroll-arrow up">^</div> -->
         <div class="scroll-content">
           <h2>ABOUT THE PROJECT</h2>
           <div class="scroll-text">
@@ -356,11 +450,10 @@
             </div>
           </div>
         </div>
-        <!-- <div class="scroll-arrow down">v</div> -->
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
     <!-- Call To Action Section -->
@@ -806,8 +899,8 @@
 
   </main>
 
-   <footer id="footer" class="footer" style="background-color: #cdcdcd;">
-    <div class="container">
+  <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+    <div  style="margin: auto;">
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
           <span>All Rights Reserved</span>
@@ -840,6 +933,8 @@
   <!-- Preloader -->
   <div id="preloader"></div>
 
+  <!-- form -->
+  <!-- <button id="addRouteButton" class="add-route-button"><</button> -->
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
@@ -855,6 +950,179 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/carousel.js"></script>
   <script src="./firebase.js"></script>
+
+  
+  <!-- Firebase App (the core Firebase SDK) -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <!-- Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
+
+  <script>
+    var display = false;
+    const Form = document.querySelector(".login-form");
+    const addRoute = document.querySelector(".add-route-button");
+  
+    // Initial setup: position the form off-screen to the right
+    Form.style.position = "fixed";
+    Form.style.zIndex = "999";
+    
+    // Handle button click
+    addRoute.addEventListener("click", () => {
+      console.log("clicked");
+      display = !display; // Toggle form visibility
+      
+      // Toggle the form's position based on the display flag
+      if (display) {
+        addRoute.textContent = '>';
+        Form.style.right = "0%"; // Show the form by sliding it in
+      } else {
+        addRoute.textContent = '<';
+        Form.style.right = "-100%"; // Hide the form by sliding it out
+      }
+    });
+  </script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-analytics.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+    import { getStorage } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
+        authDomain: "laajverd-42a3f.firebaseapp.com",
+        projectId: "laajverd-42a3f",
+        storageBucket: "laajverd-42a3f.appspot.com",
+        messagingSenderId: "654657065769",
+        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
+        measurementId: "G-ZS0JV6362J"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Initialize services
+    const db = getFirestore(app);
+
+    async function resizeImage(file, maxWidth, maxHeight) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            const reader = new FileReader();
+
+            reader.onload = (event) => {
+                img.src = event.target.result;
+            };
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let width = img.width;
+                let height = img.height;
+
+                // Calculate the new dimensions
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height *= maxWidth / width;
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width *= maxHeight / height;
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+                resolve(canvas.toDataURL('image/jpeg')); // Convert to Base64
+            };
+
+            img.onerror = (error) => {
+                reject(error);
+            };
+
+            reader.readAsDataURL(file);
+        });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+  const heroSection = document.getElementById("hero1");
+  const form = document.getElementById("uploadForm");
+  const button = document.getElementById("addRouteButton");
+
+  // Set initial opacity to 0 for both the form and the button
+  form.style.opacity = "0";
+  button.style.opacity = "0";
+
+
+  // Create an IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Hero section is in the viewport
+          form.style.opacity = "1";
+          button.style.opacity = "1";
+        } else {
+          // Hero section is out of the viewport
+          form.style.opacity = "0";
+          button.style.opacity = "0";
+        }
+      });
+    },
+    {
+      root: null, // Use the viewport as the root
+      threshold: 0.5, // Trigger when 50% of the hero section is visible
+    }
+  );
+
+  // Observe the hero section
+  observer.observe(heroSection);
+});
+
+
+    // Form submission handling
+    document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const title = document.getElementById('title').value;
+        const description = document.getElementById('description').value;
+        const imageFile = document.getElementById('image').files[0];
+
+        // Resize the image before uploading
+        const base64Image = await resizeImage(imageFile, 800, 800); // Resize to max 800x800
+
+        // Upload to Firestore
+        await uploadToFirestore(title, description, base64Image);
+    });
+
+    async function uploadToFirestore(title, description, base64Image) {
+        try {
+            // Add a new document with a generated ID in the "images" collection
+            await addDoc(collection(db, "images"), {
+                title: title,
+                description: description,
+                image: base64Image
+            });
+            alert("Data uploaded successfully!");
+            // Reset the form
+            document.getElementById('uploadForm').reset();
+        } catch (error) {
+            console.error("Error uploading data: ", error);
+        }
+    }
+  </script>
 
 </body>
 

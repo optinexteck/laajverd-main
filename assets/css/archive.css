@@ -86,10 +86,10 @@ h1, h2 {
   background-color: #333541;
   color: white;
 }
-.filterCover {
+/* .filterCover {
   margin-top: 20px;
   padding: 20px;
-}
+} */
 .filters {
   display: flex;
   margin: 16px 0px;
@@ -249,7 +249,9 @@ select::-ms-expand {
     width: auto;
     cursor: pointer;
   }
-
+  .collection {
+    width: 400px;
+  }
   .collection > h1 {
     text-align: center;
     font-size: 4rem;
@@ -622,4 +624,79 @@ select::-ms-expand {
   .card {
     width: 90%;
   }
+}
+
+.form-select-sm {
+    max-width: 150px;
+}
+
+.filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+.pg-1 {
+    margin-bottom: 20px;
+}
+
+/* General styles for filters */
+.filters > select,
+.filters > input,
+.filters > button {
+    border-radius: 6px;
+    padding: 10px 14px; /* Uniform padding */
+    cursor: pointer;
+    border: 1px solid #000;
+    background-color: #fff;
+    min-width: 180px; /* Uniform minimum width */
+    font-size: 1rem; /* Uniform font size */
+    transition: 0.3s;
+}
+
+/* Media query for large desktops */
+@media (max-width: 1200px) {
+    .filters > select,
+    .filters > input,
+    .filters > button {
+        padding: 9px 13px; /* Slightly reduce padding */
+        font-size: 0.95rem; /* Slightly reduce font size */
+        min-width: 120px; /* Slightly reduce minimum width */
+    }
+}
+
+/* Media query for medium desktops */
+@media (max-width: 900px) {
+    .filters > select,
+    .filters > input,
+    .filters > button {
+        padding: 8px 12px; /* Reduce padding */
+        font-size: 0.9rem; /* Reduce font size */
+        min-width: 100px; /* Reduce minimum width */
+    }
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 768px) {
+    .filters > select,
+    .filters > input,
+    .filters > button {
+        padding: 7px 11px; /* Further reduce padding */
+        font-size: 0.85rem; /* Further reduce font size */
+        min-width: 360px; /* Further reduce minimum width */
+    }
+}
+
+/* Media query for mobile phones */
+@media (max-width: 480px) {
+  .collection {
+    width: 250px;
+  }
+    .filters > select,
+    .filters > input,
+    .filters > button {
+        padding: 6px 10px; /* Further reduce padding */
+        font-size: 0.8rem; /* Further reduce font size */
+        min-width: 220px; /* Further reduce minimum width */
+    }
 }

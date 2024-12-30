@@ -26,12 +26,7 @@
     font-weight: 400;
     font-style: normal;
 }
-@font-face {
-    font-family: AvenirNext;
-    src: url('../fonts//8b1d5802-f86f-4cc1-95a8-261eabda1d22.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
-}
+
 :root {
   --default-font: AvenirNext;
   --heading-font: "AvenirNext",  aaa-inktraps;
@@ -162,7 +157,9 @@ h6 {
   border-top-color: var(--surface-color);
   animation: php-email-form-loading 1s linear infinite;
 }
-
+.tooltip {
+  font-family: var(--main-font); /* Use the main font variable */
+}
 @keyframes php-email-form-loading {
   0% {
     transform: rotate(0deg);
@@ -465,6 +462,7 @@ h6 {
   text-align: center;
   padding: 30px 0;
   position: relative;
+  bottom: 0px;
 }
 
 .footer h3 {
@@ -726,28 +724,27 @@ section,
 .hero .carousel-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   flex-direction: column;
   text-align: center;
-  position: relative;
   min-height: 75vh;
-  padding-top: 60px;
+  padding-top: 220px;
+  padding-right: 30px;
 }
 
 .hero h2 {
   margin-bottom: 30px;
-  font-size: 48px;
+  font-size: 44px;
   font-weight: 400;
+  width: 100%;
+  text-align: center;
 }
 
-.hero h2 span {
-  text-decoration: underline;
-}
+
 
 .hero p {
-  max-width: 80%;
+  text-align: center;
   animation-delay: 0.4s;
-  margin: 0 auto 30px auto;
 }
 
 /* .hero .carousel-item {
@@ -814,8 +811,17 @@ section,
 }
 
 @media (min-width: 1024px) {
+  .hero h2 {
+    margin-bottom: 30px;
+    font-weight: 400;
+    width: 30%;
+    text-align: start;
+
+  }
   .hero p {
-    max-width: 60%;
+    max-width: 30%;
+    text-align: start;
+
   }
 
   .hero .carousel-control-prev,
@@ -2313,9 +2319,8 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}
+/* .starter-section {
+} */
 
 /*--------------------------------------------------------------
 # Blog Posts Section
@@ -3419,7 +3424,7 @@ section,
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .summary .carousel-item {
-    height: 300px;
+    margin-top: 500px;
   }
   
   .summary .carousel-control-prev,
@@ -3641,6 +3646,63 @@ section,
   --text-2xl: 24px;
   --text-3xl: 30px;
   --text-4xl: 36px;
+}
+.c {
+  text-align: start;
+  width: 100px;
+  margin-bottom: 40px;
+  font-family: aaa-inktraps;
+  font-weight: bolder;
+  font-size: 72px;
+  color: #333;
+  padding-top: 40px;
+}
+.main-heading {
+    text-align: start;
+    margin-bottom: 40px;
+    font-family: aaa-inktraps;
+    font-weight: 400;
+    font-size: 32px;
+    color: #333;
+    padding-top: 40px;
+}
+
+/* Adjust existing styles if needed */
+.content-container {
+    margin-top: 20px;
+}
+
+.add-route-button {
+    position: fixed;
+    top: 97.5px; 
+    right: 20px; 
+    z-index: 1000;
+    padding: 10px 20px; 
+    background-color: #2A2C39; 
+    border: 1px solid #fff;
+    color: white;
+    border-radius: 5px;
+  transition: right 0.7s ease-in-out; 
+    cursor: pointer; 
+}
+
+.route-form {
+    position: absolute; /* Absolute positioning */
+    top: 0; /* Align to the top */
+    right: -50%; /* Start off-screen to the right */
+    width: 50%; /* Width of the form */
+    height: 100%; /* Full height */
+    background-color: white; /* Background color */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5); /* Optional shadow */
+    transition: right 0.3s ease; /* Smooth transition */
+    border-radius: 0; /* Remove border radius */
+    padding: 20px; /* Padding inside the form */
+    display: none; /* Initially hidden */
+}
+
+.route-form.active {
+    right: 0; /* Slide in to the viewport */
+    display: block; /* Show the form */
 }
 
 

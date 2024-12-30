@@ -148,3 +148,17 @@ h1 {
         margin: 5px 10px; /* Smaller margins on mobile */
     }
 }
+
+
+/* Adjust glossary content alignment */
+.glossary-content {
+    text-align: left;
+    padding-left: 10px;
+}
+
+/* Update container width and alignment */
+.container.section-title {
+    max-width: 100%;
+    margin-left: 0;
+    padding-left: 20px;
+}

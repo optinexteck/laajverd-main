@@ -385,10 +385,10 @@ body {
   align-items: center;
   justify-content: center;
   padding: 60px;
-   /* background-color: #f1ca01;  */
-   background-image: url('../img/bg.gif');
+  /* background-color: #f1ca01; */
+  /* background-image: url('../img/bg.gif'); */
   background-size: cover;
-  background-position: center; 
+  background-position: center;
   height: 100vh;
   color: white;
   position: relative;
@@ -505,7 +505,7 @@ body {
 }
 
 .content-container {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   display: flex;
   gap: 40px;
@@ -514,11 +514,11 @@ body {
 
 .column {
   flex: 1;
-  max-width: 350px;
+  max-width: 550px;
 }
 
 .column h2 {
-  font-size: 24px;
+  font-size: 28px;
   margin-bottom: 20px;
   color: #000;
   font-family: aaa-inktraps;
@@ -526,13 +526,17 @@ body {
 }
 
 .column p {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.6;
+  max-width: 400px;
   color: #000;
 }
 
 /* Responsive styles */
 @media (max-width: 992px) {
+  .hero-section{
+    margin-top: 80px;
+  }
   .content-container {
     flex-direction: column;
     align-items: center;
@@ -690,6 +694,10 @@ body {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .hero-section{
+    margin-top: 150px;
+    margin-bottom: 250px;
+  }
   .container {
     flex-direction: column;
   }
@@ -704,3 +712,49 @@ body {
 }
 
 
+@media (max-width: 550px) {
+  .hero-section{
+    margin-top: 350px;
+    margin-bottom: 350px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-section{
+    margin-top: 450px;
+    margin-bottom: 550px;
+
+  }
+}
+.carousel-control-prev {
+  width: 5%; /* Adjust width as needed */
+  display: flex; /* Ensure they are displayed as flex items */
+  align-items: center; /* Center the icons vertically */
+  justify-content: center; /* Center the icons horizontally */
+  top: 50%; /* Position them vertically centered */
+  left: 0%;
+  transform: translateY(-50%); /* Adjust for perfect centering */
+  z-index: 10; /* Ensure they are above other elements */
+}
+
+.carousel-control-next {
+    width: 5%; /* Adjust width as needed */
+    display: flex; /* Ensure they are displayed as flex items */
+    align-items: center; /* Center the icons vertically */
+    justify-content: center; /* Center the icons horizontally */
+    top: 50%; /* Position them vertically centered */
+    transform: translateY(-50%); /* Adjust for perfect centering */
+    z-index: 10; /* Ensure they are above other elements */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent background */
+    border-radius: 50%; /* Rounded background */
+    padding: 10px; /* Padding around the icon */
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    background-color: rgba(255, 255, 255, 0.8); /* Change background on hover */
+}

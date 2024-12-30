@@ -89,7 +89,7 @@ export const uploadImage = async (file, path) => {
 // Get functions
 export const getLocations = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'locations'));
+    const querySnapshot = await getDocs(collection(db, 'map'));
     return querySnapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()
