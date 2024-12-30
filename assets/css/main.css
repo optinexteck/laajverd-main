@@ -3683,6 +3683,7 @@ section,
     border: 1px solid #fff;
     color: white;
     border-radius: 5px;
+  transition: right 0.7s ease-in-out; 
     cursor: pointer; 
 }
 
