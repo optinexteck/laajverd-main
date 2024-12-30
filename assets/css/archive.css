@@ -81,7 +81,6 @@ h1, h2 {
   transition: 0.3s;
   border-radius: 6px;
 }
-
 .colTabs > div:hover {
   border: 1px solid #333541;
   background-color: #333541;
@@ -285,7 +284,6 @@ select::-ms-expand {
 }
 
 @media screen and (max-width: 400px) {
-
   .collection > h1 {
     text-align: center;
     font-size: 4rem;
