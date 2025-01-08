@@ -34,7 +34,7 @@
   <!-- Main CSS File -->
    <style>
     html {
-    scroll-behavior: smooth; /* This will enable smooth scrolling for anchor links */
+    scroll-behavior: smooth; 
 }
    </style>
   <link href="assets/css/main.css" rel="stylesheet">
@@ -155,8 +155,9 @@
         style="background-image: url('./assets/img/AssetPanels/Landing-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
         <div class="carousel-container">
           <h2 class="animate__animated animate__fadeInDown">Welcome to <span>LAAJVERD</span></h2>
-          <p class="animate__animated animate__fadeInUp">The Community Conservation Lab serves as a platform for collaborative and inclusive exploration, investigation, and experimentation in heritage conservation.</p>
-          <p class="animate__animated animate__fadeInUp">Set up in the Hindu Kush Himalaya mountain region, it places emphasis on preserving community heritage, which includes buildings, objects, practices and stories. Upgrade for More Features</p>
+          <p class="animate__animated animate__fadeInUp">The Community Conservation Lab serves as a platform for collaborative and inclusive exploration, investigation, and experimentation in heritage conservation.
+          </p>
+          <p class="animate__animated animate__fadeInUp">Set up by Laajverd in the Hindu Kush Himalaya mountain region, it places emphasis on preserving community heritage, which includes buildings, objects, practices and stories.</p>
 
         </div>
       </div>
@@ -263,7 +264,7 @@
 
 
 <!-- new section -->
-<div class="hero-section">
+<div id="ccl" class="hero-section">
   <!-- Current/New Design -->
   <div class="info-container">
     <img src="./assets/img/AssetPanels/final logoo.png" class="c">C</img> 
@@ -943,6 +944,38 @@
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
 
+  <script>
+    // Set the scroll amount to 90vh
+    const scrollAmount = window.innerHeight * 0.9; // 90% of the viewport height
+    let isScrolling = false; // Prevent multiple scrolls at once
+
+    // Wheel event listener
+    window.addEventListener('wheel', (event) => {
+        if (isScrolling) return; // Prevent scrolling if already scrolling
+
+        isScrolling = true; // Set scrolling to true
+
+        // Determine scroll direction
+        if (event.deltaY > 0) {
+            // Scroll down
+            window.scrollBy({
+                top: scrollAmount,
+                behavior: 'smooth'
+            });
+        } else {
+            // Scroll up
+            window.scrollBy({
+                top: -scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // Reset scrolling state after a timeout
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800); // Adjust timeout as needed for smoothness
+    });
+</script>
   <script>
     var display = false;
     const Form = document.querySelector(".login-form");
