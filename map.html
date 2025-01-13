@@ -201,12 +201,16 @@
     // Create a tooltip
     const tooltip = document.createElement('div');
     tooltip.classList.add('libHeading'); // Use class for styling
-    tooltip.style.width = '100%';
-    tooltip.style.position = 'absolute'; 
-    tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-    tooltip.style.color = 'white';
-    tooltip.style.padding = '5px';
-    tooltip.style.borderRadius = '5px';
+    tooltip.style.width = '1000px'; // Set fixed width to 1000px
+    tooltip.style.height = '1000px'; // Set fixed height to 1000px
+    tooltip.style.position = 'fixed'; // Use fixed positioning
+    tooltip.style.top = '50%'; // Center vertically
+    tooltip.style.left = '50%'; // Center horizontally
+    tooltip.style.transform = 'translate(-50%, -50%)'; // Adjust for centering
+    tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Light transparent background (white with 80% opacity)
+    tooltip.style.color = 'black'; // Text color for better contrast
+    tooltip.style.padding = '20px'; // Padding for content
+    tooltip.style.borderRadius = '10px'; // Rounded corners
     tooltip.style.visibility = 'hidden'; 
     tooltip.style.zIndex = "100000"; 
     tooltip.style.width = "260px"; 
@@ -230,7 +234,7 @@
     image.style.width ="100%"
     const header = document.createElement('h1');
     header.textContent = 'Details'; // Title for area details
-    header.style.color = 'white';
+    header.style.color = 'black';
 
     headingDiv.appendChild(placeParagraph);
     headingDiv.appendChild(distanceParagraph);
@@ -303,82 +307,84 @@
     const points = []; 
 
     function createRoute(x, y, placeName, description) {
-      const point = document.createElement('div');
-      point.style.position = 'absolute'; 
-      point.style.zIndex = "99999"; 
-      point.style.width = '0'; 
-      point.style.height = '0'; 
-      point.style.borderLeft = '10px solid transparent';
-      point.style.borderRight = '10px solid transparent';
-      point.style.borderBottom = '20px solid red'; 
-      point.style.top = `${y - 20}px`; 
-      point.style.left = `${x - 10}px`; 
-  
-      const tooltip = document.createElement('div');
-      tooltip.classList.add('libHeading');
-      tooltip.style.position = 'absolute'; 
-      tooltip.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-      tooltip.style.color = 'white';
-      tooltip.style.padding = '5px';
-      tooltip.style.borderRadius = '5px';
-      tooltip.style.visibility = 'hidden'; 
-      tooltip.style.width = "300px"; 
-      tooltip.style.top = `${y}px`; 
-      tooltip.style.left = `${x}px`; 
-  
-      const leftDiv = document.createElement('div');
-      leftDiv.classList.add('lft');
-  
-      const headingDiv = document.createElement('div');
-      headingDiv.classList.add('heading');
-  
-      const placeParagraph = document.createElement('p');
-      placeParagraph.textContent = "x - axis : " + x +" y - axis :"+y;
-  
-      const descriptionParagraph = document.createElement('p');
-      descriptionParagraph.textContent = description;
-  
-      const header = document.createElement('h1');
-      header.textContent = placeName; 
-      header.style.color = 'white';
-  
-      headingDiv.appendChild(placeParagraph);
-      headingDiv.appendChild(descriptionParagraph);
-      headingDiv.appendChild(header);
-      leftDiv.appendChild(headingDiv);
-  
-      tooltip.appendChild(leftDiv);
-      document.body.appendChild(point);
-      document.body.appendChild(tooltip);
-  
-      point.addEventListener('mouseenter', (e) => {
-        e.stopPropagation(); // This might prevent events from bubbling up
-        tooltip.style.visibility = 'visible'; 
-      });
-  
-      point.addEventListener('mouseleave', (e) => {
-        e.stopPropagation(); // This might prevent events from bubbling up
+  const point = document.createElement('div');
+  point.style.position = 'absolute';
+  point.style.zIndex = "99999";
+  point.style.width = '0';
+  point.style.height = '0';
+  point.style.borderLeft = '10px solid transparent';
+  point.style.borderRight = '10px solid transparent';
+  point.style.borderBottom = '20px solid red';
+  point.style.top = `${y - 20}px`;
+  point.style.left = `${x - 10}px`;
 
-        tooltip.style.visibility = 'hidden'; 
-      });
+  const tooltip = document.createElement('div');
+  tooltip.classList.add('libHeading');
+  tooltip.style.width = '80vw'; // 80% of the viewport width
+  tooltip.style.height = '80vh'; // 80% of the viewport height
+  tooltip.style.position = 'fixed'; // Center relative to the viewport
+  tooltip.style.top = '50%'; // Center vertically
+  tooltip.style.left = '50%'; // Center horizontally
+  tooltip.style.transform = 'translate(-50%, -50%)'; // Adjust for perfect centering
+  tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Light transparent background
+  tooltip.style.color = 'black'; // Set text color to black
+  tooltip.style.padding = '20px';
+  tooltip.style.borderRadius = '10px';
+  tooltip.style.visibility = 'hidden';
+  tooltip.style.zIndex = '2147483647'; // Highest possible z-index value
 
-      // Store the point's position
-      points.push({ x, y });
+  const leftDiv = document.createElement('div');
+  leftDiv.classList.add('lft');
 
-      if (points.length > 1) {
-        const prevPoint = points[points.length - 2];
-        drawLine(prevPoint.x, prevPoint.y, x, y);
-      }
+  const headingDiv = document.createElement('div');
+  headingDiv.classList.add('heading');
 
-      // Create a red dot marker for the place name
-      const nameMarker = document.createElement('div');
-      nameMarker.textContent = placeName; // Display the place name
-      nameMarker.style.position = 'absolute';
-      nameMarker.style.color = 'red'; 
-      nameMarker.style.top = `${y - 30}px`; 
-      nameMarker.style.left = `${x + 20}px`;
-      document.body.appendChild(nameMarker); 
-    }
+  const placeParagraph = document.createElement('p');
+  placeParagraph.textContent = "x - axis : " + x + " y - axis :" + y;
+
+  const descriptionParagraph = document.createElement('p');
+  descriptionParagraph.textContent = description;
+
+  const header = document.createElement('h1');
+  header.textContent = placeName;
+  header.style.color = 'black'; // Set h1 text color to black
+
+  headingDiv.appendChild(placeParagraph);
+  headingDiv.appendChild(descriptionParagraph);
+  headingDiv.appendChild(header);
+  leftDiv.appendChild(headingDiv);
+
+  tooltip.appendChild(leftDiv);
+  document.body.appendChild(point);
+  document.body.appendChild(tooltip);
+
+  point.addEventListener('mouseenter', (e) => {
+    e.stopPropagation();
+    tooltip.style.visibility = 'visible';
+  });
+
+  point.addEventListener('mouseleave', (e) => {
+    e.stopPropagation();
+    tooltip.style.visibility = 'hidden';
+  });
+
+  // Store the point's position
+  points.push({ x, y });
+
+  if (points.length > 1) {
+    const prevPoint = points[points.length - 2];
+    drawLine(prevPoint.x, prevPoint.y, x, y);
+  }
+
+  // Create a red dot marker for the place name
+  const nameMarker = document.createElement('div');
+  nameMarker.textContent = placeName;
+  nameMarker.style.position = 'absolute';
+  nameMarker.style.color = 'red';
+  nameMarker.style.top = `${y - 30}px`;
+  nameMarker.style.left = `${x + 20}px`;
+  document.body.appendChild(nameMarker);
+}
 
     function getRandomInt(min, max) {
   min = Math.ceil(min);
