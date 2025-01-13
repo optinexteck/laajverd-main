@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>LAAJVERD</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Favicons -->
+  <link href="assets/img/lg.png" rel="icon" />
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
+  <!-- archive Css File -->
+  <link href="assets/css/archive.css" rel="stylesheet" />
+
+  <style>
+    .card {
+      margin: 10px;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      display: none; /* Initially hide all cards */
+    }
+  </style>
+</head>
+
+<body class="index-page">
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/lg.png" alt="">
+        <h1>Community Conservation Lab</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./map.html">Location</a></li>
+          <li><a href="./archive.html" class="active">Archive</a></li>
+          <li><a href="./glossary.html">Glossary</a></li>
+          <li><a href="./ccl.html">CCL</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+  </header>
+
+  <main class="main" style="height: auto;">
+    <div class="pg-1 d-flex justify-content-center align-items-center">
+      <div class="collection">
+        <div class="filterCover">
+          <div class="filters">
+            <select id="materialFilter">
+              <option value="" hidden selected>Material</option>
+              <option value="Mud">Mud</option>
+              <option value="Wood">Wood</option>
+              <option value="Fiber">Fiber</option>
+              <option value="Various">Various</option>
+            </select>
+            <select id="locationFilter">
+              <option value="" hidden selected>Locations</option>
+              <option value="Kharmang">Kharmang</option>
+              <option value="Yasin">Yasin</option>
+              <option value="Laspur">Laspur</option>
+              <option value="Kalash">Kalash</option>
+              <option value="Gilgit">Gilgit</option>
+              <option value="Hunza">Hunza</option>
+              <option value="Gojal">Gojal</option>
+              <option value="Khorag">Khorag</option>
+              <option value="Sermik">Sermik</option>
+              <option value="Upper Chitral">Upper Chitral</option>
+              <option value="GBAO">GBAO</option>
+              <option value="Yarkhun">Yarkhun</option>
+              <option value="Various">Various</option>
+            </select>
+            <select id="supportedByFilter">
+              <option value="" hidden selected>Supported By</option>
+              <option value="Laajverd">Laajverd</option>
+              <option value="LVS">LVS</option>
+              <option value="ARTIST MONOGRAPH">ARTIST MONOGRAPH</option>
+            </select>
+            <select id="yearFilter">
+              <option value="" hidden selected>Year</option>
+              <option value="2018">2018</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+              <option value="2021">2021</option>
+              <option value="2022">2022</option>
+            </select>
+          </div>
+          <div class="filters d-flex justify-content-between">
+            <input type="text" placeholder="make a search" />
+            <button>Search</button>
+            <button onclick="resetFilters()">RESET</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- research collection -->
+    <div class="library" data-material="Mud" data-location="Kharmang" data-supported-by="Laajverd" data-year="2024">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Kharmang, Yasin, Laspur</p>
+            <h1>Community Based Conservation of Silk Route Heritages</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project focuses on the preservation of endangered heritage assets that evoke the historical 'Silk Roads' exchanges between HKH, Central Asia, and Tibet. These assets are not only of great historical significance but also bear immense cultural importance for local communities representing their identity and rich heritage once thriving in the era of Silk route exchanges. The project's scope encompasses unique heritage assets in three valleys within the HKH region.</p>
+          <p>Pinjrakari, Qajar, and Khatamband are situated in Kharmang Palace (18CE) currently inhabited by local owners showcasing unique heritage assets such as ‘Qajar’ painting (18CE), khatamband ceiling, and Pinjrakari in balcony, an art introduced by Mir Sayyid Ali Hamadani, who arrived from Persia with skilled craftsmen in the 14th century.</p>
+          <p>Gholbasher House: Situated in Yasin Valley, this endangered asset is a courtyard, dating back 600 years and until recently served as the Tukhm Rezi festival venue for the local community. It belongs to the most ancient Yaseen caste called Gholbashere and is a unique spatial feature imitating the spatial patterns of Persian madaris.</p>
+          <p>In Laspur valley, revival of an ancient silk to wool weaving tradition, known as Shu, circa 15 CE, is a traditional textile woven from fine yarn crafted by local women. The focus will be both on the practices of weaving and products produced from it.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Wood" data-location="Yasin" data-supported-by="LVS" data-year="2023">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Yasin</p>
+            <h1>Revitalization of Traditional Woodcraft</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project aims to revitalize traditional woodcraft techniques in the Yasin Valley. The focus is on training local artisans in sustainable practices that respect the environment while preserving cultural heritage.</p>
+          <p>Workshops will be conducted to teach the skills of wood carving, furniture making, and the creation of traditional wooden artifacts. The project also aims to create a market for these products, ensuring that artisans can earn a sustainable income.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Mud" data-location="Laspur" data-supported-by="Laajverd" data-year="2022">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Laspur</p>
+            <h1>Preservation of Mud Structures</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project focuses on the preservation of traditional mud structures in Laspur. The aim is to document the existing structures, assess their condition, and implement preservation techniques to ensure their longevity.</p>
+          <p>Local masons will be trained in traditional building techniques, and the project will promote the use of local materials to maintain the authenticity of the structures. Community engagement is a key component, ensuring that local knowledge and practices are respected and integrated into the preservation efforts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Fiber" data-location="Kalash" data-supported-by="LVS" data-year="2021">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Kalash</p>
+            <h1>Revival of Traditional Fiber Weaving</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project aims to revive traditional fiber weaving techniques among the Kalash community. The focus is on preserving the unique patterns and methods that have been passed down through generations.</p>
+          <p>Workshops will be held to teach young artisans the skills needed to create traditional garments and textiles. The project also aims to create a sustainable market for these products, ensuring that the artisans can earn a living while preserving their cultural heritage.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Wood" data-location="Hunza" data-supported-by="Laajverd" data-year="2020">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Hunza</p>
+            <h1>Conservation of Wooden Heritage</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project focuses on the conservation of wooden heritage sites in the Hunza Valley. The aim is to document the existing wooden structures, assess their condition, and implement conservation techniques to ensure their preservation.</p>
+          <p>Local craftsmen will be trained in conservation techniques, and the project will promote the use of sustainable practices in maintaining these heritage sites. Community involvement is crucial, ensuring that local knowledge is integrated into the conservation efforts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Various" data-location="Gojal" data-supported-by="LVS" data-year="2019">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Gojal</p>
+            <h1>Documentation of Cultural Heritage</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project aims to document the cultural heritage of the Gojal region, focusing on the unique traditions, crafts, and practices of the local communities. The documentation will include oral histories, photographs, and written accounts of cultural practices.</p>
+          <p>The project will engage local communities in the documentation process, ensuring that their voices are heard and their stories are preserved for future generations.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Mud" data-location="Sermik" data-supported-by="Laajverd" data-year="2022">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Sermik</p>
+            <h1>Conservation of Mud Architecture</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project focuses on the conservation of mud architecture in Sermik. The aim is to document the existing structures, assess their condition, and implement preservation techniques to ensure their longevity.</p>
+          <p>Local masons will be trained in traditional building techniques, and the project will promote the use of local materials to maintain the authenticity of the structures. Community engagement is a key component, ensuring that local knowledge and practices are respected and integrated into the preservation efforts.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Fiber" data-location="Upper Chitral" data-supported-by="LVS" data-year="2021">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Upper Chitral</p>
+            <h1>Revival of Traditional Fiber Crafts</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project aims to revive traditional fiber crafts in Upper Chitral. The focus is on preserving the unique patterns and methods that have been passed down through generations.</p>
+          <p>Workshops will be held to teach young artisans the skills needed to create traditional garments and textiles. The project also aims to create a sustainable market for these products, ensuring that the artisans can earn a living while preserving their cultural heritage.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="library" data-material="Wood" data-location="Gilgit" data-supported-by="Laajverd" data-year="2020">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>Gilgit</p>
+            <h1>Conservation of Wooden Heritage</h1>
+          </div>
+        </div>
+        <div class="rght">
+          <p>This project focuses on the conservation of wooden heritage sites in the Gilgit region. The aim is to document the existing wooden structures, assess their condition, and implement conservation techniques to ensure their preservation.</p>
+          <p>Local craftsmen will be trained in conservation techniques, and the project will promote the use of sustainable practices in maintaining these heritage sites. Community involvement is crucial, ensuring that local knowledge is integrated into the conservation efforts.</p>
+        </div>
+      </div>
+    </div>
+
+   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+          style="height: 70vh;overflow: hidden;width: 100%;">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/space-two-archive/st-03-01-05-15.tif.jpg"
+                alt="First slide" style="width: 100%;">
+            </div>
+            <div class="carousel-item" style="width: 100%;height:100%">
+              <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/1982-jyotsnabhatt079-1.tif.jpg"
+                alt="Second slide">
+            </div>
+            <div class="carousel-item" style="width: 100%;height:100%">
+              <img class="d-block w-100"
+                src="https://cdn.aaa.org.hk/_tiff_jpg/shin-leh-yuan-archive/sly-01-007-002-034.tif.jpg"
+                alt="Third slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+  </main>
+
+  <!-- footer area -->
+  <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+    <div class="container">
+      <span>Copyright</span>
+      <strong class="px-1 sitename">LAAJVERD</strong>
+      <span>All Rights Reserved</span>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <!-- card -->
+  <script>
+    // Add hover effect for each card
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.library'); // Select all library cards
+      const materialFilter = document.getElementById('materialFilter');
+      const locationFilter = document.getElementById('locationFilter');
+      const supportedByFilter = document.getElementById('supportedByFilter');
+      const yearFilter = document.getElementById('yearFilter');
+      const searchInput = document.querySelector('input[type="text"]');
+
+      // Function to filter cards based on selected filters
+      function filterCards() {
+        const materialValue = materialFilter.value.toLowerCase();
+        const locationValue = locationFilter.value.toLowerCase();
+        const supportedByValue = supportedByFilter.value.toLowerCase();
+        const yearValue = yearFilter.value.toLowerCase();
+        const searchValue = searchInput.value.toLowerCase();
+
+        let visibleCardCount = 0; // Counter for visible cards
+
+        cards.forEach(card => {
+          // Use data attributes to get the values
+          const cardMaterial = card.getAttribute('data-material').toLowerCase();
+          const cardLocation = card.getAttribute('data-location').toLowerCase();
+          const cardSupportedBy = card.getAttribute('data-supported-by').toLowerCase();
+          const cardYear = card.getAttribute('data-year').toLowerCase();
+
+          // Check if card matches all selected filters
+          const matchesMaterial = materialValue === '' || cardMaterial.includes(materialValue);
+          const matchesLocation = locationValue === '' || cardLocation.includes(locationValue);
+          const matchesSupportedBy = supportedByValue === '' || cardSupportedBy.includes(supportedByValue);
+          const matchesYear = yearValue === '' || cardYear.includes(yearValue);
+          const matchesSearch = searchValue === '' || card.querySelector('.heading h1').textContent.toLowerCase().includes(searchValue);
+
+          // Show or hide card based on filter matches
+          if (matchesMaterial && matchesLocation && matchesSupportedBy && matchesYear && matchesSearch) {
+            card.style.display = 'block'; // Show card
+            visibleCardCount++; // Increment visible card count
+          } else {
+            card.style.display = 'none'; // Hide card
+          }
+        });
+
+        // Log the search query and the number of visible cards
+        console.log('Search Query:', searchValue);
+        console.log('Visible Cards Count:', visibleCardCount);
+      }
+
+      // Event listeners for filter changes
+      materialFilter.addEventListener('change', filterCards);
+      locationFilter.addEventListener('change', filterCards);
+      supportedByFilter.addEventListener('change', filterCards);
+      yearFilter.addEventListener('change', filterCards);
+      searchInput.addEventListener('input', filterCards);
+    });
+
+    // Function to reset filters
+    function resetFilters() {
+      document.getElementById('materialFilter').selectedIndex = 0;
+      document.getElementById('locationFilter').selectedIndex = 0;
+      document.getElementById('supportedByFilter').selectedIndex = 0;
+      document.getElementById('yearFilter').selectedIndex = 0;
+      document.querySelector('input[type="text"]').value = '';
+      // Trigger filter function to show all cards
+      filterCards();
+    }
+  </script>
+</body>
+
+</html>
