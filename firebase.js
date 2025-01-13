@@ -4,8 +4,16 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.13.2/firebas
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
 import { getStorage } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
-import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
+import {
+  collection,
+  addDoc,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-firestore.js";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
 
 const firebaseConfig = {
@@ -15,7 +23,7 @@ const firebaseConfig = {
   storageBucket: "laajverd-42a3f.appspot.com",
   messagingSenderId: "654657065769",
   appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
-  measurementId: "G-ZS0JV6362J"
+  measurementId: "G-ZS0JV6362J",
 };
 
 // Initialize Firebase
@@ -30,7 +38,11 @@ export const storage = getStorage(app);
 // Auth functions
 export const loginAdmin = async (email, password) => {
   try {
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password,
+    );
     return userCredential.user;
   } catch (error) {
     throw error;
@@ -40,9 +52,9 @@ export const loginAdmin = async (email, password) => {
 // Firestore functions
 export const addLocation = async (locationData) => {
   try {
-    const docRef = await addDoc(collection(db, 'locations'), {
+    const docRef = await addDoc(collection(db, "locations"), {
       ...locationData,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
     return docRef.id;
   } catch (error) {
@@ -52,9 +64,9 @@ export const addLocation = async (locationData) => {
 
 export const addGlossaryTerm = async (termData) => {
   try {
-    const docRef = await addDoc(collection(db, 'glossary'), {
+    const docRef = await addDoc(collection(db, "glossary"), {
       ...termData,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
     return docRef.id;
   } catch (error) {
@@ -64,9 +76,9 @@ export const addGlossaryTerm = async (termData) => {
 
 export const addArchiveItem = async (archiveData) => {
   try {
-    const docRef = await addDoc(collection(db, 'archive'), {
+    const docRef = await addDoc(collection(db, "archive"), {
       ...archiveData,
-      createdAt: new Date()
+      createdAt: new Date(),
     });
     return docRef.id;
   } catch (error) {
@@ -89,10 +101,10 @@ export const uploadImage = async (file, path) => {
 // Get functions
 export const getLocations = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'map'));
-    return querySnapshot.docs.map(doc => ({
+    const querySnapshot = await getDocs(collection(db, "map"));
+    return querySnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
   } catch (error) {
     throw error;
@@ -101,10 +113,10 @@ export const getLocations = async () => {
 
 export const getGlossaryTerms = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'glossary'));
-    return querySnapshot.docs.map(doc => ({
+    const querySnapshot = await getDocs(collection(db, "glossary"));
+    return querySnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
   } catch (error) {
     throw error;
@@ -113,10 +125,10 @@ export const getGlossaryTerms = async () => {
 
 export const getArchiveItems = async () => {
   try {
-    const querySnapshot = await getDocs(collection(db, 'archive'));
-    return querySnapshot.docs.map(doc => ({
+    const querySnapshot = await getDocs(collection(db, "archive"));
+    return querySnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data()
+      ...doc.data(),
     }));
   } catch (error) {
     throw error;

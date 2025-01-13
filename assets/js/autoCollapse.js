@@ -25,8 +25,6 @@ const services = [
   },
 ];
 
-
-
 const servicesList = document.getElementById("servicesList");
 
 services.forEach((service, index) => {
@@ -38,7 +36,7 @@ services.forEach((service, index) => {
   serviceLink.setAttribute("aria-expanded", "false");
   serviceLink.setAttribute(
     "aria-controls",
-    `${service.name.toLowerCase()}Subservices`
+    `${service.name.toLowerCase()}Subservices`,
   );
   serviceLink.innerHTML = `<i class="bi bi-folder"></i><span>${service.name}</span>`;
 

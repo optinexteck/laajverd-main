@@ -127,7 +127,6 @@
   </div>
 
   <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
-  <!-- <button type="submit" class="remove btn btn-primary btn-ghost">Delete All</button> -->
 </form>
  
 
@@ -138,24 +137,7 @@
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
           <span>All Rights Reserved</span>
-      <!-- <h3 class="sitename">LAAJVERD</h3>
-      <p>
-        CCL believes that collaboration is essential for achieving large-scale
-        conservation impact.
-      </p>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div> -->
-        <!-- <div class="copyright">
-          <span>Copyright</span>
-          <strong class="px-1 sitename">LAAJVERD</strong>
-          <span>All Rights Reserved</span>
-        </div>
-        <div class="credits"> -->
+   
         </div>
     </div>
   </footer>
@@ -392,10 +374,10 @@
       const nameMarker = document.createElement('div');
       nameMarker.textContent = placeName; // Display the place name
       nameMarker.style.position = 'absolute';
-      nameMarker.style.color = 'red'; // Set the color to red
-      nameMarker.style.top = `${y - 30}px`; // Position above the red triangle
-      nameMarker.style.left = `${x + 20}px`; // Position to the right of the red triangle
-      document.body.appendChild(nameMarker); // Append the name marker to the body
+      nameMarker.style.color = 'red'; 
+      nameMarker.style.top = `${y - 30}px`; 
+      nameMarker.style.left = `${x + 20}px`;
+      document.body.appendChild(nameMarker); 
     }
 
     function getRandomInt(min, max) {
@@ -403,17 +385,17 @@
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-    // Function to draw a Bezier curve connecting points
-// Function to draw a Bezier curve connecting points with more pronounced curves
+
+
 function drawLine(x1, y1, x2, y2) {
     const svg = document.querySelector('svg') || createSvgElement();
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     
     // Control points for the Bezier curve (adjust these values to control the curve)
     const controlX1 = x1 + (x2 - x1) / 3;
-    const controlY1 = y1 - getRandomInt(100,500); // Make the curve more pronounced by increasing the value
+    const controlY1 = y1 - getRandomInt(100,500);
     const controlX2 = x1 + (x2 - x1) * 2 / 3 + getRandomInt(100,500);
-    const controlY2 = y2 + getRandomInt(100,500); // Increase the value for a stronger curve
+    const controlY2 = y2 + getRandomInt(100,500); 
     
     // SVG path for cubic Bezier curve
     const pathData = `M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2}`;
@@ -426,8 +408,8 @@ function drawLine(x1, y1, x2, y2) {
     svg.appendChild(line);
 }
 
-    // Function to create an SVG element if it doesn't exist
-    function createSvgElement() {
+
+function createSvgElement() {
         const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
         svg.setAttribute('width', '100%');
         svg.setAttribute('height', '100%');
@@ -439,7 +421,7 @@ function drawLine(x1, y1, x2, y2) {
         return svg;
     }
 
-    // Fetch data from Firestore (blue points and routes)
+
     function fetchData() {
       const mapQuery = query(collection(db, 'map'));
       onSnapshot(mapQuery, (querySnapshot) => {

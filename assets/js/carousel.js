@@ -64,8 +64,6 @@
 //   }, 1000); // Adjust timeout based on scroll animation duration
 // });
 
-
-
 // class PhotoCarousel {
 //   constructor() {
 //     this.container = document.querySelector(".carousel-track");

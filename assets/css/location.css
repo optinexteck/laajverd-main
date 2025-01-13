@@ -1,32 +1,36 @@
 @font-face {
-    font-family: aaa-inktraps;
-    src: url('../fonts/aaa-inktraps.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+  font-family: aaa-inktraps;
+  src: url("../fonts/aaa-inktraps.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: aaa-display;
-    src: url('../fonts/aaa-display.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+  font-family: aaa-display;
+  src: url("../fonts/aaa-display.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
 body {
-  font-family: aaa-display;  /* Check if this is consistent */
+  font-family: aaa-display; /* Check if this is consistent */
   color: #444444;
   line-height: 1.6;
 }
 
 /* Standard headings */
-h1, h2 {
-  font-family: aaa-inktraps;  /* Check if headings are consistent */
-  font-weight: 400;  /* Set all headings to font weight 400 */
+h1,
+h2 {
+  font-family: aaa-inktraps; /* Check if headings are consistent */
+  font-weight: 400; /* Set all headings to font weight 400 */
 }
- h3, h4, h5, h6 {
-  font-family: aaa-display;  /* Check if headings are consistent */
-  font-weight: 400;  /* Set all headings to font weight 400 */
+h3,
+h4,
+h5,
+h6 {
+  font-family: aaa-display; /* Check if headings are consistent */
+  font-weight: 400; /* Set all headings to font weight 400 */
 }
-.main{
+.main {
   margin-top: 100px;
 }
 .lists-cover {
@@ -36,14 +40,14 @@ h1, h2 {
   margin-bottom: 30px;
 }
 /* display list */
-.list{
+.list {
   border-radius: 10px;
   width: 500px;
   height: auto;
   border: 1px solid #000;
   background-color: #2a2c39;
 }
-.list > h1{
+.list > h1 {
   color: white;
   margin: 40px auto;
   text-align: center;
@@ -51,9 +55,8 @@ h1, h2 {
 .innerList {
   display: flex;
   flex-direction: column;
-
 }
-.innerList h1{
+.innerList h1 {
   color: white;
   font-size: 20px;
 }
@@ -122,14 +125,14 @@ h1, h2 {
   height: 100%;
   top: 0;
   right: -100%; /* Initially hidden off the right side */
-  box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+  box-shadow:
+    0 0.4px 0.4px rgba(128, 128, 128, 0.109),
     0 1px 1px rgba(128, 128, 128, 0.155),
     0 2.1px 2.1px rgba(128, 128, 128, 0.195),
     0 4.4px 4.4px rgba(128, 128, 128, 0.241),
     0 12px 12px rgba(128, 128, 128, 0.35);
   transition: right 1s ease-in-out; /* Smooth sliding transition */
 }
-
 
 .login-form h1 {
   color: white;
@@ -161,22 +164,19 @@ h1, h2 {
   border-color: var(--primary-color);
 }
 
-
-
 @media screen and (max-width: 800px) {
-  .lists-cover{
+  .lists-cover {
     flex-direction: column;
   }
-  .list{
+  .list {
     width: 90%;
-    margin:20px auto;
-
+    margin: 20px auto;
   }
-  .login-form{
+  .login-form {
     width: 90%;
     margin: auto;
   }
-  .innerList h1{
+  .innerList h1 {
     font-size: 20px;
   }
 }
