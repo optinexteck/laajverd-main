@@ -307,6 +307,15 @@
         horizontalLine.style.display = 'none';
         verticalLine.style.display = 'none';
     });
+
+    // Create a red dot marker for the place name
+    const nameMarker = document.createElement('div');
+    nameMarker.textContent = placeName; // Display the place name
+    nameMarker.style.position = 'absolute';
+    nameMarker.style.color = 'black'; // Set the color to red
+    nameMarker.style.top = `${y - 30}px`; // Position above the blue dot
+    nameMarker.style.left = `${x + 20}px`; // Position to the right of the blue dot
+    document.body.appendChild(nameMarker); // Append the name marker to the body
 }
     
     const points = []; 
@@ -378,6 +387,15 @@
         const prevPoint = points[points.length - 2];
         drawLine(prevPoint.x, prevPoint.y, x, y);
       }
+
+      // Create a red dot marker for the place name
+      const nameMarker = document.createElement('div');
+      nameMarker.textContent = placeName; // Display the place name
+      nameMarker.style.position = 'absolute';
+      nameMarker.style.color = 'red'; // Set the color to red
+      nameMarker.style.top = `${y - 30}px`; // Position above the red triangle
+      nameMarker.style.left = `${x + 20}px`; // Position to the right of the red triangle
+      document.body.appendChild(nameMarker); // Append the name marker to the body
     }
 
     function getRandomInt(min, max) {
