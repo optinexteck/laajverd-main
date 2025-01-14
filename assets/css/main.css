@@ -861,14 +861,42 @@ section,
   .hero .carousel-container {
     min-height: 70vh;
     padding-right: 10px;
-    padding-top: 260px;
+    padding-top: 200px;
   }
 
   .hero h2 {
-    font-size: 25px;
+    font-size: 20px;
   }
   p {
-    font-size: 15px;
+    font-size: 10px;
+  }
+}
+@media (max-height: 530px) {
+  .hero .carousel-container {
+    min-height: 70vh;
+    padding-right: 10px;
+    padding-top: 180px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 10px;
+  }
+}
+@media (max-height: 510px) {
+  .hero .carousel-container {
+    min-height: 70vh;
+    padding-right: 10px;
+    padding-top: 160px;
+  }
+
+  .hero h2 {
+    font-size: 20px;
+  }
+  p {
+    font-size: 10px;
   }
 }
 .hero .hero-waves {
