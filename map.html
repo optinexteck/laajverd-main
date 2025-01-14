@@ -200,70 +200,70 @@
 
     // Create a tooltip
     const tooltip = document.createElement('div');
-    tooltip.classList.add('libHeading'); // Use class for styling
-    tooltip.style.width = '1000px'; // Set fixed width to 1000px
-    tooltip.style.height = '1000px'; // Set fixed height to 1000px
-    tooltip.style.position = 'fixed'; // Use fixed positioning
-    tooltip.style.top = '50%'; // Center vertically
-    tooltip.style.left = '50%'; // Center horizontally
-    tooltip.style.transform = 'translate(-50%, -50%)'; // Adjust for centering
-    tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Light transparent background (white with 80% opacity)
-    tooltip.style.color = 'black'; // Text color for better contrast
-    tooltip.style.padding = '20px'; // Padding for content
-    tooltip.style.borderRadius = '10px'; // Rounded corners
-    tooltip.style.visibility = 'hidden'; 
-    tooltip.style.zIndex = "100000"; 
-    tooltip.style.width = "260px"; 
-    tooltip.style.top = `${y}px`; // Position tooltip above the marker
-    tooltip.style.left = `${x}px`; 
+tooltip.classList.add('libHeading');
+tooltip.style.width = '260px'; 
+tooltip.style.position = 'fixed'; 
+tooltip.style.top = `${y}px`; 
+tooltip.style.left = `${x}px`; 
+tooltip.style.transform = 'translate(-50%, -50%)'; 
+tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; 
+tooltip.style.color = 'black'; 
+tooltip.style.padding = '20px'; 
+tooltip.style.borderRadius = '10px'; 
+tooltip.style.visibility = 'hidden'; 
+tooltip.style.zIndex = "100000"; 
+tooltip.style.display = 'flex'; // Flexbox for two columns
+tooltip.style.flexDirection = 'row'; 
+tooltip.style.gap = '10px'; // Spacing between columns
 
-    const leftDiv = document.createElement('div');
-    leftDiv.classList.add('lft');
+// Left column: Only description
+const leftDiv = document.createElement('div');
+leftDiv.style.flex = '1'; // Take equal width
+leftDiv.style.borderRight = '1px solid #ccc'; // Add a separator
+leftDiv.style.paddingRight = '10px'; 
 
-    const headingDiv = document.createElement('div');
-    headingDiv.classList.add('heading');
+const descriptionParagraph = document.createElement('p');
+descriptionParagraph.textContent = description; // Show only description
 
-    const placeParagraph = document.createElement('p');
-    placeParagraph.textContent = placeName; // Display the place name
+leftDiv.appendChild(descriptionParagraph);
 
-    const distanceParagraph = document.createElement('p');
-    distanceParagraph.textContent = `Description: ${distance} km`; // Display the distance
+// Right column: All other items
+const rightDiv = document.createElement('div');
+rightDiv.style.flex = '1'; // Take equal width
 
-    const image = document.createElement('img');
-    image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
-    image.style.width ="100%"
-    const header = document.createElement('h1');
-    header.textContent = 'Details'; // Title for area details
-    header.style.color = 'black';
+const placeParagraph = document.createElement('p');
+placeParagraph.textContent = placeName; // Display the place name
 
-    headingDiv.appendChild(placeParagraph);
-    headingDiv.appendChild(distanceParagraph);
-    headingDiv.appendChild(image);
+const distanceParagraph = document.createElement('p');
+distanceParagraph.textContent = `Distance: ${distance} km`; // Display the distance
 
-    headingDiv.appendChild(header);
-    leftDiv.appendChild(headingDiv);
+const image = document.createElement('img');
+image.src = "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+image.style.width = "100%";
 
-    const rightDiv = document.createElement('div');
-    rightDiv.classList.add('rght');
+const header = document.createElement('h1');
+header.textContent = 'Details'; // Title for area details
+header.style.color = 'black';
 
-    const descriptionParagraph = document.createElement('p');
-    descriptionParagraph.textContent = description; // Show description
+rightDiv.appendChild(placeParagraph);
+rightDiv.appendChild(distanceParagraph);
+rightDiv.appendChild(image);
+rightDiv.appendChild(header);
 
-    rightDiv.appendChild(descriptionParagraph);
+// Append left and right columns to the tooltip
+tooltip.appendChild(leftDiv);
+tooltip.appendChild(rightDiv);
 
-    tooltip.appendChild(leftDiv);
-    tooltip.appendChild(rightDiv);
+document.body.appendChild(point);
+document.body.appendChild(tooltip);
 
-    document.body.appendChild(point);
-    document.body.appendChild(tooltip);
+point.addEventListener('mouseenter', () => {
+    tooltip.style.visibility = 'visible'; // Show tooltip
+});
 
-    point.addEventListener('mouseenter', () => {
-        tooltip.style.visibility = 'visible'; // Show tooltip
-    });
-
-    point.addEventListener('mouseleave', () => {
-        tooltip.style.visibility = 'hidden'; // Hide tooltip
-    });
+point.addEventListener('mouseleave', () => {
+    tooltip.style.visibility = 'hidden'; // Hide tooltip
+});
 
     // Optional: Add click functionality if needed
     point.addEventListener('click', () => {
@@ -310,53 +310,77 @@
   const point = document.createElement('div');
   point.style.position = 'absolute';
   point.style.zIndex = "99999";
-  point.style.width = '0';
-  point.style.height = '0';
-  point.style.borderLeft = '10px solid transparent';
-  point.style.borderRight = '10px solid transparent';
-  point.style.borderBottom = '20px solid red';
+  point.style.width = '20px';
+  point.style.height = '10px';
+  point.style.borderRadius = '10px';
+  point.style.borderBottom = '20px solid white';
   point.style.top = `${y - 20}px`;
   point.style.left = `${x - 10}px`;
+  point.style.color = `black`;
 
   const tooltip = document.createElement('div');
-  tooltip.classList.add('libHeading');
-  tooltip.style.width = '80vw'; // 80% of the viewport width
-  tooltip.style.height = '80vh'; // 80% of the viewport height
-  tooltip.style.position = 'fixed'; // Center relative to the viewport
-  tooltip.style.top = '50%'; // Center vertically
-  tooltip.style.left = '50%'; // Center horizontally
-  tooltip.style.transform = 'translate(-50%, -50%)'; // Adjust for perfect centering
-  tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; // Light transparent background
-  tooltip.style.color = 'black'; // Set text color to black
-  tooltip.style.padding = '20px';
-  tooltip.style.borderRadius = '10px';
+tooltip.classList.add('libHeading');
+tooltip.style.width = '80vw'; 
+tooltip.style.height = '80vh'; 
+tooltip.style.position = 'fixed';
+tooltip.style.top = '50%'; 
+tooltip.style.left = '50%'; 
+tooltip.style.transform = 'translate(-50%, -50%)'; 
+tooltip.style.backgroundColor = 'rgba(255, 255, 255, 0.8)'; 
+tooltip.style.color = 'black';
+tooltip.style.padding = '20px';
+tooltip.style.borderRadius = '10px';
+tooltip.style.visibility = 'hidden';
+tooltip.style.zIndex = '2147483647';
+tooltip.style.display = 'flex'; // Flexbox for two columns
+tooltip.style.gap = '10px'; // Space between the columns
+
+// Left column: Only description
+const leftDiv = document.createElement('div');
+leftDiv.classList.add('lft');
+leftDiv.style.flex = '1'; // Take up equal width
+leftDiv.style.borderRight = '1px solid #ccc'; // Add a border for separation
+leftDiv.style.paddingRight = '10px';
+
+const descriptionParagraph = document.createElement('p');
+descriptionParagraph.textContent = description; // Only description content
+
+leftDiv.appendChild(descriptionParagraph);
+
+// Right column: All other items
+const rightDiv = document.createElement('div');
+rightDiv.classList.add('rght');
+rightDiv.style.flex = '1'; // Take up equal width
+
+const headingDiv = document.createElement('div');
+headingDiv.classList.add('heading');
+
+const placeParagraph = document.createElement('p');
+placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`; // Coordinates info
+
+const header = document.createElement('h1');
+header.textContent = placeName; // Place name
+header.style.color = 'black';
+
+headingDiv.appendChild(placeParagraph);
+headingDiv.appendChild(header);
+rightDiv.appendChild(headingDiv);
+
+// Append both columns to the tooltip
+tooltip.appendChild(leftDiv);
+tooltip.appendChild(rightDiv);
+
+document.body.appendChild(point);
+document.body.appendChild(tooltip);
+
+// Show/hide tooltip on hover
+point.addEventListener('mouseenter', () => {
+  tooltip.style.visibility = 'visible';
+});
+
+point.addEventListener('mouseleave', () => {
   tooltip.style.visibility = 'hidden';
-  tooltip.style.zIndex = '2147483647'; // Highest possible z-index value
-
-  const leftDiv = document.createElement('div');
-  leftDiv.classList.add('lft');
-
-  const headingDiv = document.createElement('div');
-  headingDiv.classList.add('heading');
-
-  const placeParagraph = document.createElement('p');
-  placeParagraph.textContent = "x - axis : " + x + " y - axis :" + y;
-
-  const descriptionParagraph = document.createElement('p');
-  descriptionParagraph.textContent = description;
-
-  const header = document.createElement('h1');
-  header.textContent = placeName;
-  header.style.color = 'black'; // Set h1 text color to black
-
-  headingDiv.appendChild(placeParagraph);
-  headingDiv.appendChild(descriptionParagraph);
-  headingDiv.appendChild(header);
-  leftDiv.appendChild(headingDiv);
-
-  tooltip.appendChild(leftDiv);
-  document.body.appendChild(point);
-  document.body.appendChild(tooltip);
+});
 
   point.addEventListener('mouseenter', (e) => {
     e.stopPropagation();
@@ -380,7 +404,7 @@
   const nameMarker = document.createElement('div');
   nameMarker.textContent = placeName;
   nameMarker.style.position = 'absolute';
-  nameMarker.style.color = 'red';
+  nameMarker.style.color = 'white';
   nameMarker.style.top = `${y - 30}px`;
   nameMarker.style.left = `${x + 20}px`;
   document.body.appendChild(nameMarker);
@@ -397,17 +421,15 @@ function drawLine(x1, y1, x2, y2) {
     const svg = document.querySelector('svg') || createSvgElement();
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     
-    // Control points for the Bezier curve (adjust these values to control the curve)
     const controlX1 = x1 + (x2 - x1) / 3;
     const controlY1 = y1 - getRandomInt(100,500);
     const controlX2 = x1 + (x2 - x1) * 2 / 3 + getRandomInt(100,500);
     const controlY2 = y2 + getRandomInt(100,500); 
     
-    // SVG path for cubic Bezier curve
     const pathData = `M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2}`;
 
     line.setAttribute('d', pathData);
-    line.setAttribute('stroke', 'red');
+    line.setAttribute('stroke', ''); 
     line.setAttribute('stroke-width', '2');
     line.setAttribute('fill', 'transparent');
     
@@ -492,14 +514,7 @@ function createSvgElement() {
 
         const filter = this.getAttribute('data-filter');
 
-        // serviceItems.forEach(item => {
-        //     // Show all if filter is '*', otherwise show only matching classes
-        //     if (filter === '*' || item.classList.contains(filter.substring(1))) {
-        //         item.style.display = 'block';
-        //     } else {
-        //         item.style.display = 'none';
-        //     }
-        // });
+    
       });
     });
   </script>
