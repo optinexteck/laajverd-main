@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>LAAJVERD</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/lg.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  <link href="assets/css/archive.css" rel="stylesheet" />
+
+
+  <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.css" />
+
+  <!-- input cards -->
+  <link href="assets/css/location.css" rel="stylesheet" />
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!-- Custom Map CSS -->
+  <link rel="stylesheet" href="assets/css/map.css">
+  <!-- default page css -->
+  <link rel="stylesheet" href="./assets/css/information.css">
+
+
+  <style>
+    footer{
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+    }
+    .archive-container{
+      padding-bottom: 100px;
+    }
+  </style>
+  
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top scrolled">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="assets/img/lg.png" alt="">      
+        <h1>C ommunity Conservation Lab</h1>          </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./map.html">Location</a></li>
+          <li><a href="./archive1.html">Archive</a></li>
+          <li><a href="./glossary.html">Glossary</a></li>
+          <li><a href="./ccl.html">CCL</a></li>
+
+          
+          
+          <!-- <li><a href="./contact.html">Contact</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+    </div>
+    
+  </header>
+
+
+    <!-- location create card -->
+   <form class="login-form section" action="javascript:void(0);" id="add-location">
+
+    <div class="updates">
+      <h3>updates</h3>
+      <div class="button-slider">
+        <div class="button">Border Cast Berlin</div>
+        <div class="button">Border Cast Berlin</div>
+        <div class="button">Border Cast Berlin</div>
+        <div class="button">Border Cast Berlin</div>
+      </div>
+    </div>
+    <div class="summry">
+      <h3>Summary</h3>
+      <p>
+        At the 309th meeting on 10th August 1947, the UN Security Council decided to invite a representative from the Indian National Congress and All India Muslim League to participate with vote in the discussion of the subcontinent.This meeting was attended by.
+      </p>
+    </div>
+    <div class="contact-div">
+     <h3>Contact</h3> 
+     <p>
+        For more info: thesubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirelyubcontinent2014@gmail.com This project is not endorsed by or affiliated with any government. The events depicted in this project are entirely
+     </p>
+    </div>
+    <hr/>
+   <div class="form-data">
+    <h3>Create a Route</h3>
+    <div class="form-input-material">
+      <input  id="name" name="name" placeholder="Name" autocomplete="off" class="form-control-material" required />
+      <label for="username" >Name</label>
+    </div>
+    <div class="form-input-material">
+      <input  name="latitude" id="latitude" placeholder="latitude" autocomplete="off" class="form-control-material" required />
+      <label for="username">latitude</label>
+    </div>
+      <div class="form-input-material">
+      <input  name="longitude" id="longitude" placeholder="longitude" autocomplete="off" class="form-control-material" required />
+      <label for="username">longitude</label>
+    </div>
+      <div class="form-input-material">
+      <input  name="description" id="description" placeholder="description" autocomplete="off" class="form-control-material" required />
+      <label for="username">description</label>
+    </div>
+  
+    <button type="submit" class="submit btn btn-primary btn-ghost">Add</button>
+   </div>
+  <!-- <button type="submit" class="remove btn btn-primary btn-ghost">Delete All</button> -->
+</form>
+ 
+ <!-- image section -->
+
+
+ <!-- cards section -->
+ <main class="main" style="height: auto; width: 100% ;">
+  <!-- landing page -->
+
+    <!-- vision collections -->
+    <div class="library" style="margin-top:5%">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <h1>Vision</h1>
+        </div>
+        <div class="rght">
+          <p>
+            The Community Conservation Lab (CCL) envisions a world where cultural landscapes are valued and maintained through empowered communities. Through training and capacity building, CCL aims to protect and enhance cultural heritage while generating revenue opportunities. It strives to be a leading institute in skill development, design innovation, and marketing, enabling communities in the Hindu Kush Himalaya region and beyond to adapt traditional crafts and practices to modern contexts. Through collaborative conservation efforts, CCL seeks to balance human, ecological, and cultural relationships, ensuring the vitality of heritage for future generations.
+          </p>
+        </div>
+      </div>
+      <div class="cards" id="cards-container"></div>
+  
+    </div>
+    <!-- carosal -->
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+      style="height: 70vh;overflow: hidden;width: 100%;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/space-two-archive/st-03-01-05-15.tif.jpg"
+            alt="First slide" style="width: 100%;">
+        </div>
+        <div class="carousel-item" style="width: 100%;height:100%">
+          <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/1982-jyotsnabhatt079-1.tif.jpg"
+            alt="Second slide">
+        </div>
+        <div class="carousel-item" style="width: 100%;height:100%">
+          <img class="d-block w-100"
+            src="https://cdn.aaa.org.hk/_tiff_jpg/shin-leh-yuan-archive/sly-01-007-002-034.tif.jpg"
+            alt="Third slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  <!-- research collection -->
+  <div class="library" >
+    <div class="line"></div>
+    <div class="libHeading" style="width: 100%">
+      <div class="lft">
+        <div class="heading">
+          <h1>Mission</h1>
+
+        </div>
+      </div>
+      <div class="rght">
+        <p>
+          The Community Conservation Lab (CCL) is an institute for training and capacity building, dedicated to the preservation and promotion of cultural landscapes. Based in the Hindu Kush Himalaya region, CCL offers specialized training in skill development, design innovation, and marketing, empowering communities to preserve traditional crafts and practices while adapting to modern needs. Through this, it supports the conservation of community heritage, including buildings, objects, practices, and stories. 
+        </p>
+        <p>
+          Artefact: CCL’s work spans material and immaterial heritage in its ecological context. Artefacts include practices, stories, techniques, skills, buildings, crafts, and objects. Conservation involves preserving tangible items like artworks or structures and safeguarding intangible heritage such as traditions. Our approach considers artefacts’ relationships with human, non-human, and spiritual entities while acknowledging their role in natural ecology.
+        </p>
+        <p>
+          Practice: CCL collaborates with local communities and landscapes throughout the conservation process, from selecting artefacts to determining methods like documentation, condition assessment, and upkeep. By integrating scientific and traditional techniques, we encourage mutual learning about materials, risks, and sustainability. 
+        </p>
+        <p>
+          Knowledge: CCL values diverse knowledge systems, blending scientific inquiry with local wisdom. Observational, experimental, empirical, and experiential methods enrich our understanding of artefacts, ensuring a holistic approach to conservation that respects global standards and local contexts.
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+  <!-- annual objectives -->
+  <div class="library">
+    <div class="line"></div>
+    <div class="libHeading" style="width: 100%">
+      <div class="lft">
+        <h1>Annual objectives </h1>
+      </div>
+      <div class="rght">
+        <h3>Training and Capacity Building</h1>
+        <ul>
+          <li>Organize workshops and courses for local communities focusing on traditional crafts, design innovation, and marketing.</li>
+          <li>Develop certification programs in skill development to support professional growth in heritage-related fields.</li>
+        </ul>
+        <h3>Heritage Conversation Projects</h3>
+        <ul>
+          <li>Identify and document cultural heritage sites and practices in the Hindu Kush Himalaya region.</li>
+          <li>
+            Implement conservation projects that integrate traditional and modern techniques to preserve both tangible and intangible heritage.
+          </li>
+        </ul>
+        <h3>Revenue Generations initiatives </h3>
+        <ul>
+          <li>Support communities in creating marketable products derived from traditional crafts.</li>
+          <li>Develop partnerships with local and global markets to promote sustainably crafted goods.</li>
+        </ul>
+        <h3>Community Engagement</h3>
+        <ul>
+          <li>Facilitate collaborative efforts between local communities, experts, and stakeholders for inclusive heritage conservation.</li>
+          <li>Promote awareness campaigns about the importance of cultural landscapes and their preservation.</li>
+        </ul>
+        <h3>Knowledge Developement and Sharing</h3>
+        <ul>
+          <li>Conduct research to integrate scientific and traditional knowledge systems for effective conservation strategies.</li>
+          <li>
+            Publish findings and develop educational materials to share best practices in heritage preservation.
+          </li>
+        </ul>
+        <h3>sustainability and Impact Assessment</h3>
+        <ul>
+          <li>Monitor the environmental, cultural, and economic impacts of conservation projects.</li>
+          <li>Adjust strategies based on community feedback and measurable outcomes.</li>
+        </ul>
+        <p>The Community Conservation Lab’s annual objectives include organizing training workshops in traditional crafts, design, and marketing to empower communities and enhance their skills. Conservation projects focus on documenting and preserving cultural heritage using both traditional and modern techniques. Revenue generation initiatives aim to support communities in creating marketable products and forming partnerships with global markets. Collaborative efforts with communities and stakeholders promote inclusive heritage preservation, while awareness campaigns highlight the value of cultural landscapes. CCL integrates scientific and traditional knowledge through research and publications, sharing best practices in conservation. Impact assessments ensure sustainability by measuring the environmental, cultural, and economic effects of its projects.</p>
+      </div>
+    </div>
+    <div class="cards" id="cards-container"></div>
+
+  </div>
+
+  <!-- the making lab -->
+  <div class="library">
+    <div class="line"></div>
+    <div class="libHeading" style="width: 100%">
+      <div class="lft">
+        <h1>Annual objectives </h1>
+      </div>
+      <div class="rght">
+        <h3>The Making Lab</h1>
+         <p>Each year, the lab conducts experiments in practices of making in order to document, conserve and promote handmade products. Through a Co-production model, the making lab brings together industry experts and craftspeople to develop products and test their viability in the local and global markets. </p>
+      </div>
+    </div>
+    <div class="cards" id="cards-container"></div>
+
+  </div>
+  </div>
+</main>
+  <!-- footer area -->
+  <!-- <footer style="position: fixed;width: 100%;bottom: 0%;" id="footer" class="footer" style="background-color: #cdcdcd; position: relative;bottom: 0%;">
+    <div class="container">
+      <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span> -->
+      <!-- <h3 class="sitename">LAAJVERD</h3>
+      <p>
+        CCL believes that collaboration is essential for achieving large-scale
+        conservation impact.
+      </p>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div> -->
+        <!-- <div class="copyright">
+          <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span>
+        </div>
+        <div class="credits"> -->
+        <!-- </div>
+    </div>
+  </footer> -->
+
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-routing-machine/3.2.12/leaflet-routing-machine.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+  
+  
+  
+
+  
+  
+
+
+
+ 
+
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/filter.js"></script>
+
+</body>
+
+</html>

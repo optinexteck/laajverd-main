@@ -1,0 +1,147 @@
+/* General Reset */
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.image-text-section {
+  padding: 50px 20px;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); */
+}
+
+.text-side {
+  flex: 1;
+}
+
+.text-side h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #2a2c39;
+}
+
+.text-side p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.cta-button {
+  background-color: #2a2c39;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
+}
+
+.cta-button:hover {
+  background-color: #1f202c;
+  transform: scale(1.05);
+}
+
+.image-side {
+  flex: 1;
+  text-align: center;
+}
+
+.image-side img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Queries */
+@media (max-width: 992px) {
+  .content-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .text-side {
+    text-align: center;
+  }
+
+  .text-side h1 {
+    font-size: 2rem;
+  }
+
+  .text-side p {
+    font-size: 0.9rem;
+  }
+
+  .cta-button {
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+
+  .image-side img {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-side h1 {
+    font-size: 1.8rem;
+  }
+
+  .text-side p {
+    font-size: 0.85rem;
+  }
+
+  .cta-button {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+
+  .image-side img {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .content-wrapper {
+    padding: 20px;
+  }
+
+  .text-side h1 {
+    font-size: 1.5rem;
+  }
+
+  .text-side p {
+    font-size: 0.8rem;
+  }
+
+  .cta-button {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .image-side img {
+    width: 100%;
+  }
+}
