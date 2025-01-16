@@ -543,7 +543,6 @@ body {
   flex-wrap: wrap; /* Wrap columns if they exceed the container width */
 }
 
-
 /* .column {
   flex: 1;
   max-width: 550px;

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -66,11 +66,12 @@
       <div
         class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
       >
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.png" alt=""> -->
-        <img src="assets/img/lg.png" alt="">      
-        <h1>C ommunity Conservation Lab</h1>          </a>
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <img src="assets/img/lg.png" alt="" />
+          <h1>C ommunity Conservation Lab</h1>
+        </a>
 
         <nav id="navmenu" class="navmenu">
           <ul>
@@ -80,7 +81,6 @@
             <li><a href="./location.html" class="active">Location</a></li>
             <li><a href="./contact.html">Contact</a></li>
             <li><a href="./ccl.html">CCL</a></li>
-
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
@@ -93,7 +93,7 @@
         id="hero"
         class="hero section dark-background"
         style="
-          background-image: url('./assets/img/hero-bg.jpg');
+          background-image: url(&quot;./assets/img/hero-bg.jpg&quot;);
           background-size: cover;
           background-position: center;
         "
@@ -108,7 +108,7 @@
           <div
             class="carousel-item active"
             style="
-              background-image: url('./assets/img/hero-carousel/working-1.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/working-1.jpg&quot;);
               background-size: cover;
               background-position: center;
             "
@@ -118,7 +118,7 @@
           <div
             class="carousel-item"
             style="
-              background-image: url('./assets/img/hero-carousel/working-2.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/working-2.jpg&quot;);
               background-size: cover;
               background-position: center;
             "
@@ -128,7 +128,7 @@
           <div
             class="carousel-item"
             style="
-              background-image: url('./assets/img/hero-carousel/working-3.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/working-3.jpg&quot;);
               background-size: cover;
               background-position: center;
             "
@@ -243,7 +243,9 @@
                 <p class="post-category">Project</p>
 
                 <h2 class="title">
-                  <a href="#" class="post-title">Vernacular Architecture Prototype</a>
+                  <a href="#" class="post-title"
+                    >Vernacular Architecture Prototype</a
+                  >
                 </h2>
 
                 <div class="d-flex align-items-center">
@@ -276,7 +278,9 @@
                 <p class="post-category">Project</p>
 
                 <h2 class="title">
-                  <a href="#" class="post-title">Earthing Narratives; mud building and plasters</a>
+                  <a href="#" class="post-title"
+                    >Earthing Narratives; mud building and plasters</a
+                  >
                 </h2>
 
                 <div class="d-flex align-items-center">
@@ -309,7 +313,9 @@
                 <p class="post-category">Project</p>
 
                 <h2 class="title">
-                  <a href="#" class="post-title">Timber tales; artefacts, methods and products</a>
+                  <a href="#" class="post-title"
+                    >Timber tales; artefacts, methods and products</a
+                  >
                 </h2>
 
                 <div class="d-flex align-items-center">
@@ -410,7 +416,9 @@
           <div class="d-flex justify-content-center">
             <ul>
               <li>
-                <a href="#" class="post-title"><i class="bi bi-chevron-left"></i></a>
+                <a href="#" class="post-title"
+                  ><i class="bi bi-chevron-left"></i
+                ></a>
               </li>
               <li><a href="#" class="post-title">1</a></li>
               <li><a href="#" class="post-title" class="active">2</a></li>
@@ -419,7 +427,9 @@
               <li>...</li>
               <li><a href="#" class="post-title">10</a></li>
               <li>
-                <a href="#" class="post-title"><i class="bi bi-chevron-right"></i></a>
+                <a href="#" class="post-title"
+                  ><i class="bi bi-chevron-right"></i
+                ></a>
               </li>
             </ul>
           </div>
@@ -428,12 +438,12 @@
       <!-- /Blog Pagination Section -->
     </main>
 
-  <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+    <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd;">
     <div class="container">
       <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
           <span>All Rights Reserved</span> -->
-      <!-- <h3 class="sitename">LAAJVERD</h3>
+    <!-- <h3 class="sitename">LAAJVERD</h3>
       <p>
         CCL believes that collaboration is essential for achieving large-scale
         conservation impact.
@@ -445,13 +455,13 @@
         <a href=""><i class="bi bi-skype"></i></a>
         <a href=""><i class="bi bi-linkedin"></i></a>
       </div> -->
-        <!-- <div class="copyright">
+    <!-- <div class="copyright">
           <span>Copyright</span>
           <strong class="px-1 sitename">LAAJVERD</strong>
           <span>All Rights Reserved</span>
         </div>
         <div class="credits"> -->
-        <!-- </div>
+    <!-- </div>
     </div>
   </footer> -->
 
@@ -481,13 +491,12 @@
 
     <!-- data transfering from one to page to other -->
     <script>
-
       // Function to encode URI components (to handle spaces and special characters)
       function encodeQueryParams(params) {
         return Object.keys(params)
           .map(
             (key) =>
-              `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+              `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`,
           )
           .join("&");
       }
@@ -504,16 +513,15 @@
           const postImg = article.querySelector(".post-img img").src;
           const authorImg = article.querySelector(".authorImg").src;
 
-
           const queryParams = {
             title,
             category,
             author,
             date,
             postImg,
-            authorImg
+            authorImg,
           };
-          console.log(queryParams)
+          console.log(queryParams);
           const queryString = encodeQueryParams(queryParams);
 
           const dynamicURL = `blog-details.html?${queryString}`;
