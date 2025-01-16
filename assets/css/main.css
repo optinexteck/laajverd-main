@@ -174,29 +174,44 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: rgba(255, 255, 255, 0);
-  --heading-color: #ffffff;
+  --background-color: transparent; /* Fully transparent by default */
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 20px 0;
   transition: all 0.5s;
   z-index: 997;
 }
+.header:hover {
+  --background-color: rgba(205, 205, 205, 0.95); /* Gray with slight transparency on hover */
+}
+
 
 .header .logo {
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
+
 
 .header .logo img {
   max-height: 32px;
   margin-right: 8px;
 }
 
-.header .logo h1 {
-  font-size: 34px;
-  margin: 0;
-  font-weight: 400;
-  color: var(--heading-color);
+.header .logo h2,
+.navmenu a,
+.navmenu a:focus {
+  color: #ffffff;
+  transition: all 0.3s;
+}
+
+.header .container-fluid {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mobile-nav-toggle {
@@ -204,8 +219,15 @@ h6 {
 }
 
 .scrolled .header {
-  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+  --background-color: rgba(205, 205, 205, 0.95);
 }
+
+.scrolled .header .logo h2,
+.scrolled .navmenu a,
+.scrolled .navmenu a:focus {
+  color: #000000;
+}
+
 
 /* Global Header on Scroll
 ------------------------------*/
@@ -223,12 +245,22 @@ h6 {
   }
 
   .navmenu ul {
+    display: flex;
+    gap: 15px;
     margin: 0;
     padding: 0;
-    display: flex;
     list-style: none;
-    align-items: center;
   }
+  
+  .navmenu a {
+    padding: 8px 12px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  
+  
 
   .navmenu li {
     position: relative;
@@ -271,6 +303,17 @@ h6 {
       --nav-hover-color
     ); /* Optional: keep text color change for hover state */
   }
+
+  .scrolled .navmenu li:hover > a,
+.scrolled .navmenu .active,
+.scrolled .navmenu .active:focus {
+  color: #404356; /* Darker color on hover when scrolled */
+}
+
+/* Force first menu item color */
+.navmenu li:first-child a {
+  color: inherit !important; /* Use parent color instead of forcing white */
+}
 
   .navmenu .dropdown ul {
     margin: 0;
