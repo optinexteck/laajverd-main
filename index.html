@@ -208,7 +208,7 @@
       <!-- Hero Section -->
       <section
         id="hero"
-        class="hero section dark-background section0"
+        class="hero nav section dark-background section0"
         style="
           background-size: cover;
           height: 100vh;
@@ -274,10 +274,14 @@
         </div>
       </section>
 
-      <section id="ccl" class="hero section section2">
+      <section id="ccl" class="hero nav section section2">
         <div class="info-container">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
-          <!-- <h2 class="main-heading">WHAT IS</h2>  -->
+          <div  style="width: 100%; display: flex; margin: 0;padding: 0;">
+            <h2 style="flex: 1;"></h2>
+            <h2 style="flex: 1;"></h2>
+            <h1 class="main-heading" style="flex: 1;margin-left: 10%;margin-bottom: 0%;">Our</h2>
+          </div> 
           <div class="content-container">
             <div class="column">
               <h3>What is an</h3>
@@ -427,7 +431,7 @@
       <!-- slider -->
       <section
         id="hero1"
-        class="hero section section2"
+        class="hero nav section section2"
         style="background-color: #254365; height: 100vh; width: 100vw"
       >
         <div
@@ -585,41 +589,36 @@
       </section>
 
       <footer
-        id="footer"
-        class="footer section section3"
+      id="footer"
+      class="footer nav"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
         style="
           display: flex;
+          align-items: center;
           justify-content: center;
-          gap: 10px;
-          background-color: #cdcdcd;
-          font-size: 20px;
-          padding: 10px;
-          height: 70px;
+          height: 30px;
         "
       >
-        <div
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 30px;
-          "
-        >
-          <span>Copyright</span>
-          <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
-          <span>All Rights Reserved</span>
-        </div>
-        <div
-          class="social-links"
-          style="display: flex; gap: 10px; height: 30px"
-        >
-          <a href=""><i class="bi bi-twitter-x"></i></a>
-          <a href=""><i class="bi bi-facebook"></i></a>
-          <a href=""><i class="bi bi-instagram"></i></a>
-          <a href=""><i class="bi bi-skype"></i></a>
-          <a href=""><i class="bi bi-linkedin"></i></a>
-        </div>
-      </footer>
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
       <div class="navigation" style="z-index: 9999">
         <span data-target="section1" class="bullet active"></span>
         <span data-target="section2" class="bullet"></span>
@@ -713,7 +712,7 @@
     </script>
     
     <script>
-      const sections = document.querySelectorAll(".section");
+      const sections = document.querySelectorAll(".nav");
       const bullets = document.querySelectorAll(".bullet");
       let currentSection = 0;
 

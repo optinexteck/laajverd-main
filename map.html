@@ -105,6 +105,7 @@
           src="assets/img/location-image.jpg"
           alt="Mountain Map"
           class="base-map"
+          style="margin-top: 25px"
         />
 
         <!-- Controls with existing functionality -->
@@ -205,6 +206,8 @@
       id="footer"
       class="footer"
       style="
+        position: fixed;
+        bottom: 0px;
         display: flex;
         justify-content: center;
         gap: 10px;
@@ -421,8 +424,8 @@
         point.style.height = "6px";
         point.style.borderRadius = "10px";
         point.style.borderBottom = "15px solid white";
-        point.style.top = `${y - 20}px`;
-        point.style.left = `${x - 10}px`;
+        point.style.top = `${y}%`;
+        point.style.left = `${x}%`;
         point.style.color = `black`;
 
         const tooltip = document.createElement("div");
@@ -442,6 +445,21 @@
         tooltip.style.display = "flex";
         tooltip.style.gap = "10px";
 
+        // Close button
+        const closeButton = document.createElement("button");
+        closeButton.textContent = "Close";
+        closeButton.style.position = "absolute";
+        closeButton.style.top = "10px";
+        closeButton.style.right = "10px";
+        closeButton.style.backgroundColor = "#2A2C39";
+        closeButton.style.color = "white";
+        closeButton.style.border = "none";
+        closeButton.style.padding = "10px";
+        closeButton.style.cursor = "pointer";
+        closeButton.addEventListener("click", () => {
+          tooltip.style.visibility = "hidden";
+        });
+
         // Left column: Only description
         const leftDiv = document.createElement("div");
         leftDiv.classList.add("lft");
@@ -451,22 +469,22 @@
         leftDiv.style.display = "flex";
 
         const descriptionParagraph = document.createElement("p");
-        descriptionParagraph.style.width = "80%";
-        descriptionParagraph.style.height = "60%";
-        descriptionParagraph.style.overflow = "hidden";
-        descriptionParagraph.style.margin = "18% auto";
+        descriptionParagraph.style.width = "65%";
+        descriptionParagraph.style.height = "75%";
+        descriptionParagraph.style.overflow = "scroll";
+        descriptionParagraph.style.margin = "auto auto";
         descriptionParagraph.style.padding = "15px";
         descriptionParagraph.style.border = "1px solid black";
         descriptionParagraph.textContent = description;
 
-        const leftArrow = document.createElement("h4");
+        const leftArrow = document.createElement("h2");
         leftArrow.textContent = "<";
-        leftArrow.style.marginTop = "45%";
+        leftArrow.style.margin = "auto auto";
         leftArrow.style.cursor = "pointer";
 
-        const rightArrow = document.createElement("h4");
+        const rightArrow = document.createElement("h2");
         rightArrow.textContent = ">";
-        rightArrow.style.marginTop = "45%";
+        rightArrow.style.margin = "auto auto";
         rightArrow.style.cursor = "pointer";
 
         leftArrow.addEventListener("click", () => {
@@ -517,7 +535,8 @@
         headingDiv.appendChild(header);
         rightDiv.appendChild(headingDiv);
 
-        // Append both columns to the tooltip
+        // Append close button and both columns to the tooltip
+        tooltip.appendChild(closeButton);
         tooltip.appendChild(leftDiv);
         tooltip.appendChild(rightDiv);
 
@@ -539,11 +558,11 @@
         const nameMarker = document.createElement("p");
         nameMarker.textContent =
           placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
-        nameMarker.style.fontFamily = "Arial, sans-serif"; 
+        nameMarker.style.fontFamily = "Arial, sans-serif";
         nameMarker.style.position = "absolute";
         nameMarker.style.color = "white";
-        nameMarker.style.top = `${y - 45}px`;
-        nameMarker.style.left = `${x - 30}px`;
+        nameMarker.style.top = `${y - 3}%`;
+        nameMarker.style.left = `${x}%`;
         document.body.appendChild(nameMarker);
       }
 

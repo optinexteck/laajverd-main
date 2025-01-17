@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -54,6 +54,35 @@
     <style>
       .hidden {
         display: none !important;
+      }
+    </style>
+    <style>
+      .pagination-cover{
+        text-align: center;
+        width: 100%;
+        margin: 20px auto;
+      }
+      .pagination {
+        display: inline-block;
+        text-align: center;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+      }
+
+      .pagination a.active {
+        background-color: #8F9197;
+        color: white;
+        border-radius: 5px;
+      }
+
+      .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
       }
     </style>
   </head>
@@ -346,6 +375,18 @@
       </div>
       <!-- /Services Section -->
     </main>
+    <div class="pagination-cover">
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
+    </div>
+  </div>
     <!-- footer area -->
 
     <!-- <footer id="footer" class="footer " style="background-color: #cdcdcd;">
@@ -373,6 +414,7 @@
         <div class="credits"> -->
     <!-- </div>
     </div>
+    
   </footer> -->
 
     <footer
@@ -518,17 +560,7 @@
 
       // For reset button
       resetButton.addEventListener("click", () => {
-        search = "";
-        searchInput.value = "";
-        // Reset dropdowns
-        dropdown.forEach((select) => {
-          select.selectedIndex = 0;
-        });
-        // Show all cards
-        allCards.forEach((card) => {
-          card.classList.remove("hidden");
-        });
-        setTimeout(adjustFooter, 100);
+        location.reload();
       });
 
       // For search on enter key
