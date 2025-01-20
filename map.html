@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LAAJVERD</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/lg.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    />
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+
+    <!-- input cards -->
+    <link href="assets/css/location.css" rel="stylesheet" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <!-- Custom Map CSS -->
+    <link rel="stylesheet" href="assets/css/map.css" />
+
+    <!-- Add Google Maps API -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+      async
+      defer
+    ></script>
+
+    <style>
+      /* Add this style block in the <head> section or in your CSS file */
+      .description-paragraph {
+        text-transform: none; /* Ensure text is not transformed to uppercase */
+        font-family: "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
+      }
+    </style>
+  </head>
+
+  <body class="index-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center fixed-top scrolled"
+    >
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <img src="assets/img/lg.png" alt="" />
+          <h1>C ommunity Conservation Lab</h1></a
+        >
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./map.html">Location</a></li>
+            <li><a href="./archive1.html">Archive</a></li>
+            <li><a href="./glossary.html">Glossary</a></li>
+            <li><a href="./ccl.html">CCL</a></li>
+
+            <!-- <li><a href="./contact.html">Contact</a></li> -->
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="map-section">
+        <!-- Add a div for the Google Map -->
+        <div
+          id="map"
+          style="
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+          "
+        ></div>
+
+        <!-- Existing image overlay -->
+        <img
+          src="assets/img/location-image.jpg"
+          alt="Mountain Map"
+          class="base-map"
+          style="
+            margin-top: 25px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+          "
+        />
+
+        <!-- Controls with existing functionality -->
+        <!-- <div class="map-controls">
+            <div class="control-buttons-vertical">
+                <button id="marker-btn" class="control-btn">
+                    <i class="bi bi-geo-alt"></i> Add Marker
+                </button>
+                <button id="line-btn" class="control-btn">
+                    <i class="bi bi-slash-lg"></i> Draw Line
+                </button>
+                <button id="polygon-btn" class="control-btn">
+                    <i class="bi bi-pentagon"></i> Draw Area
+                </button>
+                <button id="measure-btn" class="control-btn">
+                    <i class="bi bi-rulers"></i> Measure
+                </button>
+                <button id="clear-btn" class="control-btn">
+                    <i class="bi bi-trash"></i> Clear All
+                </button>
+            </div>
+        </div> -->
+
+        <!-- Markers container for functionality -->
+        <div class="markers-container"></div>
+
+        <div class="popup-content" style="display: none">
+          <h2>Khotan</h2>
+          <p>
+            Due to mudslides triggered by prolonged monsoons in 2022, the
+            typically arid Brew Village faced significant adversity, resulting
+            in the destruction of numerous houses and displacement of families.
+            In response to this crisis, our team visited the affected area to
+            assess the damage and develop an environmentally sustainable
+            rehabilitation strategy by designing a structure using local
+            materials and techniques. The aforementioned project demonstrated
+            cost-efficiency by utilizing locally sourced materials.
+          </p>
+          <div class="coordinates">
+            <p>X-axis: 70, Y-axis: 40</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- location create card -->
+    <form
+      class="login-form section"
+      action="javascript:void(0);"
+      id="add-location"
+    >
+      <h1>Create a Route</h1>
+      <div class="form-input-material">
+        <input
+          id="name"
+          name="name"
+          placeholder="Name"
+          autocomplete="off"
+          class="form-control-material"
+          required
+        />
+        <label for="username">Name</label>
+      </div>
+      <div class="form-input-material">
+        <input
+          name="latitude"
+          id="latitude"
+          placeholder="latitude"
+          autocomplete="off"
+          class="form-control-material"
+          required
+        />
+        <label for="username">latitude</label>
+      </div>
+      <div class="form-input-material">
+        <input
+          name="longitude"
+          id="longitude"
+          placeholder="longitude"
+          autocomplete="off"
+          class="form-control-material"
+          required
+        />
+        <label for="username">longitude</label>
+      </div>
+      <div class="form-input-material">
+        <input
+          name="description"
+          id="description"
+          placeholder="description"
+          autocomplete="off"
+          class="form-control-material"
+          required
+        />
+        <label for="username">description</label>
+      </div>
+
+      <button type="submit" class="submit btn btn-primary btn-ghost">
+        Add
+      </button>
+    </form>
+
+    <!-- footer area -->
+    <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd; position: fixed;bottom: 0%;">
+    <div class="container">
+      <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span>
+   
+        </div>
+    </div>
+  </footer> -->
+
+    <footer
+      id="footer"
+      class="footer"
+      style="
+        position: fixed;
+        bottom: 0px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        "
+      >
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+    <button id="addRouteButton" class="add-route-button"><</button>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="assets/js/map.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        query,
+        onSnapshot,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
+        authDomain: "laajverd-42a3f.firebaseapp.com",
+        projectId: "laajverd-42a3f",
+        storageBucket: "laajverd-42a3f.appspot.com",
+        messagingSenderId: "654657065769",
+        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
+        measurementId: "G-ZS0JV6362J",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // Function to create a point (blue dots)
+      function createPoint(x, y, placeName, distance, description) {
+        const point = document.createElement("div");
+        point.style.position = "absolute";
+        point.style.zIndex = "9999";
+        point.style.width = "15px";
+        point.style.height = "15px";
+        point.style.background = "blue";
+        point.style.borderRadius = "50%";
+        point.style.top = `${y - 20}px`; // Adjust position to center the marker
+        point.style.left = `${x - 10}px`; // Adjust position to center the marker
+        point.style.zIndex = 1;
+
+        // Create a tooltip
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("libHeading");
+        tooltip.style.width = "260px";
+        tooltip.style.position = "fixed";
+        tooltip.style.top = `${y}px`;
+        tooltip.style.left = `${x}px`;
+        tooltip.style.transform = "translate(-50%, -50%)";
+        tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        tooltip.style.color = "black";
+        tooltip.style.padding = "20px";
+        tooltip.style.borderRadius = "60px";
+        tooltip.style.visibility = "hidden";
+        tooltip.style.zIndex = "100000";
+        tooltip.style.display = "flex"; // Flexbox for two columns
+        tooltip.style.flexDirection = "row";
+        tooltip.style.gap = "10px"; // Spacing between columns
+
+        // Left column: Only description
+        const leftDiv = document.createElement("div");
+        leftDiv.style.flex = "1"; // Take equal width
+        leftDiv.style.borderRight = "1px solid #ccc"; // Add a separator
+        leftDiv.style.paddingRight = "10px";
+
+        const descriptionParagraph = document.createElement("p");
+        descriptionParagraph.classList.add("description-paragraph");
+        descriptionParagraph.textContent =
+          description.charAt(0).toUpperCase() +
+          description.slice(1).toLowerCase();
+
+        leftDiv.appendChild(descriptionParagraph);
+
+        // Right column: All other items
+        const rightDiv = document.createElement("div");
+        rightDiv.style.flex = "1"; // Take equal width
+
+        const placeParagraph = document.createElement("p");
+        placeParagraph.textContent = placeName; // Display the place name
+
+        const distanceParagraph = document.createElement("p");
+        distanceParagraph.textContent = `Distance: ${distance} km`; // Display the distance
+
+        const image = document.createElement("img");
+        image.src =
+          "https://th.bing.com/th/id/OIP.p6pwi0dF-HMBFOWXYmg1xAHaE8?rs=1&pid=ImgDetMain";
+        image.style.width = "100%";
+
+        const header = document.createElement("h1");
+        header.textContent = "Details"; // Title for area details
+        header.style.color = "black";
+
+        rightDiv.appendChild(placeParagraph);
+        rightDiv.appendChild(distanceParagraph);
+        rightDiv.appendChild(image);
+        rightDiv.appendChild(header);
+
+        // Append left and right columns to the tooltip
+        tooltip.appendChild(leftDiv);
+        tooltip.appendChild(rightDiv);
+
+        // Create a label for the place name
+        const nameLabel = document.createElement("div");
+        nameLabel.textContent =
+          placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
+        nameLabel.style.position = "absolute";
+        nameLabel.style.color = "white";
+        nameLabel.style.fontFamily = "'Roboto', sans-serif";
+        nameLabel.style.top = `${y - 30}px`; // Position directly above the point
+        nameLabel.style.left = `${x}px`; // Align horizontally with the point
+        nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
+
+        document.body.appendChild(point);
+        document.body.appendChild(nameLabel); // Append the name label to the body
+        document.body.appendChild(tooltip);
+
+        point.addEventListener("mouseenter", () => {
+          tooltip.style.visibility = "visible"; // Show tooltip
+        });
+
+        point.addEventListener("mouseleave", () => {
+          tooltip.style.visibility = "hidden"; // Hide tooltip
+        });
+
+        // Optional: Add click functionality if needed
+        point.addEventListener("click", () => {
+          // Implement any click functionality if required
+        });
+
+        // x and y coordinates for lines
+        const horizontalLine = document.createElement("div");
+        horizontalLine.classList.add("horizontal-line");
+        document.body.appendChild(horizontalLine);
+
+        const verticalLine = document.createElement("div");
+        verticalLine.classList.add("vertical-line");
+        document.body.appendChild(verticalLine);
+
+        point.addEventListener("mouseover", () => {
+          horizontalLine.style.display = "block";
+          verticalLine.style.display = "block";
+        });
+
+        point.addEventListener("mousemove", (e) => {
+          horizontalLine.style.top = `${e.clientY}px`;
+          verticalLine.style.left = `${e.clientX}px`;
+        });
+
+        point.addEventListener("mouseleave", () => {
+          horizontalLine.style.display = "none";
+          verticalLine.style.display = "none";
+        });
+      }
+
+      const points = [];
+
+      function createRoute(routeData, i) {
+        const {
+          longitude: x,
+          latitude: y,
+          placeName,
+          description,
+        } = routeData[i];
+
+        // Create the route point
+        const point = document.createElement("div");
+        point.style.position = "absolute";
+        point.style.zIndex = "99";
+        point.style.width = "15px";
+        point.style.height = "6px";
+        point.style.borderRadius = "10px";
+        point.style.borderBottom = "15px solid white";
+        point.style.top = `${y}%`;
+        point.style.left = `${x}%`;
+        point.style.color = `black`;
+
+        // Create the title above the route point
+        const title = document.createElement("h2");
+        title.textContent =
+          placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
+        title.style.position = "absolute";
+        title.style.color = "black";
+        title.style.top = `${y - 5}%`; // Position the title above the point
+        title.style.left = `${x}%`;
+        title.style.transform = "translateX(-50%)"; // Center the title horizontally
+
+        // Create a label for the place name
+        const nameLabel = document.createElement("div");
+        nameLabel.textContent =
+          placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
+        nameLabel.style.position = "absolute";
+        nameLabel.style.color = "white";
+        nameLabel.style.fontFamily = "'Roboto', sans-serif";
+        nameLabel.style.top = `${y - 5}%`; // Position directly above the point
+        nameLabel.style.left = `${x - 2}%`; // Align horizontally with the point
+        nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
+
+        // Append the title and point to the document
+        document.body.appendChild(title);
+        document.body.appendChild(point);
+        document.body.appendChild(nameLabel); // Append the name label to the body
+
+        const tooltip = document.createElement("div");
+        tooltip.classList.add("libHeading");
+        tooltip.style.width = "80vw";
+        tooltip.style.height = "80vh";
+        tooltip.style.position = "fixed";
+        tooltip.style.top = "50%";
+        tooltip.style.left = "50%";
+        tooltip.style.transform = "translate(-50%, -50%)";
+        tooltip.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+        tooltip.style.color = "black";
+        tooltip.style.padding = "20px";
+        tooltip.style.borderRadius = "10px";
+        tooltip.style.visibility = "hidden";
+        tooltip.style.zIndex = "2147483647";
+        tooltip.style.display = "flex";
+        tooltip.style.gap = "10px";
+
+        // Left column: Only description
+        const leftDiv = document.createElement("div");
+        leftDiv.classList.add("lft");
+        leftDiv.style.flex = "2";
+        leftDiv.style.borderRight = "1px solid #ccc";
+        leftDiv.style.paddingRight = "10px";
+        leftDiv.style.display = "flex";
+
+        const descriptionParagraph = document.createElement("p");
+        descriptionParagraph.classList.add("description-paragraph");
+        descriptionParagraph.style.width = "65%";
+        descriptionParagraph.style.height = "75%";
+        descriptionParagraph.style.overflow = "scroll";
+        descriptionParagraph.style.margin = "auto auto";
+        descriptionParagraph.style.padding = "15px";
+        descriptionParagraph.style.border = "1px solid black";
+        descriptionParagraph.textContent =
+          description.charAt(0).toUpperCase() +
+          description.slice(1).toLowerCase();
+
+        const leftArrow = document.createElement("h2");
+        leftArrow.textContent = "<";
+        leftArrow.style.margin = "auto auto";
+        leftArrow.style.cursor = "pointer";
+
+        const rightArrow = document.createElement("h2");
+        rightArrow.textContent = ">";
+        rightArrow.style.margin = "auto auto";
+        rightArrow.style.cursor = "pointer";
+
+        leftArrow.addEventListener("click", () => {
+          if (i > 0) {
+            i--;
+            updateContent();
+          }
+        });
+
+        rightArrow.addEventListener("click", () => {
+          if (i < routeData.length - 1) {
+            i++;
+            updateContent();
+          }
+        });
+
+        function updateContent() {
+          const {
+            description: newDescription,
+            placeName: newPlaceName,
+            longitude: newX,
+            latitude: newY,
+          } = routeData[i];
+          descriptionParagraph.textContent =
+            newDescription.charAt(0).toUpperCase() +
+            newDescription.slice(1).toLowerCase();
+          placeParagraph.textContent = `x-axis: ${newX}, y-axis: ${newY}`;
+          header.textContent = newPlaceName;
+        }
+
+        leftDiv.appendChild(leftArrow);
+        leftDiv.appendChild(descriptionParagraph);
+        leftDiv.appendChild(rightArrow);
+
+        const rightDiv = document.createElement("div");
+        rightDiv.classList.add("rght");
+        rightDiv.style.flex = "1";
+
+        const headingDiv = document.createElement("div");
+        headingDiv.classList.add("heading");
+
+        const placeParagraph = document.createElement("p");
+        placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
+
+        const header = document.createElement("h1");
+        header.textContent = placeName;
+        header.style.color = "black";
+
+        headingDiv.appendChild(placeParagraph);
+        headingDiv.appendChild(header);
+        rightDiv.appendChild(headingDiv);
+
+        // Append left and right columns to the tooltip
+        tooltip.appendChild(leftDiv);
+        tooltip.appendChild(rightDiv);
+
+        document.body.appendChild(point);
+        document.body.appendChild(tooltip);
+
+        point.addEventListener("click", () => {
+          tooltip.style.visibility =
+            tooltip.style.visibility === "hidden" ? "visible" : "hidden";
+        });
+
+        // Add event listener to close the tooltip when clicking outside
+        document.addEventListener("click", (event) => {
+          if (
+            !tooltip.contains(event.target) &&
+            !point.contains(event.target)
+          ) {
+            tooltip.style.visibility = "hidden";
+          }
+        });
+
+        // Store the point's position
+        points.push({ x, y });
+
+        if (points.length > 1) {
+          const prevPoint = points[points.length - 2];
+          drawLine(prevPoint.x, prevPoint.y, x, y);
+        }
+      }
+
+      function createRouteCover(routeData) {
+        for (var i = 0; i < routeData.length; i++) {
+          const { longitude, latitude, placeName, description } = routeData[i];
+          console.log(routeData[i]);
+          createRoute(routeData, i);
+        }
+      }
+
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function drawLine(x1, y1, x2, y2) {
+        const svg = document.querySelector("svg") || createSvgElement();
+        const line = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "path"
+        );
+
+        const controlX1 = x1 + (x2 - x1) / 3;
+        const controlY1 = y1 - getRandomInt(100, 500);
+        const controlX2 = x1 + ((x2 - x1) * 2) / 3 + getRandomInt(100, 500);
+        const controlY2 = y2 + getRandomInt(100, 500);
+
+        const pathData = `M ${x1} ${y1} C ${controlX1} ${controlY1}, ${controlX2} ${controlY2}, ${x2} ${y2}`;
+
+        line.setAttribute("d", pathData);
+        line.setAttribute("stroke", "");
+        line.setAttribute("stroke-width", "2");
+        line.setAttribute("fill", "transparent");
+
+        svg.appendChild(line);
+      }
+
+      function createSvgElement() {
+        const svg = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "svg"
+        );
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.style.position = "absolute";
+        svg.style.top = "0";
+        svg.style.left = "0";
+        svg.style.zIndex = "2";
+        document.body.appendChild(svg);
+        return svg;
+      }
+
+      function fetchData() {
+        const mapQuery = query(collection(db, "map"));
+        onSnapshot(mapQuery, (querySnapshot) => {
+          querySnapshot.docs.forEach((doc) => {
+            const pointData = doc.data();
+            createPoint(
+              pointData.longitude,
+              pointData.latitude,
+              "blue",
+              pointData.description
+            );
+          });
+        });
+
+        const routeQuery = query(collection(db, "routes"));
+        onSnapshot(routeQuery, (querySnapshot) => {
+          const data = [];
+          querySnapshot.docs.forEach((doc) => {
+            const routeData = doc.data();
+            data.push(routeData);
+            // createRoute(
+            //   routeData.longitude,
+            //   routeData.latitude,
+            //   routeData.placeName,
+            //   routeData.description,
+            // );
+          });
+          createRouteCover(data);
+        });
+      }
+
+      // Handle form submission to add a new route
+      const form = document.getElementById("add-location");
+      const nameInput = document.getElementById("name");
+      const latitudeInput = document.getElementById("latitude");
+      const longitudeInput = document.getElementById("longitude");
+      const descriptionInput = document.getElementById("description");
+
+      form.addEventListener("submit", async (e) => {
+        e.stopPropagation(); // This might prevent events from bubbling up
+
+        e.preventDefault();
+        try {
+          await addDoc(collection(db, "routes"), {
+            placeName: nameInput.value,
+            latitude: parseFloat(latitudeInput.value),
+            longitude: parseFloat(longitudeInput.value),
+            description: descriptionInput.value,
+          });
+        } catch (err) {
+          console.error("Error adding document: ", err);
+        }
+        form.reset();
+      });
+
+      fetchData();
+    </script>
+
+    <script>
+      // Get all alphabet buttons and service items
+      const alphabetButtons = document.querySelectorAll(".alphabet");
+      const serviceItems = document.querySelectorAll(".isotope-container");
+
+      alphabetButtons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          e.stopPropagation(); // This might prevent events from bubbling up
+
+          // Remove 'active' class from all buttons and add to the clicked one
+          alphabetButtons.forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+
+          const filter = this.getAttribute("data-filter");
+        });
+      });
+    </script>
+
+    <script>
+      var display = false;
+      const Form = document.querySelector(".login-form");
+      const addRoute = document.querySelector(".add-route-button");
+
+      // Initial setup: position the form off-screen to the right
+      Form.style.position = "fixed";
+      Form.style.zIndex = "999";
+
+      // Handle button click
+      addRoute.addEventListener("click", (e) => {
+        console.log("clicked");
+        display = !display; // Toggle form visibility
+
+        // Toggle the form's position based on the display flag
+        if (display) {
+          addRoute.textContent = ">";
+          Form.style.right = "0%"; // Show the form by sliding it in
+        } else {
+          addRoute.textContent = "<";
+          Form.style.right = "-100%"; // Hide the form by sliding it out
+        }
+      });
+    </script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/filter.js"></script>
+  </body>
+</html>

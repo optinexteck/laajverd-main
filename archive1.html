@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LAAJVERD</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/lg.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/archive.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: Selecao
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    <style>
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <style>
+      .pagination-cover{
+        text-align: center;
+        width: 100%;
+        margin: 20px auto;
+      }
+      .pagination {
+        display: inline-block;
+        text-align: center;
+        background-color: #f6f6f6;
+  padding: 10px;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        background-color: #f6f6f6;
+      }
+
+      .pagination a.active {
+        background-color: #8F9197;
+        color: #f6f6f6;
+        border-radius: 5px;
+      }
+
+      .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="index.html" class="logo d-flex align-items-center">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <img src="assets/img/lg.png" alt="" />
+          <h1>C ommunity Conservation Lab</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./map.html">Location</a></li>
+            <li><a href="./archive1.html">Archive</a></li>
+            <li><a href="./glossary.html">Glossary</a></li>
+            <li><a href="./ccl.html">CCL</a></li>
+
+            <!-- <li><a href="./service-details.html">Archive</a></li> -->
+            <!-- <li><a href="./contact.html">Contact</a></li> -->
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="main" style="height: auto; padding-top: 0">
+      <!-- Hero Section -->
+      <!-- <section id="hero" class="hero section dark-background">
+
+            <div id="hero-carousel" data-bs-interval="5000"
+                class="container carousel carousel-fade small-height-carousel" data-bs-ride="carousel">
+
+                
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Archive</h2>
+                    </div>
+                </div>
+
+            </div>
+
+            <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                viewBox="0 24 150 28 " preserveAspectRatio="none">
+                <defs>
+                    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+                    </path>
+                </defs>
+                <g class="wave1">
+                    <use xlink:href="#wave-path" x="50" y="3"></use>
+                </g>
+                <g class="wave2">
+                    <use xlink:href="#wave-path" x="50" y="0"></use>
+                </g>
+                <g class="wave3">
+                    <use xlink:href="#wave-path" x="50" y="9"></use>
+                </g>
+            </svg>
+
+        </section> -->
+      <!-- /Hero Section -->
+
+      <!-- Services Section -->
+      <div class="container archive-container">
+        <div
+          class="pg-1 d-flex justify-content-center align-items-center"
+          style="padding-top: 0px"
+        >
+          <div class="collection">
+            <div class="filterCover">
+              <div class="filters d-flex align-items-center gap-2">
+                <!-- <select class="form-select form-select-sm">
+                                <option value="" hidden selected>Access Level</option>
+                                <option value="online">Online</option>
+                                <option value="onsite">On Site</option>
+                            </select> -->
+                <select class="form-select form-select-sm">
+                  <option value="Location" hidden selected>Location</option>
+                  <option value="Neelum">Neelum</option>
+                  <option value="Kharmang">Kharmang</option>
+                  <option value="Yasin">Yasin</option>
+                  <option value="Skardu">Skardu</option>
+                  <option value="Kalash">Kalash</option>
+                  <option value="Laspur">Laspur</option>
+                  <option value="Yarkhun">Yarkhun</option>
+                  <option value="Chitral">Chitral</option>
+                  <option value="Ganche">Ganche</option>
+                  <option value="Kaghan">Kaghan</option>
+                  <option value="Khotan">Khotan</option>
+                  <option value="Khorog">Khorog</option>
+                  <option value="Murghab">Murghab</option>
+                  <option value="Kashgar">Kashgar</option>
+                  <option value="Osh">Osh</option>
+                  <option value="MazarSharif">Mazar Sharif</option>
+                  <option value="Bukhara">Bukhara</option>
+                  <option value="Khiva">Khiva</option>
+                  <option value="GBAO">GBAO</option>
+                </select>
+                <select class="form-select form-select-sm">
+                  <option value="Asset" hidden selected>Asset</option>
+                  <option value="Object">Object</option>
+                  <option value="Building">Building</option>
+                  <option value="Practice">Practice</option>
+                  <option value="technique">technique</option>
+                  <option value="Story">Story</option>
+                  <option value="pattern">pattern</option>
+                  <option value="place">place</option>
+                </select>
+                <select class="form-select form-select-sm">
+                  <option value="Material" hidden selected>Material</option>
+                  <option value="Mud">Mud</option>
+                  <option value="Wood">Wood</option>
+                  <option value="Fibre">Fibre</option>
+                  <option value="Stone">Stone</option>
+                </select>
+                <button id="search" class="archiveBtn" style="padding: 6px">
+                  Search
+                </button>
+                <button id="reset" class="archiveBtn" style="padding: 6px">
+                  Reset
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin-bottom: 100px">
+          <!-- Card 1 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Himalayan Region</h4>
+              <p><strong>Location:</strong>Neelum</p>
+              <p><strong>Assets:</strong>Object</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Vernacular Prototype</h4>
+              <p><strong>Location:</strong>Kharmang</p>
+              <p><strong>Assets:</strong>Building</p>
+              <p><strong>Material:</strong>Wood</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Earthing Narratives</h4>
+              <p><strong>Location:</strong>Yasin</p>
+              <p><strong>Assets:</strong>Practice</p>
+              <p><strong>Material:</strong>Fibre</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Mountain Materials</h4>
+              <p><strong>Location:</strong>Skardu</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Stone</p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Kalash Tales</h4>
+              <p><strong>Location:</strong>Kalash</p>
+              <p><strong>Assets:</strong>Plant</p>
+              <p><strong>Material:</strong>Wood</p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Laspur Chronicles</h4>
+              <p><strong>Location:</strong>Laspur</p>
+              <p><strong>Assets:</strong>Object</p>
+              <p><strong>Material:</strong>Fibre</p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Yarkhun Stories</h4>
+              <p><strong>Location:</strong>Yarkhun</p>
+              <p><strong>Assets:</strong>Practice</p>
+              <p><strong>Material:</strong>Stone</p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Chitral Crafts</h4>
+              <p><strong>Location:</strong>Chitral</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Chitral Crafts</h4>
+              <p><strong>Location:</strong>Kalash</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Chitral Crafts</h4>
+              <p><strong>Location:</strong>Kaghan</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+
+          <!-- Card 11 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Chitral Crafts</h4>
+              <p><strong>Location:</strong>Khotan</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+
+          <!-- Card 12 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="archive-card">
+              <a href="archive-map.html" class="icon-link">
+                <i class="bi bi-plus icon open-offcanvas"></i>
+              </a>
+              <h4 class="post-title">Chitral Crafts</h4>
+              <p><strong>Location:</strong>Khorog</p>
+              <p><strong>Assets:</strong>Story</p>
+              <p><strong>Material:</strong>Mud</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Services Section -->
+    </main>
+    <div class="pagination-cover">
+    <div class="pagination">
+      <a href="#">&laquo;</a>
+      <a href="#" class="active">1</a>
+      <a href="#">2</a>
+      <a href="#">3</a>
+      <a href="#">4</a>
+      <a href="#">5</a>
+      <a href="#">6</a>
+      <a href="#">&raquo;</a>
+    </div>
+  </div>
+    <!-- footer area -->
+
+    <!-- <footer id="footer" class="footer " style="background-color: #cdcdcd;">
+    <div class="container">
+      <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span> -->
+    <!-- <h3 class="sitename">LAAJVERD</h3>
+      <p>
+        CCL believes that collaboration is essential for achieving large-scale
+        conservation impact.
+      </p>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div> -->
+    <!-- <div class="copyright">
+          <span>Copyright</span>
+          <strong class="px-1 sitename">LAAJVERD</strong>
+          <span>All Rights Reserved</span>
+        </div>
+        <div class="credits"> -->
+    <!-- </div>
+    </div>
+    
+  </footer> -->
+
+    <footer
+      id="footer"
+      class="footer"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        "
+      >
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      // Get all alphabet buttons and service items
+      const alphabetButtons = document.querySelectorAll(".alphabet");
+      const serviceItems = document.querySelectorAll(".isotope-container");
+
+      alphabetButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          // Remove 'active' class from all buttons and add to the clicked one
+          alphabetButtons.forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+
+          const filter = this.getAttribute("data-filter");
+
+          // serviceItems.forEach(item => {
+          //     // Show all if filter is '*', otherwise show only matching classes
+          //     if (filter === '*' || item.classList.contains(filter.substring(1))) {
+          //         item.style.display = 'block';
+          //     } else {
+          //         item.style.display = 'none';
+          //     }
+          // });
+        });
+      });
+    </script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/filter.js"></script>
+    <script src="assets/js/archive.js"></script>
+    <script>
+      // searching code
+
+      var search;
+      const dropdown = document.querySelectorAll(".form-select");
+      const allCards = document.querySelectorAll(".archive-card");
+      const mainElement = document.getElementById("main");
+      const footer = document.getElementById("footer");
+      const searchButton = document.getElementById("search");
+      const resetButton = document.getElementById("reset");
+      const searchInput = document.getElementById("search-input");
+
+      function adjustFooter() {
+        const mainHeight = mainElement.offsetHeight;
+        console.log("Current main height:", mainHeight);
+
+        if (mainHeight < 900) {
+          footer.style.position = "fixed";
+          footer.style.bottom = "0";
+          footer.style.width = "100%";
+        } else {
+          footer.style.position = "relative";
+          footer.style.width = "100%";
+        }
+      }
+
+      // For dropdowns
+      dropdown.forEach((list, index) => {
+        list.addEventListener("change", (e) => {
+          search = e.target.value.toLowerCase();
+          allCards.forEach((card) => {
+            const data = card.textContent.toLowerCase();
+            if (!data.includes(search) && search !== "") {
+              card.classList.add("hidden");
+            } else {
+              card.classList.remove("hidden");
+            }
+          });
+          setTimeout(adjustFooter, 100);
+        });
+      });
+
+      // For search button
+      searchButton.addEventListener("click", () => {
+        search = searchInput.value.toLowerCase();
+        allCards.forEach((card) => {
+          const data = card.textContent.toLowerCase();
+          if (!data.includes(search) && search !== "") {
+            card.classList.add("hidden");
+          } else {
+            card.classList.remove("hidden");
+          }
+        });
+        setTimeout(adjustFooter, 100);
+      });
+
+      // For reset button
+      resetButton.addEventListener("click", () => {
+        location.reload();
+      });
+
+      // For search on enter key
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          search = searchInput.value.toLowerCase();
+          allCards.forEach((card) => {
+            const data = card.textContent.toLowerCase();
+            if (!data.includes(search) && search !== "") {
+              card.classList.add("hidden");
+            } else {
+              card.classList.remove("hidden");
+            }
+          });
+          setTimeout(adjustFooter, 100);
+        }
+      });
+
+      // Initial footer adjustment
+      adjustFooter();
+
+      // Keep your existing article click functionality
+      const sideTitle = document.getElementById("side-title");
+      document.querySelectorAll(".archive-card").forEach((article) => {
+        article.addEventListener("click", function (event) {
+          event.preventDefault();
+          const title =
+            article.querySelector(".post-title")?.textContent ||
+            "Title not found";
+          const category =
+            article.querySelector(".post-category")?.textContent ||
+            "Category not found";
+          const author =
+            article.querySelector(".post-author")?.textContent ||
+            "Author not found";
+          const date =
+            article.querySelector(".post-date")?.textContent ||
+            "Date not found";
+          const postImg =
+            article.querySelector(".post-img img")?.src ||
+            "Post image not found";
+          const authorImg =
+            article.querySelector(".authorImg")?.src ||
+            "Author image not found";
+
+          const queryParams = {
+            title,
+            category,
+            author,
+            date,
+            postImg,
+            authorImg,
+          };
+          if (sideTitle) {
+            sideTitle.innerText = queryParams.title;
+          }
+          console.log(queryParams);
+        });
+      });
+    </script>
+  </body>
+</html>
