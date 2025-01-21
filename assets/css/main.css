@@ -89,7 +89,8 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   /* Ensure the body and html take full height */
@@ -103,11 +104,14 @@ body, html {
 
 .map-section {
   /* Ensure the map section takes full height minus header and footer */
-  height: calc(100vh - 60px); /* Adjust 60px based on your header/footer height */
+  height: calc(
+    100vh - 60px
+  ); /* Adjust 60px based on your header/footer height */
   position: relative;
 }
 
-.header, .footer {
+.header,
+.footer {
   margin: 0;
   padding: 0;
   /* Ensure they are positioned correctly */
