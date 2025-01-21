@@ -89,6 +89,32 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+body, html {
+  margin: 0;
+  padding: 0;
+  /* Ensure the body and html take full height */
+  height: 100%;
+}
+
+.no-margin-padding {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.map-section {
+  /* Ensure the map section takes full height minus header and footer */
+  height: calc(100vh - 60px); /* Adjust 60px based on your header/footer height */
+  position: relative;
+}
+
+.header, .footer {
+  margin: 0;
+  padding: 0;
+  /* Ensure they are positioned correctly */
+  width: 100%;
+  z-index: 1000;
+}
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -175,15 +201,38 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: transparent;
-  background-color: var(--background-color);
-  padding: 8px 0;
-  transition: all 0.3s ease;
-  z-index: 997;
   position: fixed;
-  width: 100%;
   top: 0;
-  height: 60px; /* Reduced height */
+  width: 100%;
+  transition: top 0.3s, visibility 0s 0.3s, opacity 0.3s;
+  z-index: 1000; /* Ensure the header is above other content */
+  height: 60px; /* Adjust based on your design */
+  visibility: visible;
+  opacity: 1;
+}
+
+.header.hidden {
+  top: -100px; /* Adjust this value based on your header's height */
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+.header:hover,
+.top-hover-area:hover + .header {
+  background-color: #cdcdcd;
+  top: 0;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.top-hover-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh; /* Covers the top 20% of the viewport */
+  z-index: 999; /* Just below the header */
+  pointer-events: auto;
 }
 
 /* Container adjustments for reduced height */
@@ -196,8 +245,6 @@ h6 {
   margin: 0 auto;
   height: 100%;
 }
-
-
 
 .header .logo img {
   max-height: 32px; /* Adjusted to match homepage */
@@ -3649,6 +3696,16 @@ section,
 
 /* Form active state */
 .login-form.active {
+  right: 0;
+}
+
+/* Hero section specific styles */
+.hero.nav.section.section2 {
+  background-color: #254365;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   right: 0;
 }
 

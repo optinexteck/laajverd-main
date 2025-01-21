@@ -176,6 +176,7 @@
   </head>
 
   <body class="index-page">
+    <div class="top-hover-area"></div>
     <header id="header" class="header d-flex align-items-center fixed-top">
       <div
         class="container-fluid d-flex align-items-center justify-content-between"
@@ -676,47 +677,50 @@
     <script src="https://www.gstatic.com/firebasejs/10.13.2/firebase-storage.js"></script>
 
     <script>
-      window.addEventListener("scroll", function () {
+      document.addEventListener("DOMContentLoaded", function () {
         const header = document.querySelector(".header");
-        const heroSection = document.querySelector("#hero");
+        const sections = document.querySelectorAll(".nav");
+        const bullets = document.querySelectorAll(".bullet");
+        let currentSection = 0;
 
-        if (heroSection) {
-          const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        function scrollToSection(index) {
+          sections[index].scrollIntoView({ behavior: "smooth" });
+          bullets.forEach((bullet) => bullet.classList.remove("active"));
+          bullets[index].classList.add("active");
+          currentSection = index;
 
-          if (window.pageYOffset > 0) {
-            document.body.classList.add("scrolled");
+          // Hide header when not in the first section
+          if (index > 0) {
+            header.classList.add("hidden");
           } else {
-            document.body.classList.remove("scrolled");
+            header.classList.remove("hidden");
           }
         }
-      });
-    </script>
 
-    <script>
-      const sections = document.querySelectorAll(".nav");
-      const bullets = document.querySelectorAll(".bullet");
-      let currentSection = 0;
+        // Handle bullet click
+        bullets.forEach((bullet, index) => {
+          bullet.addEventListener("click", () => scrollToSection(index));
+        });
 
-      function scrollToSection(index) {
-        sections[index].scrollIntoView({ behavior: "smooth" });
-        console.log(sections[index]);
-        bullets.forEach((bullet) => bullet.classList.remove("active"));
-        bullets[index].classList.add("active");
-        currentSection = index;
-      }
+        // Handle mouse wheel scrolling
+        document.addEventListener("wheel", (event) => {
+          if (event.deltaY > 0 && currentSection < sections.length - 1) {
+            scrollToSection(currentSection + 1);
+          } else if (event.deltaY < 0 && currentSection > 0) {
+            scrollToSection(currentSection - 1);
+          }
+        });
 
-      // Handle bullet click
-      bullets.forEach((bullet, index) => {
-        bullet.addEventListener("click", () => scrollToSection(index));
-      });
+        // Show header on hover
+        header.addEventListener("mouseenter", function () {
+          header.classList.remove("hidden");
+        });
 
-      // Handle mouse wheel scrolling
-      document.addEventListener("wheel", (event) => {
-        if (event.deltaY > 0 && currentSection < sections.length - 1) {
-          scrollToSection(currentSection + 1);
-        } else if (event.deltaY < 0 && currentSection > 0) {
-          scrollToSection(currentSection - 1);
-        }
+        header.addEventListener("mouseleave", function () {
+          if (currentSection > 0) {
+            header.classList.add("hidden");
+          }
+        });
       });
     </script>
 

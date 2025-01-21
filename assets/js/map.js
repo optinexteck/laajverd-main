@@ -343,4 +343,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call this function when you want to show the popup
   showPopup();
+
+  const header = document.querySelector("header");
+  let lastScrollTop = 0;
+
+  window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+      // Scrolling down
+      header.classList.add("hidden");
+    } else {
+      // Scrolling up
+      header.classList.remove("hidden");
+    }
+
+    lastScrollTop = scrollTop;
+  });
 });

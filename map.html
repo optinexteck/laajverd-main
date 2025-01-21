@@ -132,7 +132,7 @@
         <img
           src="assets/img/location-image.jpg"
           alt="Mountain Map"
-          class="base-map"
+          class="base-map no-margin-padding"
           style="
             margin-top: 25px;
             position: absolute;
@@ -167,19 +167,10 @@
         <div class="markers-container"></div>
 
         <div class="popup-content" style="display: none">
-          <h2>Khotan</h2>
-          <p>
-            Due to mudslides triggered by prolonged monsoons in 2022, the
-            typically arid Brew Village faced significant adversity, resulting
-            in the destruction of numerous houses and displacement of families.
-            In response to this crisis, our team visited the affected area to
-            assess the damage and develop an environmentally sustainable
-            rehabilitation strategy by designing a structure using local
-            materials and techniques. The aforementioned project demonstrated
-            cost-efficiency by utilizing locally sourced materials.
-          </p>
+          <h2></h2>
+          <p></p>
           <div class="coordinates">
-            <p>X-axis: 70, Y-axis: 40</p>
+            <p></p>
           </div>
         </div>
       </section>
@@ -515,7 +506,7 @@
 
         const tooltip = document.createElement("div");
         tooltip.classList.add("libHeading");
-        tooltip.style.width = "80vw";
+        tooltip.style.width = "70vw";
         tooltip.style.height = "80vh";
         tooltip.style.position = "fixed";
         tooltip.style.top = "50%";
@@ -533,7 +524,7 @@
         // Left column: Only description
         const leftDiv = document.createElement("div");
         leftDiv.classList.add("lft");
-        leftDiv.style.flex = "2";
+        leftDiv.style.flex = "3";
         leftDiv.style.borderRight = "1px solid #ccc";
         leftDiv.style.paddingRight = "10px";
         leftDiv.style.display = "flex";
