@@ -402,6 +402,7 @@ body {
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
+  height: 80vh;
   margin: 0 auto;
   gap: 30px;
   padding: 20px;
@@ -453,7 +454,25 @@ body {
     max-width: 100%;
   }
 }
+@media (min-width: 2500px) {
+  .info-container {
+    max-width: 1800px;
+  }
 
+  .info-column {
+    max-width: 500px;
+  }
+}
+
+@media (min-width: 3000px) {
+  .info-container {
+    max-width: 2400px;
+  }
+
+  .info-column {
+    max-width: 600px;
+  }
+}
 .card-container {
   display: flex;
   gap: 40px;
