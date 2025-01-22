@@ -410,7 +410,7 @@
         nameLabel.style.position = "absolute";
         nameLabel.style.color = "white";
         nameLabel.style.fontFamily = "'Roboto', sans-serif";
-        nameLabel.style.top = `${y - 30}px`; // Position directly above the point
+        nameLabel.style.top = `${y }px`; // Position directly above the point
         nameLabel.style.left = `${x}px`; // Align horizontally with the point
         nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
 
@@ -484,10 +484,9 @@
           placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
         title.style.position = "absolute";
         title.style.color = "black";
-        title.style.top = `${y - 5}%`; // Position the title above the point
+        title.style.top = `${y }%`;
         title.style.left = `${x}%`;
-        title.style.transform = "translateX(-50%)"; // Center the title horizontally
-
+        title.style.transform = "translateX(-50%)"; 
         // Create a label for the place name
         const nameLabel = document.createElement("div");
         nameLabel.textContent =
@@ -495,8 +494,8 @@
         nameLabel.style.position = "absolute";
         nameLabel.style.color = "white";
         nameLabel.style.fontFamily = "'Roboto', sans-serif";
-        nameLabel.style.top = `${y - 5}%`; // Position directly above the point
-        nameLabel.style.left = `${x - 2}%`; // Align horizontally with the point
+        nameLabel.style.top = `${y - 4}%`; // Position directly above the point
+        nameLabel.style.left = `${x -1.5}%`; // Align horizontally with the point
         nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
 
         // Append the title and point to the document
