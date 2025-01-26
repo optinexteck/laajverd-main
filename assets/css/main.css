@@ -3721,3 +3721,14 @@ section,
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 600px) {
+  .header .logo h1,
+  .header .logo h2 {
+    font-size: 19px; 
+    line-height: 1.2; 
+  }
+
+  .header .navmenu a {
+    font-size: 12px; /* Adjust font size for navigation links */
+  }
+}

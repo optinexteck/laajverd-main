@@ -69,8 +69,7 @@
       }
 
       .section {
-        height: 100vh;
-        /* Full viewport height */
+        min-height: 100vh;
         width: 100%;
         display: flex;
         justify-content: center;
@@ -179,12 +178,72 @@
       }
     </style>
     <style>
-      /* Apply the font to the specific headings */
-      .content-container h3, .our h3 {
+      .our {
+        display: flex;
+        width: 100%;
+      }
+
+      .column {
+        flex: 1;
+      }
+
+      .our-title {
+        margin-left: 11%;
+      }
+
+      .content-container h3,
+      .our h3 {
         font-family: "Montserrat", sans-serif;
-        font-size: 0.8em; /* Reduced size */
-        text-transform: capitalize; /* Capitalize first letter of each word */
-        color: black; /* Change the text color to black */
+        font-size: 0.8em;
+        text-transform: capitalize;
+        color: black;
+      }
+
+      @media (max-width: 600px) {
+        .our {
+          display: flex;
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .column {
+          flex: none;
+          margin-left: 0;
+          font-weight: 400;
+          text-align: center;
+        }
+
+        .our-title {
+          margin-left: 0;
+        }
+      }
+    </style>
+    <style>
+      @media (max-width: 768px) {
+        .login-form {
+          width: 100%;
+          height: auto;
+          right: -100%;
+        }
+
+        .logo h2 {
+          font-size: 1.2rem;
+          line-height: 1.4;
+        }
+
+        .content-container p {
+          text-align: center;
+        }
+
+        .section {
+          height: auto;
+          padding: 20px;
+        }
+
+        .column {
+          text-align: center;
+        }
       }
     </style>
   </head>
@@ -222,7 +281,7 @@
         class="hero nav section dark-background section0"
         style="
           background-size: cover;
-          height: 100vh;
+          min-height: 100vh;
           background-position: center;
         "
       >
@@ -288,11 +347,12 @@
       <section id="ccl" class="hero nav section section2">
         <div class="info-container">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
-          <div class="our" style="display: flex;width: 100%;">
-            <h3 style="flex: 1;"></h3>
-            <h3 style="flex: 1;"></h3>
-            <h3 style="flex: 1;margin-left: 11%;">Our</h3>
+          <div class="our">
+            <h3 class="column"></h3>
+            <h3 class="column"></h3>
+            <h3 class="column our-title">Our</h3>
           </div>
+
           <div class="content-container">
             <div class="column">
               <h3>What is an</h3>
@@ -776,7 +836,7 @@
         function closeForm() {
           form.classList.remove("active");
           button.classList.remove("active");
-          form.style.right = "-500px";
+          form.style.right = "-100%";
         }
 
         // Button click handler
@@ -788,7 +848,7 @@
           if (form.classList.contains("active")) {
             form.style.right = "0";
           } else {
-            form.style.right = "-500px";
+            form.style.right = "-100%";
           }
         });
 
@@ -852,6 +912,23 @@
               .querySelector(".navmenu")
               .classList.toggle("mobile-nav-active");
           });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function adjustTextForMobile() {
+          const paragraph = document.querySelector(".animate__animated.animate__fadeInUp");
+          if (window.innerWidth < 600) {
+            paragraph.innerHTML = paragraph.innerHTML.replace(/<br\s*\/?>/gi, " ");
+          }
+        }
+
+        // Initial check
+        adjustTextForMobile();
+
+        // Adjust on window resize
+        window.addEventListener("resize", adjustTextForMobile);
       });
     </script>
   </body>

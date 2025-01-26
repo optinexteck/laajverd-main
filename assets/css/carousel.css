@@ -541,19 +541,19 @@ body {
 @media (min-width: 2500px) {
   .content-container {
     max-width: 2000px;
-    gap: 60px; 
+    gap: 60px;
   }
 
   .column {
-    max-width: 700px; 
+    max-width: 700px;
   }
 
-  .column h3{
-    font-size: 45px; 
+  .column h3 {
+    font-size: 45px;
   }
   .column p {
-    font-size: 30px; 
-    max-width: 500px; 
+    font-size: 30px;
+    max-width: 500px;
   }
 }
 
@@ -567,12 +567,12 @@ body {
     max-width: 800px; /* Wider columns for larger screens */
   }
 
-  .column h3{
-    font-size: 55px; 
+  .column h3 {
+    font-size: 55px;
   }
   .column p {
-    font-size: 38px; 
-    max-width: 600px; 
+    font-size: 38px;
+    max-width: 600px;
   }
 }
 
@@ -814,4 +814,18 @@ body {
 .carousel-control-prev-icon:hover,
 .carousel-control-next-icon:hover {
   background-color: rgba(255, 255, 255, 0.8); /* Change background on hover */
+}
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  padding: 20px 0;
+}
+@media (max-width: 600px) {
+  .carousel-container {
+    position: relative;
+    overflow: hidden;
+    left: 80px;
+    padding: 20px 0;
+  }
+
 }
