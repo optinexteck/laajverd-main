@@ -923,9 +923,14 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
-          const paragraph = document.querySelector(".animate__animated.animate__fadeInUp");
+          const paragraph = document.querySelector(
+            ".animate__animated.animate__fadeInUp"
+          );
           if (window.innerWidth < 600) {
-            paragraph.innerHTML = paragraph.innerHTML.replace(/<br\s*\/?>/gi, " ");
+            paragraph.innerHTML = paragraph.innerHTML.replace(
+              /<br\s*\/?>/gi,
+              " "
+            );
           }
         }
 
