@@ -815,11 +815,6 @@ body {
 .carousel-control-next-icon:hover {
   background-color: rgba(255, 255, 255, 0.8); /* Change background on hover */
 }
-.carousel-container {
-  position: relative;
-  overflow: hidden;
-  padding: 20px 0;
-}
 @media (max-width: 600px) {
   .carousel-container {
     position: relative;
