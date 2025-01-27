@@ -128,6 +128,45 @@
       .bullet.active {
         background-color: #000;
       }
+
+      /* Mobile Nav Toggle */
+      .mobile-nav-toggle {
+        display: block;
+        cursor: pointer;
+        font-size: 24px;
+        color: #333;
+      }
+
+      .navmenu {
+        display: none;
+      }
+
+      .navmenu.mobile-nav-active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #fff;
+        width: 100%;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navmenu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .navmenu ul li {
+        padding: 10px;
+        text-align: center;
+      }
+
+      .navmenu ul li a {
+        color: #333;
+        text-decoration: none;
+        display: block;
+      }
     </style>
     <style>
       .login-form {
@@ -182,11 +221,7 @@
         transition: opacity 0.3s ease;
       }
     </style>
-    <style>
-      .mobile-nav-toggle {
-        visibility: hidden;
-      }
-    </style>
+
     <style>
       .our {
         display: flex;
@@ -198,7 +233,7 @@
       }
 
       .our-title {
-        margin-left: 11%;
+        margin-left: 9.7%;
       }
 
       .content-container h3,
@@ -211,7 +246,7 @@
 
       @media (max-width: 600px) {
         .our {
-          display: flex;
+          display: none;
           width: 100%;
           flex-direction: column;
           align-items: center;
@@ -226,6 +261,7 @@
 
         .our-title {
           margin-left: 0;
+          display: none;
         }
       }
     </style>
@@ -279,8 +315,8 @@
             <li><a href="./glossary.html">Glossary</a></li>
             <li><a href="./ccl.html">CCL</a></li>
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </div>
     </header>
 
@@ -405,6 +441,7 @@
             </div>
 
             <div class="column">
+              <h3 class="mobile-our">Our</h3>
               <h3>Conservation</h3>
               <h3>Practice?</h3>
               <p>
@@ -928,9 +965,14 @@
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
-          const paragraph = document.querySelector(".animate__animated.animate__fadeInUp");
+          const paragraph = document.querySelector(
+            ".animate__animated.animate__fadeInUp"
+          );
           if (window.innerWidth < 600) {
-            paragraph.innerHTML = paragraph.innerHTML.replace(/<br\s*\/?>/gi, " ");
+            paragraph.innerHTML = paragraph.innerHTML.replace(
+              /<br\s*\/?>/gi,
+              " "
+            );
           }
         }
 

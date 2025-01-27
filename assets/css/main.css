@@ -270,7 +270,9 @@ h6 {
 
 /* Navigation menu - adjusted for reduced header height */
 .header .navmenu {
-  margin-left: auto;
+  margin-left: auto; /* This will push the navmenu to the right */
+  display: flex;
+  align-items: center;
 }
 
 .header .navmenu ul {
@@ -3724,11 +3726,23 @@ section,
 @media (max-width: 600px) {
   .header .logo h1,
   .header .logo h2 {
-    font-size: 19px; 
-    line-height: 1.2; 
+    font-size: 19px;
+    line-height: 1.2;
   }
 
   .header .navmenu a {
     font-size: 12px; /* Adjust font size for navigation links */
+  }
+}
+
+/* Hide the "Our" heading by default */
+.mobile-our {
+  display: none;
+}
+
+/* Show the "Our" heading only on screens smaller than 600px */
+@media (max-width: 600px) {
+  .mobile-our {
+    display: block;
   }
 }

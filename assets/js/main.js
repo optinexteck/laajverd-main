@@ -33,6 +33,7 @@
     mobileNavToggleBtn.classList.toggle("bi-list");
     mobileNavToggleBtn.classList.toggle("bi-x");
   }
+
   mobileNavToggleBtn.addEventListener("click", mobileNavToogle);
 
   /**
@@ -150,7 +151,7 @@
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim(),
+        swiperElement.querySelector(".swiper-config").innerHTML.trim()
       );
 
       if (swiperElement.classList.contains("swiper-tab")) {
@@ -209,7 +210,7 @@
   document.addEventListener("scroll", navmenuScrollspy);
 
   // Smooth scrolling functionality
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll(".nav");
     const bullets = document.querySelectorAll(".bullet");
     let currentSection = 0;
@@ -221,23 +222,23 @@
     function scrollToSection(index) {
       if (isScrolling) return;
       if (index < 0 || index >= sections.length) return;
-      
+
       const now = Date.now();
       if (now - lastScrollTime < scrollDelay) return;
-      
+
       isScrolling = true;
       lastScrollTime = now;
 
       // Update bullets before scrolling
       bullets.forEach((bullet) => bullet.classList.remove("active"));
       bullets[index].classList.add("active");
-      
+
       // Smooth scroll to section
-      sections[index].scrollIntoView({ 
+      sections[index].scrollIntoView({
         behavior: "smooth",
-        block: "start"
+        block: "start",
       });
-      
+
       currentSection = index;
 
       // Reset scroll flag after animation
@@ -253,65 +254,85 @@
 
     // Wheel event with enhanced throttling
     let wheelEvents = [];
-    document.addEventListener("wheel", (event) => {
-      event.preventDefault();
+    document.addEventListener(
+      "wheel",
+      (event) => {
+        event.preventDefault();
 
-      const now = Date.now();
-      wheelEvents = wheelEvents.filter(time => now - time < scrollDelay);
-      
-      if (wheelEvents.length > 0) return;
-      wheelEvents.push(now);
+        const now = Date.now();
+        wheelEvents = wheelEvents.filter((time) => now - time < scrollDelay);
 
-      if (event.deltaY > 0 && currentSection < sections.length - 1) {
-        scrollToSection(currentSection + 1);
-      } else if (event.deltaY < 0 && currentSection > 0) {
-        scrollToSection(currentSection - 1);
-      }
-    }, { passive: false });
+        if (wheelEvents.length > 0) return;
+        wheelEvents.push(now);
+
+        if (event.deltaY > 0 && currentSection < sections.length - 1) {
+          scrollToSection(currentSection + 1);
+        } else if (event.deltaY < 0 && currentSection > 0) {
+          scrollToSection(currentSection - 1);
+        }
+      },
+      { passive: false }
+    );
 
     // Touch events with enhanced control
     let touchStartY = 0;
     let touchEndY = 0;
     const minSwipeDistance = 75; // Increased minimum swipe distance
 
-    document.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
+    document.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartY = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
 
-    document.addEventListener('touchmove', (e) => {
-      if (isScrolling) return;
-      touchEndY = e.touches[0].clientY;
-    }, { passive: true });
+    document.addEventListener(
+      "touchmove",
+      (e) => {
+        if (isScrolling) return;
+        touchEndY = e.touches[0].clientY;
+      },
+      { passive: true }
+    );
 
-    document.addEventListener('touchend', () => {
-      if (isScrolling) return;
-      
-      const now = Date.now();
-      if (now - lastScrollTime < scrollDelay) return;
-      
-      const diff = touchStartY - touchEndY;
-      if (Math.abs(diff) > minSwipeDistance) {
-        if (diff > 0 && currentSection < sections.length - 1) {
-          scrollToSection(currentSection + 1);
-        } else if (diff < 0 && currentSection > 0) {
-          scrollToSection(currentSection - 1);
+    document.addEventListener(
+      "touchend",
+      () => {
+        if (isScrolling) return;
+
+        const now = Date.now();
+        if (now - lastScrollTime < scrollDelay) return;
+
+        const diff = touchStartY - touchEndY;
+        if (Math.abs(diff) > minSwipeDistance) {
+          if (diff > 0 && currentSection < sections.length - 1) {
+            scrollToSection(currentSection + 1);
+          } else if (diff < 0 && currentSection > 0) {
+            scrollToSection(currentSection - 1);
+          }
         }
-      }
-    }, { passive: true });
+      },
+      { passive: true }
+    );
 
     // Keyboard navigation with delay
     document.addEventListener("keydown", (event) => {
       if (isScrolling) return;
-      
+
       const now = Date.now();
       if (now - lastScrollTime < scrollDelay) return;
 
-      if ((event.key === "ArrowDown" || event.key === "PageDown") && 
-          currentSection < sections.length - 1) {
+      if (
+        (event.key === "ArrowDown" || event.key === "PageDown") &&
+        currentSection < sections.length - 1
+      ) {
         event.preventDefault();
         scrollToSection(currentSection + 1);
-      } else if ((event.key === "ArrowUp" || event.key === "PageUp") && 
-                 currentSection > 0) {
+      } else if (
+        (event.key === "ArrowUp" || event.key === "PageUp") &&
+        currentSection > 0
+      ) {
         event.preventDefault();
         scrollToSection(currentSection - 1);
       }
