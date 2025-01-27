@@ -57,7 +57,91 @@
       }
     </style>
     <style>
-      .pagination-cover{
+   /* Sidebar styles */
+   .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: white; /* Set sidebar background to white */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none; /* Hide by default */
+      }
+
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* Style for the open button */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        color: black; /* Text color */
+        padding: 10px 15px;
+        border: none;
+        background: none; /* Make button transparent */
+        display: none; /* Hide by default */
+      }
+
+      /* Media query for mobile screens */
+      @media screen and (max-width: 768px) {
+        .openbtn {
+          display: block; /* Show open button on mobile */
+        }
+        .sidebar {
+          display: block; /* Show sidebar on mobile */
+        }
+        .navmenu {
+          display: none; /* Hide navmenu on mobile */
+        }
+      }
+
+      /* Ensure header is visible on all screens */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @media screen and (max-width:600px){
+        .logo h1{
+          font-size: 20px !important;
+        }
+      }
+      /* Show navmenu on larger screens */
+      @media screen and (min-width: 769px) {
+
+        .navmenu {
+          display: flex; /* Show navmenu on larger screens */
+        }
+        .openbtn {
+          display: none; /* Hide open button on larger screens */
+        }
+      }
+    </style>
+    <style>
+      .pagination-cover {
         text-align: center;
         width: 100%;
         margin: 20px auto;
@@ -66,7 +150,7 @@
         display: inline-block;
         text-align: center;
         background-color: #f6f6f6;
-  padding: 10px;
+        padding: 10px;
       }
 
       .pagination a {
@@ -78,7 +162,7 @@
       }
 
       .pagination a.active {
-        background-color: #8F9197;
+        background-color: #8f9197;
         color: #f6f6f6;
         border-radius: 5px;
       }
@@ -113,11 +197,31 @@
             <!-- <li><a href="./service-details.html">Archive</a></li> -->
             <!-- <li><a href="./contact.html">Contact</a></li> -->
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list" style="display: none;"></i>
         </nav>
+        <button class="openbtn" onclick="openNav()">☰</button>
+
       </div>
     </header>
+  <!-- Sidebar navigation -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="./index.html">Home</a>
+    <a href="./map.html">Location</a>
+    <a href="./archive1.html">Archive</a>
+    <a href="./glossary.html">Glossary</a>
+    <a href="./ccl.html">CCL</a>
+  </div>
 
+  <script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
+    }
+
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
+  </script>
     <main id="main" class="main" style="height: auto; padding-top: 0">
       <!-- Hero Section -->
       <!-- <section id="hero" class="hero section dark-background">
@@ -379,17 +483,17 @@
       <!-- /Services Section -->
     </main>
     <div class="pagination-cover">
-    <div class="pagination">
-      <a href="#">&laquo;</a>
-      <a href="#" class="active">1</a>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#">4</a>
-      <a href="#">5</a>
-      <a href="#">6</a>
-      <a href="#">&raquo;</a>
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
     </div>
-  </div>
     <!-- footer area -->
 
     <!-- <footer id="footer" class="footer " style="background-color: #cdcdcd;">
@@ -505,6 +609,54 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/filter.js"></script>
     <script src="assets/js/archive.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector(".header");
+        const logo = document.querySelector(".logo");
+        const heading = document.querySelector(".logo h2");
+        let lastScrollTop = 0;
+
+        window.addEventListener("scroll", function () {
+          let scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.classList.add("invisible");
+            logo.classList.add("invisible");
+            heading.classList.add("invisible");
+          } else {
+            // Scrolling up
+            header.classList.remove("invisible");
+            logo.classList.remove("invisible");
+            heading.classList.remove("invisible");
+          }
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+
+        header.addEventListener("mouseenter", function () {
+          header.classList.remove("invisible");
+          logo.classList.remove("invisible");
+          heading.classList.remove("invisible");
+        });
+
+        header.addEventListener("mouseleave", function () {
+          if (window.pageYOffset > 0) {
+            header.classList.add("invisible");
+            logo.classList.add("invisible");
+            heading.classList.add("invisible");
+          }
+        });
+
+        // Mobile menu toggle
+        document
+          .querySelector(".mobile-nav-toggle")
+          .addEventListener("click", function () {
+            document
+              .querySelector(".navmenu")
+              .classList.toggle("mobile-nav-active");
+          });
+      });
+    </script>
     <script>
       // searching code
 

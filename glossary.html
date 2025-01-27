@@ -35,37 +35,137 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+          /* Sidebar styles */
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: white; /* Set sidebar background to white */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none; /* Hide by default */
+      }
+
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* Style for the open button */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        color: black; /* Text color */
+        padding: 10px 15px;
+        border: none;
+        background: none; /* Make button transparent */
+        display: none; /* Hide by default */
+      }
+
+      /* Media query for mobile screens */
+      @media screen and (max-width: 768px) {
+        .openbtn {
+          display: block; /* Show open button on mobile */
+        }
+        .sidebar {
+          display: block; /* Show sidebar on mobile */
+        }
+        .navmenu {
+          display: none; /* Hide navmenu on mobile */
+        }
+      }
+
+      /* Ensure header is visible on all screens */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* Show navmenu on larger screens */
+      @media screen and (min-width: 769px) {
+        .navmenu {
+          display: flex; /* Show navmenu on larger screens */
+        }
+        .openbtn {
+          display: none; /* Hide open button on larger screens */
+        }
+      }
+    </style>
 </head>
 
 <body class="index-page">
 
-    <header id="header" class="header d-flex align-items-center fixed-top">
-        <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <header
+    id="header"
+    class="header d-flex align-items-center fixed-top scrolled"
+  >
+    <div
+      class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+    >
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.png" alt=""> -->
+        <img src="assets/img/lg.png" alt="" />
+        <h1>C ommunity Conservation Lab</h1></a
+      >
 
-            <a href="index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="assets/img/logo.png" alt=""> -->
-                <img src="assets/img/lg.png" alt="">      
-                <h1>C ommunity Conservation Lab</h1>                  </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./map.html">Location</a></li>
+          <li><a href="./archive1.html">Archive</a></li>
+          <li><a href="./glossary.html">Glossary</a></li>
+          <li><a href="./ccl.html">CCL</a></li>
 
-            <nav id="navmenu" class="navmenu">
-                <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./map.html">Location</a></li>
-                    <li><a href="./archive1.html">Archive</a></li>
-                    <li><a href="./glossary.html">Glossary</a></li>
-                    <li><a href="./ccl.html">CCL</a></li>
+          <!-- <li><a href="./contact.html">Contact</a></li> -->
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
 
-                    
-                    
-                    <!-- <li><a href="./contact.html">Contact</a></li> -->
-                </ul>
-                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-            </nav>
-
-        </div>
-    </header>
-
+      <!-- Add a button to open the sidebar -->
+      <button class="openbtn" onclick="openNav()">☰</button>
+    </div>
+  </header>
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <a href="./index.html">Home</a>
+        <a href="./map.html">Location</a>
+        <a href="./archive1.html">Archive</a>
+        <a href="./glossary.html">Glossary</a>
+        <a href="./ccl.html">CCL</a>
+      </div>
+  
+      <script>
+        function openNav() {
+          document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
+        }
+  
+        function closeNav() {
+          document.getElementById("mySidebar").style.width = "0";
+        }
+      </script>
     <main class="main" style="height: auto;">
 
         <!-- Hero Section -->

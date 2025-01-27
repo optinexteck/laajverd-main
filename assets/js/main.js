@@ -33,7 +33,6 @@
     mobileNavToggleBtn.classList.toggle("bi-list");
     mobileNavToggleBtn.classList.toggle("bi-x");
   }
-
   mobileNavToggleBtn.addEventListener("click", mobileNavToogle);
 
   /**

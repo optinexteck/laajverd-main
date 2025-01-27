@@ -80,6 +80,87 @@
         text-transform: none; /* Ensure text is not transformed to uppercase */
         font-family: "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
       }
+
+      /* Sidebar styles */
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: white; /* Set sidebar background to white */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none; /* Hide by default */
+      }
+
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* Style for the open button */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        color: black; /* Text color */
+        padding: 10px 15px;
+        border: none;
+        background: none; /* Make button transparent */
+        display: none; /* Hide by default */
+      }
+
+      /* Media query for mobile screens */
+      @media screen and (max-width: 768px) {
+        .openbtn {
+          display: block; /* Show open button on mobile */
+        }
+        .sidebar {
+          display: block; /* Show sidebar on mobile */
+        }
+        .navmenu {
+          display: none; /* Hide navmenu on mobile */
+        }
+      }
+
+      /* Ensure header is visible on all screens */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @media screen and (max-width:600px){
+        .logo h1{
+          font-size: 20px !important;
+        }
+      }
+      /* Show navmenu on larger screens */
+      @media screen and (min-width: 769px) {
+        .navmenu {
+          display: flex; /* Show navmenu on larger screens */
+        }
+        .openbtn {
+          display: none; /* Hide open button on larger screens */
+        }
+      }
     </style>
   </head>
 
@@ -110,8 +191,31 @@
           </ul>
           <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
+
+        <!-- Add a button to open the sidebar -->
+        <button class="openbtn" onclick="openNav()">☰</button>
       </div>
     </header>
+
+    <!-- Sidebar navigation -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="./index.html">Home</a>
+      <a href="./map.html">Location</a>
+      <a href="./archive1.html">Archive</a>
+      <a href="./glossary.html">Glossary</a>
+      <a href="./ccl.html">CCL</a>
+    </div>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
 
     <main class="main">
       <section class="map-section">
@@ -410,7 +514,7 @@
         nameLabel.style.position = "absolute";
         nameLabel.style.color = "white";
         nameLabel.style.fontFamily = "'Roboto', sans-serif";
-        nameLabel.style.top = `${y }px`; // Position directly above the point
+        nameLabel.style.top = `${y}px`; // Position directly above the point
         nameLabel.style.left = `${x}px`; // Align horizontally with the point
         nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
 
@@ -484,9 +588,9 @@
           placeName.charAt(0).toUpperCase() + placeName.slice(1).toLowerCase();
         title.style.position = "absolute";
         title.style.color = "black";
-        title.style.top = `${y }%`;
+        title.style.top = `${y}%`;
         title.style.left = `${x}%`;
-        title.style.transform = "translateX(-50%)"; 
+        title.style.transform = "translateX(-50%)";
         // Create a label for the place name
         const nameLabel = document.createElement("div");
         nameLabel.textContent =
@@ -495,7 +599,7 @@
         nameLabel.style.color = "white";
         nameLabel.style.fontFamily = "'Roboto', sans-serif";
         nameLabel.style.top = `${y - 3.5}%`; // Position directly above the point
-        nameLabel.style.left = `${x -1.2}%`; // Align horizontally with the point
+        nameLabel.style.left = `${x - 1.2}%`; // Align horizontally with the point
         nameLabel.style.zIndex = "1000"; // Ensure it appears above other elements
 
         // Append the title and point to the document
