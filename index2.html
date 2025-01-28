@@ -58,87 +58,6 @@
     <link href="assets/css/carousel.css" rel="stylesheet" />
 
     <style>
-      .sidebar {
-        height: 100%;
-        width: 0;
-        position: fixed;
-        z-index: 1000;
-        top: 0;
-        left: 0;
-        background-color: white; /* Set sidebar background to white */
-        overflow-x: hidden;
-        transition: 0.5s;
-        padding-top: 60px;
-        display: none; /* Hide by default */
-      }
-
-      .sidebar a {
-        padding: 10px 15px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-        transition: 0.3s;
-      }
-
-      .sidebar a:hover {
-        color: #f1f1f1;
-      }
-
-      .sidebar .closebtn {
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-        margin-left: 50px;
-      }
-
-      /* Style for the open button */
-      .openbtn {
-        font-size: 20px;
-        cursor: pointer;
-        color: black; /* Text color */
-        padding: 10px 15px;
-        border: none;
-        background: none; /* Make button transparent */
-        display: none; /* Hide by default */
-      }
-
-      /* Media query for mobile screens */
-      @media screen and (max-width: 768px) {
-        .openbtn {
-          display: block; /* Show open button on mobile */
-        }
-        .sidebar {
-          display: block; /* Show sidebar on mobile */
-        }
-        .navmenu {
-          display: none; /* Hide navmenu on mobile */
-        }
-      }
-
-      /* Ensure header is visible on all screens */
-      .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      @media screen and (max-width: 600px) {
-        .logo h1 {
-          font-size: 20px !important;
-        }
-      }
-      /* Show navmenu on larger screens */
-      @media screen and (min-width: 769px) {
-        .navmenu {
-          display: flex; /* Show navmenu on larger screens */
-        }
-        .openbtn {
-          display: none; /* Hide open button on larger screens */
-        }
-      }
-    </style>
-    <style>
       /* General Styles */
       body,
       html {
@@ -326,7 +245,7 @@
       }
 
       @media (max-width: 600px) {
-        .content-container {
+        .content-container{
           max-width: 300px;
         }
         .our {
@@ -381,7 +300,7 @@
         #ccl .column {
           text-align: start;
         }
-        #ccl .column p {
+        #ccl .column p{
           text-align: start;
         }
       }
@@ -390,57 +309,29 @@
 
   <body class="index-page">
     <div class="top-hover-area"></div>
-    <header
-      id="header"
-      class="header d-flex align-items-center fixed-top scrolled"
-    >
+    <header id="header" class="header d-flex align-items-center fixed-top">
       <div
-        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+        class="container-fluid d-flex align-items-center justify-content-between"
       >
+        <!-- Logo and Title -->
         <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <img src="assets/img/lg.png" alt="" />
-          <h1>C ommunity Conservation Lab</h1></a
-        >
+          <img src="assets/img/lg.png" alt="Logo" />
+          <h2>Community Conservation Lab</h2>
+        </a>
 
+        <!-- Navigation Menu -->
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="./index.html">Home</a></li>
+            <li><a href="#hero">Home</a></li>
             <li><a href="./map.html">Location</a></li>
             <li><a href="./archive1.html">Archive</a></li>
             <li><a href="./glossary.html">Glossary</a></li>
             <li><a href="./ccl.html">CCL</a></li>
-
-            <!-- <li><a href="./contact.html">Contact</a></li> -->
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-
-        <!-- Add a button to open the sidebar -->
-        <button class="openbtn" onclick="openNav()">☰</button>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </div>
     </header>
-
-    <!-- Sidebar navigation -->
-    <div id="mySidebar" class="sidebar">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-      <a href="./index.html">Home</a>
-      <a href="./map.html">Location</a>
-      <a href="./archive1.html">Archive</a>
-      <a href="./glossary.html">Glossary</a>
-      <a href="./ccl.html">CCL</a>
-    </div>
-
-    <script>
-      function openNav() {
-        document.getElementById("mySidebar").style.width = "100%"; 
-      }
-
-      function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-      }
-    </script>
 
     <main class="main">
       <!-- Hero Section -->
@@ -849,7 +740,7 @@
           <a href=""><i class="bi bi-linkedin"></i></a>
         </div>
       </footer>
-      <div class="navigation" style="z-index: 99">
+      <div class="navigation" style="z-index: 9999">
         <span data-target="section1" class="bullet active"></span>
         <span data-target="section2" class="bullet"></span>
         <span data-target="section3" class="bullet"></span>
