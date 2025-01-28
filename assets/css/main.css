@@ -220,18 +220,7 @@ h6 {
   visibility: hidden !important;
   opacity: 0 !important;
 }
-.header.invisible,
-      .logo.invisible,
-      .logo h2.invisible {
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
 
-      .header,
-      .logo,
-      .logo h2 {
-        transition: opacity 0.3s ease;
-      }
 .header:hover,
 .top-hover-area:hover + .header {
   background-color: #cdcdcd;
@@ -239,43 +228,7 @@ h6 {
   visibility: visible !important;
   opacity: 1 !important;
 }
-.mobile-nav-toggle {
-  display: block;
-  cursor: pointer;
-  font-size: 24px;
-  color: #333;
-}
 
-.navmenu {
-  display: none;
-}
-
-.navmenu.mobile-nav-active {
-  display: block;
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background-color: #fff;
-  width: 100%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.navmenu ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.navmenu ul li {
-  padding: 10px;
-  text-align: center;
-}
-
-.navmenu ul li a {
-  color: #333;
-  text-decoration: none;
-  display: block;
-}
 .top-hover-area {
   position: fixed;
   top: 0;
@@ -389,6 +342,14 @@ h6 {
 
   .header .navmenu.mobile-nav-active {
     right: 0;
+  }
+}
+
+@media (min-width: 992px) {
+  .header .navmenu {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
@@ -3777,5 +3738,24 @@ section,
 
   .header .navmenu a {
     font-size: 12px; /* Adjust font size for navigation links */
+     /* color: black;  */
   }
+}
+
+/* Hide the "Our" heading by default */
+.mobile-our {
+  display: none;
+}
+
+/* Show the "Our" heading only on screens smaller than 600px */
+@media (max-width: 600px) {
+  .mobile-our {
+    display: block;
+  }
+}
+
+.navmenu ul li a {
+  color: #333 !important;
+  text-decoration: none !important;
+  display: block !important;
 }
