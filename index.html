@@ -1105,5 +1105,21 @@
         window.addEventListener("resize", adjustTextForMobile);
       });
     </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hero1 = document.getElementById("hero1");
+        const focusArea = document.createElement("div");
+        focusArea.classList.add("focus-area");
+        hero1.appendChild(focusArea);
+
+        hero1.addEventListener("mousemove", function (e) {
+          const rect = hero1.getBoundingClientRect();
+          const x = e.clientX - rect.left - focusArea.offsetWidth ;
+          const y = e.clientY - rect.top - focusArea.offsetHeight ;
+          focusArea.style.transform = `translate(${x-550}px, ${y-180}px)`;
+        });
+      });
+    </script>
   </body>
 </html>
