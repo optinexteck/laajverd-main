@@ -57,8 +57,8 @@
       }
     </style>
     <style>
-   /* Sidebar styles */
-   .sidebar {
+      /* Sidebar styles */
+      .sidebar {
         height: 100%;
         width: 0;
         position: fixed;
@@ -124,14 +124,13 @@
         align-items: center;
       }
 
-      @media screen and (max-width:600px){
-        .logo h1{
+      @media screen and (max-width: 600px) {
+        .logo h1 {
           font-size: 20px !important;
         }
       }
       /* Show navmenu on larger screens */
       @media screen and (min-width: 769px) {
-
         .navmenu {
           display: flex; /* Show navmenu on larger screens */
         }
@@ -183,7 +182,7 @@
           <!-- Uncomment the line below if you also wish to use an image logo -->
           <!-- <img src="assets/img/logo.png" alt=""> -->
           <img src="assets/img/lg.png" alt="" />
-          <h1>C ommunity Conservation Lab</h1>
+          <h1>ommunity Conservation Lab</h1>
         </a>
 
         <nav id="navmenu" class="navmenu">
@@ -197,31 +196,33 @@
             <!-- <li><a href="./service-details.html">Archive</a></li> -->
             <!-- <li><a href="./contact.html">Contact</a></li> -->
           </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list" style="display: none;"></i>
+          <i
+            class="mobile-nav-toggle d-xl-none bi bi-list"
+            style="display: none"
+          ></i>
         </nav>
         <button class="openbtn" onclick="openNav()">☰</button>
-
       </div>
     </header>
-  <!-- Sidebar navigation -->
-  <div id="mySidebar" class="sidebar">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-    <a href="./index.html">Home</a>
-    <a href="./map.html">Location</a>
-    <a href="./archive1.html">Archive</a>
-    <a href="./glossary.html">Glossary</a>
-    <a href="./ccl.html">CCL</a>
-  </div>
+    <!-- Sidebar navigation -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="./index.html">Home</a>
+      <a href="./map.html">Location</a>
+      <a href="./archive1.html">Archive</a>
+      <a href="./glossary.html">Glossary</a>
+      <a href="./ccl.html">CCL</a>
+    </div>
 
-  <script>
-    function openNav() {
-      document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
-    }
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
+      }
 
-    function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
-    }
-  </script>
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
     <main id="main" class="main" style="height: auto; padding-top: 0">
       <!-- Hero Section -->
       <!-- <section id="hero" class="hero section dark-background">
@@ -272,7 +273,10 @@
                                 <option value="online">Online</option>
                                 <option value="onsite">On Site</option>
                             </select> -->
-                <select class="form-select form-select-sm" style="border:1px solid #d7d1d1">
+                <select
+                  class="form-select form-select-sm"
+                  style="border: 1px solid #d7d1d1"
+                >
                   <option value="Location" hidden selected>Location</option>
                   <option value="Neelum">Neelum</option>
                   <option value="Kharmang">Kharmang</option>
@@ -295,7 +299,10 @@
                   <option value="Khiva">Khiva</option>
                   <option value="GBAO">GBAO</option>
                 </select>
-                <select class="form-select form-select-sm" style="border:1px solid #d7d1d1">
+                <select
+                  class="form-select form-select-sm"
+                  style="border: 1px solid #d7d1d1"
+                >
                   <option value="Asset" hidden selected>Asset</option>
                   <option value="Object">Object</option>
                   <option value="Building">Building</option>
@@ -305,19 +312,28 @@
                   <option value="pattern">pattern</option>
                   <option value="place">place</option>
                 </select>
-                <select class="form-select form-select-sm" style="border:1px solid #d7d1d1">
+                <select
+                  class="form-select form-select-sm"
+                  style="border: 1px solid #d7d1d1"
+                >
                   <option value="Material" hidden selected>Material</option>
                   <option value="Mud">Mud</option>
                   <option value="Wood">Wood</option>
                   <option value="Fibre">Fibre</option>
                   <option value="Stone">Stone</option>
-
                 </select>
-                <button id="search" class="archiveBtn" style="padding: 6px; border:1px solid #d7d1d1">
+                <button
+                  id="search"
+                  class="archiveBtn"
+                  style="padding: 6px; border: 1px solid #d7d1d1"
+                >
                   Search
                 </button>
-                <button id="reset" class="archiveBtn" style="padding: 6px; border:1px solid #d7d1d1">
-
+                <button
+                  id="reset"
+                  class="archiveBtn"
+                  style="padding: 6px; border: 1px solid #d7d1d1"
+                >
                   Reset
                 </button>
               </div>
@@ -325,7 +341,7 @@
           </div>
         </div>
 
-        <div class="row" style="margin: 100px">
+        <div class="row" style="margin: 0px 100px 100px 100px">
           <!-- Card 1 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
@@ -527,40 +543,37 @@
     
   </footer> -->
 
-  <footer
-  id="footer"
-  class="footer nav"
-  style="
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background-color: #cdcdcd;
-    padding: 10px;
-  "
->
-  <div
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 30px;
-    "
-  >
-    <span>Copyright</span>
-    <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
-    <span>All Rights Reserved</span>
-  </div>
-  <div
-    class="social-links"
-    style="display: flex; gap: 10px; height: 30px"
-  >
-    <a href=""><i class="bi bi-twitter-x"></i></a>
-    <a href=""><i class="bi bi-facebook"></i></a>
-    <a href=""><i class="bi bi-instagram"></i></a>
-    <a href=""><i class="bi bi-skype"></i></a>
-    <a href=""><i class="bi bi-linkedin"></i></a>
-  </div>
-</footer>
+    <footer
+      id="footer"
+      class="footer nav"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        "
+      >
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
 
     <!-- Scroll Top -->
     <a
