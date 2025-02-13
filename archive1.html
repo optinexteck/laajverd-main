@@ -345,7 +345,7 @@
           <!-- Card 1 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Himalayan Region</h4>
@@ -358,7 +358,7 @@
           <!-- Card 2 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Vernacular Prototype</h4>
@@ -371,7 +371,7 @@
           <!-- Card 3 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Earthing Narratives</h4>
@@ -384,7 +384,7 @@
           <!-- Card 4 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Mountain Materials</h4>
@@ -397,7 +397,7 @@
           <!-- Card 5 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Kalash Tales</h4>
@@ -410,7 +410,7 @@
           <!-- Card 6 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Laspur Chronicles</h4>
@@ -423,7 +423,7 @@
           <!-- Card 7 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Yarkhun Stories</h4>
@@ -436,7 +436,7 @@
           <!-- Card 8 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Chitral Crafts</h4>
@@ -449,7 +449,7 @@
           <!-- Card 9 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Chitral Crafts</h4>
@@ -462,7 +462,7 @@
           <!-- Card 10 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Chitral Crafts</h4>
@@ -475,7 +475,7 @@
           <!-- Card 11 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Chitral Crafts</h4>
@@ -488,7 +488,7 @@
           <!-- Card 12 -->
           <div class="col-lg-3 col-md-6 mb-4">
             <div class="archive-card">
-              <a href="archive-map.html" class="icon-link">
+              <a class="icon-link">
                 <i class="bi bi-plus icon open-offcanvas"></i>
               </a>
               <h4 class="post-title">Chitral Crafts</h4>
@@ -792,6 +792,18 @@
             sideTitle.innerText = queryParams.title;
           }
           console.log(queryParams);
+        });
+      });
+    </script>
+    <script>
+      document.querySelectorAll(".icon-link").forEach((iconLink) => {
+        iconLink.addEventListener("click", function (event) {
+          event.preventDefault();
+          const card = this.closest(".archive-card");
+          const title = card.querySelector(".post-title").textContent.trim();
+          const encodedTitle = title.split(" ")[0];
+          const newUrl = `/archive-map.html?title=${encodedTitle}`;
+          window.location.href = newUrl;
         });
       });
     </script>

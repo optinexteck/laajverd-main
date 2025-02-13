@@ -872,7 +872,7 @@ section,
 }
 
 .small-height-carousel .carousel-container {
-  height: 100%; /* Ensures content is vertically centered */
+  height: 100%; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -880,7 +880,7 @@ section,
 
 /* Optional: Adjust text size for smaller height */
 .small-height-carousel h2 {
-  font-size: 3rem; /* Adjust font size as needed */
+  font-size: 3rem;
   margin-top: -220px;
 }
 
@@ -3783,3 +3783,16 @@ section,
   pointer-events: none;
   z-index: 2;
 }
+
+@media (min-width: 2000px) {
+  .hero .carousel-container{
+    padding-top: 950px;
+    padding-right: 80px;
+  }
+  .hero p{
+    font-size: 30px;
+  }
+}
+
+
+

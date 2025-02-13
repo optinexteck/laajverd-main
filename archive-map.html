@@ -78,41 +78,33 @@
         <div class="filterCover">
           <div class="filters">
             <select id="materialFilter">
-              <option value="" hidden selected>Material</option>
+              <option value="">All Materials</option>
               <option value="Mud">Mud</option>
               <option value="Wood">Wood</option>
               <option value="Fiber">Fiber</option>
               <option value="Various">Various</option>
             </select>
             <select id="locationFilter">
-              <option value="" hidden selected>Locations</option>
+              <option value="">All Locations</option>
               <option value="Kharmang">Kharmang</option>
               <option value="Yasin">Yasin</option>
-              <option value="Laspur">Laspur</option>
-              <option value="Kalash">Kalash</option>
-              <option value="Gilgit">Gilgit</option>
-              <option value="Hunza">Hunza</option>
-              <option value="Gojal">Gojal</option>
-              <option value="Khorag">Khorag</option>
-              <option value="Sermik">Sermik</option>
               <option value="Upper Chitral">Upper Chitral</option>
-              <option value="GBAO">GBAO</option>
-              <option value="Yarkhun">Yarkhun</option>
               <option value="Various">Various</option>
             </select>
             <select id="supportedByFilter">
-              <option value="" hidden selected>Supported By</option>
+              <option value="">All Supported By</option>
               <option value="Laajverd">Laajverd</option>
               <option value="LVS">LVS</option>
-              <option value="ARTIST MONOGRAPH">ARTIST MONOGRAPH</option>
+              <option value="AHRC and DCMS UK">AHRC and DCMS UK</option>
             </select>
             <select id="yearFilter">
-              <option value="" hidden selected>Year</option>
-              <option value="2018">2018</option>
-              <option value="2019">2019</option>
+              <option value="">All Years</option>
               <option value="2020">2020</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
+              <option value="2023">2023</option>
+              <option value="2024">2024</option>
+              <option value="2024 - 2025">2024 - 2025</option>
             </select>
           </div>
           <div class="filters d-flex justify-content-between">
@@ -163,7 +155,7 @@
         </div>
         <div class="rght">
           <p>This project focuses on the preservation of endangered heritage assets that evoke the historical 'Silk Roads' exchanges between HKH, Central Asia, and Tibet. These assets are not only of great historical significance but also bear immense cultural importance for local communities representing their identity and rich heritage once thriving in the era of Silk route exchanges. The project's scope encompasses unique heritage assets in three valleys within the HKH region.</p>
-          <p>Pinjrakari, Qajar, and Khatamband are situated in Kharmang Palace (18CE) currently inhabited by local owners showcasing unique heritage assets such as ‘Qajar’ painting (18CE), khatamband ceiling, and Pinjrakari in balcony, an art introduced by Mir Sayyid Ali Hamadani, who arrived from Persia with skilled craftsmen in the 14th century.</p>
+          <p>Pinjrakari, Qajar, and Khatamband are situated in Kharmang Palace (18CE) currently inhabited by local owners showcasing unique heritage assets such as 'Qajar' painting (18CE), khatamband ceiling, and Pinjrakari in balcony, an art introduced by Mir Sayyid Ali Hamadani, who arrived from Persia with skilled craftsmen in the 14th century.</p>
           <p>Gholbasher House: Situated in Yasin Valley, this endangered asset is a courtyard, dating back 600 years and until recently served as the Tukhm Rezi festival venue for the local community. It belongs to the most ancient Yaseen caste called Gholbashere and is a unique spatial feature imitating the spatial patterns of Persian madaris.</p>
           <p>In Laspur valley, revival of an ancient silk to wool weaving tradition, known as Shu, circa 15 CE, is a traditional textile woven from fine yarn crafted by local women. The focus will be both on the practices of weaving and products produced from it.</p>
         </div>
@@ -458,7 +450,6 @@
   <script src="assets/js/filter.js"></script>
   <!-- card -->
   <script>
-    // Add hover effect for each card
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.library'); // Select all library cards
       const materialFilter = document.getElementById('materialFilter');
@@ -466,6 +457,19 @@
       const supportedByFilter = document.getElementById('supportedByFilter');
       const yearFilter = document.getElementById('yearFilter');
       const searchInput = document.querySelector('input[type="text"]');
+
+      // Function to get query parameter by name
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+
+      // Set default search value based on "title" query parameter
+      const titleParam = getQueryParam('title');
+      if (titleParam) {
+        searchInput.value = titleParam;
+        filterCards(); // Trigger the search based on the title
+      }
 
       // Function to filter cards based on selected filters
       function filterCards() {
@@ -479,17 +483,17 @@
 
         cards.forEach(card => {
           // Use data attributes to get the values
-          const cardMaterial = card.getAttribute('data-material').toLowerCase();
-          const cardLocation = card.getAttribute('data-location').toLowerCase();
-          const cardSupportedBy = card.getAttribute('data-supported-by').toLowerCase();
-          const cardYear = card.getAttribute('data-year').toLowerCase();
+          const cardMaterial = card.getAttribute('data-material')?.toLowerCase() || '';
+          const cardLocation = card.getAttribute('data-location')?.toLowerCase() || '';
+          const cardSupportedBy = card.getAttribute('data-supported-by')?.toLowerCase() || '';
+          const cardYear = card.getAttribute('data-year')?.toLowerCase() || '';
 
           // Check if card matches all selected filters
           const matchesMaterial = materialValue === '' || cardMaterial.includes(materialValue);
           const matchesLocation = locationValue === '' || cardLocation.includes(locationValue);
           const matchesSupportedBy = supportedByValue === '' || cardSupportedBy.includes(supportedByValue);
           const matchesYear = yearValue === '' || cardYear.includes(yearValue);
-          const matchesSearch = searchValue === '' || card.querySelector('.heading h1').textContent.toLowerCase().includes(searchValue);
+          const matchesSearch = searchValue === '' || card.querySelector('.heading h1')?.textContent.toLowerCase().includes(searchValue);
 
           // Show or hide card based on filter matches
           if (matchesMaterial && matchesLocation && matchesSupportedBy && matchesYear && matchesSearch) {
@@ -514,6 +518,146 @@
       });
     </script>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const collectionsData = [
+        {
+          material: 'Mud',
+          location: 'Kharmang',
+          supportedBy: 'Laajverd',
+          year: '2024',
+          title: 'Community Based Conservation of Silk Route Heritages',
+          description: 'This project focuses on the preservation of endangered heritage assets that evoke the historical "Silk Roads" exchanges between HKH, Central Asia, and Tibet.'
+        },
+        {
+          material: 'Wood',
+          location: 'Yasin',
+          supportedBy: 'LVS',
+          year: '2023',
+          title: 'Revitalization of Traditional Woodcraft',
+          description: 'This project aims to revitalize traditional woodcraft techniques in the Yasin Valley.'
+        },
+        {
+          material: 'Various',
+          location: 'Kharmang, Yasin, Kalash',
+          supportedBy: 'AHRC and DCMS UK',
+          year: '2024 - 2025',
+          title: 'Fragile Heritage Ecologies; at risk vernacular cultures in the Hindu Kush Himalaya Region',
+          description: 'Fragile heritage ecologies explore how heritage is made, lost, sustained and adapted in landscapes that are shifting and transforming due to the effects of climate change.'
+        },
+        {
+          material: 'Various',
+          location: 'Gilgit, Hunza, Gojal, Chun Alai, Khorog, GBAO',
+          supportedBy: 'Various',
+          year: 'N/A',
+          title: 'Resilient Silk Route Heritage Network',
+          description: 'Project snapshot: For a long time now, mountain communities have been facing great challenges with regards to access, mobility and extreme weather conditions.'
+        },
+        {
+          material: 'Mud, Wood',
+          location: 'Sermik, Kharmang, Baltistan',
+          supportedBy: 'Major Award, Barakat Trust, UK',
+          year: 'N/A',
+          title: 'Thami mosque; Exploring Islamic art and architecture in the Himalayan region',
+          description: 'The project aimed to highlight the significance of Islamic art and architecture by documenting the architectural form and decorative patterns used in Thami Mosque.'
+        },
+        {
+          material: 'Mud, Wood',
+          location: 'Brep, Yarkhun, Upper Chitral',
+          supportedBy: 'Local elders who guided us in the process',
+          year: '2022',
+          title: 'Project: Vernacular Architecture Prototype',
+          description: 'Due to mudslides triggered by prolonged monsoons in 2022, the typically arid Brep village faced significant adversity.'
+        },
+        {
+          material: 'Mud',
+          location: 'Various, Baltistan',
+          supportedBy: 'Laajverd, LVS',
+          year: '2022 - 2023',
+          title: 'Earthing Narratives; mud building and plasters',
+          description: 'This project is an ongoing longitudinal research in the study of soil and its value for mountain communities in the HKH region.'
+        },
+        {
+          material: 'Fiber',
+          location: 'Upper Chitral',
+          supportedBy: 'LVS',
+          year: '2021',
+          title: 'Revival of Traditional Fiber Crafts',
+          description: 'This project aims to revive traditional fiber crafts in Upper Chitral.'
+        },
+        {
+          material: 'Wood',
+          location: 'Gilgit',
+          supportedBy: 'Laajverd',
+          year: '2020',
+          title: 'Conservation of Wooden Heritage',
+          description: 'This project focuses on the conservation of wooden heritage sites in the Gilgit region.'
+        }
+      ];
+
+      const container = document.getElementById('collections-container');
+      const materialFilter = document.getElementById('materialFilter');
+      const locationFilter = document.getElementById('locationFilter');
+      const supportedByFilter = document.getElementById('supportedByFilter');
+      const yearFilter = document.getElementById('yearFilter');
+
+      function displayCollections(data) {
+        container.innerHTML = ''; // Clear existing content
+        data.forEach(item => {
+          const collectionHTML = `
+            <div class="library">
+              <div class="line"></div>
+              <div class="libHeading" style="width: 100%">
+                <div class="lft">
+                  <div class="heading">
+                    <p>${item.location}</p>
+                    <h1>${item.title}</h1>
+                  </div>
+                </div>
+                <div class="rght">
+                  <p>${item.description}</p>
+                  <h6>Supported by</h6>
+                  <p>${item.supportedBy}</p>
+                  <h6>Year</h6>
+                  <p>${item.year}</p>
+                  <h6>Material</h6>
+                  <p>${item.material}</p>
+                </div>
+              </div>
+            </div>
+          `;
+          container.insertAdjacentHTML('beforeend', collectionHTML);
+        });
+      }
+
+      function filterCollections() {
+        const materialValue = materialFilter.value.toLowerCase();
+        const locationValue = locationFilter.value.toLowerCase();
+        const supportedByValue = supportedByFilter.value.toLowerCase();
+        const yearValue = yearFilter.value.toLowerCase();
+
+        const filteredData = collectionsData.filter(item => {
+          const matchesMaterial = !materialValue || item.material.toLowerCase().includes(materialValue);
+          const matchesLocation = !locationValue || item.location.toLowerCase().includes(locationValue);
+          const matchesSupportedBy = !supportedByValue || item.supportedBy.toLowerCase().includes(supportedByValue);
+          const matchesYear = !yearValue || item.year.toLowerCase().includes(yearValue);
+
+          return matchesMaterial && matchesLocation && matchesSupportedBy && matchesYear;
+        });
+
+        displayCollections(filteredData);
+      }
+
+      // Initial display of all collections
+      displayCollections(collectionsData);
+
+      // Add event listeners for filter changes
+      materialFilter.addEventListener('change', filterCollections);
+      locationFilter.addEventListener('change', filterCollections);
+      supportedByFilter.addEventListener('change', filterCollections);
+      yearFilter.addEventListener('change', filterCollections);
+    });
+  </script>
 
 </body>
 

@@ -147,8 +147,8 @@
         justify-content: space-between;
         align-items: center;
       }
-      @media screen and (max-width:600px){
-        .logo h1{
+      @media screen and (max-width: 600px) {
+        .logo h1 {
           font-size: 20px !important;
         }
       }
@@ -348,42 +348,39 @@
     </div>
   </footer> -->
 
-  <footer
-  id="footer"
-  class="footer nav"
-  style="
-  position: fixed;
-  bottom: 0;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    background-color: #cdcdcd;
-    padding: 10px;
-  "
->
-  <div
-    style="
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 30px;
-    "
-  >
-    <span>Copyright</span>
-    <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
-    <span>All Rights Reserved</span>
-  </div>
-  <div
-    class="social-links"
-    style="display: flex; gap: 10px; height: 30px"
-  >
-    <a href=""><i class="bi bi-twitter-x"></i></a>
-    <a href=""><i class="bi bi-facebook"></i></a>
-    <a href=""><i class="bi bi-instagram"></i></a>
-    <a href=""><i class="bi bi-skype"></i></a>
-    <a href=""><i class="bi bi-linkedin"></i></a>
-  </div>
-</footer>
+    <footer
+      id="footer"
+      class="footer nav"
+      style="
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        "
+      >
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
 
     <!-- Scroll Top -->
     <a
@@ -571,6 +568,8 @@
           latitude: y,
           placeName,
           description,
+          projectTitle = "No Title Available",
+          projectSnapshot = "No Snapshot Available",
         } = routeData[i];
 
         // Create the route point
@@ -594,6 +593,7 @@
         title.style.top = `${y}%`;
         title.style.left = `${x}%`;
         title.style.transform = "translateX(-50%)";
+
         // Create a label for the place name
         const nameLabel = document.createElement("div");
         nameLabel.textContent =
@@ -612,8 +612,8 @@
 
         const tooltip = document.createElement("div");
         tooltip.classList.add("libHeading");
-        tooltip.style.width = "80vw";
-        tooltip.style.height = "85vh";
+        tooltip.style.width = "60vw";
+        tooltip.style.height = "60vh";
         tooltip.style.position = "fixed";
         tooltip.style.top = "50%";
         tooltip.style.left = "50%";
@@ -637,8 +637,8 @@
 
         const descriptionParagraph = document.createElement("p");
         descriptionParagraph.classList.add("description-paragraph");
-        descriptionParagraph.style.width = "70%";
-        descriptionParagraph.style.height = "60%";
+        descriptionParagraph.style.width = "50%";
+        descriptionParagraph.style.height = "55%";
         descriptionParagraph.style.overflow = "scroll";
         descriptionParagraph.style.margin = "auto auto";
         descriptionParagraph.style.padding = "15px";
@@ -677,12 +677,16 @@
             placeName: newPlaceName,
             longitude: newX,
             latitude: newY,
+            projectTitle: newProjectTitle = "No Title Available",
+            projectSnapshot: newProjectSnapshot = "No Snapshot Available",
           } = routeData[i];
           descriptionParagraph.textContent =
             newDescription.charAt(0).toUpperCase() +
             newDescription.slice(1).toLowerCase();
           placeParagraph.textContent = `x-axis: ${newX}, y-axis: ${newY}`;
           header.textContent = newPlaceName;
+          projectTitleElement.textContent = newProjectTitle;
+          projectSnapshotElement.textContent = newProjectSnapshot;
         }
 
         leftDiv.appendChild(leftArrow);
@@ -690,6 +694,9 @@
         leftDiv.appendChild(rightArrow);
 
         const rightDiv = document.createElement("div");
+        rightDiv.style.overflowY = "scroll";
+        rightDiv.style.overflowX = "hidden";
+
         rightDiv.classList.add("rght");
         rightDiv.style.flex = "1";
 
@@ -706,6 +713,15 @@
         headingDiv.appendChild(placeParagraph);
         headingDiv.appendChild(header);
         rightDiv.appendChild(headingDiv);
+
+        // Add project title and snapshot
+        const projectTitleElement = document.createElement("h3");
+        projectTitleElement.textContent = projectTitle;
+        rightDiv.appendChild(projectTitleElement);
+
+        const projectSnapshotElement = document.createElement("p");
+        projectSnapshotElement.textContent = projectSnapshot;
+        rightDiv.appendChild(projectSnapshotElement);
 
         // Append left and right columns to the tooltip
         tooltip.appendChild(leftDiv);

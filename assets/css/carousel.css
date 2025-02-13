@@ -534,6 +534,42 @@ body {
 }
 
 /* Responsive adjustments for larger screens */
+@media (min-width: 1800px) {
+  .content-container {
+    max-width: 1600px;
+    gap: 40px;
+  }
+
+  .column {
+    max-width: 500px;
+  }
+
+  .column h3 {
+    font-size: 40px;
+  }
+  .column p {
+    font-size: 27px;
+    max-width: 450px;
+  }
+}
+@media (min-width: 2000px) {
+  .content-container {
+    max-width: 1800px;
+    gap: 50px;
+  }
+
+  .column {
+    max-width: 600px;
+  }
+
+  .column h3 {
+    font-size: 45px;
+  }
+  .column p {
+    font-size: 30px;
+    max-width: 500px;
+  }
+}
 @media (min-width: 2500px) {
   .content-container {
     max-width: 2000px;
