@@ -570,6 +570,7 @@
           description,
           projectTitle = "No Title Available",
           projectSnapshot = "No Snapshot Available",
+          type = [] // Assume type is an array
         } = routeData[i];
 
         // Create the route point
@@ -658,18 +659,25 @@
         rightArrow.style.cursor = "pointer";
 
         leftArrow.addEventListener("click", () => {
-          if (i > 0) {
-            i--;
-            updateContent();
-          }
+          navigateToTooltip(-1);
         });
 
         rightArrow.addEventListener("click", () => {
-          if (i < routeData.length - 1) {
-            i++;
-            updateContent();
-          }
+          navigateToTooltip(1);
         });
+
+        function navigateToTooltip(direction) {
+          let newIndex = i + direction;
+          while (newIndex >= 0 && newIndex < routeData.length) {
+            const { type: newType = [] } = routeData[newIndex];
+            if (newType.length > 0 && type.some(t => newType.includes(t))) {
+              i = newIndex;
+              updateContent();
+              break;
+            }
+            newIndex += direction;
+          }
+        }
 
         function updateContent() {
           const {
@@ -679,6 +687,7 @@
             latitude: newY,
             projectTitle: newProjectTitle = "No Title Available",
             projectSnapshot: newProjectSnapshot = "No Snapshot Available",
+            type: newType = []
           } = routeData[i];
           descriptionParagraph.textContent =
             newDescription.charAt(0).toUpperCase() +
@@ -687,6 +696,7 @@
           header.textContent = newPlaceName;
           projectTitleElement.textContent = newProjectTitle;
           projectSnapshotElement.textContent = newProjectSnapshot;
+          typeElement.textContent = newType.join(", "); // Display type data
         }
 
         leftDiv.appendChild(leftArrow);
@@ -723,6 +733,11 @@
         projectSnapshotElement.textContent = projectSnapshot;
         rightDiv.appendChild(projectSnapshotElement);
 
+        // Add type data
+        const typeElement = document.createElement("p");
+        typeElement.textContent = type.join(", ");
+        rightDiv.appendChild(typeElement);
+
         // Append left and right columns to the tooltip
         tooltip.appendChild(leftDiv);
         tooltip.appendChild(rightDiv);
@@ -737,10 +752,7 @@
 
         // Add event listener to close the tooltip when clicking outside
         document.addEventListener("click", (event) => {
-          if (
-            !tooltip.contains(event.target) &&
-            !point.contains(event.target)
-          ) {
+          if (!tooltip.contains(event.target) && !point.contains(event.target)) {
             tooltip.style.visibility = "hidden";
           }
         });
@@ -825,12 +837,6 @@
           querySnapshot.docs.forEach((doc) => {
             const routeData = doc.data();
             data.push(routeData);
-            // createRoute(
-            //   routeData.longitude,
-            //   routeData.latitude,
-            //   routeData.placeName,
-            //   routeData.description,
-            // );
           });
           createRouteCover(data);
         });
