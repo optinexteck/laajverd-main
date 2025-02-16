@@ -311,10 +311,12 @@
 
       .column {
         flex: 1;
+        max-width: 900px;
       }
 
       .our-title {
-        margin-left: 9.7%;
+        margin-left: 6.1%;
+        font-family: aaa-inktraps !important;
       }
 
       .content-container h3,
@@ -329,12 +331,7 @@
         .content-container {
           max-width: 300px;
         }
-        .our {
-          display: none;
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
-        }
+
 
         .column {
           flex: none;
@@ -345,6 +342,11 @@
 
         .our-title {
           margin-left: 0;
+          display: none;
+        }
+      }
+      @media (max-width: 990px) {
+        .our {
           display: none;
         }
       }
@@ -434,7 +436,7 @@
 
     <script>
       function openNav() {
-        document.getElementById("mySidebar").style.width = "100%"; 
+        document.getElementById("mySidebar").style.width = "100%";
       }
 
       function closeNav() {
@@ -512,19 +514,23 @@
         </div>
       </section>
 
-      <section id="ccl" class=" nav section section2" style="background-color: #F1CA01;">
+      <section
+        id="ccl"
+        class="nav section section2"
+        style="background-color: #f1ca01"
+      >
         <div class="info-container">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
           <div class="our">
             <h3 class="column"></h3>
             <h3 class="column"></h3>
-            <h3 class="column our-title">Our</h3>
+            <h2 class="column our-title">Our</h2>
           </div>
 
           <div class="content-container">
             <div class="column">
-              <h3>What is an</h3>
-              <h3>Artefact?</h3>
+              <h2>What is an</h2>
+              <h2>Artefact?</h2>
               <p>
                 The conservation lab covers a wide<br />
                 range of artifacts, encompassing<br />
@@ -544,8 +550,8 @@
             </div>
 
             <div class="column">
-              <h3>What is</h3>
-              <h3>Knowledge?</h3>
+              <h2>What is</h2>
+              <h2>Knowledge?</h2>
               <p>
                 Modes of knowledge production<br />
                 refer to the various methods,<br />
@@ -563,9 +569,9 @@
             </div>
 
             <div class="column">
-              <h3 class="mobile-our">Our</h3>
-              <h3>Conservation</h3>
-              <h3>Practice?</h3>
+              <h2 class="mobile-our">Our</h2>
+              <h2>Conservation</h2>
+              <h2>Practice?</h2>
               <p>
                 We work collaboratively with local<br />
                 communities in the entire process of<br />
@@ -593,7 +599,7 @@
         <!-- <h2 class="main-heading">WHAT IS</h2>  -->
       <!-- <div class="content-container">
           <div class="column">
-            <h3>What is an</h3> 
+            <h2>What is an</h3> 
             <h3>ARTEFACT?</h3>
             <p>The conservation lab covers a wide<br> 
               range of artifacts, encompassing<br> 
@@ -612,7 +618,7 @@
           </div>
 
           <div class="column">
-            <h3>WHAT IS</h3>
+            <h2>WHAT IS</h3>
             <h3>KNOWLEDGE?</h3>
             <p>Modes of knowledge production<br> 
               refer to the various methods,<br> 
@@ -1115,9 +1121,9 @@
 
         hero1.addEventListener("mousemove", function (e) {
           const rect = hero1.getBoundingClientRect();
-          const x = e.clientX - rect.left - focusArea.offsetWidth ;
-          const y = e.clientY - rect.top - focusArea.offsetHeight ;
-          focusArea.style.transform = `translate(${x-550}px, ${y-180}px)`;
+          const x = e.clientX - rect.left - focusArea.offsetWidth;
+          const y = e.clientY - rect.top - focusArea.offsetHeight;
+          focusArea.style.transform = `translate(${x - 550}px, ${y - 180}px)`;
         });
       });
     </script>

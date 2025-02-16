@@ -872,7 +872,7 @@ section,
 }
 
 .small-height-carousel .carousel-container {
-  height: 100%; 
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3785,14 +3785,11 @@ section,
 }
 
 @media (min-width: 2000px) {
-  .hero .carousel-container{
+  .hero .carousel-container {
     padding-top: 950px;
     padding-right: 80px;
   }
-  .hero p{
+  .hero p {
     font-size: 30px;
   }
 }
-
-
-

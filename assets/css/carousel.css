@@ -508,7 +508,7 @@ body {
 
 .column {
   flex: 1;
-  max-width: 550px;
+  max-width: 700px;
   margin: 0 10px;
 }
 
@@ -526,9 +526,9 @@ body {
 }
 
 .column p {
-  font-size: 15px;
+  font-size: 18px;
   line-height: 1.6;
-  max-width: 400px;
+  max-width: 100%;
   color: #000;
   margin-top: 20px; /* Space between headings and text */
 }
@@ -536,12 +536,12 @@ body {
 /* Responsive adjustments for larger screens */
 @media (min-width: 1800px) {
   .content-container {
-    max-width: 1600px;
+    max-width: 1800px;
     gap: 40px;
   }
 
   .column {
-    max-width: 500px;
+    max-width: 800px;
   }
 
   .column h3 {
@@ -549,17 +549,17 @@ body {
   }
   .column p {
     font-size: 27px;
-    max-width: 450px;
+    max-width: 100%;
   }
 }
 @media (min-width: 2000px) {
   .content-container {
-    max-width: 1800px;
+    max-width: 2000px;
     gap: 50px;
   }
 
   .column {
-    max-width: 600px;
+    max-width: 1000px;
   }
 
   .column h3 {
@@ -567,7 +567,7 @@ body {
   }
   .column p {
     font-size: 30px;
-    max-width: 500px;
+    max-width: 100%;
   }
 }
 @media (min-width: 2500px) {

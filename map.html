@@ -479,15 +479,14 @@
 
         leftDiv.appendChild(descriptionParagraph);
 
-        // Right column: All other items
         const rightDiv = document.createElement("div");
         rightDiv.style.flex = "1"; 
 
         const placeParagraph = document.createElement("p");
-        placeParagraph.textContent = placeName; // Display the place name
+        placeParagraph.textContent = placeName;
 
         const distanceParagraph = document.createElement("p");
-        distanceParagraph.textContent = `Distance: ${distance} km`; // Display the distance
+        distanceParagraph.textContent = `Distance: ${distance} km`;
 
         const image = document.createElement("img");
         image.src =
@@ -495,7 +494,7 @@
         image.style.width = "100%";
 
         const header = document.createElement("h1");
-        header.textContent = "Details"; // Title for area details
+        header.textContent = "Details";
         header.style.color = "black";
 
         rightDiv.appendChild(placeParagraph);
@@ -638,8 +637,8 @@
 
         const descriptionParagraph = document.createElement("p");
         descriptionParagraph.classList.add("description-paragraph");
-        descriptionParagraph.style.width = "60%";
-        descriptionParagraph.style.height = "50%";
+        descriptionParagraph.style.width = "70%";
+        descriptionParagraph.style.height = "60%";
         descriptionParagraph.style.overflow = "scroll";
         descriptionParagraph.style.margin = "auto auto";
         descriptionParagraph.style.padding = "15px";
