@@ -481,7 +481,7 @@
 
         // Right column: All other items
         const rightDiv = document.createElement("div");
-        rightDiv.style.flex = "1"; // Take equal width
+        rightDiv.style.flex = "1"; 
 
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = placeName; // Display the place name
@@ -716,20 +716,22 @@
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
 
-        const header = document.createElement("h1");
+        const header = document.createElement("h2");
         header.textContent = placeName;
         header.style.color = "black";
+        header.style.fontWeight = "bold";
 
         headingDiv.appendChild(placeParagraph);
         headingDiv.appendChild(header);
         rightDiv.appendChild(headingDiv);
 
         // Add project title and snapshot
-        const projectTitleElement = document.createElement("h3");
+        const projectTitleElement = document.createElement("h4");
         projectTitleElement.textContent = projectTitle;
         rightDiv.appendChild(projectTitleElement);
 
         const projectSnapshotElement = document.createElement("p");
+        projectSnapshotElement.style.fontSize = "12px";
         projectSnapshotElement.textContent = projectSnapshot;
         rightDiv.appendChild(projectSnapshotElement);
 
