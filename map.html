@@ -165,37 +165,39 @@
   </head>
 
   <body class="index-page">
-    <header
-      id="header"
-      class="header d-flex align-items-center fixed-top scrolled"
-    >
-      <div
-        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+    <a href="/archive-map">
+      <header
+        id="header"
+        class="header d-flex align-items-center fixed-top scrolled"
       >
-        <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <img src="assets/img/lg.png" alt="" />
-          <h1>ommunity Conservation Lab</h1></a
+        <div
+          class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
         >
+          <a href="index.html" class="logo d-flex align-items-center">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <!-- <img src="assets/img/logo.png" alt=""> -->
+            <img src="assets/img/lg.png" alt="" />
+            <h1>ommunity Conservation Lab</h1></a
+          >
 
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./map.html">Location</a></li>
-            <li><a href="./archive1.html">Archive</a></li>
-            <li><a href="./glossary.html">Glossary</a></li>
-            <li><a href="./ccl.html">CCL</a></li>
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./map.html">Location</a></li>
+              <li><a href="./archive1.html">Archive</a></li>
+              <li><a href="./glossary.html">Glossary</a></li>
+              <li><a href="./ccl.html">CCL</a></li>
 
-            <!-- <li><a href="./contact.html">Contact</a></li> -->
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
+              <!-- <li><a href="./contact.html">Contact</a></li> -->
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
 
-        <!-- Add a button to open the sidebar -->
-        <button class="openbtn" onclick="openNav()">☰</button>
-      </div>
-    </header>
+          <!-- Add a button to open the sidebar -->
+          <button class="openbtn" onclick="openNav()">☰</button>
+        </div>
+      </header>
+    </a>
 
     <!-- Sidebar navigation -->
     <div id="mySidebar" class="sidebar">
@@ -480,7 +482,7 @@
         leftDiv.appendChild(descriptionParagraph);
 
         const rightDiv = document.createElement("div");
-        rightDiv.style.flex = "1"; 
+        rightDiv.style.flex = "1";
 
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = placeName;
@@ -569,7 +571,7 @@
           description,
           projectTitle = "No Title Available",
           projectSnapshot = "No Snapshot Available",
-          type = [] // Assume type is an array
+          type = [], // Assume type is an array
         } = routeData[i];
 
         // Create the route point
@@ -669,7 +671,7 @@
           let newIndex = i + direction;
           while (newIndex >= 0 && newIndex < routeData.length) {
             const { type: newType = [] } = routeData[newIndex];
-            if (newType.length > 0 && type.some(t => newType.includes(t))) {
+            if (newType.length > 0 && type.some((t) => newType.includes(t))) {
               i = newIndex;
               updateContent();
               break;
@@ -686,7 +688,7 @@
             latitude: newY,
             projectTitle: newProjectTitle = "No Title Available",
             projectSnapshot: newProjectSnapshot = "No Snapshot Available",
-            type: newType = []
+            type: newType = [],
           } = routeData[i];
           descriptionParagraph.textContent =
             newDescription.charAt(0).toUpperCase() +
@@ -715,10 +717,14 @@
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
 
-        const header = document.createElement("h2");
-        header.textContent = placeName;
-        header.style.color = "black";
-        header.style.fontWeight = "bold";
+        const header = document.createElement("a");
+        const h2 = document.createElement("h2");
+        header.href = `./archive-map.html?title=${description}`;
+        h2.textContent = placeName;
+        h2.style.color = "black";
+        h2.style.fontWeight = "bold";
+
+        header.appendChild(h2);
 
         headingDiv.appendChild(placeParagraph);
         headingDiv.appendChild(header);
@@ -753,7 +759,10 @@
 
         // Add event listener to close the tooltip when clicking outside
         document.addEventListener("click", (event) => {
-          if (!tooltip.contains(event.target) && !point.contains(event.target)) {
+          if (
+            !tooltip.contains(event.target) &&
+            !point.contains(event.target)
+          ) {
             tooltip.style.visibility = "hidden";
           }
         });
