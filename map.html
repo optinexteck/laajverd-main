@@ -734,7 +734,8 @@
         rightDiv.appendChild(projectTitleElement);
 
         rightDiv.addEventListener("click", () => {
-          window.location.href = `./archive-map.html?title=${description}`;
+          window.open(`./archive-map.html?title=${description}`,"_blank");
+          // window.location.href = `./archive-map.html?title=${description}`;
         });
         const projectSnapshotElement = document.createElement("p");
         projectSnapshotElement.style.fontSize = "12px";

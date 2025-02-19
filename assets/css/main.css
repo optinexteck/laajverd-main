@@ -563,7 +563,7 @@ h6 {
 --------------------------------------------------------------*/
 section,
 .section {
-  color: var(--default-color);
+  /* color: var(--default-color); */
   background-color: var(--background-color);
   padding: 60px 0;
   scroll-margin-top: 77px;
@@ -619,8 +619,8 @@ section,
   position: relative;
   background: linear-gradient(
     0deg,
-    var(--background-color) 0%,
-    color-mix(in srgb, var(--background-color) 90%, white 10%) 100%
+    /* var(--background-color) 0%, */
+    /* color-mix(in srgb, var(--background-color) 90%, white 10%) 100% */
   );
   padding: 0;
   display: flex;
@@ -3790,6 +3790,6 @@ section,
     padding-right: 80px;
   }
   .hero p {
-    font-size: 30px;
+    font-size: 40px;
   }
 }
