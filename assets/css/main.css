@@ -3784,12 +3784,22 @@ section,
   z-index: 2;
 }
 
+@media (min-width: 1400px) {
+  .hero .carousel-container {
+    padding-top: 300px;
+    padding-right: 80px;
+  }
+  .hero p {
+    font-size:25px;
+  }
+}
+
 @media (min-width: 2000px) {
   .hero .carousel-container {
     padding-top: 950px;
     padding-right: 80px;
   }
   .hero p {
-    font-size: 40px;
+    font-size: 70px;
   }
 }
