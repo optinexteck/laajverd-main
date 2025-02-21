@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -268,15 +267,7 @@
           <div class="collection">
             <div class="filterCover">
               <div class="filters d-flex align-items-center gap-2">
-                <!-- <select class="form-select form-select-sm">
-                                <option value="" hidden selected>Access Level</option>
-                                <option value="online">Online</option>
-                                <option value="onsite">On Site</option>
-                            </select> -->
-                <select
-                  class="form-select form-select-sm"
-                  style="border: 1px solid #d7d1d1"
-                >
+                <select name="location" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
                   <option value="Location" hidden selected>Location</option>
                   <option value="Neelum">Neelum</option>
                   <option value="Kharmang">Kharmang</option>
@@ -299,10 +290,7 @@
                   <option value="Khiva">Khiva</option>
                   <option value="GBAO">GBAO</option>
                 </select>
-                <select
-                  class="form-select form-select-sm"
-                  style="border: 1px solid #d7d1d1"
-                >
+                <select name="asset" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
                   <option value="Asset" hidden selected>Asset</option>
                   <option value="Object">Object</option>
                   <option value="Building">Building</option>
@@ -312,10 +300,7 @@
                   <option value="pattern">pattern</option>
                   <option value="place">place</option>
                 </select>
-                <select
-                  class="form-select form-select-sm"
-                  style="border: 1px solid #d7d1d1"
-                >
+                <select name="material" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
                   <option value="Material" hidden selected>Material</option>
                   <option value="Mud">Mud</option>
                   <option value="Wood">Wood</option>
@@ -342,138 +327,7 @@
         </div>
 
         <div class="row" style="margin: 0px 100px 100px 100px">
-          <!-- Card 1 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Himalayan Region</h4>
-            <p><strong>Location:</strong>Neelum</p>
-            <p><strong>Assets:</strong>Object</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Vernacular Prototype</h4>
-            <p><strong>Location:</strong>Kharmang</p>
-            <p><strong>Assets:</strong>Building</p>
-            <p><strong>Material:</strong>Wood</p>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Earthing Narratives</h4>
-            <p><strong>Location:</strong>Yasin</p>
-            <p><strong>Assets:</strong>Practice</p>
-            <p><strong>Material:</strong>Fibre</p>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Mountain Materials</h4>
-            <p><strong>Location:</strong>Skardu</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Stone</p>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Kalash Tales</h4>
-            <p><strong>Location:</strong>Kalash</p>
-            <p><strong>Assets:</strong>Plant</p>
-            <p><strong>Material:</strong>Wood</p>
-          </div>
-
-          <!-- Card 6 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Laspur Chronicles</h4>
-            <p><strong>Location:</strong>Laspur</p>
-            <p><strong>Assets:</strong>Object</p>
-            <p><strong>Material:</strong>Fibre</p>
-          </div>
-
-          <!-- Card 7 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Yarkhun Stories</h4>
-            <p><strong>Location:</strong>Yarkhun</p>
-            <p><strong>Assets:</strong>Practice</p>
-            <p><strong>Material:</strong>Stone</p>
-          </div>
-
-          <!-- Card 8 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Chitral Crafts</h4>
-            <p><strong>Location:</strong>Chitral</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-
-          <!-- Card 9 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Chitral Crafts</h4>
-            <p><strong>Location:</strong>Kalash</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-
-          <!-- Card 10 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Chitral Crafts</h4>
-            <p><strong>Location:</strong>Kaghan</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-
-          <!-- Card 11 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Chitral Crafts</h4>
-            <p><strong>Location:</strong>Khotan</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-
-          <!-- Card 12 -->
-          <div class="archive-card">
-            <a class="icon-link">
-              <i class="bi bi-plus icon open-offcanvas"></i>
-            </a>
-            <h4 class="post-title">Chitral Crafts</h4>
-            <p><strong>Location:</strong>Khorog</p>
-            <p><strong>Assets:</strong>Story</p>
-            <p><strong>Material:</strong>Mud</p>
-          </div>
-        </div>
+ 
       </div>
       <!-- /Services Section -->
     </main>
@@ -575,56 +429,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-      import {
-        getFirestore,
-        collection,
-        query,
-        onSnapshot,
-        addDoc,
-      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-      // firebase config
-      const firebaseConfig = {
-        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
-        authDomain: "laajverd-42a3f.firebaseapp.com",
-        databaseURL: "https://laajverd-42a3f-default-rtdb.firebaseio.com",
-        projectId: "laajverd-42a3f",
-        storageBucket: "laajverd-42a3f.firebasestorage.app",
-        messagingSenderId: "654657065769",
-        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
-        measurementId: "G-ZS0JV6362J",
-      };
-
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
-    </script>
-    <script>
-      // Get all alphabet buttons and service items
-      const alphabetButtons = document.querySelectorAll(".alphabet");
-      const serviceItems = document.querySelectorAll(".isotope-container");
-
-      alphabetButtons.forEach((button) => {
-        button.addEventListener("click", function () {
-          // Remove 'active' class from all buttons and add to the clicked one
-          alphabetButtons.forEach((btn) => btn.classList.remove("active"));
-          this.classList.add("active");
-
-          const filter = this.getAttribute("data-filter");
-
-          // serviceItems.forEach(item => {
-          //     // Show all if filter is '*', otherwise show only matching classes
-          //     if (filter === '*' || item.classList.contains(filter.substring(1))) {
-          //         item.style.display = 'block';
-          //     } else {
-          //         item.style.display = 'none';
-          //     }
-          // });
-        });
-      });
-    </script>
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
@@ -797,17 +602,112 @@
         });
       });
     </script>
-    <script>
-      document.querySelectorAll(".icon-link").forEach((iconLink) => {
-        iconLink.addEventListener("click", function (event) {
-          event.preventDefault();
-          const card = this.closest(".archive-card");
-          const title = card.querySelector(".post-title").textContent.trim();
-          const encodedTitle = title.split(" ")[0];
-          const newUrl = `/archive-map.html?title=${encodedTitle}`;
-          window.location.href = newUrl;
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        query,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
+        authDomain: "laajverd-42a3f.firebaseapp.com",
+        projectId: "laajverd-42a3f",
+        storageBucket: "laajverd-42a3f.appspot.com",
+        messagingSenderId: "654657065769",
+        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
+        measurementId: "G-ZS0JV6362J",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      var cardsData = [];
+      function fetchData() {
+        const mapQuery = query(collection(db, "archive1"));
+        onSnapshot(mapQuery, (querySnapshot) => {
+          cardsData = []; // Clear the array before adding new data
+          querySnapshot.docs.forEach((doc) => {
+            const data = doc.data();
+            cardsData.push(data);
+            console.log("Fetched data:", data);
+          });
+          generateCards(); // Call generateCards after data is fetched
         });
+      }
+
+      // Function to generate cards
+      function generateCards(filteredData = cardsData) {
+        const container = document.querySelector(".row");
+        container.innerHTML = ""; // Clear existing content
+
+        filteredData.forEach((card) => {
+          const cardElement = document.createElement("div");
+          cardElement.classList.add("archive-card");
+          cardElement.innerHTML = `
+            <a class="icon-link">
+              <i class="bi bi-plus icon open-offcanvas"></i>
+            </a>
+            <h4 class="post-title">${card.title}</h4>
+            <p><strong>Location:</strong>${card.location}</p>
+            <p><strong>Assets:</strong>${card.assets}</p>
+            <p><strong>Material:</strong>${card.material}</p>
+          `;
+          container.appendChild(cardElement);
+        });
+
+        // Add event listeners for icon links
+        document.querySelectorAll(".icon-link").forEach((iconLink) => {
+          iconLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            const card = this.closest(".archive-card");
+            const title = card.querySelector(".post-title").textContent.trim();
+            const encodedTitle = title.split(" ")[0];
+            const newUrl = `/archive-map.html?title=${encodedTitle}`;
+            window.open(newUrl, '_blank'); // Open in a new tab
+          });
+        });
+      }
+
+      // Function to filter cards
+      function filterCards() {
+        const locationSelect = document.querySelector('select[name="location"]');
+        const assetSelect = document.querySelector('select[name="asset"]');
+        const materialSelect = document.querySelector('select[name="material"]');
+
+        if (!locationSelect || !assetSelect || !materialSelect) {
+          console.error("One or more select elements not found");
+          return;
+        }
+
+        const locationFilter = locationSelect.value.toLowerCase();
+        const assetFilter = assetSelect.value.toLowerCase();
+        const materialFilter = materialSelect.value.toLowerCase();
+
+        console.log("Selected filters:", { locationFilter, assetFilter, materialFilter });
+
+        const filteredData = cardsData.filter(card => {
+          const matchesLocation = locationFilter === "location" || card.location.toLowerCase() === locationFilter;
+          const matchesAsset = assetFilter === "asset" || card.assets.toLowerCase() === assetFilter;
+          const matchesMaterial = materialFilter === "material" || card.material.toLowerCase() === materialFilter;
+          return matchesLocation && matchesAsset && matchesMaterial;
+        });
+
+        console.log("Filtered data:", filteredData);
+        generateCards(filteredData);
+      }
+
+      // Add event listeners to filter dropdowns
+      document.querySelectorAll('.form-select').forEach(select => {
+        select.addEventListener('change', filterCards);
       });
+
+      // Fetch data on page load
+      document.addEventListener("DOMContentLoaded", fetchData);
     </script>
   </body>
 </html>

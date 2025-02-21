@@ -570,7 +570,23 @@
           projectTitle = "No Title Available",
           projectSnapshot = "No Snapshot Available",
           type = [], // Assume type is an array
+          slider = "[]", // Default to an empty array if not present
         } = routeData[i];
+
+        let sliderArray = [];
+        if (slider && slider.trim() !== "") {
+          try {
+            sliderArray = JSON.parse(slider);
+            if (!Array.isArray(sliderArray)) {
+              throw new Error("Parsed slider is not an array");
+            }
+          } catch (error) {
+            console.error("Error parsing slider JSON:", error);
+            sliderArray = []; // Ensure sliderArray is an array
+          }
+        }
+
+        console.log("Slider data:", sliderArray);
 
         // Create the route point
         const point = document.createElement("div");
@@ -733,10 +749,6 @@
         projectTitleElement.textContent = projectTitle;
         rightDiv.appendChild(projectTitleElement);
 
-        rightDiv.addEventListener("click", () => {
-          window.open(`./archive-map.html?title=${description}`,"_blank");
-          // window.location.href = `./archive-map.html?title=${description}`;
-        });
         const projectSnapshotElement = document.createElement("p");
         projectSnapshotElement.style.fontSize = "12px";
         projectSnapshotElement.textContent = projectSnapshot;
@@ -780,7 +792,6 @@
 
       function createRouteCover(routeData) {
         for (var i = 0; i < routeData.length; i++) {
-          const { longitude, latitude, placeName, description } = routeData[i];
           console.log(routeData[i]);
           createRoute(routeData, i);
         }
