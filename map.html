@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -78,7 +78,8 @@
       /* Add this style block in the <head> section or in your CSS file */
       .description-paragraph {
         text-transform: none; /* Ensure text is not transformed to uppercase */
-        font-family: "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
+        font-family:
+          "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
       }
 
       /* Sidebar styles */
@@ -807,7 +808,7 @@
         const svg = document.querySelector("svg") || createSvgElement();
         const line = document.createElementNS(
           "http://www.w3.org/2000/svg",
-          "path"
+          "path",
         );
 
         const controlX1 = x1 + (x2 - x1) / 3;
@@ -828,7 +829,7 @@
       function createSvgElement() {
         const svg = document.createElementNS(
           "http://www.w3.org/2000/svg",
-          "svg"
+          "svg",
         );
         svg.setAttribute("width", "100%");
         svg.setAttribute("height", "100%");
@@ -849,7 +850,7 @@
               pointData.longitude,
               pointData.latitude,
               "blue",
-              pointData.description
+              pointData.description,
             );
           });
         });

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -184,7 +184,8 @@
         top: 0;
         right: -100%;
         /* Initially hidden off the right side */
-        box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        box-shadow:
+          0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
           0 2.1px 2.1px rgba(128, 128, 128, 0.195),
           0 4.4px 4.4px rgba(128, 128, 128, 0.241),
@@ -245,7 +246,7 @@
       }
 
       @media (max-width: 600px) {
-        .content-container{
+        .content-container {
           max-width: 300px;
         }
         .our {
@@ -300,7 +301,7 @@
         #ccl .column {
           text-align: start;
         }
-        #ccl .column p{
+        #ccl .column p {
           text-align: start;
         }
       }
@@ -362,7 +363,7 @@
           <div
             class="carousel-item active"
             style="
-              background-image: url('./assets/img/AssetPanels/Landing-01.png');
+              background-image: url(&quot;./assets/img/AssetPanels/Landing-01.png&quot;);
               width: 100vw;
               height: 100%;
               background-size: cover;
@@ -576,7 +577,7 @@
             class="carousel-item active"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-1.jpg&quot;);
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -589,7 +590,7 @@
             class="carousel-item"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-2.jpg&quot;);
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -884,7 +885,7 @@
           },
           {
             threshold: 0.3,
-          }
+          },
         );
 
         // Start observing the blue section
@@ -979,12 +980,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
           const paragraph = document.querySelector(
-            ".animate__animated.animate__fadeInUp"
+            ".animate__animated.animate__fadeInUp",
           );
           if (window.innerWidth < 600) {
             paragraph.innerHTML = paragraph.innerHTML.replace(
               /<br\s*\/?>/gi,
-              " "
+              " ",
             );
           }
         }

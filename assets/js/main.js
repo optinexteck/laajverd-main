@@ -150,7 +150,7 @@
   function initSwiper() {
     document.querySelectorAll(".init-swiper").forEach(function (swiperElement) {
       let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
+        swiperElement.querySelector(".swiper-config").innerHTML.trim(),
       );
 
       if (swiperElement.classList.contains("swiper-tab")) {
@@ -270,7 +270,7 @@
           scrollToSection(currentSection - 1);
         }
       },
-      { passive: false }
+      { passive: false },
     );
 
     // Touch events with enhanced control
@@ -283,7 +283,7 @@
       (e) => {
         touchStartY = e.touches[0].clientY;
       },
-      { passive: true }
+      { passive: true },
     );
 
     document.addEventListener(
@@ -292,7 +292,7 @@
         if (isScrolling) return;
         touchEndY = e.touches[0].clientY;
       },
-      { passive: true }
+      { passive: true },
     );
 
     document.addEventListener(
@@ -312,7 +312,7 @@
           }
         }
       },
-      { passive: true }
+      { passive: true },
     );
 
     // Keyboard navigation with delay

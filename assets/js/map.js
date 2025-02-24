@@ -265,8 +265,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const color = marker.classList.contains("red")
         ? "green"
         : marker.classList.contains("green")
-        ? "orange"
-        : "red";
+          ? "orange"
+          : "red";
       marker.className = `map-marker ${color}`;
     });
 
@@ -304,7 +304,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const overlay = new google.maps.GroundOverlay(
       "assets/img/location-image.jpg", // Replace with your image URL
-      imageBounds
+      imageBounds,
     );
     overlay.setMap(map);
 

@@ -208,7 +208,10 @@ h6 {
   position: fixed;
   top: 0;
   width: 100%;
-  transition: top 0.3s, visibility 0s 0.3s, opacity 0.3s;
+  transition:
+    top 0.3s,
+    visibility 0s 0.3s,
+    opacity 0.3s;
   z-index: 1000; /* Ensure the header is above other content */
   height: 60px; /* Adjust based on your design */
   visibility: visible;
@@ -620,7 +623,7 @@ section,
   background: linear-gradient(
     0deg,
     /* var(--background-color) 0%, */
-    /* color-mix(in srgb, var(--background-color) 90%, white 10%) 100% */
+      /* color-mix(in srgb, var(--background-color) 90%, white 10%) 100% */
   );
   padding: 0;
   display: flex;
@@ -3790,7 +3793,7 @@ section,
     padding-right: 80px;
   }
   .hero p {
-    font-size:25px;
+    font-size: 25px;
   }
 }
 

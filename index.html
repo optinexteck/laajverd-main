@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -58,6 +58,19 @@
     <link href="assets/css/carousel.css" rel="stylesheet" />
 
     <style>
+      .blurred-background {
+        position: absolute;
+        font-weight: bolder;
+        color: white; 
+        margin: 0;
+        background: rgba(58, 96, 127, 0.6); 
+        backdrop-filter: blur(5px); 
+        border-radius: 8px; 
+        text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8); 
+      }
+      .absolute-div h1,h2,h3,h4{
+        color: white;
+      }
       .sidebar {
         height: 100%;
         width: 0;
@@ -265,7 +278,8 @@
         top: 0;
         right: -100%;
         /* Initially hidden off the right side */
-        box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        box-shadow:
+          0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
           0 2.1px 2.1px rgba(128, 128, 128, 0.195),
           0 4.4px 4.4px rgba(128, 128, 128, 0.241),
@@ -331,7 +345,6 @@
         .content-container {
           max-width: 300px;
         }
-
 
         .column {
           flex: none;
@@ -473,7 +486,7 @@
           <div
             class="carousel-item active"
             style="
-              background-image: url('./assets/img/AssetPanels/Landing-01.png');
+              background-image: url(&quot;./assets/img/AssetPanels/Landing-01.png&quot;);
               width: 100vw;
               height: 100%;
               background-size: cover;
@@ -504,7 +517,7 @@
 
       </div> -->
 
-          <!-- Slide 3 --> 
+          <!-- Slide 3 -->
           <!-- <div class="carousel-item"
         style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
         <div class="carousel-container">
@@ -519,7 +532,7 @@
         class="nav hero section section2"
         style="background-color: #f1ca01"
       >
-        <div class="info-container ">
+        <div class="info-container">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
           <div class="our">
             <h3 class="column"></h3>
@@ -688,51 +701,92 @@
         >
           <!-- Slide 1 -->
           <div
+            class="carousel-item active absolute-div"
+            style="
+              position: relative;
+              background-color: #254365;
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-1.jpg&quot;);
+              background-size: cover;
+              background-position: left;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          >
+   <!-- heading -->
+<div style="top: 34%; left: 17%;" class="blurred-background">
+  <h1>The Making</h1>
+</div>
+<div style="top: 43%; left: 8%;" class="blurred-background">
+  <h1 style="font-size: 5rem;">Khatamband</h1>
+</div>
+
+<!-- left lower -->
+<div style="top: 70%; left: 8%;" class="blurred-background">
+  <h3>The Inappropriate cost</h3>
+</div>
+<div style="top: 74%; left: 8%;" class="blurred-background">
+  <h3>of ceiling information7</h3>
+</div>
+
+<!-- right top -->
+<div style="top: 11%; left: 46%;" class="blurred-background">
+  <h3>An Inter Looking of shades and</h3>
+</div>
+<div style="top: 16%; left: 46%;" class="blurred-background">
+  <h3>Colors a harmonious union of wood</h3>
+</div>
+<div style="top: 20%; left: 55%;" class="blurred-background">
+  <h3>and paint</h3>
+</div>
+
+<!-- right bottom -->
+<div style="top: 54%; left: 60%;" class="blurred-background">
+  <h4>The geometrical problem of khatam band</h4>
+</div>
+<div style="top: 59%; left: 60%;" class="blurred-background">
+  <h4>were race of interlocking combinations of</h4>
+</div>
+<div style="top: 63%; left: 64%;" class="blurred-background">
+  <h3>different combinations of</h3>
+</div>
+<div style="top: 68%; left: 64%;" class="blurred-background">
+  <h3>heads known as gazzete</h3>
+</div>
+          <!-- Slide 2 -->
+          <!-- <div
             class="carousel-item active"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-1.jpg&quot;);
               background-size: cover;
-              background-position: left;
+              background-position: right;
               background-repeat: no-repeat;
               height: 100%;
               width: 100vw;
             "
-          ></div>
-           <!-- Slide 2 -->
-           <div
-           class="carousel-item active"
-           style="
-             background-color: #254365;
-             background-image: url('./assets/img/hero-carousel/mid-carousel-1.jpg');
-             background-size: cover;
-             background-position: right;
-             background-repeat: no-repeat;
-             height: 100%;
-             width: 100vw;
-           "
-         ></div>
+          ></div> -->
 
           <!-- Slide 3 -->
-          <div
+          <!-- <div
             class="carousel-item"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-2.jpg&quot;);
               background-size: cover;
               background-position: left;
               background-repeat: no-repeat;
               height: 100%;
               width: 100vw;
             "
-          ></div>
-         
+          ></div> -->
+
           <!-- Slide 4 -->
-          <div
+          <!-- <div
             class="carousel-item"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/hero-carousel/mid-carousel-2.jpg');
+              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-2.jpg&quot;);
               background-size: cover;
               background-position: right;
               background-repeat: no-repeat;
@@ -740,7 +794,7 @@
               width: 100vw;
             "
           ></div>
-        </div>
+        </div> -->
         <!-- Location Create Card -->
         <form
           id="uploadForm"
@@ -1027,7 +1081,7 @@
           },
           {
             threshold: 0.3,
-          }
+          },
         );
 
         // Start observing the blue section
@@ -1122,12 +1176,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
           const paragraph = document.querySelector(
-            ".animate__animated.animate__fadeInUp"
+            ".animate__animated.animate__fadeInUp",
           );
           if (window.innerWidth < 600) {
             paragraph.innerHTML = paragraph.innerHTML.replace(
               /<br\s*\/?>/gi,
-              " "
+              " ",
             );
           }
         }

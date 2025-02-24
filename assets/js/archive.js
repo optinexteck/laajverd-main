@@ -5,7 +5,7 @@
 //     images: ["assets/img/blog/comments-1.jpg"], // Add your image paths
 //     siteDescription: `Thami Mosque, a 400-year-old wooden structure having religious significance for the local
 //             community and is considered sacred for the Noor Bakhsh Sofia group, followers of Syed M.`,
-//     projectDescription: `The project aimed to highlight the significance of Islamic art and architecture by documenting 
+//     projectDescription: `The project aimed to highlight the significance of Islamic art and architecture by documenting
 //             the architectural form and decorative patterns used in Thami Mosque in Sermik village of Kharmang district.`,
 //   },
 //   "Vernacular Prototype": {
