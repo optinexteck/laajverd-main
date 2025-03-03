@@ -120,13 +120,14 @@
       /* Media query for mobile screens */
       @media screen and (max-width: 768px) {
         .openbtn {
-          display: block; /* Show open button on mobile */
+          display: block;
+          
         }
         .sidebar {
-          display: block; /* Show sidebar on mobile */
+          display: block;
         }
         .navmenu {
-          display: none; /* Hide navmenu on mobile */
+          display: none; 
         }
       }
 
@@ -144,15 +145,14 @@
       /* Show navmenu on larger screens */
       @media screen and (min-width: 769px) {
         .navmenu {
-          display: flex; /* Show navmenu on larger screens */
+          display: flex; 
         }
         .openbtn {
-          display: none; /* Hide open button on larger screens */
+          display: none;
         }
       }
     </style>
     <style>
-      /* General Styles */
       body,
       html {
         margin: 0;
@@ -265,7 +265,6 @@
     <style>
       .login-form {
         position: fixed;
-        /* Fix the position so the form can slide from the side */
         z-index: 99;
         display: flex;
         width: 500px;
@@ -277,7 +276,6 @@
         height: 100%;
         top: 0;
         right: -100%;
-        /* Initially hidden off the right side */
         box-shadow:
           0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
