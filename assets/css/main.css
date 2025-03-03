@@ -208,10 +208,7 @@ h6 {
   position: fixed;
   top: 0;
   width: 100%;
-  transition:
-    top 0.3s,
-    visibility 0s 0.3s,
-    opacity 0.3s;
+  transition: top 0.3s, visibility 0s 0.3s, opacity 0.3s;
   z-index: 1000; /* Ensure the header is above other content */
   height: 60px; /* Adjust based on your design */
   visibility: visible;
@@ -736,7 +733,7 @@ section,
 
 @media (min-width: 1024px) {
   .hero h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-weight: 400;
     width: 30%;
     text-align: start;
@@ -3805,4 +3802,88 @@ section,
   .hero p {
     font-size: 70px;
   }
+}
+
+.carousel-item {
+  position: relative;
+  background-color: #254365;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100vw;
+}
+
+.carousel-item.left {
+  background-position: left;
+}
+
+.carousel-item.right {
+  background-position: right;
+}
+
+.blurred-background {
+  position: absolute;
+  font-weight: bolder;
+  color: white;
+  margin: 0;
+  background: rgba(58, 96, 127, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8);
+}
+
+.blurred-background h1 {
+  font-size: 5rem;
+}
+
+/* Positioning for specific elements */
+.blurred-background.top-left {
+  top: 34%;
+  left: 17%;
+}
+
+.blurred-background.top-left-large {
+  top: 43%;
+  left: 8%;
+}
+
+.blurred-background.left-lower {
+  top: 71%;
+  left: 8%;
+}
+
+.blurred-background.right-top {
+  top: 11%;
+  left: 46%;
+}
+
+.blurred-background.right-bottom {
+  top: 54%;
+  left: 60%;
+}
+
+/* Additional positioning for other elements */
+.blurred-background.circle {
+  top: 8%;
+  left: 11.5%;
+}
+
+.blurred-background.left-lower-extended {
+  top: 88%;
+  left: 8%;
+}
+
+.blurred-background.right-mid-above {
+  top: 22%;
+  left: 65%;
+}
+
+.blurred-background.right-mid {
+  top: 52%;
+  left: 53%;
+}
+
+.blurred-background.right-bottom-extended {
+  top: 82%;
+  left: 71%;
 }
