@@ -572,12 +572,12 @@ body {
 }
 @media (min-width: 2500px) {
   .content-container {
-    max-width: 2000px;
+    max-width: 2200px;
     gap: 60px;
   }
 
   .column {
-    max-width: 700px;
+    max-width: 750px;
   }
 
   .column h3 {

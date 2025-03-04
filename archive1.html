@@ -170,6 +170,49 @@
         border-radius: 5px;
       }
     </style>
+    <style>
+      /* Grid layout for archive cards */
+      .row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .archive-card {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        transition: transform 0.3s ease;
+      }
+
+      .archive-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+
+      /* Responsive layout */
+      @media screen and (max-width: 1200px) {
+        .row {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        .row {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </head>
 
   <body class="index-page">
@@ -653,9 +696,9 @@
               <i class="bi bi-plus icon open-offcanvas"></i>
             </a>
             <h4 class="post-title">${card.title}</h4>
-            <p><strong>Location:</strong>${card.location}</p>
-            <p><strong>Assets:</strong>${card.assets}</p>
-            <p><strong>Material:</strong>${card.material}</p>
+            <p><strong>Location:</strong> ${card.location}</p>
+            <p><strong>Assets:</strong> ${card.assets}</p>
+            <p><strong>Material:</strong> ${card.material}</p>
           `;
           container.appendChild(cardElement);
         });
@@ -668,7 +711,7 @@
             const title = card.querySelector(".post-title").textContent.trim();
             const encodedTitle = title.split(" ")[0];
             const newUrl = `/archive-map.html?title=${encodedTitle}`;
-            window.open(newUrl, '_blank'); // Open in a new tab
+            window.open(newUrl); // Open in a new tab
           });
         });
       }
