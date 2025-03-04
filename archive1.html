@@ -214,8 +214,8 @@
       }
     </style>
     <style>
-      /* Global paragraph styling with Avenir font */
-      p {
+      /* Global paragraph and title styling with Avenir font */
+      p, h1, h2, h3, h4, h5, h6, .filter-group label {
         font-family: 'Avenir', 'Helvetica Neue', sans-serif;
       }
 
@@ -229,8 +229,165 @@
       .archive-card h4,
       .filters select,
       .filters input,
-      .filters button {
+      .filters button,
+      .filter-group label {
         font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+      }
+
+      /* Updated button styling */
+      .archiveBtn {
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+        transition: all 0.3s ease;
+        border: none;
+        background-color: #8f9197;
+        color: white;
+      }
+
+      .archiveBtn:hover {
+        background-color: #737680;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .archiveBtn.btn-secondary {
+        background-color: #d1d3d8;
+        color: #4a4a4a;
+      }
+
+      .archiveBtn.btn-secondary:hover {
+        background-color: #c1c3c8;
+      }
+
+      /* Filter section styling */
+      .filters {
+        background-color: #f8f9fa;
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      .filter-group label {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      /* Filter title styling */
+      .filterCover h3 {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 24px;
+      }
+    </style>
+    <!-- Add Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <style>
+      /* Select2 custom styling */
+      .select2-container {
+        min-width: 200px;
+        margin-right: 10px;
+      }
+      .select2-container--default .select2-selection--multiple {
+        border: 1px solid #d7d1d1;
+        border-radius: 4px;
+      }
+      .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+    </style>
+    <style>
+      /* Updated Filter section styling */
+      .filters {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+
+      .filter-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .filter-group {
+        min-width: 250px;
+        flex: 0 0 auto;
+      }
+
+      .filter-group label {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: block;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+      }
+
+      .select2-container {
+        width: 100% !important;
+        min-width: 250px;
+      }
+
+      .button-group {
+        border-top: 1px solid #e9ecef;
+        padding-top: 20px;
+        margin-top: 20px;
+      }
+
+      .archiveBtn {
+        min-width: 120px;
+        padding: 8px 24px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+        transition: all 0.3s ease;
+        border: none;
+        background-color: #8f9197;
+        color: white;
+      }
+
+      .archiveBtn:hover {
+        background-color: #737680;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .archiveBtn.btn-secondary {
+        background-color: #d1d3d8;
+        color: #4a4a4a;
+      }
+
+      .archiveBtn.btn-secondary:hover {
+        background-color: #c1c3c8;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .filter-group {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+        
+        .button-group .d-flex {
+          flex-direction: row;
+          gap: 10px;
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .archiveBtn {
+          flex: 0 1 auto;
+          min-width: 120px;
+          max-width: 200px;
+        }
       }
     </style>
   </head>
@@ -329,61 +486,57 @@
         >
           <div class="collection">
             <div class="filterCover">
-              <div class="filters d-flex align-items-center gap-2">
-                <select name="location" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
-                  <option value="Location" hidden selected>Location</option>
-                  <option value="Neelum">Neelum</option>
-                  <option value="Kharmang">Kharmang</option>
-                  <option value="Yasin">Yasin</option>
-                  <option value="Skardu">Skardu</option>
-                  <option value="Kalash">Kalash</option>
-
-                  <option value="Laspur">Laspur</option>
-                  <option value="Yarkhun">Yarkhun</option>
-                  <option value="Chitral">Chitral</option>
-                  <option value="Ganche">Ganche</option>
-                  <option value="Kaghan">Kaghan</option>
-                  <option value="Khotan">Khotan</option>
-                  <option value="Khorog">Khorog</option>
-                  <option value="Murghab">Murghab</option>
-                  <option value="Kashgar">Kashgar</option>
-                  <option value="Osh">Osh</option>
-                  <option value="MazarSharif">Mazar Sharif</option>
-                  <option value="Bukhara">Bukhara</option>
-                  <option value="Khiva">Khiva</option>
-                  <option value="GBAO">GBAO</option>
-                </select>
-                <select name="asset" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
-                  <option value="Asset" hidden selected>Asset</option>
-                  <option value="Object">Object</option>
-                  <option value="Building">Building</option>
-                  <option value="Practice">Practice</option>
-                  <option value="technique">technique</option>
-                  <option value="Story">Story</option>
-                  <option value="pattern">pattern</option>
-                  <option value="place">place</option>
-                </select>
-                <select name="material" class="form-select form-select-sm" style="border: 1px solid #d7d1d1">
-                  <option value="Material" hidden selected>Material</option>
-                  <option value="Mud">Mud</option>
-                  <option value="Wood">Wood</option>
-                  <option value="Fibre">Fibre</option>
-                  <option value="Stone">Stone</option>
-                </select>
-                <button
-                  id="search"
-                  class="archiveBtn"
-                  style="padding: 6px; border: 1px solid #d7d1d1"
-                >
-                  Search
-                </button>
-                <button
-                  id="reset"
-                  class="archiveBtn"
-                  style="padding: 6px; border: 1px solid #d7d1d1"
-                >
-                  Reset
-                </button>
+              <div class="filters">
+                <div class="filter-container d-flex flex-wrap justify-content-center mt-4 gap-4">
+                  <div class="filter-group">
+                    <select id="location" name="location" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Neelum">Neelum</option>
+                      <option value="Kharmang">Kharmang</option>
+                      <option value="Yasin">Yasin</option>
+                      <option value="Skardu">Skardu</option>
+                      <option value="Kalash">Kalash</option>
+                      <option value="Laspur">Laspur</option>
+                      <option value="Yarkhun">Yarkhun</option>
+                      <option value="Chitral">Chitral</option>
+                      <option value="Ganche">Ganche</option>
+                      <option value="Kaghan">Kaghan</option>
+                      <option value="Khotan">Khotan</option>
+                      <option value="Khorog">Khorog</option>
+                      <option value="Murghab">Murghab</option>
+                      <option value="Kashgar">Kashgar</option>
+                      <option value="Osh">Osh</option>
+                      <option value="MazarSharif">Mazar Sharif</option>
+                      <option value="Bukhara">Bukhara</option>
+                      <option value="Khiva">Khiva</option>
+                      <option value="GBAO">GBAO</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <select id="asset" name="asset" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Object">Object</option>
+                      <option value="Building">Building</option>
+                      <option value="Practice">Practice</option>
+                      <option value="Technique">Technique</option>
+                      <option value="Story">Story</option>
+                      <option value="Pattern">Pattern</option>
+                      <option value="Place">Place</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <select id="material" name="material" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Mud">Mud</option>
+                      <option value="Wood">Wood</option>
+                      <option value="Fibre">Fibre</option>
+                      <option value="Stone">Stone</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="filter-group  d-flex justify-content-center mt-3">
+                  <div class="d-flex gap-3">
+                    <button id="search" class="archiveBtn">Apply Filters</button>
+                    <button id="reset" class="archiveBtn btn-secondary">Reset</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -771,6 +924,98 @@
 
       // Fetch data on page load
       document.addEventListener("DOMContentLoaded", fetchData);
+    </script>
+    <!-- Add jQuery and Select2 JS before closing body tag -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Initialize Select2 on all multiselect elements with custom placeholders
+        $('#location').select2({
+          placeholder: "Location",
+          allowClear: true,
+          width: '250px'
+        });
+
+        $('#asset').select2({
+          placeholder: "Asset Type",
+          allowClear: true,
+          width: '250px'
+        });
+
+        $('#material').select2({
+          placeholder: "Material",
+          allowClear: true,
+          width: '250px'
+        });
+
+        // Function to filter cards based on selected values
+        function filterCards() {
+          const locationValues = $('#location').val() || [];
+          const assetValues = $('#asset').val() || [];
+          const materialValues = $('#material').val() || [];
+
+          $('.archive-card').each(function() {
+            const card = $(this);
+            const cardLocation = card.find('p:contains("Location:")').text().toLowerCase();
+            const cardAsset = card.find('p:contains("Assets:")').text().toLowerCase();
+            const cardMaterial = card.find('p:contains("Material:")').text().toLowerCase();
+
+            const matchesLocation = locationValues.length === 0 || 
+              locationValues.some(val => cardLocation.includes(val.toLowerCase()));
+            const matchesAsset = assetValues.length === 0 || 
+              assetValues.some(val => cardAsset.includes(val.toLowerCase()));
+            const matchesMaterial = materialValues.length === 0 || 
+              materialValues.some(val => cardMaterial.includes(val.toLowerCase()));
+
+            if (matchesLocation && matchesAsset && matchesMaterial) {
+              card.show();
+            } else {
+              card.hide();
+            }
+          });
+
+          // Adjust footer after filtering
+          adjustFooter();
+        }
+
+        // Add event listener for search button
+        $('#search').click(filterCards);
+        
+        // Reset button handler
+        $('#reset').click(function() {
+          $('.multiselect').val(null).trigger('change');
+          $('.archive-card').show();
+          adjustFooter();
+        });
+
+        // Add some basic styles for the filter section
+        $('<style>')
+          .text(`
+            .filter-group {
+              margin-bottom: 15px;
+            }
+            .select2-container {
+              margin-bottom: 10px;
+            }
+            .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+              color: #495057;
+              font-weight: 500;
+            }
+            .archiveBtn {
+              padding: 8px 16px;
+              border-radius: 25px;
+              font-size: 14px;
+            }
+            .filters {
+              background-color: #f8f9fa;
+              padding: 20px;
+              border-radius: 8px;
+              margin-bottom: 30px;
+            }
+          `)
+          .appendTo('head');
+      });
     </script>
   </body>
 </html>
