@@ -711,7 +711,7 @@
             const title = card.querySelector(".post-title").textContent.trim();
             const encodedTitle = title.split(" ")[0];
             const newUrl = `/archive-map.html?title=${encodedTitle}`;
-            window.open(newUrl); // Open in a new tab
+            window.location.href = newUrl;
           });
         });
       }

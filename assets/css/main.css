@@ -208,10 +208,7 @@ h6 {
   position: fixed;
   top: 0;
   width: 100%;
-  transition:
-    top 0.3s,
-    visibility 0s 0.3s,
-    opacity 0.3s;
+  transition: top 0.3s, visibility 0s 0.3s, opacity 0.3s;
   z-index: 1000; /* Ensure the header is above other content */
   height: 60px; /* Adjust based on your design */
   visibility: visible;
@@ -736,7 +733,7 @@ section,
 
 @media (min-width: 1024px) {
   .hero h2 {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     font-weight: 400;
     width: 30%;
     text-align: start;
@@ -3804,5 +3801,158 @@ section,
   }
   .hero p {
     font-size: 70px;
+  }
+}
+
+.absolute-div {
+  position: relative;
+  background-color: #254365;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100vw;
+}
+
+.absolute-div.left {
+  background-position: left;
+}
+
+.absolute-div.right {
+  background-position: right;
+}
+
+.blurred-background {
+  position: absolute;
+  font-weight: bolder;
+  color: white;
+  margin: 0;
+  background: rgba(58, 96, 127, 0.6);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8);
+  left: calc(10% + var(--original-left));
+}
+
+.blurred-background h1 {
+  font-size: 5rem;
+}
+
+/* Positioning for specific elements */
+.blurred-background.top-left {
+  top: 34%;
+  left: calc(25% + var(--original-left));
+}
+
+.blurred-background.top-left-large {
+  top: 43%;
+  left: calc(16% + var(--original-left));
+}
+
+.blurred-background.left-lower {
+  top: 71%;
+  left: calc(16% + var(--original-left));
+}
+
+.blurred-background.right-top {
+  top: 11%;
+  left: calc(54% + var(--original-left));
+}
+
+.blurred-background.right-bottom {
+  top: 54%;
+  left: calc(68% + var(--original-left));
+}
+
+/* Additional positioning for other elements */
+.blurred-background.circle {
+  top: 8%;
+  left: calc(20% + var(--original-left));
+}
+
+.blurred-background.left-lower-extended {
+  top: 88%;
+  left: calc(16% + var(--original-left));
+}
+
+.blurred-background.right-mid-above {
+  top: 22%;
+  left: calc(73% + var(--original-left));
+}
+
+.blurred-background.right-mid {
+  top: 52%;
+  left: calc(61% + var(--original-left));
+  left: 53%;
+}
+
+.blurred-background.right-bottom-extended {
+  top: 82%;
+  left: 71%;
+}
+
+@media (min-width: 1400px) and (min-height: 900px) {
+  .absolute-div {
+    height: 90vh;
+    width: 90vw;
+  }
+
+  .blurred-background {
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+  }
+
+  .blurred-background h1 {
+    font-size: 6rem;
+  }
+
+  /* Adjust positioning for larger screens */
+  .blurred-background.top-left {
+    top: 30%;
+    left: 15%;
+  }
+
+  .blurred-background.top-left-large {
+    top: 40%;
+    left: 6%;
+  }
+
+  .blurred-background.left-lower {
+    top: 68%;
+    left: 6%;
+  }
+
+  .blurred-background.right-top {
+    top: 9%;
+    left: 44%;
+  }
+
+  .blurred-background.right-bottom {
+    top: 52%;
+    left: 58%;
+  }
+
+  .blurred-background.circle {
+    top: 6%;
+    left: 10%;
+  }
+
+  .blurred-background.left-lower-extended {
+    top: 85%;
+    left: 6%;
+  }
+
+  .blurred-background.right-mid-above {
+    top: 20%;
+    left: 63%;
+  }
+
+  .blurred-background.right-mid {
+    top: 50%;
+    left: 51%;
+  }
+
+  .blurred-background.right-bottom-extended {
+    top: 80%;
+    left: 69%;
   }
 }
