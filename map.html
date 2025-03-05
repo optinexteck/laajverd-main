@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -78,8 +78,7 @@
       /* Add this style block in the <head> section or in your CSS file */
       .description-paragraph {
         text-transform: none; /* Ensure text is not transformed to uppercase */
-        font-family:
-          "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
+        font-family: "Arial", sans-serif; /* Use a font that doesn't enforce uppercase */
       }
 
       /* Sidebar styles */
@@ -471,9 +470,18 @@
         leftDiv.style.flex = "1"; // Take equal width
         leftDiv.style.borderRight = "1px solid #ccc"; // Add a separator
         leftDiv.style.paddingRight = "10px";
+        leftDiv.style.backgroundColor = "black";
 
         const descriptionParagraph = document.createElement("p");
+        descriptionParagraph.style.backgroundColor = "black";
         descriptionParagraph.classList.add("description-paragraph");
+        descriptionParagraph.style.width = "100%";
+        descriptionParagraph.style.height = "100%";
+        descriptionParagraph.style.margin = "0";
+        descriptionParagraph.style.padding = "20px";
+        descriptionParagraph.style.fontSize = "16px";
+        descriptionParagraph.style.lineHeight = "1.6";
+        descriptionParagraph.style.overflow = "auto";
         descriptionParagraph.textContent =
           description.charAt(0).toUpperCase() +
           description.slice(1).toLowerCase();
@@ -649,30 +657,35 @@
         leftDiv.classList.add("lft");
         leftDiv.style.flex = "2";
         leftDiv.style.borderRight = "1px solid #ccc";
-        leftDiv.style.paddingRight = "10px";
+        leftDiv.style.padding = "20px";
         leftDiv.style.display = "flex";
+        leftDiv.style.alignItems = "flex-start";
 
         const descriptionParagraph = document.createElement("p");
         descriptionParagraph.classList.add("description-paragraph");
-        descriptionParagraph.style.width = "70%";
-        descriptionParagraph.style.height = "60%";
-        descriptionParagraph.style.overflow = "scroll";
-        descriptionParagraph.style.margin = "auto auto";
-        descriptionParagraph.style.padding = "15px";
-        descriptionParagraph.style.border = "1px solid black";
+        descriptionParagraph.style.width = "100%";
+        descriptionParagraph.style.height = "100%";
+        descriptionParagraph.style.margin = "0";
+        descriptionParagraph.style.marginTop = "8px";
+        descriptionParagraph.style.padding = "20px";
+        descriptionParagraph.style.fontSize = "16px";
+        descriptionParagraph.style.lineHeight = "1.6";
+        descriptionParagraph.style.overflow = "auto";
         descriptionParagraph.textContent =
           description.charAt(0).toUpperCase() +
           description.slice(1).toLowerCase();
 
         const leftArrow = document.createElement("h2");
         leftArrow.textContent = "<";
-        leftArrow.style.margin = "auto auto";
+        leftArrow.style.margin = "auto 10px";
         leftArrow.style.cursor = "pointer";
+        leftArrow.style.alignSelf = "center";
 
         const rightArrow = document.createElement("h2");
         rightArrow.textContent = ">";
-        rightArrow.style.margin = "auto auto";
+        rightArrow.style.margin = "auto 10px";
         rightArrow.style.cursor = "pointer";
+        rightArrow.style.alignSelf = "center";
 
         leftArrow.addEventListener("click", () => {
           navigateToTooltip(-1);
@@ -808,7 +821,7 @@
         const svg = document.querySelector("svg") || createSvgElement();
         const line = document.createElementNS(
           "http://www.w3.org/2000/svg",
-          "path",
+          "path"
         );
 
         const controlX1 = x1 + (x2 - x1) / 3;
@@ -829,7 +842,7 @@
       function createSvgElement() {
         const svg = document.createElementNS(
           "http://www.w3.org/2000/svg",
-          "svg",
+          "svg"
         );
         svg.setAttribute("width", "100%");
         svg.setAttribute("height", "100%");
@@ -850,7 +863,7 @@
               pointData.longitude,
               pointData.latitude,
               "blue",
-              pointData.description,
+              pointData.description
             );
           });
         });
