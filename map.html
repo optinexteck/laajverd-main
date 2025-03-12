@@ -572,30 +572,33 @@
 
       function createRoute(routeData, i) {
         const {
-          longitude: x,
-          latitude: y,
-          placeName,
-          description,
+          longitude: x = 0,
+          latitude: y = 0,
+          placeName = "Unknown Location",
+          description = "No Description Available",
           projectTitle = "No Title Available",
           projectSnapshot = "No Snapshot Available",
-          type = [], // Assume type is an array
-          slider = "[]", // Default to an empty array if not present
+          type = [],
+          slider = "[]",
+          date = "No Date Available",
         } = routeData[i];
 
-        let sliderArray = [];
-        if (slider && slider.trim() !== "") {
-          try {
-            sliderArray = JSON.parse(slider);
-            if (!Array.isArray(sliderArray)) {
-              throw new Error("Parsed slider is not an array");
-            }
-          } catch (error) {
-            console.error("Error parsing slider JSON:", error);
-            sliderArray = []; // Ensure sliderArray is an array
-          }
-        }
+        // Define the keywords for category
+        const categoryKeywords = [
+          "Object",
+          "practice",
+          "building",
+          "story",
+          "technique",
+          "pattern",
+          "place",
+        ];
 
-        console.log("Slider data:", sliderArray);
+        // Separate types into material and category
+        const categoryTypes = type.filter((t) => categoryKeywords.includes(t));
+        const materialTypes = type.filter((t) => !categoryKeywords.includes(t));
+
+        console.log("Slider data:", slider);
 
         // Create the route point
         const point = document.createElement("div");
@@ -734,7 +737,6 @@
         const rightDiv = document.createElement("div");
         rightDiv.style.overflowY = "scroll";
         rightDiv.style.overflowX = "hidden";
-
         rightDiv.classList.add("rght");
         rightDiv.style.flex = "1";
 
@@ -751,10 +753,30 @@
         h2.style.color = "black";
         h2.style.fontWeight = "bold";
 
-        header.appendChild(h2);
+        const projectDate = document.createElement("p");
+        projectDate.textContent = `Project Date: ${date}`;
+        projectDate.style.color = "black";
+        projectDate.style.fontSize = "12px";
+        projectDate.style.margin = "0";
+        projectDate.style.padding = "0";
 
+        const relatedLink = document.createElement("a");
+        relatedLink.href = `./archive-map.html?location=${encodeURIComponent(
+          placeName
+        )}`;
+        relatedLink.target = "_blank";
+        relatedLink.textContent = "Related Links";
+        relatedLink.style.color = "black";
+        relatedLink.style.fontSize = "12px";
+        relatedLink.style.margin = "0";
+        relatedLink.style.padding = "0";
+        relatedLink.style.textDecoration = "none";
+        relatedLink.style.textAlign = "center";
+
+        header.appendChild(h2);
         headingDiv.appendChild(placeParagraph);
         headingDiv.appendChild(header);
+        headingDiv.appendChild(projectDate);
         rightDiv.appendChild(headingDiv);
 
         // Add project title and snapshot
@@ -765,12 +787,32 @@
         const projectSnapshotElement = document.createElement("p");
         projectSnapshotElement.style.fontSize = "12px";
         projectSnapshotElement.textContent = projectSnapshot;
-        rightDiv.appendChild(projectSnapshotElement);
+        // rightDiv.appendChild(projectSnapshotElement);
 
-        // Add type data
-        const typeElement = document.createElement("p");
-        typeElement.textContent = type.join(", ");
-        rightDiv.appendChild(typeElement);
+        // Add material data
+        if (materialTypes.length > 0) {
+          const materialElement = document.createElement("p");
+          materialElement.textContent = `Material: ${materialTypes.join(", ")}`;
+          rightDiv.appendChild(materialElement);
+        }
+
+        // Add category data
+        if (categoryTypes.length > 0) {
+          const categoryElement = document.createElement("p");
+          categoryElement.textContent = `Assets: ${categoryTypes.join(", ")}`;
+          rightDiv.appendChild(categoryElement);
+        }
+
+        rightDiv.appendChild(relatedLink);
+
+        // Add click event listener to redirect when rightDiv is clicked
+        rightDiv.addEventListener("click", () => {
+          console.log(placeName);
+          window.open(
+            `./archive-map.html?location=${encodeURIComponent(placeName)}`,
+            "_blank"
+          );
+        });
 
         // Append left and right columns to the tooltip
         tooltip.appendChild(leftDiv);
@@ -804,8 +846,8 @@
       }
 
       function createRouteCover(routeData) {
+        console.log("All Route Data:", routeData); // Debugging: Log all route data
         for (var i = 0; i < routeData.length; i++) {
-          console.log(routeData[i]);
           createRoute(routeData, i);
         }
       }
@@ -872,6 +914,7 @@
           const data = [];
           querySnapshot.docs.forEach((doc) => {
             const routeData = doc.data();
+            console.log("Route Data:", routeData); // Debugging: Log each route data
             data.push(routeData);
           });
           createRouteCover(data);

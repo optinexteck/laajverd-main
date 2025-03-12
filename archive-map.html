@@ -108,6 +108,15 @@
               <option value="Kharmang">Kharmang</option>
               <option value="Yasin">Yasin</option>
               <option value="Upper Chitral">Upper Chitral</option>
+              <option value="Laspur">Laspur</option>
+              <option value="Qajar">Qajar</option>
+              <option value="Sermik">Sermik</option>
+              <option value="Brep">Brep</option>
+              <option value="Yarkhun">Yarkhun</option>
+              <option value="Pinjrakari">Pinjrakari</option>
+              <option value="Gholbasher">Gholbasher</option>
+              <option value="Gilgit">Gilgit</option>
+              <option value="Gilgit">Skardu</option>
               <option value="Various">Various</option>
             </select>
             <select id="supportedByFilter">
@@ -470,6 +479,8 @@
   <!-- card -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM fully loaded and parsed'); // Debugging log
+
       const cards = document.querySelectorAll('.library'); // Select all library cards
       const materialFilter = document.getElementById('materialFilter');
       const locationFilter = document.getElementById('locationFilter');
@@ -483,11 +494,36 @@
         return urlParams.get(name);
       }
 
+      // Function to capitalize the first letter of a string
+      function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+      }
+
       // Set default search value based on "title" query parameter
       const titleParam = getQueryParam('title');
       if (titleParam) {
         searchInput.value = titleParam;
+        console.log('Title parameter found:', titleParam); // Debugging log
         filterCards(); // Trigger the search based on the title
+      }
+
+      // Set default location filter based on "location" query parameter
+      var locationParam = getQueryParam('location');
+        if(locationParam === 'Skardu'){
+          locationParam = 'Gilgit';
+        }
+      if (locationParam) {
+        const formattedLocation = capitalizeFirstLetter(locationParam);
+        console.log('Location parameter found:', formattedLocation); // Debugging log
+        // Check if the location exists in the dropdown options
+          const locationOption = Array.from(locationFilter.options).find(option => option.value === formattedLocation);
+          if (locationOption) {
+            locationFilter.value = locationOption.value;
+          console.log('Location filter set to:', locationOption.value); // Debugging log
+          filterCards(); // Trigger the filter based on the location
+        } else {
+          console.log('Location not found in dropdown options'); // Debugging log
+        }
       }
 
       // Function to filter cards based on selected filters
@@ -498,6 +534,7 @@
         const yearValue = yearFilter.value.toLowerCase();
         const searchValue = searchInput.value.toLowerCase();
 
+        console.log('Filtering with values:', { locationValue, materialValue, supportedByValue, yearValue, searchValue }); // Debugging log
         let visibleCardCount = 0; // Counter for visible cards
 
         cards.forEach(card => {
@@ -523,19 +560,18 @@
           }
         });
 
-          // Log the search query and the number of visible cards
-          console.log('Search Query:', searchValue);
-          console.log('Visible Cards Count:', visibleCardCount);
-        }
+        // Log the search query and the number of visible cards
+        console.log('Visible Cards Count:', visibleCardCount);
+      }
 
-        // Event listeners for filter changes
-        materialFilter.addEventListener('change', filterCards);
-        locationFilter.addEventListener('change', filterCards);
-        supportedByFilter.addEventListener('change', filterCards);
-        yearFilter.addEventListener('change', filterCards);
-        searchInput.addEventListener('input', filterCards);
-      });
-    </script>
+      // Event listeners for filter changes
+      materialFilter.addEventListener('change', filterCards);
+      locationFilter.addEventListener('change', filterCards);
+      supportedByFilter.addEventListener('change', filterCards);
+      yearFilter.addEventListener('change', filterCards);
+      searchInput.addEventListener('input', filterCards);
+    });
+  </script>
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {

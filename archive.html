@@ -180,207 +180,167 @@
     document.getElementById("mySidebar").style.width = "0";
   }
 </script>
-  <main class="main" style="height: auto;">
+  <main class="main" style="height: auto; width: 100%">
 
-    <!-- Hero Section -->
-    <!-- <section id="hero" class="hero section dark-background">
-
-            <div id="hero-carousel" data-bs-interval="5000"
-                class="container carousel carousel-fade small-height-carousel" data-bs-ride="carousel">
-
-                
-                <div class="carousel-item active">
-                    <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Archive</h2>
-                    </div>
-                    <img src="assets/img/hero-carousel/hero-carousel-3.jpg" alt="">
-                </div>
-
-            </div>
-
-            <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                viewBox="0 24 150 28 " preserveAspectRatio="none">
-                <defs>
-                    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-                    </path>
-                </defs>
-                <g class="wave1">
-                    <use xlink:href="#wave-path" x="50" y="3"></use>
-                </g>
-                <g class="wave2">
-                    <use xlink:href="#wave-path" x="50" y="0"></use>
-                </g>
-                <g class="wave3">
-                    <use xlink:href="#wave-path" x="50" y="9"></use>
-                </g>
-            </svg>
-
-        </section> -->
-
-    <!-- content area -->
-    <main class="main" style="height: auto; width: 100%">
-      <!-- landing page -->
-      <div class="pg-1 d-flex justify-content-center align-items-center">
-        <div class="collection">
-          <!-- <h1>Collection</h1>
-          <div class="colTabs">
-            <div>OverWrite</div>
-            <div>Search</div>
-            <div>Event Database</div>
-            <div>Browse</div>
-            <div>Themes</div>
-          </div> -->
-          <div class="filterCover">
-            <div class="filters">
-              <select>
-                <option value="" hidden selected>access Level</option>
-                <option value="online">online</option>
-                <option value="onsite">ON SITE</option>
-              </select>
-              <select>
-                <option value="" hidden selected>COLLECTION TYPE</option>
-                <option value="online">RESEARCH COLLECTION</option>
-                <option value="onsite">LIBRARY COLLECTION</option>
-              </select>
-              <select>
-                <option value="" hidden selected>CONTENT TYPE</option>
-                <option value="online">ANTHILOGY</option>
-                <option value="onsite">ARTIST BOOK</option>
-                <option value="onsite">ARTIST MONOGRAPH</option>
-              </select>
-              <select>
-                <option value="" hidden selected>CONTENT TYPE</option>
-                <option value="online">FORMAT</option>
-                <option value="onsite">CS/DVD</option>
-                <option value="onsite">DIGITISED MATERIAL</option>
-                <option value="onsite">PRINTED MATTER</option>
-                <option value="onsite">FILE</option>
-              </select>
-            </div>
-            <div class="filters d-flex justify-content-between">
-              <input type="text" placeholder="make a search" />
-              <button>Search</button>
-              <button>RESET</button>
-            </div>
+    <!-- landing page -->
+    <div class="pg-1 d-flex justify-content-center align-items-center">
+      <div class="collection">
+        <!-- <h1>Collection</h1>
+        <div class="colTabs">
+          <div>OverWrite</div>
+          <div>Search</div>
+          <div>Event Database</div>
+          <div>Browse</div>
+          <div>Themes</div>
+        </div> -->
+        <div class="filterCover">
+          <div class="filters">
+            <select name="accessLevel">
+              <option value="" hidden selected>Access Level</option>
+              <option value="online">Online</option>
+              <option value="onsite">Onsite</option>
+            </select>
+            <select name="collectionType">
+              <option value="" hidden selected>Collection Type</option>
+              <option value="research">Research</option>
+              <option value="library">Library</option>
+            </select>
+            <select name="contentType">
+              <option value="" hidden selected>Content Type</option>
+              <option value="anthology">Anthology</option>
+              <option value="monograph">Monograph</option>
+            </select>
+            <select name="formatType">
+              <option value="" hidden selected>Format Type</option>
+              <option value="digital">Digital</option>
+              <option value="printed">Printed</option>
+            </select>
+          </div>
+          <div class="filters d-flex justify-content-between">
+            <input type="text" placeholder="make a search" />
+            <button>Search</button>
+            <button id="resetButton">RESET</button>
           </div>
         </div>
       </div>
-      <!-- research collection -->
-      <div class="library">
-        <div class="line"></div>
-        <div class="libHeading" style="width: 100%">
-          <div class="lft">
-            <div class="heading">
-              <p>57 COLLECTIONS</p>
-              <h1>Research Collections</h1>
+    </div>
 
-            </div>
-          </div>
-          <div class="rght">
-            <p>
-              AAA’s Research Collections comprises material gathered from focused research projects undertaken by AAA in
-              partnership with artists, art professionals, and researchers. It is a growing repository of primary source
-              material, photographic documentation, video recordings, ephemera, and more. Since 2010, AAA has been
-              digitising these valuable resources and making them accessible for users worldwide.
-            </p>
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <div class="heading">
+            <p>57 COLLECTIONS</p>
+            <h1>Research Collections</h1>
+
           </div>
         </div>
-
-        <!-- carosal -->
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
-          style="height: 70vh;overflow: hidden;width: 100%;">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/space-two-archive/st-03-01-05-15.tif.jpg"
-                alt="First slide" style="width: 100%;">
-            </div>
-            <div class="carousel-item" style="width: 100%;height:100%">
-              <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/1982-jyotsnabhatt079-1.tif.jpg"
-                alt="Second slide">
-            </div>
-            <div class="carousel-item" style="width: 100%;height:100%">
-              <img class="d-block w-100"
-                src="https://cdn.aaa.org.hk/_tiff_jpg/shin-leh-yuan-archive/sly-01-007-002-034.tif.jpg"
-                alt="Third slide">
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
+        <div class="rght">
+          <p>
+            AAA's Research Collections comprises material gathered from focused research projects undertaken by AAA in
+            partnership with artists, art professionals, and researchers. It is a growing repository of primary source
+            material, photographic documentation, video recordings, ephemera, and more. Since 2010, AAA has been
+            digitising these valuable resources and making them accessible for users worldwide.
+          </p>
         </div>
       </div>
 
-      <!-- library collections -->
-      <div class="library">
-        <div class="line"></div>
-        <div class="libHeading" style="width: 100%">
-          <div class="lft">
-            <h1>Library Headings</h1>
+      <!-- carosal -->
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
+        style="height: 70vh;overflow: hidden;width: 100%;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/space-two-archive/st-03-01-05-15.tif.jpg"
+              alt="First slide" style="width: 100%;">
           </div>
-          <div class="rght">
-            <p>
-              AAA Library is a growing body of material that reflects
-              contemporary artistic practice, as well as the art ecology and
-              scholarship in Asia within an international context. Built by
-              research and community efforts across the region, the Library now
-              comprises over 48,000 records, including exhibition catalogues,
-              monographs, audiovisual material, rare periodicals, individual
-              archives, and more. The material is searchable via the online
-              catalogue and accessible at AAA’s physical space in Hong Kong.
-            </p>
+          <div class="carousel-item" style="width: 100%;height:100%">
+            <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/1982-jyotsnabhatt079-1.tif.jpg"
+              alt="Second slide">
+          </div>
+          <div class="carousel-item" style="width: 100%;height:100%">
+            <img class="d-block w-100"
+              src="https://cdn.aaa.org.hk/_tiff_jpg/shin-leh-yuan-archive/sly-01-007-002-034.tif.jpg"
+              alt="Third slide">
           </div>
         </div>
-        <div class="cards" id="cards-container"></div>
-
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      </div>
-    </main>
-    <!-- footer area -->
+          <!-- Add a library container if missing -->
+    <div class="library"></div>
+    </div> 
 
-    <footer
-    id="footer"
-    class="footer nav"
+    <!-- library collections -->
+    <!-- <div class="library">
+      <div class="line"></div>
+      <div class="libHeading" style="width: 100%">
+        <div class="lft">
+          <h1>Library Headings</h1>
+        </div>
+        <div class="rght">
+          <p>
+            AAA Library is a growing body of material that reflects
+            contemporary artistic practice, as well as the art ecology and
+            scholarship in Asia within an international context. Built by
+            research and community efforts across the region, the Library now
+            comprises over 48,000 records, including exhibition catalogues,
+            monographs, audiovisual material, rare periodicals, individual
+            archives, and more. The material is searchable via the online
+            catalogue and accessible at AAA's physical space in Hong Kong.
+          </p>
+        </div>
+      </div>
+      <div class="cards" id="cards-container"></div>
+
+    </div> -->
+    </div>
+  </main>
+  <!-- footer area -->
+
+  <footer
+  id="footer"
+  class="footer nav"
+  style="
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: #cdcdcd;
+    padding: 10px;
+  "
+>
+  <div
     style="
       display: flex;
+      align-items: center;
       justify-content: center;
-      gap: 10px;
-      background-color: #cdcdcd;
-      padding: 10px;
+      height: 30px;
     "
   >
-    <div
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 30px;
-      "
-    >
-      <span>Copyright</span>
-      <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
-      <span>All Rights Reserved</span>
-    </div>
-    <div
-      class="social-links"
-      style="display: flex; gap: 10px; height: 30px"
-    >
-      <a href=""><i class="bi bi-twitter-x"></i></a>
-      <a href=""><i class="bi bi-facebook"></i></a>
-      <a href=""><i class="bi bi-instagram"></i></a>
-      <a href=""><i class="bi bi-skype"></i></a>
-      <a href=""><i class="bi bi-linkedin"></i></a>
-    </div>
-  </footer>
-    <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd;">
-    <div class="container">
-      <span>Copyright</span>
-          <strong class="px-1 sitename">LAAJVERD</strong>
-          <span>All Rights Reserved</span> -->
+    <span>Copyright</span>
+    <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+    <span>All Rights Reserved</span>
+  </div>
+  <div
+    class="social-links"
+    style="display: flex; gap: 10px; height: 30px"
+  >
+    <a href=""><i class="bi bi-twitter-x"></i></a>
+    <a href=""><i class="bi bi-facebook"></i></a>
+    <a href=""><i class="bi bi-instagram"></i></a>
+    <a href=""><i class="bi bi-skype"></i></a>
+    <a href=""><i class="bi bi-linkedin"></i></a>
+  </div>
+</footer>
+  <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd;">
+  <div class="container">
+    <span>Copyright</span>
+        <strong class="px-1 sitename">LAAJVERD</strong>
+        <span>All Rights Reserved</span> -->
       <!-- <h3 class="sitename">LAAJVERD</h3>
       <p>
         CCL believes that collaboration is essential for achieving large-scale
@@ -400,110 +360,183 @@
         </div>
         <div class="credits"> -->
         <!-- </div>
-    </div>
-  </footer> -->
+  </div>
+</footer> -->
 
-    <!-- Scroll Top -->
-    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
+  <!-- Preloader -->
+  <div id="preloader"></div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/filter.js"></script>
-    <!-- card -->
-    <script>
-      // // Define an array of card data
-      // const cardData = [
-      //   { title: 'Reference', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '67 Records' },
-      //   { title: 'Reference1', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '57 Records' },
-      //   { title: 'Reference2', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/epherma-1.jpg', records: '56 Records' },
-      //   { title: 'Reference3', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/periodical.jpg', records: '7 Records' },
-      //   { title: 'Reference4', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/reference.jpg', records: '756 Records' },
-      //   { title: 'Reference5', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/artist-monographs.jpg', records: '675 Records' },
-      //   { title: 'Reference6', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/exhibition-catalogue.jpg', records: '234 Records' },
-      //   { title: 'Reference7', description: 'Lorem ipsum, dolor sit amet consectetur.', imageUrl: 'https://cdn.aaa.org.hk/w500/Collection_images/clippings.jpg', records: '432 Records' }
-      // ];
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/filter.js"></script>
+  <!-- card -->
+  <script>
 
-      // // Function to create and append cards
-      // function generateCards(data) {
-      //   const container = document.getElementById('cards-container');
-      //   data.forEach((card) => {
-      //     try {
-      //       const cardElement = document.createElement('div');
-      //       cardElement.classList.add('card');
+    // Add hover effect for each card
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
 
-      //       cardElement.innerHTML = `
-      //     <div class="img" style="width:100%;overflow:hidden;height:auto">
-      //       <img src="${card.imageUrl}" alt="" style="width:100%">
-      //       <div class="hidden" style="opacity: 0;">
-      //         <h3>${card.title}</h3>
-      //         <p>${card.description}</p>
-      //       </div>
-      //       <div class="overlay" style="opacity: 0;"></div>
-      //     </div>
-      //     <p>${card.records}</p>
-      //     <h3>${card.title}</h3>
-      //   `;
-      //       container.appendChild(cardElement);
-      //     } catch (err) {
-      //       console.log('card not found');
-      //     }
-      //   });
-      // }
+      cards.forEach((card) => {
+        const hidCard = card.querySelector('.hidden');
+        const overlay = card.querySelector('.overlay');
 
-      // // Generate cards on page load
-      // generateCards(cardData);
+        card.addEventListener('mouseenter', () => {
+          hidCard.style.opacity = '1';
+          overlay.style.opacity = '0.6';
+          console.log('mouse in');
+        });
 
-      // Add hover effect for each card
-      document.addEventListener('DOMContentLoaded', () => {
-        const cards = document.querySelectorAll('.card');
-
-        cards.forEach((card) => {
-          const hidCard = card.querySelector('.hidden');
-          const overlay = card.querySelector('.overlay');
-
-          card.addEventListener('mouseenter', () => {
-            hidCard.style.opacity = '1';
-            overlay.style.opacity = '0.6';
-            console.log('mouse in');
-          });
-
-          card.addEventListener('mouseleave', () => {
-            hidCard.style.opacity = '0';
-            overlay.style.opacity = '0';
-            console.log('mouse out');
-          });
+        card.addEventListener('mouseleave', () => {
+          hidCard.style.opacity = '0';
+          overlay.style.opacity = '0';
+          console.log('mouse out');
         });
       });
-    </script>
+    });
 
+    // Add this array to store collection data
+    const collections = [
+      {
+        title: "57 COLLECTIONS",
+        heading: "Research Collections",
+        description: "AAA's Research Collections comprises material gathered from focused research projects undertaken by AAA in partnership with artists, art professionals, and researchers. It is a growing repository of primary source material, photographic documentation, video recordings, ephemera, and more. Since 2010, AAA has been digitising these valuable resources and making them accessible for users worldwide.",
+        accessLevel: "online",
+        collectionType: "research",
+        contentType: "anthology",
+        formatType: "digital"
+      },
+      {
+        title: "Library Headings",
+        heading: "Library Headings",
+        description: "AAA Library is a growing body of material that reflects contemporary artistic practice, as well as the art ecology and scholarship in Asia within an international context. Built by research and community efforts across the region, the Library now comprises over 48,000 records, including exhibition catalogues, monographs, audiovisual material, rare periodicals, individual archives, and more. The material is searchable via the online catalogue and accessible at AAA's physical space in Hong Kong.",
+        accessLevel: "onsite",
+        collectionType: "library",
+        contentType: "monograph",
+        formatType: "printed"
+      }
+      // Add more collections as needed
+    ];
+
+    // Function to display collections
+    function displayCollections() {
+      const libraryContainer = document.querySelector('.library');
+      libraryContainer.innerHTML = ''; // Clear existing content
+      collections.forEach(collection => {
+        const collectionElement = document.createElement('div');
+        collectionElement.classList.add('libHeading');
+        collectionElement.style.width = '100%';
+        collectionElement.setAttribute('data-access-level', collection.accessLevel);
+        collectionElement.setAttribute('data-collection-type', collection.collectionType);
+        collectionElement.setAttribute('data-content-type', collection.contentType);
+        collectionElement.setAttribute('data-format-type', collection.formatType);
+
+        collectionElement.innerHTML = `
+          <div class="lft">
+            <div class="heading">
+              <p>${collection.title}</p>
+              <h1>${collection.heading}</h1>
+            </div>
+          </div>
+          <div class="rght">
+            <p>${collection.description}</p>
+          </div>
+        `;
+        libraryContainer.appendChild(collectionElement);
+      });
+    }
+
+    // Function to filter content based on selected filters
+    function filterContent() {
+      const accessLevelSelect = document.querySelector('select[name="accessLevel"]');
+      const collectionTypeSelect = document.querySelector('select[name="collectionType"]');
+      const contentTypeSelect = document.querySelector('select[name="contentType"]');
+      const formatTypeSelect = document.querySelector('select[name="formatType"]');
+
+      const accessLevel = accessLevelSelect ? accessLevelSelect.value : '';
+      const collectionType = collectionTypeSelect ? collectionTypeSelect.value : '';
+      const contentType = contentTypeSelect ? contentTypeSelect.value : '';
+      const formatType = formatTypeSelect ? formatTypeSelect.value : '';
+
+      console.log('Filter values:', { accessLevel, collectionType, contentType, formatType });
+
+      // Get all the collection items
+      const collections = document.querySelectorAll('.libHeading');
+      collections.style.display = 'flex';
+      
+
+      collections.forEach((item) => {
+        const itemAccessLevel = item.getAttribute('data-access-level');
+        const itemCollectionType = item.getAttribute('data-collection-type');
+        const itemContentType = item.getAttribute('data-content-type');
+        const itemFormatType = item.getAttribute('data-format-type');
+
+        console.log('Checking item:', {
+          itemAccessLevel,
+          itemCollectionType,
+          itemContentType,
+          itemFormatType
+        });
+
+        // Check if the item matches the selected filters
+        const matchesFilter =
+          (accessLevel === '' || itemAccessLevel === accessLevel) &&
+          (collectionType === '' || itemCollectionType === collectionType) &&
+          (contentType === '' || itemContentType === contentType) &&
+          (formatType === '' || itemFormatType === formatType);
+
+        console.log('Matches filter:', matchesFilter);
+
+        // Show or hide the item based on the filter match
+        item.style.display = matchesFilter ? 'block' : 'none';
+      });
+    }
+
+    // Add event listeners to filter elements
+    document.querySelectorAll('select').forEach((select) => {
+      select.addEventListener('change', filterContent);
+    });
+
+    // Call the function to display collections on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM fully loaded and parsed');
+      displayCollections();
+      filterContent(); // Initial filter
+    });
+
+    // Add event listener to the reset button to reload the page
+    document.getElementById('resetButton').addEventListener('click', function() {
+      location.reload();
+    });
+  </script>
 
 </body>
 
 </html>
+

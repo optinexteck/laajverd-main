@@ -174,15 +174,15 @@
       /* Grid layout for archive cards */
       .row {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        padding: 20px;
+        grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+        gap: 10px; /* Decrease the gap between cards */
+        padding: 30px; /* Default padding around the grid */
       }
 
       .archive-card {
         width: 100%;
         margin: 0;
-        padding: 15px;
+        padding: 20px; /* Increase the padding inside each card */
         border: 1px solid #ddd;
         border-radius: 8px;
         background: white;
@@ -191,7 +191,7 @@
 
       .archive-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       }
 
       /* Responsive layout */
@@ -210,6 +210,13 @@
       @media screen and (max-width: 576px) {
         .row {
           grid-template-columns: 1fr;
+        }
+      }
+
+      /* Media query for screens larger than 1500px */
+      @media screen and (min-width: 1500px) {
+        .row {
+          padding: 100px; 
         }
       }
     </style>
@@ -802,6 +809,15 @@
           const title =
             article.querySelector(".post-title")?.textContent ||
             "Title not found";
+          const location =
+            article.querySelector(".location-text")?.textContent ||
+            "Location not found";
+          const assets =
+            article.querySelector(".assets-text")?.textContent ||
+            "Assets not found";
+          const material =
+            article.querySelector(".material-text")?.textContent ||
+            "Material not found";
           const category =
             article.querySelector(".post-category")?.textContent ||
             "Category not found";
@@ -871,12 +887,21 @@
         });
       }
 
-      // Function to generate cards
+      let currentPage = 1;
+      const cardsPerPage = 8; // Set to 8 cards per page
+
       function generateCards(filteredData = cardsData) {
         const container = document.querySelector(".row");
         container.innerHTML = ""; // Clear existing content
 
-        filteredData.forEach((card) => {
+        // Calculate the start and end indices for the current page
+        const startIndex = (currentPage - 1) * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage;
+
+        // Slice the data to get only the cards for the current page
+        const currentCards = filteredData.slice(startIndex, endIndex);
+
+        currentCards.forEach((card) => {
           const cardElement = document.createElement("div");
           cardElement.classList.add("archive-card");
           cardElement.innerHTML = `
@@ -884,9 +909,9 @@
               <i class="bi bi-plus icon open-offcanvas"></i>
             </a>
             <h4 class="post-title">${card.title}</h4>
-            <p><strong>Location:</strong> ${card.location}</p>
-            <p><strong>Assets:</strong> ${card.assets}</p>
-            <p><strong>Material:</strong> ${card.material}</p>
+            <p><strong>Location:</strong> <span class="location-text">${card.location}</span></p>
+            <p><strong>Assets:</strong> <span class="assets-text">${card.assets}</span></p>
+            <p><strong>Material:</strong> <span class="material-text">${card.material}</span></p>
           `;
           container.appendChild(cardElement);
         });
@@ -897,45 +922,66 @@
             event.preventDefault();
             const card = this.closest(".archive-card");
             const title = card.querySelector(".post-title").textContent.trim();
+            const location = card.querySelector(".location-text").textContent.trim();
+            const assets = card.querySelector(".assets-text").textContent.trim();
+            const material = card.querySelector(".material-text").textContent.trim();
             const encodedTitle = title.split(" ")[0];
-            const newUrl = `/archive-map.html?title=${encodedTitle}`;
+            const newUrl = `/archive-map.html?title=${encodedTitle}&location=${location}&assets=${assets}&material=${material}`;
             window.location.href = newUrl;
           });
         });
+
+        updatePagination(filteredData.length);
       }
 
-      // Function to filter cards
-      function filterCards() {
-        const locationSelect = document.querySelector('select[name="location"]');
-        const assetSelect = document.querySelector('select[name="asset"]');
-        const materialSelect = document.querySelector('select[name="material"]');
+      function updatePagination(totalCards) {
+        const paginationContainer = document.querySelector(".pagination");
+        paginationContainer.innerHTML = ""; // Clear existing pagination
 
-        if (!locationSelect || !assetSelect || !materialSelect) {
-          console.error("One or more select elements not found");
-          return;
+        const totalPages = Math.ceil(totalCards / cardsPerPage);
+
+        // Create previous button
+        const prevButton = document.createElement("a");
+        prevButton.href = "#";
+        prevButton.innerHTML = "&laquo;";
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            generateCards();
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Create page number buttons
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement("a");
+          pageButton.href = "#";
+          pageButton.textContent = i;
+          if (i === currentPage) {
+            pageButton.classList.add("active");
+          }
+          pageButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentPage = i;
+            generateCards();
+          });
+          paginationContainer.appendChild(pageButton);
         }
 
-        const locationFilter = locationSelect.value.toLowerCase();
-        const assetFilter = assetSelect.value.toLowerCase();
-        const materialFilter = materialSelect.value.toLowerCase();
-
-        console.log("Selected filters:", { locationFilter, assetFilter, materialFilter });
-
-        const filteredData = cardsData.filter(card => {
-          const matchesLocation = locationFilter === "location" || card.location.toLowerCase() === locationFilter;
-          const matchesAsset = assetFilter === "asset" || card.assets.toLowerCase() === assetFilter;
-          const matchesMaterial = materialFilter === "material" || card.material.toLowerCase() === materialFilter;
-          return matchesLocation && matchesAsset && matchesMaterial;
+        // Create next button
+        const nextButton = document.createElement("a");
+        nextButton.href = "#";
+        nextButton.innerHTML = "&raquo;";
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (currentPage < totalPages) {
+            currentPage++;
+            generateCards();
+          }
         });
-
-        console.log("Filtered data:", filteredData);
-        generateCards(filteredData);
+        paginationContainer.appendChild(nextButton);
       }
-
-      // Add event listeners to filter dropdowns
-      document.querySelectorAll('.form-select').forEach(select => {
-        select.addEventListener('change', filterCards);
-      });
 
       // Fetch data on page load
       document.addEventListener("DOMContentLoaded", fetchData);

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -61,14 +61,18 @@
       .blurred-background {
         position: absolute;
         font-weight: bolder;
-        color: white; 
+        color: white;
         margin: 0;
-        background: rgba(58, 96, 127, 0.6); 
-        backdrop-filter: blur(5px); 
-        border-radius: 8px; 
-        text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8); 
+        background: rgba(58, 96, 127, 0.6);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8);
       }
-      .absolute-div h1,h2,h3,h4,h5{
+      .absolute-div h1,
+      h2,
+      h3,
+      h4,
+      h5 {
         color: white;
       }
       .sidebar {
@@ -121,13 +125,12 @@
       @media screen and (max-width: 768px) {
         .openbtn {
           display: block;
-          
         }
         .sidebar {
           display: block;
         }
         .navmenu {
-          display: none; 
+          display: none;
         }
       }
 
@@ -145,7 +148,7 @@
       /* Show navmenu on larger screens */
       @media screen and (min-width: 769px) {
         .navmenu {
-          display: flex; 
+          display: flex;
         }
         .openbtn {
           display: none;
@@ -276,11 +279,10 @@
         height: 100%;
         top: 0;
         right: -100%;
-        box-shadow:
-          0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
           0 2.1px 2.1px rgba(128, 128, 128, 0.195),
-          0 4.4px 4.4px rgba(128, 128, 128, 0.240),
+          0 4.4px 4.4px rgba(128, 128, 128, 0.24),
           0 12px 12px rgba(128, 128, 128, 0.35);
         transition: right 1s ease-in-out;
         /* Smooth sliding transition */
@@ -323,9 +325,9 @@
 
       .column {
         flex: 1;
-        max-width: 90%; 
-        margin: 0 1%; 
-        padding: 0 1%; 
+        max-width: 90%;
+        margin: 0 1%;
+        padding: 0 1%;
       }
 
       .our-title {
@@ -338,6 +340,7 @@
         font-family: "Montserrat", sans-serif;
         font-size: 0.8em;
         text-transform: capitalize;
+        margin-top: -20px;
         color: black;
       }
 
@@ -486,7 +489,7 @@
           <div
             class="carousel-item active"
             style="
-              background-image: url(&quot;./assets/img/AssetPanels/Landing-01.png&quot;);
+              background-image: url('./assets/img/AssetPanels/Landing-01.png');
               width: 100vw;
               height: 100%;
               background-size: cover;
@@ -530,60 +533,71 @@
       <section
         id="ccl"
         class="nav hero section section2"
-        style="background-color: #f1ca01;color:black"
+        style="background-color: #f1ca01; color: black"
       >
-        <div class="info-container"
-        style="color:black"
-        >
+        <div class="info-container" style="color: black">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
           <div class="our">
-            <h3 class="column" style="color:black"></h3>
-            <h3 class="column" style="color:black"></h3>
-            <h2 class="column our-title" style="color:black !important">Our</h2>
+            <h3 class="column" style="color: black"></h3>
+            <h3 class="column" style="color: black"></h3>
+            <h2 class="column our-title" style="color: black !important">
+              Our
+            </h2>
           </div>
 
           <div class="content-container">
-            <div class="column" style="width: auto; max-width: 100%; padding-right: 0;">
-              <h2 style="color:black !important">What is an</h2>
-              <h2 style="color:black !important">Artefact?</h2>
-              <p style="color:black !important; width: 100%; word-wrap: break-word; word-break: normal;">
-                The conservation lab covers a wide
-                range of artifacts, encompassing
-                both material and immaterial
-                heritage. These include stories,
-                techniques, buildings and objects.
-                Our approach to artefact considers
-                its affiliations with human, non-
-                human and spiritual entities; whilst
-                acknowledging its agency in the
+            <div
+              class="column"
+              style="width: auto; max-width: 100%; padding-right: 0"
+            >
+              <h2 style="color: black !important">What is an</h2>
+              <h2 style="color: black !important">Artefact?</h2>
+              <p
+                style="
+                  color: black !important;
+                  width: 100%;
+                  word-wrap: break-word;
+                  word-break: normal;
+                "
+              >
+                The conservation lab covers a wide range of artifacts,
+                encompassing both material and immaterial heritage. These
+                include stories, techniques, buildings and objects. Our approach
+                to artefact considers its affiliations with human, non- human
+                and spiritual entities; whilst acknowledging its agency in the
                 natural ecology and landscape and
               </p>
             </div>
 
-            <div class="column" style="width: auto; max-width: 100%; padding-right: 0;">
-              <h2 style="color:black !important">What is</h2>
-              <h2 style="color:black !important">Knowledge?</h2>
-              <p style="color:black !important; width: 100%; word-wrap: break-word; word-break: normal;">
-                Modes of knowledge production
-                refer to the various methods,
-                approaches, and systems through
-                which knowledge about the
-                artefact or site is generated and
-                validated within a particular field or
-                community. Our approach recognizes
-                tacit, observational, experimental,
-                empirical, and the experiential
-                as valuable modes of knowledge
-                production in our conservation
+            <div
+              class="column"
+              style="width: auto; max-width: 100%; padding-right: 0"
+            >
+              <h2 style="color: black !important">What is</h2>
+              <h2 style="color: black !important">Knowledge?</h2>
+              <p
+                style="
+                  color: black !important;
+                  width: 100%;
+                  word-wrap: break-word;
+                  word-break: normal;
+                "
+              >
+                Modes of knowledge production refer to the various methods,
+                approaches, and systems through which knowledge about the
+                artefact or site is generated and validated within a particular
+                field or community. Our approach recognizes tacit,
+                observational, experimental, empirical, and the experiential as
+                valuable modes of knowledge production in our conservation
                 endeavors.
               </p>
             </div>
 
-            <div class="column" style="">
-              <h2 class="mobile-our" style="color:black !important">Our</h2>
-              <h2 style="color:black !important">Conservation</h2>
-              <h2 style="color:black !important">Practice?</h2>
-              <p style="color:black !important">
+            <div class="column">
+              <h2 class="mobile-our" style="color: black !important">Our</h2>
+              <h2 style="color: black !important">Conservation</h2>
+              <h2 style="color: black !important">Practice?</h2>
+              <p style="color: black !important">
                 We work collaboratively with local<br />
                 communities in the entire process of<br />
                 thinking and practicing conservation.<br />
@@ -687,161 +701,160 @@
 
       <!-- slider -->
       <section
-      id="hero1"
-      class="hero nav section section2"
-      style="background-color: #254365; height: 100vh; width: 100vw"
-    >
-      <div
-        id="hero-carousel"
-        class="container carousel slide carousel-fade"
-        data-bs-ride="carousel"
-        style="width: 100vw; height: 100vh; margin-left: -20px"
+        id="hero1"
+        class="hero nav section section2"
+        style="background-color: #254365; height: 100vh; width: 100vw"
       >
-        <!-- Slide 1 -->
         <div
-          class="carousel-item active"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3341.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 2 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3332.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-         <!-- Slide 3 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3340.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-         <!-- Slide 4 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3334.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-         <!-- Slide  5-->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3339.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-         <!-- Slide 6 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3338.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 7 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3342.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 8 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3333.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 9 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3331.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 10 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3330.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-        <!-- Slide 11 -->
-        <div
-          class="carousel-item"
-          style="
-            background-color: #254365;
-            background-image: url(&quot;./assets/img/Khatam PNGs/IMG_3358.png&quot;);
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            width: 100vw;
-          "
-        ></div>
-
-      </div>
+          id="hero-carousel"
+          class="container carousel slide carousel-fade"
+          data-bs-ride="carousel"
+          style="width: 100vw; height: 100vh; margin-left: -20px"
+        >
+          <!-- Slide 1 -->
+          <div
+            class="carousel-item active"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3341.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 2 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3332.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 3 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3340.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 4 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3334.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide  5-->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3339.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 6 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3338.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 7 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3342.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 8 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3333.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 9 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3331.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 10 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3330.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+          <!-- Slide 11 -->
+          <div
+            class="carousel-item"
+            style="
+              background-color: #254365;
+              background-image: url('./assets/img/Khatam PNGs/IMG_3358.png');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+            "
+          ></div>
+        </div>
         <!-- Location Create Card -->
         <form
           id="uploadForm"
@@ -1128,7 +1141,7 @@
           },
           {
             threshold: 0.3,
-          },
+          }
         );
 
         // Start observing the blue section
@@ -1223,12 +1236,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
           const paragraph = document.querySelector(
-            ".animate__animated.animate__fadeInUp",
+            ".animate__animated.animate__fadeInUp"
           );
           if (window.innerWidth < 600) {
             paragraph.innerHTML = paragraph.innerHTML.replace(
               /<br\s*\/?>/gi,
-              " ",
+              " "
             );
           }
         }

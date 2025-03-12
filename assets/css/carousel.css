@@ -513,7 +513,7 @@ body {
 }
 
 .column h2 {
-  font-size: 48px;
+  font-size: 40px;
   margin: 0;
   color: #000;
   font-family: aaa-inktraps;
@@ -526,7 +526,7 @@ body {
 }
 
 .column p {
-  font-size: 24px;
+  font-size: 21px;
   line-height: 1.6;
   max-width: 100%;
   color: #000;
@@ -545,7 +545,7 @@ body {
   }
 
   .column h3 {
-    font-size: 35px;
+    font-size: 30px;
   }
   .column p {
     font-size: 27px;
