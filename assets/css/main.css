@@ -749,7 +749,7 @@ section,
 @media (min-width: 1440px) {
   .hero h2 {
     font-size: 42px;
-    margin-bottom: 15px;
+    margin-bottom: -10px;
     font-weight: 400;
     width: 100%;
     white-space: nowrap;
