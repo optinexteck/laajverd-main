@@ -126,6 +126,11 @@
           display: none; /* Hide open button on larger screens */
         }
       }
+
+      /* Add a CSS class to hide elements */
+      .hidden {
+        display: none;
+      }
   </style>
 </head>
 
@@ -275,29 +280,7 @@
     <div class="library"></div>
     </div> 
 
-    <!-- library collections -->
-    <!-- <div class="library">
-      <div class="line"></div>
-      <div class="libHeading" style="width: 100%">
-        <div class="lft">
-          <h1>Library Headings</h1>
-        </div>
-        <div class="rght">
-          <p>
-            AAA Library is a growing body of material that reflects
-            contemporary artistic practice, as well as the art ecology and
-            scholarship in Asia within an international context. Built by
-            research and community efforts across the region, the Library now
-            comprises over 48,000 records, including exhibition catalogues,
-            monographs, audiovisual material, rare periodicals, individual
-            archives, and more. The material is searchable via the online
-            catalogue and accessible at AAA's physical space in Hong Kong.
-          </p>
-        </div>
-      </div>
-      <div class="cards" id="cards-container"></div>
-
-    </div> -->
+   
     </div>
   </main>
   <!-- footer area -->
@@ -336,33 +319,7 @@
     <a href=""><i class="bi bi-linkedin"></i></a>
   </div>
 </footer>
-  <!-- <footer id="footer" class="footer" style="background-color: #cdcdcd;">
-  <div class="container">
-    <span>Copyright</span>
-        <strong class="px-1 sitename">LAAJVERD</strong>
-        <span>All Rights Reserved</span> -->
-      <!-- <h3 class="sitename">LAAJVERD</h3>
-      <p>
-        CCL believes that collaboration is essential for achieving large-scale
-        conservation impact.
-      </p>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div> -->
-        <!-- <div class="copyright">
-          <span>Copyright</span>
-          <strong class="px-1 sitename">LAAJVERD</strong>
-          <span>All Rights Reserved</span>
-        </div>
-        <div class="credits"> -->
-        <!-- </div>
-  </div>
-</footer> -->
-
+  
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -474,35 +431,19 @@
 
     // Function to filter content based on selected filters
     function filterContent() {
-      const accessLevelSelect = document.querySelector('select[name="accessLevel"]');
-      const collectionTypeSelect = document.querySelector('select[name="collectionType"]');
-      const contentTypeSelect = document.querySelector('select[name="contentType"]');
-      const formatTypeSelect = document.querySelector('select[name="formatType"]');
-
-      const accessLevel = accessLevelSelect ? accessLevelSelect.value : '';
-      const collectionType = collectionTypeSelect ? collectionTypeSelect.value : '';
-      const contentType = contentTypeSelect ? contentTypeSelect.value : '';
-      const formatType = formatTypeSelect ? formatTypeSelect.value : '';
-
-      console.log('Filter values:', { accessLevel, collectionType, contentType, formatType });
+      const accessLevel = document.querySelector('select[name="accessLevel"]').value;
+      const collectionType = document.querySelector('select[name="collectionType"]').value;
+      const contentType = document.querySelector('select[name="contentType"]').value;
+      const formatType = document.querySelector('select[name="formatType"]').value;
 
       // Get all the collection items
       const collections = document.querySelectorAll('.libHeading');
-      collections.style.display = 'flex';
-      
 
       collections.forEach((item) => {
         const itemAccessLevel = item.getAttribute('data-access-level');
         const itemCollectionType = item.getAttribute('data-collection-type');
         const itemContentType = item.getAttribute('data-content-type');
         const itemFormatType = item.getAttribute('data-format-type');
-
-        console.log('Checking item:', {
-          itemAccessLevel,
-          itemCollectionType,
-          itemContentType,
-          itemFormatType
-        });
 
         // Check if the item matches the selected filters
         const matchesFilter =
@@ -511,10 +452,12 @@
           (contentType === '' || itemContentType === contentType) &&
           (formatType === '' || itemFormatType === formatType);
 
-        console.log('Matches filter:', matchesFilter);
-
-        // Show or hide the item based on the filter match
-        item.style.display = matchesFilter ? 'block' : 'none';
+        // Toggle the hidden class based on the filter match
+        if (matchesFilter) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
       });
     }
 
