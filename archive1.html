@@ -172,17 +172,17 @@
     </style>
     <style>
       /* Grid layout for archive cards */
-      .row {
+      .row, .row1,.row2 {
         display: grid;
         grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-        gap: 10px; /* Decrease the gap between cards */
-        padding: 30px; /* Default padding around the grid */
+        gap: 10px; /* Consistent gap between cards */
+        padding: 30px; /* Consistent padding around the grid */
       }
 
       .archive-card {
         width: 100%;
         margin: 0;
-        padding: 20px; /* Increase the padding inside each card */
+        padding: 20px; /* Consistent padding inside each card */
         border: 1px solid #ddd;
         border-radius: 8px;
         background: white;
@@ -196,27 +196,27 @@
 
       /* Responsive layout */
       @media screen and (max-width: 1200px) {
-        .row {
+        .row, .row1, .row2 {
           grid-template-columns: repeat(3, 1fr);
         }
       }
 
       @media screen and (max-width: 992px) {
-        .row {
+        .row, .row1, .row2 {
           grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media screen and (max-width: 576px) {
-        .row {
+        .row, .row1, .row2 {
           grid-template-columns: 1fr;
         }
       }
 
       /* Media query for screens larger than 1500px */
       @media screen and (min-width: 1500px) {
-        .row {
-          padding: 100px; 
+        .row, .row1, .row2 {
+          padding: 100px; /* Consistent padding for larger screens */
         }
       }
     </style>
@@ -564,8 +564,12 @@
           </div>
         </div>
 
-        <div class="row" style="margin: 0px 100px 100px 100px">
+        <div class="row" style="margin: 0px 100px 0px 100px">
  
+      </div>
+      <div class="row1" style="margin: 0px 100px 0px 100px">
+      </div>
+      <div class="row2" style="margin: 0px 100px 0px 100px">
       </div>
       <!-- /Services Section -->
     </main>
@@ -581,35 +585,8 @@
         <a href="#">&raquo;</a>
       </div>
     </div>
-    <!-- footer area -->
 
-    <!-- <footer id="footer" class="footer " style="background-color: #cdcdcd;">
-    <div class="container">
-      <span>Copyright</span>
-          <strong class="px-1 sitename">LAAJVERD</strong>
-          <span>All Rights Reserved</span> -->
-    <!-- <h3 class="sitename">LAAJVERD</h3>
-      <p>
-        CCL believes that collaboration is essential for achieving large-scale
-        conservation impact.
-      </p>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div> -->
-    <!-- <div class="copyright">
-          <span>Copyright</span>
-          <strong class="px-1 sitename">LAAJVERD</strong>
-          <span>All Rights Reserved</span>
-        </div>
-        <div class="credits"> -->
-    <!-- </div>
-    </div>
-    
-  </footer> -->
+
 
     <footer
       id="footer"
@@ -892,7 +869,10 @@
 
       function generateCards(filteredData = cardsData) {
         const container = document.querySelector(".row");
-        container.innerHTML = ""; // Clear existing content
+        const container1 = document.querySelector(".row1");
+        const container2 = document.querySelector(".row2");
+
+        container.innerHTML = "";
 
         // Calculate the start and end indices for the current page
         const startIndex = (currentPage - 1) * cardsPerPage;
@@ -901,7 +881,7 @@
         // Slice the data to get only the cards for the current page
         const currentCards = filteredData.slice(startIndex, endIndex);
 
-        currentCards.forEach((card) => {
+        currentCards.forEach((card,key) => {
           const cardElement = document.createElement("div");
           cardElement.classList.add("archive-card");
           cardElement.innerHTML = `
@@ -913,7 +893,11 @@
             <p><strong>Assets:</strong> <span class="assets-text">${card.assets}</span></p>
             <p><strong>Material:</strong> <span class="material-text">${card.material}</span></p>
           `;
-          container.appendChild(cardElement);
+          if(key <=3){
+            container2.appendChild(cardElement);
+          }else{
+            container1.appendChild(cardElement);
+          }
         });
 
         // Add event listeners for icon links
@@ -982,6 +966,41 @@
         });
         paginationContainer.appendChild(nextButton);
       }
+
+      // Function to filter cards based on selected filters
+      function filterCards() {
+        const accessLevelSelect = document.querySelector('select[name="accessLevel"]');
+        const collectionTypeSelect = document.querySelector('select[name="collectionType"]');
+        const contentTypeSelect = document.querySelector('select[name="contentType"]');
+        const formatTypeSelect = document.querySelector('select[name="formatType"]');
+
+        const accessLevel = accessLevelSelect ? accessLevelSelect.value.toLowerCase() : '';
+        const collectionType = collectionTypeSelect ? collectionTypeSelect.value.toLowerCase() : '';
+        const contentType = contentTypeSelect ? contentTypeSelect.value.toLowerCase() : '';
+        const formatType = formatTypeSelect ? formatTypeSelect.value.toLowerCase() : '';
+
+        const filteredData = cardsData.filter(card => {
+          const cardAccessLevel = card.accessLevel.toLowerCase();
+          const cardCollectionType = card.collectionType.toLowerCase();
+          const cardContentType = card.contentType.toLowerCase();
+          const cardFormatType = card.formatType.toLowerCase();
+
+          return (
+            (accessLevel === '' || cardAccessLevel === accessLevel) &&
+            (collectionType === '' || cardCollectionType === collectionType) &&
+            (contentType === '' || cardContentType === contentType) &&
+            (formatType === '' || cardFormatType === formatType)
+          );
+        });
+
+        currentPage = 1; // Reset to the first page after filtering
+        generateCards(filteredData);
+      }
+
+      // Add event listeners to filter elements
+      document.querySelectorAll('select').forEach((select) => {
+        select.addEventListener('change', filterCards);
+      });
 
       // Fetch data on page load
       document.addEventListener("DOMContentLoaded", fetchData);
