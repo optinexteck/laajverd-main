@@ -147,15 +147,15 @@
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel"
     style="height: 70vh;overflow: hidden;width: 100%;">
     <div class="carousel-inner">
-      <div class="carousel-item active">
+      <div class="carousel-item active carousel-item-1">
         <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/space-two-archive/st-03-01-05-15.tif.jpg"
           alt="First slide" style="width: 100%;">
       </div>
-      <div class="carousel-item" style="width: 100%;height:100%">
+      <div class="carousel-item carousel-item-2" style="width: 100%;height:100%">
         <img class="d-block w-100" src="https://cdn.aaa.org.hk/_tiff_jpg/1982-jyotsnabhatt079-1.tif.jpg"
           alt="Second slide">
       </div>
-      <div class="carousel-item" style="width: 100%;height:100%">
+      <div class="carousel-item carousel-item-3" style="width: 100%;height:100%">
         <img class="d-block w-100"
           src="https://cdn.aaa.org.hk/_tiff_jpg/shin-leh-yuan-archive/sly-01-007-002-034.tif.jpg"
           alt="Third slide">
@@ -595,7 +595,7 @@
         </div>
         <div class="rght">
           <p>
-            Shearing tool is called a seril in the local langauge and it is similar to a traditional scissor. Shearing is operated manually during spring-summer seasons. This ensures the sheep have enough wool to sustain in the warmer months and the wool regrows till the winters. Shearing is essential for the animals because it avoids lice infestations and added weight to the animal. The shearer removes the outer wool close to the sheep’s skin without causing injury. 
+            Shearing tool is called a seril in the local langauge and it is similar to a traditional scissor. Shearing is operated manually during spring-summer seasons. This ensures the sheep have enough wool to sustain in the warmer months and the wool regrows till the winters. Shearing is essential for the animals because it avoids lice infestations and added weight to the animal. The shearer removes the outer wool close to the sheep's skin without causing injury. 
 
           </p>
         </div>
@@ -698,6 +698,36 @@
       function getQueryParam(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
+      }
+
+      // Get image sources from URL parameters
+      const imageSrc1 = getQueryParam('imageSrc');
+      const imageSrc2 = getQueryParam('imageSrc2');
+      const imageSrc3 = getQueryParam('imageSrc3');
+
+      // Update carousel images if parameters exist and are not empty
+      if (imageSrc1 && imageSrc1 !== '') {
+        const firstSlide = document.querySelector('.carousel-item-1 img');
+        if (firstSlide) {
+          firstSlide.src = imageSrc1;
+          console.log('Updated first slide image:', imageSrc1); // Debug log
+        }
+      }
+
+      if (imageSrc2 && imageSrc2 !== '') {
+        const secondSlide = document.querySelector('.carousel-item-2 img');
+        if (secondSlide) {
+          secondSlide.src = imageSrc2;
+          console.log('Updated second slide image:', imageSrc2); // Debug log
+        }
+      }
+
+      if (imageSrc3 && imageSrc3 !== '') {
+        const thirdSlide = document.querySelector('.carousel-item-3 img');
+        if (thirdSlide) {
+          thirdSlide.src = imageSrc3;
+          console.log('Updated third slide image:', imageSrc3); // Debug log
+        }
       }
 
       // Function to capitalize the first letter of a string

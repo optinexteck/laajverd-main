@@ -879,7 +879,48 @@
             const assets = card.querySelector(".assets-text").textContent.trim();
             const material = card.querySelector(".material-text").textContent.trim();
             const encodedTitle = title.split(" ")[0];
-            const newUrl = `/archive-map.html?title=${encodedTitle}&location=${location}&assets=${assets}&material=${material}`;
+            var imageSrc1 = "";
+            var imageSrc2 = "";
+            var imageSrc3 = "";
+            if(location === "Chitral"){
+              imageSrc1 = `/assets/img/Mashraba%20PNGs/IMG_3302.png`;
+              imageSrc2 = `/assets/img/Mashraba%20PNGs/IMG_3880.png`;
+              imageSrc3 = `/assets/img/Mashraba%20PNGs/IMG_3878.png`;
+            }else if(location === "Kalash"){
+              imageSrc1 = `/assets/img/sitar/1.png`;
+              imageSrc2 = `/assets/img/sitar/2.png`;
+              imageSrc3 = `/assets/img/sitar/3.png`;
+            }else if(location === "Skardu"){
+              imageSrc1 = `/assets/img/shoka/1.png`;
+              imageSrc2 = `/assets/img/shoka/4.png`;
+              imageSrc3 = `/assets/img/shoka/10.png`;
+            }else if(location === "Neelum"){
+              imageSrc1 = `/assets/img/rope/1.png`;
+              imageSrc2 = `/assets/img/rope/2.png`;
+              imageSrc3 = `/assets/img/rope/3.png`;
+            }
+            else if(location === "Kharmang"){
+              imageSrc1 = `/assets/img/rope/1.png`;
+              imageSrc2 = `/assets/img/rope/2.png`;
+              imageSrc3 = `/assets/img/rope/3.png`;
+            }
+            else if(location === "Yasin"){
+              imageSrc1 = `/assets/img/Dhaga/1.png`;
+              imageSrc2 = `/assets/img/Dhaga/2.png`;
+              imageSrc3 = `/assets/img/Dhaga/3.png`;
+            }
+            else if(location === "Yarkhun"){
+              imageSrc1 = `/assets/img/masonry-portfolio/masonry-portfolio-1.jpg`;
+              imageSrc2 = `/assets/img/masonry-portfolio/masonry-portfolio-21.jpg`;
+              imageSrc3 = `/assets/img/masonry-portfolio/masonry-portfolio-5.jpg`;
+            }
+            else if(location === "Laspur"){
+              imageSrc1 = `/assets/img/Mashraba%20PNGs/IMG_3888.png`;
+              imageSrc2 = `/assets/img/Mashraba%20PNGs/IMG_3889.png`;
+              imageSrc3 = `/assets/img/Mashraba%20PNGs/IMG_3887.png`;
+            }
+       
+            const newUrl = `/archive-map.html?location=${location}&imageSrc=${imageSrc1}&imageSrc2=${imageSrc2}&imageSrc3=${imageSrc3}`;
             window.location.href = newUrl;
           });
         });
