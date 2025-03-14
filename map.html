@@ -743,23 +743,62 @@
         const headingDiv = document.createElement("div");
         headingDiv.classList.add("heading");
 
+        // 1. Axis coordinates
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
+        headingDiv.appendChild(placeParagraph);
 
+        // 2. Project Title
+        const projectTitleElement = document.createElement("h4");
+        projectTitleElement.textContent = projectTitle;
+        headingDiv.appendChild(projectTitleElement);
+
+        // 3. Location
         const header = document.createElement("a");
         const h2 = document.createElement("h2");
         header.href = `./archive-map.html?title=${description}`;
         h2.textContent = placeName;
         h2.style.color = "black";
         h2.style.fontWeight = "bold";
+        header.appendChild(h2);
+        headingDiv.appendChild(header);
 
+        // 4. Supported By
+        const supportedBy = document.createElement("p");
+        supportedBy.textContent = `Supported By: ${projectSnapshot}`;
+        supportedBy.style.fontSize = "12px";
+        headingDiv.appendChild(supportedBy);
+
+        // 5. Year
         const projectDate = document.createElement("p");
-        projectDate.textContent = `Project Date: ${date}`;
+        projectDate.textContent = `Year: ${date}`;
         projectDate.style.color = "black";
         projectDate.style.fontSize = "12px";
         projectDate.style.margin = "0";
         projectDate.style.padding = "0";
+        headingDiv.appendChild(projectDate);
 
+        // 6. Related in Archive
+        const archiveLink = document.createElement("p");
+        archiveLink.textContent = "Related in Archive";
+        archiveLink.style.fontSize = "12px";
+        headingDiv.appendChild(archiveLink);
+
+        // 7. Assets (Category)
+        if (categoryTypes.length > 0) {
+          const categoryElement = document.createElement("p");
+          categoryElement.textContent = `Assets: ${categoryTypes.join(", ")}`;
+          headingDiv.appendChild(categoryElement);
+        }
+
+        // 8. Material
+        if (materialTypes.length > 0) {
+          const materialElement = document.createElement("p");
+          materialElement.textContent = `Material: ${materialTypes.join(", ")}`;
+          headingDiv.appendChild(materialElement);
+        }
+
+        // 9. Related Links
         const relatedLink = document.createElement("a");
         relatedLink.href = `./archive-map.html?location=${encodeURIComponent(
           placeName
@@ -772,38 +811,9 @@
         relatedLink.style.padding = "0";
         relatedLink.style.textDecoration = "none";
         relatedLink.style.textAlign = "center";
+        headingDiv.appendChild(relatedLink);
 
-        header.appendChild(h2);
-        headingDiv.appendChild(placeParagraph);
-        headingDiv.appendChild(header);
-        headingDiv.appendChild(projectDate);
         rightDiv.appendChild(headingDiv);
-
-        // Add project title and snapshot
-        const projectTitleElement = document.createElement("h4");
-        projectTitleElement.textContent = projectTitle;
-        rightDiv.appendChild(projectTitleElement);
-
-        const projectSnapshotElement = document.createElement("p");
-        projectSnapshotElement.style.fontSize = "12px";
-        projectSnapshotElement.textContent = projectSnapshot;
-        // rightDiv.appendChild(projectSnapshotElement);
-
-        // Add material data
-        if (materialTypes.length > 0) {
-          const materialElement = document.createElement("p");
-          materialElement.textContent = `Material: ${materialTypes.join(", ")}`;
-          rightDiv.appendChild(materialElement);
-        }
-
-        // Add category data
-        if (categoryTypes.length > 0) {
-          const categoryElement = document.createElement("p");
-          categoryElement.textContent = `Assets: ${categoryTypes.join(", ")}`;
-          rightDiv.appendChild(categoryElement);
-        }
-
-        rightDiv.appendChild(relatedLink);
 
         // Add click event listener to redirect when rightDiv is clicked
         rightDiv.addEventListener("click", () => {
