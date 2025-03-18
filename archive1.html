@@ -1,0 +1,1111 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>LAAJVERD</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/lg.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/archive.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: Selecao
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+    <style>
+      .hidden {
+        display: none !important;
+      }
+    </style>
+    <style>
+      /* Sidebar styles */
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: white; /* Set sidebar background to white */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none; /* Hide by default */
+      }
+
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* Style for the open button */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        color: black; /* Text color */
+        padding: 10px 15px;
+        border: none;
+        background: none; /* Make button transparent */
+        display: none; /* Hide by default */
+      }
+
+      /* Media query for mobile screens */
+      @media screen and (max-width: 768px) {
+        .openbtn {
+          display: block; /* Show open button on mobile */
+        }
+        .sidebar {
+          display: block; /* Show sidebar on mobile */
+        }
+        .navmenu {
+          display: none; /* Hide navmenu on mobile */
+        }
+      }
+
+      /* Ensure header is visible on all screens */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 600px) {
+        .logo h1 {
+          font-size: 20px !important;
+        }
+      }
+      /* Show navmenu on larger screens */
+      @media screen and (min-width: 769px) {
+        .navmenu {
+          display: flex; /* Show navmenu on larger screens */
+        }
+        .openbtn {
+          display: none; /* Hide open button on larger screens */
+        }
+      }
+    </style>
+    <style>
+      .pagination-cover {
+        text-align: center;
+        width: 100%;
+        margin: 20px auto;
+      }
+      .pagination {
+        display: inline-block;
+        text-align: center;
+        background-color: #f6f6f6;
+        padding: 10px;
+      }
+
+      .pagination a {
+        color: black;
+        float: left;
+        padding: 8px 16px;
+        text-decoration: none;
+        background-color: #f6f6f6;
+      }
+
+      .pagination a.active {
+        background-color: #8f9197;
+        color: #f6f6f6;
+        border-radius: 5px;
+      }
+
+      .pagination a:hover:not(.active) {
+        background-color: #ddd;
+        border-radius: 5px;
+      }
+    </style>
+    <style>
+      /* Grid layout for archive cards */
+      .row, .row1,.row2 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+        gap: 10px; /* Consistent gap between cards */
+        padding: 30px; /* Consistent padding around the grid */
+      }
+
+      .archive-card {
+        width: 100%;
+        margin: 0;
+        padding: 20px; /* Consistent padding inside each card */
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: white;
+        transition: transform 0.3s ease;
+      }
+
+      .archive-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Responsive layout */
+      @media screen and (max-width: 1200px) {
+        .row, .row1, .row2 {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 992px) {
+        .row, .row1, .row2 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 576px) {
+        .row, .row1, .row2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Media query for screens larger than 1500px */
+      @media screen and (min-width: 1500px) {
+        .row, .row1, .row2 {
+          padding: 0px 0px 50px 0px; 
+          display: flex;
+          justify-content: center;
+          gap: 80px;
+        }
+      }
+    </style>
+    <style>
+      /* Global paragraph and title styling with Avenir font */
+      p, h1, h2, h3, h4, h5, h6, .filter-group label {
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+      }
+
+      /* Specific elements with Avenir font */
+      .rght p,
+      .libHeading p,
+      .library p,
+      .archive-card p,
+      .heading h1,
+      .heading h3,
+      .archive-card h4,
+      .filters select,
+      .filters input,
+      .filters button,
+      .filter-group label {
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+      }
+
+      /* Updated button styling */
+      .archiveBtn {
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+        transition: all 0.3s ease;
+        border: none;
+        background-color: #8f9197;
+        color: white;
+      }
+
+      .archiveBtn:hover {
+        background-color: #737680;
+        transform: translateY(-2px);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      .archiveBtn.btn-secondary {
+        background-color: #d1d3d8;
+        color: #4a4a4a;
+      }
+
+      .archiveBtn.btn-secondary:hover {
+        background-color: #c1c3c8;
+      }
+
+      /* Filter section styling */
+      .filters {
+        padding: 25px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+      }
+
+      .filter-group label {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      /* Filter title styling */
+      .filterCover h3 {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 25px;
+        font-size: 24px;
+      }
+    </style>
+    <!-- Add Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    
+    <style>
+      /* Select2 custom styling */
+      .select2-container {
+        min-width: 150px;
+        margin-right: 10px;
+      }
+      .select2-container--default .select2-selection--multiple {
+        border: 1px solid #d7d1d1;
+        border-radius: 6px;
+        min-height: 38px;
+      }
+      .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+
+      /* Updated button styling to match inputs */
+      .archiveBtn {
+        min-width: 120px;
+        height: 38px;
+        padding: 6px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+        transition: all 0.3s ease;
+        border: 1px solid #d7d1d1;
+        background-color: white;
+        color: #495057;
+      }
+
+      .archiveBtn:hover {
+        background-color: #f8f9fa;
+        border-color: #86b7fe;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        transform: none;
+      }
+
+      .archiveBtn.btn-secondary {
+        background-color: white;
+        color: #495057;
+        border: 1px solid #d7d1d1;
+        border-radius: 6px;
+      }
+
+      #search.archiveBtn,
+      #reset.archiveBtn {
+        border-radius: 6px;
+        height: 38px;
+        border: 1px solid #d7d1d1;
+      }
+    </style>
+    <style>
+      /* Updated Filter section styling */
+      .filters {
+        padding: 40px 60px;
+        margin-bottom: 30px;
+        margin: 0 auto;
+      }
+
+      .filter-container {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .filter-group {
+        min-width: 180px;
+        flex: 1;
+        max-width: 250px;
+      }
+
+      .filter-group label {
+        color: #4a4a4a;
+        font-weight: 600;
+        margin-bottom: 10px;
+        display: block;
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
+      }
+
+      .select2-container {
+        width: 100% !important;
+        min-width: 180px;
+      }
+
+      .button-group {
+        border-top: 1px solid #e9ecef;
+        padding-top: 20px;
+        margin-top: 20px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .filters {
+          width: 90%;
+          padding: 30px 20px;
+        }
+        
+        .filter-group {
+          width: 100%;
+          margin-bottom: 20px;
+          max-width: none;
+        }
+        
+        .button-group .d-flex {
+          flex-direction: row;
+          gap: 10px;
+          width: 100%;
+          justify-content: center;
+        }
+        
+        .archiveBtn {
+          flex: 0 1 auto;
+          min-width: 120px;
+          max-width: 200px;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="index-page">
+    <header id="header" class="header d-flex align-items-center fixed-top">
+      <div
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
+      >
+        <a href="index.html" class="logo d-flex align-items-center">
+
+          <img src="assets/img/lg.png" alt="" />
+          <h1>ommunity Conservation Lab</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./map.html">Location</a></li>
+            <li><a href="./archive1.html">Archive</a></li>
+            <li><a href="./glossary.html">Glossary</a></li>
+            <li><a href="./ccl.html">CCL</a></li>
+
+            <!-- <li><a href="./service-details.html">Archive</a></li> -->
+            <!-- <li><a href="./contact.html">Contact</a></li> -->
+          </ul>
+          <i
+            class="mobile-nav-toggle d-xl-none bi bi-list"
+            style="display: none"
+          ></i>
+        </nav>
+        <button class="openbtn" onclick="openNav()">☰</button>
+      </div>
+    </header>
+    <!-- Sidebar navigation -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="./index.html">Home</a>
+      <a href="./map.html">Location</a>
+      <a href="./archive1.html">Archive</a>
+      <a href="./glossary.html">Glossary</a>
+      <a href="./ccl.html">CCL</a>
+    </div>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "100%"; // Cover the whole page width
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
+    <main id="main" class="main" style="height: auto; padding-top: 0">
+     
+
+      <!-- Services Section -->
+      <div class="container archive-container">
+        <div
+          class="pg-1 d-flex justify-content-center align-items-center"
+          style="padding-top: 0px"
+        >
+          <div class="collection">
+            <div class="filterCover">
+              <div class="filters">
+                <div class="filter-container d-flex flex-wrap justify-content-center mt-4 gap-4">
+                  <div class="filter-group">
+                    <select id="location" name="location" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Neelum">Neelum</option>
+                      <option value="Kharmang">Kharmang</option>
+                      <option value="Yasin">Yasin</option>
+                      <option value="Skardu">Skardu</option>
+                      <option value="Kalash">Kalash</option>
+                      <option value="Laspur">Laspur</option>
+                      <option value="Yarkhun">Yarkhun</option>
+                      <option value="Chitral">Chitral</option>
+                      <option value="Ganche">Ganche</option>
+                      <option value="Kaghan">Kaghan</option>
+                      <option value="Khotan">Khotan</option>
+                      <option value="Khorog">Khorog</option>
+                      <option value="Murghab">Murghab</option>
+                      <option value="Kashgar">Kashgar</option>
+                      <option value="Osh">Osh</option>
+                      <option value="MazarSharif">Mazar Sharif</option>
+                      <option value="Bukhara">Bukhara</option>
+                      <option value="Khiva">Khiva</option>
+                      <option value="GBAO">GBAO</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <select id="asset" name="asset" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Object">Object</option>
+                      <option value="Building">Building</option>
+                      <option value="Practice">Practice</option>
+                      <option value="Technique">Technique</option>
+                      <option value="Story">Story</option>
+                      <option value="Pattern">Pattern</option>
+                      <option value="Place">Place</option>
+                    </select>
+                  </div>
+                  <div class="filter-group">
+                    <select id="material" name="material" class="form-select form-select-sm multiselect" multiple="multiple">
+                      <option value="Mud">Mud</option>
+                      <option value="Wood">Wood</option>
+                      <option value="Fibre">Fibre</option>
+                      <option value="Stone">Stone</option>
+                      <option value="Immaterial">Immaterial</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="filter-group  d-flex justify-content-center mt-3">
+                  <div class="d-flex gap-3">
+                    <button id="search" class="archiveBtn">Apply Filters</button>
+                    <button id="reset" class="archiveBtn btn-secondary">Reset</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="display: none;">
+ 
+      </div>
+      <div class="row1" style="margin: 0px 100px 0px 100px">
+      </div>
+      <div class="row2" style="margin: 0px 100px 0px 100px">
+      </div>
+      <!-- /Services Section -->
+    </main>
+    <div class="pagination-cover">
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+    </div>
+
+
+
+    <footer
+      id="footer"
+      class="footer nav"
+      style="
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        background-color: #cdcdcd;
+        padding: 10px;
+      "
+    >
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 30px;
+        "
+      >
+        <span>Copyright</span>
+        <strong class="px-1 sitename" style="margin: 0 5px">LAAJVERD</strong>
+        <span>All Rights Reserved</span>
+      </div>
+      <div class="social-links" style="display: flex; gap: 10px; height: 30px">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-skype"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/filter.js"></script>
+    <script src="assets/js/archive.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector(".header");
+        const logo = document.querySelector(".logo");
+        const heading = document.querySelector(".logo h2");
+        let lastScrollTop = 0;
+
+        window.addEventListener("scroll", function () {
+          let scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+          if (scrollTop > lastScrollTop) {
+            // Scrolling down
+            header.classList.add("invisible");
+            logo.classList.add("invisible");
+            heading.classList.add("invisible");
+          } else {
+            // Scrolling up
+            header.classList.remove("invisible");
+            logo.classList.remove("invisible");
+            heading.classList.remove("invisible");
+          }
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+        });
+
+        header.addEventListener("mouseenter", function () {
+          header.classList.remove("invisible");
+          logo.classList.remove("invisible");
+          heading.classList.remove("invisible");
+        });
+
+        header.addEventListener("mouseleave", function () {
+          if (window.pageYOffset > 0) {
+            header.classList.add("invisible");
+            logo.classList.add("invisible");
+            heading.classList.add("invisible");
+          }
+        });
+
+        // Mobile menu toggle
+        document
+          .querySelector(".mobile-nav-toggle")
+          .addEventListener("click", function () {
+            document
+              .querySelector(".navmenu")
+              .classList.toggle("mobile-nav-active");
+          });
+      });
+    </script>
+    <script>
+      // searching code
+
+      var search;
+      const dropdown = document.querySelectorAll(".form-select");
+      const allCards = document.querySelectorAll(".archive-card");
+      const mainElement = document.getElementById("main");
+      const footer = document.getElementById("footer");
+      const searchButton = document.getElementById("search");
+      const resetButton = document.getElementById("reset");
+      const searchInput = document.getElementById("search-input");
+
+      function adjustFooter() {
+        const mainHeight = mainElement.offsetHeight;
+        console.log("Current main height:", mainHeight);
+
+        if (mainHeight < 900) {
+          footer.style.position = "fixed";
+          footer.style.bottom = "0";
+          footer.style.width = "100%";
+        } else {
+          footer.style.position = "relative";
+          footer.style.width = "100%";
+        }
+      }
+
+      // For dropdowns
+      dropdown.forEach((list, index) => {
+        list.addEventListener("change", (e) => {
+          search = e.target.value.toLowerCase();
+          allCards.forEach((card) => {
+            const data = card.textContent.toLowerCase();
+            if (!data.includes(search) && search !== "") {
+              card.classList.add("hidden");
+            } else {
+              card.classList.remove("hidden");
+            }
+          });
+          setTimeout(adjustFooter, 100);
+        });
+      });
+
+      // For search button
+      searchButton.addEventListener("click", () => {
+        search = searchInput.value.toLowerCase();
+        allCards.forEach((card) => {
+          const data = card.textContent.toLowerCase();
+          if (!data.includes(search) && search !== "") {
+            card.classList.add("hidden");
+          } else {
+            card.classList.remove("hidden");
+          }
+        });
+        setTimeout(adjustFooter, 100);
+      });
+
+      // For reset button
+      resetButton.addEventListener("click", () => {
+        location.reload();
+      });
+
+      // For search on enter key
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          search = searchInput.value.toLowerCase();
+          allCards.forEach((card) => {
+            const data = card.textContent.toLowerCase();
+            if (!data.includes(search) && search !== "") {
+              card.classList.add("hidden");
+            } else {
+              card.classList.remove("hidden");
+            }
+          });
+          setTimeout(adjustFooter, 100);
+        }
+      });
+
+      // Initial footer adjustment
+      adjustFooter();
+
+      // Keep your existing article click functionality
+      const sideTitle = document.getElementById("side-title");
+      document.querySelectorAll(".archive-card").forEach((article) => {
+        article.addEventListener("click", function (event) {
+          event.preventDefault();
+          const title =
+            article.querySelector(".post-title")?.textContent ||
+            "Title not found";
+          const location =
+            article.querySelector(".location-text")?.textContent ||
+            "Location not found";
+          const assets =
+            article.querySelector(".assets-text")?.textContent ||
+            "Assets not found";
+          const material =
+            article.querySelector(".material-text")?.textContent ||
+            "Material not found";
+          const category =
+            article.querySelector(".post-category")?.textContent ||
+            "Category not found";
+          const author =
+            article.querySelector(".post-author")?.textContent ||
+            "Author not found";
+          const date =
+            article.querySelector(".post-date")?.textContent ||
+            "Date not found";
+          const postImg =
+            article.querySelector(".post-img img")?.src ||
+            "Post image not found";
+          const authorImg =
+            article.querySelector(".authorImg")?.src ||
+            "Author image not found";
+
+          const queryParams = {
+            title,
+            category,
+            author,
+            date,
+            postImg,
+            authorImg,
+          };
+          if (sideTitle) {
+            sideTitle.innerText = queryParams.title;
+          }
+          console.log(queryParams);
+        });
+      });
+    </script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        query,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCjA3GI1FC6_wikAy6qMw8hk4ZXDPsgw1U",
+        authDomain: "laajverd-42a3f.firebaseapp.com",
+        projectId: "laajverd-42a3f",
+        storageBucket: "laajverd-42a3f.appspot.com",
+        messagingSenderId: "654657065769",
+        appId: "1:654657065769:web:9cff527bd2a4ec6a9f1d38",
+        measurementId: "G-ZS0JV6362J",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      var cardsData = [];
+      function fetchData() {
+        const mapQuery = query(collection(db, "archive1"));
+        onSnapshot(mapQuery, (querySnapshot) => {
+          cardsData = []; // Clear the array before adding new data
+          querySnapshot.docs.forEach((doc) => {
+            const data = doc.data();
+            cardsData.push(data);
+            console.log("Fetched data:", data);
+          });
+          generateCards(); // Call generateCards after data is fetched
+        });
+      }
+
+      let currentPage = 1;
+      const cardsPerPage = 8; // Set to 8 cards per page
+
+      function generateCards(filteredData = cardsData) {
+        const container = document.querySelector(".row");
+        const container1 = document.querySelector(".row1");
+        const container2 = document.querySelector(".row2");
+
+        container.innerHTML = "";
+
+        // Calculate the start and end indices for the current page
+        const startIndex = (currentPage - 1) * cardsPerPage;
+        const endIndex = startIndex + cardsPerPage;
+
+        // Slice the data to get only the cards for the current page
+        const currentCards = filteredData.slice(startIndex, endIndex);
+
+        currentCards.forEach((card,key) => {
+          const cardElement = document.createElement("div");
+          cardElement.classList.add("archive-card");
+          cardElement.innerHTML = `
+            <a class="icon-link">
+              <i class="bi bi-plus icon open-offcanvas"></i>
+            </a>
+            <h4 class="post-title">${card.title}</h4>
+            <p><strong>Location:</strong> <span class="location-text">${card.location}</span></p>
+            <p><strong>Assets:</strong> <span class="assets-text">${card.assets}</span></p>
+            <p><strong>Material:</strong> <span class="material-text">${card.material}</span></p>
+          `;
+          if(key <=3){
+            container2.appendChild(cardElement);
+          }else{
+            container1.appendChild(cardElement);
+          }
+        });
+
+        // Add event listeners for icon links
+        document.querySelectorAll(".icon-link").forEach((iconLink) => {
+          iconLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            const card = this.closest(".archive-card");
+            const title = card.querySelector(".post-title").textContent.trim();
+            const location = card.querySelector(".location-text").textContent.trim();
+            const assets = card.querySelector(".assets-text").textContent.trim();
+            const material = card.querySelector(".material-text").textContent.trim();
+            const encodedTitle = title.split(" ")[0];
+            var imageSrc1 = "";
+            var imageSrc2 = "";
+            var imageSrc3 = "";
+            if(location === "Chitral"){
+              imageSrc1 = `/assets/img/Mashraba%20PNGs/IMG_3302.png`;
+              imageSrc2 = `/assets/img/Mashraba%20PNGs/IMG_3880.png`;
+              imageSrc3 = `/assets/img/Mashraba%20PNGs/IMG_3878.png`;
+            }else if(location === "Kalash"){
+              imageSrc1 = `/assets/img/sitar/1.png`;
+              imageSrc2 = `/assets/img/sitar/2.png`;
+              imageSrc3 = `/assets/img/sitar/3.png`;
+            }else if(location === "Skardu"){
+              imageSrc1 = `/assets/img/shoka/1.png`;
+              imageSrc2 = `/assets/img/shoka/4.png`;
+              imageSrc3 = `/assets/img/shoka/10.png`;
+            }else if(location === "Neelum"){
+              imageSrc1 = `/assets/img/rope/1.png`;
+              imageSrc2 = `/assets/img/rope/2.png`;
+              imageSrc3 = `/assets/img/rope/3.png`;
+            }
+            else if(location === "Kharmang"){
+              imageSrc1 = `/assets/img/rope/1.png`;
+              imageSrc2 = `/assets/img/rope/2.png`;
+              imageSrc3 = `/assets/img/rope/3.png`;
+            }
+            else if(location === "Yasin"){
+              imageSrc1 = `/assets/img/Dhaga/1.png`;
+              imageSrc2 = `/assets/img/Dhaga/2.png`;
+              imageSrc3 = `/assets/img/Dhaga/3.png`;
+            }
+            else if(location === "Yarkhun"){
+              imageSrc1 = `/assets/img/masonry-portfolio/masonry-portfolio-1.jpg`;
+              imageSrc2 = `/assets/img/masonry-portfolio/masonry-portfolio-21.jpg`;
+              imageSrc3 = `/assets/img/masonry-portfolio/masonry-portfolio-5.jpg`;
+            }
+            else if(location === "Laspur"){
+              imageSrc1 = `/assets/img/Mashraba%20PNGs/IMG_3888.png`;
+              imageSrc2 = `/assets/img/Mashraba%20PNGs/IMG_3889.png`;
+              imageSrc3 = `/assets/img/Mashraba%20PNGs/IMG_3887.png`;
+            }
+       
+            const newUrl = `/archive-map.html?location=${location}&imageSrc=${imageSrc1}&imageSrc2=${imageSrc2}&imageSrc3=${imageSrc3}`;
+            window.location.href = newUrl;
+          });
+        });
+
+        updatePagination(filteredData.length);
+      }
+
+      function updatePagination(totalCards) {
+        const paginationContainer = document.querySelector(".pagination");
+        paginationContainer.innerHTML = ""; // Clear existing pagination
+
+        const totalPages = Math.ceil(totalCards / cardsPerPage);
+
+        // Create previous button
+        const prevButton = document.createElement("a");
+        prevButton.href = "#";
+        prevButton.innerHTML = "&laquo;";
+        prevButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (currentPage > 1) {
+            currentPage--;
+            generateCards();
+          }
+        });
+        paginationContainer.appendChild(prevButton);
+
+        // Create page number buttons
+        for (let i = 1; i <= totalPages; i++) {
+          const pageButton = document.createElement("a");
+          pageButton.href = "#";
+          pageButton.textContent = i;
+          if (i === currentPage) {
+            pageButton.classList.add("active");
+          }
+          pageButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            currentPage = i;
+            generateCards();
+          });
+          paginationContainer.appendChild(pageButton);
+        }
+
+        // Create next button
+        const nextButton = document.createElement("a");
+        nextButton.href = "#";
+        nextButton.innerHTML = "&raquo;";
+        nextButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (currentPage < totalPages) {
+            currentPage++;
+            generateCards();
+          }
+        });
+        paginationContainer.appendChild(nextButton);
+      }
+
+      // Function to filter cards based on selected filters
+      function filterCards() {
+        const accessLevelSelect = document.querySelector('select[name="accessLevel"]');
+        const collectionTypeSelect = document.querySelector('select[name="collectionType"]');
+        const contentTypeSelect = document.querySelector('select[name="contentType"]');
+        const formatTypeSelect = document.querySelector('select[name="formatType"]');
+
+        const accessLevel = accessLevelSelect ? accessLevelSelect.value.toLowerCase() : '';
+        const collectionType = collectionTypeSelect ? collectionTypeSelect.value.toLowerCase() : '';
+        const contentType = contentTypeSelect ? contentTypeSelect.value.toLowerCase() : '';
+        const formatType = formatTypeSelect ? formatTypeSelect.value.toLowerCase() : '';
+
+        const filteredData = cardsData.filter(card => {
+          const cardAccessLevel = card.accessLevel.toLowerCase();
+          const cardCollectionType = card.collectionType.toLowerCase();
+          const cardContentType = card.contentType.toLowerCase();
+          const cardFormatType = card.formatType.toLowerCase();
+
+          return (
+            (accessLevel === '' || cardAccessLevel === accessLevel) &&
+            (collectionType === '' || cardCollectionType === collectionType) &&
+            (contentType === '' || cardContentType === contentType) &&
+            (formatType === '' || cardFormatType === formatType)
+          );
+        });
+
+        currentPage = 1; // Reset to the first page after filtering
+        generateCards(filteredData);
+      }
+
+      // Add event listeners to filter elements
+      document.querySelectorAll('select').forEach((select) => {
+        select.addEventListener('change', filterCards);
+      });
+
+      // Fetch data on page load
+      document.addEventListener("DOMContentLoaded", fetchData);
+    </script>
+    <!-- Add jQuery and Select2 JS before closing body tag -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Initialize Select2 on all multiselect elements with custom placeholders
+        $('#location').select2({
+          placeholder: "Location",
+          allowClear: true,
+          width: '250px'
+        });
+
+        $('#asset').select2({
+          placeholder: "Asset Type",
+          allowClear: true,
+          width: '250px'
+        });
+
+        $('#material').select2({
+          placeholder: "Material",
+          allowClear: true,
+          width: '250px'
+        });
+
+        // Function to filter cards based on selected values
+        function filterCards() {
+          const locationValues = $('#location').val() || [];
+          const assetValues = $('#asset').val() || [];
+          const materialValues = $('#material').val() || [];
+
+          $('.archive-card').each(function() {
+            const card = $(this);
+            const cardLocation = card.find('p:contains("Location:")').text().toLowerCase();
+            const cardAsset = card.find('p:contains("Assets:")').text().toLowerCase();
+            const cardMaterial = card.find('p:contains("Material:")').text().toLowerCase();
+
+            const matchesLocation = locationValues.length === 0 || 
+              locationValues.some(val => cardLocation.includes(val.toLowerCase()));
+            const matchesAsset = assetValues.length === 0 || 
+              assetValues.some(val => cardAsset.includes(val.toLowerCase()));
+            const matchesMaterial = materialValues.length === 0 || 
+              materialValues.some(val => cardMaterial.includes(val.toLowerCase()));
+
+            if (matchesLocation && matchesAsset && matchesMaterial) {
+              card.show();
+            } else {
+              card.hide();
+            }
+          });
+
+          // Adjust footer after filtering
+          adjustFooter();
+        }
+
+        // Add event listener for search button
+        $('#search').click(filterCards);
+        
+        // Reset button handler
+        $('#reset').click(function() {
+          $('.multiselect').val(null).trigger('change');
+          $('.archive-card').show();
+          adjustFooter();
+        });
+
+        // Add some basic styles for the filter section
+        $('<style>')
+          .text(`
+            .filter-group {
+              margin-bottom: 15px;
+            }
+            .select2-container {
+              margin-bottom: 10px;
+            }
+            .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+              color: #495057;
+              font-weight: 500;
+            }
+            .archiveBtn {
+              padding: 8px 16px;
+              border-radius: 25px;
+              font-size: 14px;
+            }
+            .filters {
+              padding: 20px;
+              border-radius: 8px;
+              margin-bottom: 10px;
+            }
+          `)
+          .appendTo('head');
+      });
+    </script>
+  </body>
+</html>

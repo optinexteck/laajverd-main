@@ -1,0 +1,20 @@
+node_modules
+.vercel
+.vscode
+
+
+# env
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+.env.test.local
+.env.production.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development.local
