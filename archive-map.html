@@ -504,29 +504,29 @@
                      data-supported-by="${item.supportedBy || ""}" 
                      data-year="${item.year || ""}"
                      style="display: block;">  <!-- Show matching items by default -->
-                  <div class="line"></div>
-                  <div class="libHeading" style="width: 100%">
-                    <div class="lft">
-                      <div class="heading">
+              <div class="line"></div>
+              <div class="libHeading" style="width: 100%">
+                <div class="lft">
+                  <div class="heading">
                         <p>${item.location || ""}</p>
                         <h1>${item.title || ""}</h1>
-                      </div>
-                    </div>
-                    <div class="rght">
+                  </div>
+                </div>
+                <div class="rght">
                       <p>Introductory Text : ${item.introductoryText || ""}</p>
                       <p>Insights : ${item.insight || ""}</p>
                       <h6>Our Conversation Approach</h6>
                       <p> ${item.approach || ""}</p>
                       <h6>Region History</h6>
                       <p> ${item.regionHistory || ""}</p>
-                      <h6>Material</h6>
+                  <h6>Material</h6>
                       <p>${item.material || ""}</p>
                       <h6>Asset</h6>
                       <p>${item.asset || ""}</p>
-                    </div>
-                  </div>
                 </div>
-              `;
+              </div>
+            </div>
+          `;
               container.insertAdjacentHTML("beforeend", collectionHTML);
             });
 

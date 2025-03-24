@@ -575,10 +575,15 @@
           longitude: x = 0,
           latitude: y = 0,
           placeName = "Unknown Location",
+          location = "Location not specified",
           description = "No Description Available",
           projectTitle = "No Title Available",
-          projectSnapshot = "No Snapshot Available",
+          supportedBy = "Not specified",
           type = [],
+          material,
+          assets,
+          archiveRelated = "Related in Archive",
+          relatedLinks = "Related Links",
           slider = "[]",
           date = "No Date Available",
         } = routeData[i];
@@ -700,8 +705,20 @@
         function navigateToTooltip(direction) {
           let newIndex = i + direction;
           while (newIndex >= 0 && newIndex < routeData.length) {
-            const { type: newType = [] } = routeData[newIndex];
-            if (newType.length > 0 && type.some((t) => newType.includes(t))) {
+            const { assets: newAssets = "" } = routeData[newIndex];
+            const currentAssets = assets || "";
+
+            // Split assets strings into arrays and check for any matching assets
+            const currentAssetsArray = currentAssets
+              .split(",")
+              .map((a) => a.trim());
+            const newAssetsArray = newAssets.split(",").map((a) => a.trim());
+
+            if (
+              currentAssetsArray.length > 0 &&
+              newAssetsArray.length > 0 &&
+              currentAssetsArray.some((a) => newAssetsArray.includes(a))
+            ) {
               i = newIndex;
               updateContent();
               break;
@@ -714,20 +731,28 @@
           const {
             description: newDescription,
             placeName: newPlaceName,
+            location: newLocation = "Location not specified",
             longitude: newX,
             latitude: newY,
             projectTitle: newProjectTitle = "No Title Available",
-            projectSnapshot: newProjectSnapshot = "No Snapshot Available",
+            supportedBy: newSupportedBy = "Not specified",
             type: newType = [],
+            material: newMaterial = "No Material Available",
+            assets: newAssets = "No Assets Available",
+            archiveRelated: newArchiveRelated = "Related in Archive",
+            relatedLinks: newRelatedLinks = "Related Links",
           } = routeData[i];
           descriptionParagraph.textContent =
             newDescription.charAt(0).toUpperCase() +
             newDescription.slice(1).toLowerCase();
           placeParagraph.textContent = `x-axis: ${newX}, y-axis: ${newY}`;
           header.textContent = newPlaceName;
+          locationElement.textContent = `Location: ${newLocation}`;
           projectTitleElement.textContent = newProjectTitle;
-          projectSnapshotElement.textContent = newProjectSnapshot;
+          supportedByElement.textContent = `Supported By: ${newSupportedBy}`;
           typeElement.textContent = newType.join(", ");
+          archiveRelatedElement.textContent = newArchiveRelated;
+          relatedLinksElement.textContent = newRelatedLinks || "Related Links";
         }
 
         leftDiv.appendChild(leftArrow);
@@ -763,11 +788,38 @@
         header.appendChild(h2);
         headingDiv.appendChild(header);
 
+        // Add Location display
+        const locationElement = document.createElement("p");
+        locationElement.textContent = `Location: ${location}`;
+        locationElement.style.fontSize = "14px";
+        locationElement.style.color = "black";
+        locationElement.style.margin = "5px 0";
+        locationElement.style.padding = "0";
+        headingDiv.appendChild(locationElement);
+
         // 4. Supported By
-        const supportedBy = document.createElement("p");
-        supportedBy.textContent = `Supported By: ${projectSnapshot}`;
-        supportedBy.style.fontSize = "12px";
-        headingDiv.appendChild(supportedBy);
+        const supportedByElement = document.createElement("p");
+        supportedByElement.textContent = `Supported By: ${supportedBy}`;
+        supportedByElement.style.fontSize = "12px";
+        headingDiv.appendChild(supportedByElement);
+
+        // Add Assets field
+        const assetsElement = document.createElement("p");
+        assetsElement.textContent = `Assets: ${assets || "Not specified"}`;
+        assetsElement.style.fontSize = "12px";
+        assetsElement.style.margin = "0";
+        assetsElement.style.padding = "0";
+        headingDiv.appendChild(assetsElement);
+
+        // Add Material field
+        const materialElement = document.createElement("p");
+        materialElement.textContent = `Material: ${
+          material || "Not specified"
+        }`;
+        materialElement.style.fontSize = "12px";
+        materialElement.style.margin = "0";
+        materialElement.style.padding = "0";
+        headingDiv.appendChild(materialElement);
 
         // 5. Year
         const projectDate = document.createElement("p");
@@ -780,7 +832,8 @@
 
         // 6. Related in Archive
         const archiveLink = document.createElement("p");
-        archiveLink.textContent = "Related in Archive";
+        archiveLink.textContent =
+          `Related Archive ${archiveRelated}` || "Related in Archive";
         archiveLink.style.fontSize = "12px";
         headingDiv.appendChild(archiveLink);
 
@@ -804,7 +857,7 @@
           placeName
         )}`;
         relatedLink.target = "_blank";
-        relatedLink.textContent = "Related Links";
+        relatedLink.textContent = relatedLinks || "Related Links";
         relatedLink.style.color = "black";
         relatedLink.style.fontSize = "12px";
         relatedLink.style.margin = "0";
