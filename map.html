@@ -1018,7 +1018,7 @@
 
       alphabetButtons.forEach((button) => {
         button.addEventListener("click", function (e) {
-          e.stopPropagation(); // This might prevent events from bubbling up
+          e.stopPropagation(); 
 
           // Remove 'active' class from all buttons and add to the clicked one
           alphabetButtons.forEach((btn) => btn.classList.remove("active"));
@@ -1041,15 +1041,15 @@
       // Handle button click
       addRoute.addEventListener("click", (e) => {
         console.log("clicked");
-        display = !display; // Toggle form visibility
+        display = !display;
 
         // Toggle the form's position based on the display flag
         if (display) {
           addRoute.textContent = ">";
-          Form.style.right = "0%"; // Show the form by sliding it in
+          Form.style.right = "0%"; 
         } else {
           addRoute.textContent = "<";
-          Form.style.right = "-100%"; // Hide the form by sliding it out
+          Form.style.right = "-100%"; 
         }
       });
     </script>

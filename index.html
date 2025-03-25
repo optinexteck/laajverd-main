@@ -404,6 +404,101 @@
         }
       }
     </style>
+    <style>
+      /* Update carousel button styles */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50% !important;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 10;
+      }
+
+      .carousel-control-prev {
+        left: 20px;
+      }
+
+      .carousel-control-next {
+        right: 20px;
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        display: none;
+      }
+
+      .carousel-control-prev::before {
+        content: "<";
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .carousel-control-next::before {
+        content: ">";
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      /* Ensure carousel container has proper positioning */
+      .carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-inner {
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-item {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
 
   <body class="index-page">
@@ -477,14 +572,6 @@
           data-bs-ride="carousel"
           style="width: 100vw; height: 100%; margin-left: -20px"
         >
-          <!-- Carousel Indicators -->
-          <!-- <div class="carousel-indicators">
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
-          aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div> -->
-
           <!-- Slide 1 -->
           <div
             class="carousel-item active"
@@ -513,20 +600,6 @@
               </p>
             </div>
           </div>
-
-          <!-- Slide 2 -->
-          <!-- <div class="carousel-item"
-        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
-
-      </div> -->
-
-          <!-- Slide 3 -->
-          <!-- <div class="carousel-item"
-        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
-        <div class="carousel-container">
-      
-        </div>
-      </div> -->
         </div>
       </section>
 
@@ -709,144 +782,34 @@
           id="hero-carousel"
           class="container carousel slide carousel-fade"
           data-bs-ride="carousel"
+          data-bs-interval="false"
+          data-bs-wrap="false"
           style="width: 100vw; height: 100vh; margin-left: -20px"
         >
+          <!-- Carousel Controls -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#hero-carousel"
+            data-bs-slide="prev"
+          >
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#hero-carousel"
+            data-bs-slide="next"
+          >
+            <span class="visually-hidden">Next</span>
+          </button>
+
           <!-- Slide 1 -->
           <div
             class="carousel-item active"
             style="
               background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3341.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 2 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3332.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 3 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3340.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 4 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3334.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide  5-->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3339.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 6 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3338.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 7 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3342.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 8 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3333.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 9 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3331.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 10 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3330.png');
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
-            "
-          ></div>
-          <!-- Slide 11 -->
-          <div
-            class="carousel-item"
-            style="
-              background-color: #254365;
-              background-image: url('./assets/img/Khatam PNGs/IMG_3358.png');
+              background-image: url('./assets/img/Story%20panel%20for%20website/Iwan%20story/IMG_4236.png');
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -1266,6 +1229,282 @@
           const x = e.clientX - rect.left - focusArea.offsetWidth;
           const y = e.clientY - rect.top - focusArea.offsetHeight;
           focusArea.style.transform = `translate(${x - 550}px, ${y - 180}px)`;
+        });
+      });
+    </script>
+
+    <script>
+      // Carousel data array
+      const carouselData = [
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4236.png",
+          title: "Iwan Story 1",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4238.png",
+          title: "Iwan Story 2",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4239.png",
+          title: "Iwan Story 3",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4240.png",
+          title: "Iwan Story 4",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4241.png",
+          title: "Iwan Story 5",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4242.png",
+          title: "Iwan Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3338.png",
+          title: "Khatam Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3339.png",
+          title: "Khatam Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3340.png",
+          title: "Khatam Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3341.png",
+          title: "Khatam Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3343.png",
+          title: "Khatam Making 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3330.png",
+          title: "Khatam Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3331.png",
+          title: "Khatam Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3332.png",
+          title: "Khatam Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3333.png",
+          title: "Khatam Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3334.png",
+          title: "Khatam Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3358.png",
+          title: "Khatam Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_3882.png",
+          title: "Mashraba Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4243.png",
+          title: "Mashraba Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4360.png",
+          title: "Mashraba Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4361.png",
+          title: "Mashraba Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4362.png",
+          title: "Mashraba Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4363.png",
+          title: "Mashraba Making 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3875.png",
+          title: "Mashraba Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3876.png",
+          title: "Mashraba Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3877.png",
+          title: "Mashraba Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3878.png",
+          title: "Mashraba Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3879.png",
+          title: "Mashraba Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 7",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3880.png",
+          title: "Mashraba Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4156.png",
+          title: "Pinjra Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4157.png",
+          title: "Pinjra Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4164.png",
+          title: "Pinjra Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4165.png",
+          title: "Pinjra Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4166.png",
+          title: "Pinjra Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4167.png",
+          title: "Pinjra Making 6",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM Content Loaded");
+        const carousel = document.getElementById("hero-carousel");
+        console.log("Carousel element:", carousel);
+
+        if (!carousel) {
+          console.error("Carousel element not found!");
+          return;
+        }
+
+        // Get carousel controls first
+        const prevButton = carousel.querySelector(".carousel-control-prev");
+        const nextButton = carousel.querySelector(".carousel-control-next");
+
+        console.log("Previous button:", prevButton);
+        console.log("Next button:", nextButton);
+
+        // Initialize Bootstrap carousel
+        const bsCarousel = new bootstrap.Carousel(carousel, {
+          interval: false,
+          wrap: false,
+          pause: "hover",
+        });
+
+        const carouselInner = carousel.querySelector(".carousel-inner");
+        console.log("Carousel inner element:", carouselInner);
+
+        if (!carouselInner) {
+          console.error("Carousel inner element not found!");
+          return;
+        }
+
+        let currentIndex = 0;
+        let isTransitioning = false;
+
+        // Add event listeners for carousel controls outside createCarouselItems
+        if (prevButton) {
+          prevButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("Left control clicked");
+            bsCarousel.prev();
+          });
+        }
+
+        if (nextButton) {
+          nextButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log("Right control clicked");
+            bsCarousel.next();
+          });
+        }
+
+        // Function to create carousel items
+        function createCarouselItems() {
+          console.log("Creating carousel items...");
+          carouselInner.innerHTML = ""; // Clear existing items
+
+          carouselData.forEach((item, index) => {
+            console.log(`Creating item ${index + 1}:`, item.image);
+            const div = document.createElement("div");
+            div.className = `carousel-item ${index === 0 ? "active" : ""}`;
+            div.style.cssText = `
+              background-color: #254365;
+              background-image: url('${item.image}');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              height: 100%;
+              width: 100vw;
+              transition: opacity 0.3s ease-in-out;
+              opacity: ${index === 0 ? "1" : "0"};
+            `;
+            carouselInner.appendChild(div);
+          });
+
+          console.log("Carousel items created successfully");
+        }
+
+        // Initialize carousel items
+        createCarouselItems();
+
+        // Listen for carousel events
+        carousel.addEventListener("slide.bs.carousel", function (e) {
+          console.log("Sliding from index:", e.from);
+          console.log("Sliding to index:", e.to);
+          currentIndex = e.to;
         });
       });
     </script>
