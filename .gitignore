@@ -1,6 +1,13 @@
 node_modules
 .vercel
 .vscode
+/firebase.js
+/starter-page.html
+/portfolio-details.html
+/common-structure.html
+/index.html
+/index1.html
+
 
 
 # env
