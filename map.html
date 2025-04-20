@@ -774,7 +774,7 @@
         // 1. Axis coordinates
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
-        placeParagraph.style.textAlign= "right";
+        placeParagraph.style.textAlign= "center";
         headingDiv.appendChild(placeParagraph);
 
         // 2. Project Title
@@ -794,7 +794,7 @@
 
         // Add Location display
         const locationElement = document.createElement("div");
-        locationElement.innerHTML = `<h5>Location</h5><br>${location}`;
+        locationElement.innerHTML = `Location<br>${location}`;
         locationElement.style.fontSize = "14px";
         locationElement.style.color = "black";
         locationElement.style.margin = "5px 0";
@@ -803,13 +803,13 @@
 
         // 4. Supported By
         const supportedByElement = document.createElement("p");
-        supportedByElement.textContent = `Supported By: ${supportedBy}`;
+        supportedByElement.innerHTML = `Supported By: <br> ${supportedBy}`;
         supportedByElement.style.fontSize = "12px";
         headingDiv.appendChild(supportedByElement);
 
         // Add Assets field
         const assetsElement = document.createElement("p");
-        assetsElement.textContent = `Assets: ${assets || "Not specified"}`;
+        assetsElement.innerHTML = `Assets: <br> ${assets || "Not specified"}`;
         assetsElement.style.fontSize = "12px";
         assetsElement.style.margin = "0";
         assetsElement.style.padding = "0";
@@ -817,7 +817,7 @@
 
         // Add Material field
         const materialElement = document.createElement("p");
-        materialElement.textContent = `Material: ${
+        materialElement.innerHTML = `Material: <br> ${
           material || "Not specified"
         }`;
         materialElement.style.fontSize = "12px";
@@ -827,7 +827,7 @@
 
         // 5. Year
         const projectDate = document.createElement("p");
-        projectDate.textContent = `Year: ${date}`;
+        projectDate.innerHTML = `Year: <br> ${date}`;
         projectDate.style.color = "black";
         projectDate.style.fontSize = "12px";
         projectDate.style.margin = "0";
@@ -836,7 +836,7 @@
 
         // 6. Related in Archive
         const archiveLink = document.createElement("p");
-        archiveLink.textContent =
+        archiveLink.innerHTML =
           `Related Archive ${archiveRelated}` || "Related in Archive";
         archiveLink.style.fontSize = "12px";
         headingDiv.appendChild(archiveLink);
