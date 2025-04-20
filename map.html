@@ -185,7 +185,7 @@
             <li><a href="./map.html">Location</a></li>
             <li><a href="./archive1.html">Archive</a></li>
             <li><a href="./glossary.html">Glossary</a></li>
-            <li><a href="./ccl.html">CCL</a></li>
+            <li><a href="./archive-map.html">CCL</a></li>
 
             <!-- <li><a href="./contact.html">Contact</a></li> -->
           </ul>
@@ -684,12 +684,14 @@
 
         const leftArrow = document.createElement("h2");
         leftArrow.textContent = "<";
+        leftArrow.style.color = "blue";
         leftArrow.style.margin = "auto 10px";
         leftArrow.style.cursor = "pointer";
         leftArrow.style.alignSelf = "center";
 
         const rightArrow = document.createElement("h2");
         rightArrow.textContent = ">";
+        rightArrow.style.color = "blue";
         rightArrow.style.margin = "auto 10px";
         rightArrow.style.cursor = "pointer";
         rightArrow.style.alignSelf = "center";
@@ -746,8 +748,9 @@
             newDescription.charAt(0).toUpperCase() +
             newDescription.slice(1).toLowerCase();
           placeParagraph.textContent = `x-axis: ${newX}, y-axis: ${newY}`;
+          placeParagraph.style.marginRight = "10px"
           header.textContent = newPlaceName;
-          locationElement.textContent = `Location: ${newLocation}`;
+          locationElement.innerHTML = `<h5>Location</h5><br>${newLocation}`;
           projectTitleElement.textContent = newProjectTitle;
           supportedByElement.textContent = `Supported By: ${newSupportedBy}`;
           typeElement.textContent = newType.join(", ");
@@ -771,6 +774,7 @@
         // 1. Axis coordinates
         const placeParagraph = document.createElement("p");
         placeParagraph.textContent = `x-axis: ${x}, y-axis: ${y}`;
+        placeParagraph.style.textAlign= "right";
         headingDiv.appendChild(placeParagraph);
 
         // 2. Project Title
@@ -789,8 +793,8 @@
         headingDiv.appendChild(header);
 
         // Add Location display
-        const locationElement = document.createElement("p");
-        locationElement.textContent = `Location: ${location}`;
+        const locationElement = document.createElement("div");
+        locationElement.innerHTML = `<h5>Location</h5><br>${location}`;
         locationElement.style.fontSize = "14px";
         locationElement.style.color = "black";
         locationElement.style.margin = "5px 0";
