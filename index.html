@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,17 +15,16 @@
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,710;0,900;1,100;1,300;1,400;1,500;1,710;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,710;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,710;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,710;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,710;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <!-- Add Google Fonts link for Montserrat -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;710&display=swap"
       rel="stylesheet"
     />
 
     <!-- Vendor CSS Files -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -47,6 +46,13 @@
     />
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
+    <!-- Add SwiperJS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
     <!-- Main CSS File -->
     <style>
       html {
@@ -58,7 +64,104 @@
     <link href="assets/css/carousel.css" rel="stylesheet" />
 
     <style>
-      /* General Styles */
+      .blurred-background {
+        position: absolute;
+        font-weight: bolder;
+        color: white;
+        margin: 0;
+        background: rgba(58, 96, 127, 0.6);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        text-shadow: 1px 1px 3px rgba(58, 96, 127, 0.8);
+      }
+      .absolute-div h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        color: white;
+      }
+      .sidebar {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        background-color: white; /* Set sidebar background to white */
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        display: none; /* Hide by default */
+      }
+
+      .sidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+
+      .sidebar a:hover {
+        color: #f1f1f1;
+      }
+
+      .sidebar .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+      }
+
+      /* Style for the open button */
+      .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        color: black; /* Text color */
+        padding: 10px 15px;
+        border: none;
+        background: none; /* Make button transparent */
+        display: none; /* Hide by default */
+      }
+
+      /* Media query for mobile screens */
+      @media screen and (max-width: 768px) {
+        .openbtn {
+          display: block;
+        }
+        .sidebar {
+          display: block;
+        }
+        .navmenu {
+          display: none;
+        }
+      }
+
+      /* Ensure header is visible on all screens */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      @media screen and (max-width: 600px) {
+        .logo h1 {
+          font-size: 20px !important;
+        }
+      }
+      /* Show navmenu on larger screens */
+      @media screen and (min-width: 769px) {
+        .navmenu {
+          display: flex;
+        }
+        .openbtn {
+          display: none;
+        }
+      }
+    </style>
+    <style>
       body,
       html {
         margin: 0;
@@ -171,11 +274,10 @@
     <style>
       .login-form {
         position: fixed;
-        /* Fix the position so the form can slide from the side */
         z-index: 99;
         display: flex;
         width: 500px;
-        height: 700px;
+        height: 710px;
         flex-direction: column;
         padding: 50px 40px;
         color: white;
@@ -183,12 +285,10 @@
         height: 100%;
         top: 0;
         right: -100%;
-        /* Initially hidden off the right side */
-        box-shadow:
-          0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
           0 2.1px 2.1px rgba(128, 128, 128, 0.195),
-          0 4.4px 4.4px rgba(128, 128, 128, 0.241),
+          0 4.4px 4.4px rgba(128, 128, 128, 0.24),
           0 12px 12px rgba(128, 128, 128, 0.35);
         transition: right 1s ease-in-out;
         /* Smooth sliding transition */
@@ -231,10 +331,14 @@
 
       .column {
         flex: 1;
+        max-width: 90%;
+        margin: 0 1%;
+        padding: 0 1%;
       }
 
       .our-title {
-        margin-left: 9.7%;
+        margin-left: 6.1%;
+        font-family: aaa-inktraps !important;
       }
 
       .content-container h3,
@@ -242,18 +346,13 @@
         font-family: "Montserrat", sans-serif;
         font-size: 0.8em;
         text-transform: capitalize;
+        margin-top: -20px;
         color: black;
       }
 
       @media (max-width: 600px) {
         .content-container {
           max-width: 300px;
-        }
-        .our {
-          display: none;
-          width: 100%;
-          flex-direction: column;
-          align-items: center;
         }
 
         .column {
@@ -265,6 +364,11 @@
 
         .our-title {
           margin-left: 0;
+          display: none;
+        }
+      }
+      @media (max-width: 990px) {
+        .our {
           display: none;
         }
       }
@@ -306,33 +410,190 @@
         }
       }
     </style>
+    <style>
+      /* Update carousel button styles */
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 60px !important;
+        height: 60px !important;
+        min-width: 60px !important;
+        min-height: 60px !important;
+        max-width: 60px !important;
+        max-height: 60px !important;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50% !important;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: 10;
+      }
+
+      .carousel-control-prev {
+        left: 20px;
+      }
+
+      .carousel-control-next {
+        right: 20px;
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        opacity: 1;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        display: none;
+      }
+
+      .carousel-control-prev::before {
+        content: "<";
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .carousel-control-next::before {
+        content: ">";
+        font-size: 32px;
+        font-weight: bold;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      /* Ensure carousel container has proper positioning */
+      .carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-inner {
+        width: 100%;
+        height: 100%;
+      }
+
+      .carousel-item {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+    <style>
+      /* Custom styles for Swiper navigation buttons */
+      .swiper-button-prev,
+      .swiper-button-next {
+        width: 60px !important;
+        height: 60px !important;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+
+      .swiper-button-prev:hover,
+      .swiper-button-next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+        transform: scale(1.1);
+      }
+
+      .swiper-button-prev:after,
+      .swiper-button-next:after {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      /* Position the navigation buttons */
+      .swiper-button-prev {
+        left: 20px;
+      }
+
+      .swiper-button-next {
+        right: 20px;
+      }
+    </style>
   </head>
 
   <body class="index-page">
     <div class="top-hover-area"></div>
-    <header id="header" class="header d-flex align-items-center fixed-top">
+    <header
+      id="header"
+      class="header d-flex align-items-center fixed-top scrolled"
+    >
       <div
-        class="container-fluid d-flex align-items-center justify-content-between"
+        class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between"
       >
-        <!-- Logo and Title -->
         <a href="index.html" class="logo d-flex align-items-center">
-          <img src="assets/img/lg.png" alt="Logo" />
-          <h2>ommunity Conservation Lab</h2>
-        </a>
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <img src="assets/img/lg.png" alt="" />
+          <h1>ommunity Conservation Lab</h1></a
+        >
 
-        <!-- Navigation Menu -->
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="#hero">Home</a></li>
+            <li><a href="./index.html">Home</a></li>
             <li><a href="./map.html">Location</a></li>
             <li><a href="./archive1.html">Archive</a></li>
             <li><a href="./glossary.html">Glossary</a></li>
             <li><a href="./ccl.html">CCL</a></li>
+
+            <!-- <li><a href="./contact.html">Contact</a></li> -->
           </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </nav>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+
+        <!-- Add a button to open the sidebar -->
+        <button class="openbtn" onclick="openNav()">☰</button>
       </div>
     </header>
+
+    <!-- Sidebar navigation -->
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <a href="./index.html">Home</a>
+      <a href="./map.html">Location</a>
+      <a href="./archive1.html">Archive</a>
+      <a href="./glossary.html">Glossary</a>
+      <a href="./ccl.html">CCL</a>
+    </div>
+
+    <script>
+      function openNav() {
+        document.getElementById("mySidebar").style.width = "100%";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+      }
+    </script>
 
     <main class="main">
       <!-- Hero Section -->
@@ -351,19 +612,11 @@
           data-bs-ride="carousel"
           style="width: 100vw; height: 100%; margin-left: -20px"
         >
-          <!-- Carousel Indicators -->
-          <!-- <div class="carousel-indicators">
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true"
-          aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div> -->
-
           <!-- Slide 1 -->
           <div
             class="carousel-item active"
             style="
-              background-image: url(&quot;./assets/img/AssetPanels/Landing-01.png&quot;);
+              background-image: url('./assets/img/AssetPanels/Landing-01.png');
               width: 100vw;
               height: 100%;
               background-size: cover;
@@ -387,78 +640,77 @@
               </p>
             </div>
           </div>
-
-          <!-- Slide 2 -->
-          <!-- <div class="carousel-item"
-        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
-
-      </div> -->
-
-          <!-- Slide 3 -->
-          <!-- <div class="carousel-item"
-        style="background-image: url('./assets/img/AssetPanels/Landing\ placement-01.png'); width: 100vw; height: 100%; background-size: cover; background-position: center;">
-        <div class="carousel-container">
-      
-        </div>
-      </div> -->
         </div>
       </section>
 
-      <section id="ccl" class="hero nav section section2">
-        <div class="info-container">
+      <section
+        id="ccl"
+        class="nav hero section section2"
+        style="background-color: #f1ca01; color: black"
+      >
+        <div class="info-container" style="color: black">
           <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
           <div class="our">
-            <h3 class="column"></h3>
-            <h3 class="column"></h3>
-            <h3 class="column our-title">Our</h3>
+            <h3 class="column" style="color: black"></h3>
+            <h3 class="column" style="color: black"></h3>
+            <h2 class="column our-title" style="color: black !important">
+              Our
+            </h2>
           </div>
 
           <div class="content-container">
-            <div class="column">
-              <h3>What is an</h3>
-              <h3>Artefact?</h3>
-              <p>
-                The conservation lab covers a wide<br />
-                range of artifacts, encompassing<br />
-                both material and immaterial <br />
-                heritage. These include stories, <br />
-                techniques, buildings and objects. <br />
-                Our approach to artefact considers <br />
-                its affiliations with human, non- <br />
-                human and spiritual entities; whilst <br />
-                acknowledging its agency in the <br />
-                natural ecology and landscape and <br />
-                produces guidelines, methods, and <br />
-                strategies for care, maintenance <br />
-                and long-term preservation in <br />
-                collaboration with local communities.
+            <div
+              class="column"
+              style="width: auto; max-width: 100%; padding-right: 0"
+            >
+              <h2 style="color: black !important">What is an</h2>
+              <h2 style="color: black !important">Artefact?</h2>
+              <p
+                style="
+                  color: black !important;
+                  width: 100%;
+                  word-wrap: break-word;
+                  word-break: normal;
+                "
+              >
+                The conservation lab covers a wide range of artifacts,
+                encompassing both material and immaterial heritage. These
+                include stories, techniques, buildings and objects. Our approach
+                to artefact considers its affiliations with human, non- human
+                and spiritual entities; whilst acknowledging its agency in the
+                natural ecology and landscape and
               </p>
             </div>
 
-            <div class="column">
-              <h3>What is</h3>
-              <h3>Knowledge?</h3>
-              <p>
-                Modes of knowledge production<br />
-                refer to the various methods,<br />
-                approaches, and systems through<br />
-                which knowledge about the<br />
-                artefact or site is generated and<br />
-                validated within a particular field or<br />
-                community. Our approach recognizes<br />
-                tacit, observational, experimental,<br />
-                empirical, and the experiential<br />
-                as valuable modes of knowledge<br />
-                production in our conservation<br />
+            <div
+              class="column"
+              style="width: auto; max-width: 100%; padding-right: 0"
+            >
+              <h2 style="color: black !important">What is</h2>
+              <h2 style="color: black !important">Knowledge?</h2>
+              <p
+                style="
+                  color: black !important;
+                  width: 100%;
+                  word-wrap: break-word;
+                  word-break: normal;
+                "
+              >
+                Modes of knowledge production refer to the various methods,
+                approaches, and systems through which knowledge about the
+                artefact or site is generated and validated within a particular
+                field or community. Our approach recognizes tacit,
+                observational, experimental, empirical, and the experiential as
+                valuable modes of knowledge production in our conservation
                 endeavors.
               </p>
             </div>
 
             <div class="column">
-              <h3 class="mobile-our">Our</h3>
-              <h3>Conservation</h3>
-              <h3>Practice?</h3>
-              <p>
+              <h2 class="mobile-our" style="color: black !important">Our</h2>
+              <h2 style="color: black !important">Conservation</h2>
+              <h2 style="color: black !important">Practice?</h2>
+              <p style="color: black !important">
                 We work collaboratively with local<br />
                 communities in the entire process of<br />
                 thinking and practicing conservation.<br />
@@ -484,8 +736,8 @@
         <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
         <!-- <h2 class="main-heading">WHAT IS</h2>  -->
       <!-- <div class="content-container">
-          <div class="column">
-            <h3>What is an</h3> 
+          <div class="column" style="">
+            <h2>What is an</h3> 
             <h3>ARTEFACT?</h3>
             <p>The conservation lab covers a wide<br> 
               range of artifacts, encompassing<br> 
@@ -503,8 +755,8 @@
               collaboration with local communities.</p>
           </div>
 
-          <div class="column">
-            <h3>WHAT IS</h3>
+          <div class="column" style="">
+            <h2>WHAT IS</h3>
             <h3>KNOWLEDGE?</h3>
             <p>Modes of knowledge production<br> 
               refer to the various methods,<br> 
@@ -520,7 +772,7 @@
               endeavors.</p>
           </div>
 
-          <div class="column">
+          <div class="column" style="">
             <h3> CONSERVATION</h3>
             <h3> PRACTICE?</h3>
             <p>We work collaboratively with local<br> 
@@ -541,17 +793,17 @@
       <!--
   <div class="yellow-section">
     <div class="content-container">
-      <div class="column">
+      <div class="column" style="">
         <h2>WHAT IS AN ARTEFACT?</h2>
         <p>The conservation lab covers a wide range of artifacts, encompassing both material and immaterial heritage. These include stories, techniques, buildings and objects. Our approach to artefact considers its affiliations with human, non-human and spiritual entities; whilst acknowledging its agency in the natural ecology and landscape and produces guidelines, methods, and strategies for care, maintenance and long-term preservation in collaboration with local communities.</p>
       </div>
 
-      <div class="column">
+      <div class="column" style="">
         <h2>WHAT IS KNOWLEDGE?</h2>
         <p>Modes of knowledge production refer to the various methods, approaches, and systems through which knowledge about the artefact or site is generated and validated within a particular field or community. Our approach recognizes tacit, observational, experimental, empirical, and the experiential as valuable modes of knowledge production in our conservation endeavors.</p>
       </div>
 
-      <div class="column">
+      <div class="column" style="">
         <h2>CONSERVATION PRACTICE?</h2>
         <p>We work collaboratively with local communities in the entire process of thinking and practicing conservation. This includes choosing artefacts and determining conservation methods, encompassing documentation, condition assessment, preservation, and upkeep. Our approach involves finding synergies between scientific and local conservation techniques; we learn from each other in terms of how to read, understand and engage with the materials and assets and how to assess risks, decay and deterioration.</p>
       </div>
@@ -564,41 +816,102 @@
       <section
         id="hero1"
         class="hero nav section section2"
-        style="background-color: #254365; height: 100vh; width: 100vw"
+        style="
+          background-color: #254365;
+          height: 100vh;
+          width: 100vw;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        "
       >
+        <!-- Custom Carousel -->
         <div
-          id="hero-carousel"
-          class="container carousel slide carousel-fade"
-          data-bs-ride="carousel"
-          style="width: 100vw; height: 100vh; margin-left: -20px"
+          class="custom-carousel"
+          id="hero1-carousel"
+          style="
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+          "
         >
-          <!-- Slide 1 -->
           <div
-            class="carousel-item active"
+            class="carousel-container"
             style="
-              background-color: #254365;
-              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-1.jpg&quot;);
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
               width: 100vw;
+              height: 100vh;
+              position: relative;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
             "
-          ></div>
-          <!-- Slide 2 -->
-          <div
-            class="carousel-item"
+          >
+            <!-- Slides will be dynamically added here -->
+          </div>
+
+          <!-- Navigation buttons -->
+          <button
+            class="carousel-button prev"
             style="
-              background-color: #254365;
-              background-image: url(&quot;./assets/img/hero-carousel/mid-carousel-2.jpg&quot;);
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              height: 100%;
-              width: 100vw;
+              position: absolute;
+              left: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 60px;
+              height: 60px;
+              background-color: rgba(0, 0, 0, 0.5);
+              border-radius: 50%;
+              color: white;
+              font-weight: bold;
+              font-size: 24px;
+              border: none;
+              cursor: pointer;
+              z-index: 1000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+              outline: none;
+              -webkit-tap-highlight-color: transparent;
+              pointer-events: auto;
             "
-          ></div>
+          >
+            &lt;
+          </button>
+
+          <button
+            class="carousel-button next"
+            style="
+              position: absolute;
+              right: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 60px;
+              height: 60px;
+              background-color: rgba(0, 0, 0, 0.5);
+              border-radius: 50%;
+              color: white;
+              font-weight: bold;
+              font-size: 24px;
+              border: none;
+              cursor: pointer;
+              z-index: 1000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+              outline: none;
+              -webkit-tap-highlight-color: transparent;
+              pointer-events: auto;
+            "
+          >
+            &gt;
+          </button>
         </div>
+
         <!-- Location Create Card -->
         <form
           id="uploadForm"
@@ -741,7 +1054,7 @@
           <a href=""><i class="bi bi-linkedin"></i></a>
         </div>
       </footer>
-      <div class="navigation" style="z-index: 9999">
+      <div class="navigation" style="z-index: 99">
         <span data-target="section1" class="bullet active"></span>
         <span data-target="section2" class="bullet"></span>
         <span data-target="section3" class="bullet"></span>
@@ -885,7 +1198,7 @@
           },
           {
             threshold: 0.3,
-          },
+          }
         );
 
         // Start observing the blue section
@@ -980,12 +1293,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
           const paragraph = document.querySelector(
-            ".animate__animated.animate__fadeInUp",
+            ".animate__animated.animate__fadeInUp"
           );
           if (window.innerWidth < 600) {
             paragraph.innerHTML = paragraph.innerHTML.replace(
               /<br\s*\/?>/gi,
-              " ",
+              " "
             );
           }
         }
@@ -995,6 +1308,405 @@
 
         // Adjust on window resize
         window.addEventListener("resize", adjustTextForMobile);
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hero1 = document.getElementById("hero1");
+        const focusArea = document.createElement("div");
+        focusArea.classList.add("focus-area");
+        hero1.appendChild(focusArea);
+
+        hero1.addEventListener("mousemove", function (e) {
+          const rect = hero1.getBoundingClientRect();
+          const x = e.clientX - rect.left - focusArea.offsetWidth;
+          const y = e.clientY - rect.top - focusArea.offsetHeight;
+          focusArea.style.transform = `translate(${x - 550}px, ${y - 180}px)`;
+        });
+      });
+    </script>
+
+    <script>
+      // Carousel data array
+      const carouselData = [
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4238.png",
+          title: "Iwan Story 2",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4239.png",
+          title: "Iwan Story 3",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4240.png",
+          title: "Iwan Story 4",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4241.png",
+          title: "Iwan Story 5",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4242.png",
+          title: "Iwan Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3338.png",
+          title: "Khatam Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3339.png",
+          title: "Khatam Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3340.png",
+          title: "Khatam Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3341.png",
+          title: "Khatam Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3330.png",
+          title: "Khatam Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3331.png",
+          title: "Khatam Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3332.png",
+          title: "Khatam Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3333.png",
+          title: "Khatam Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3334.png",
+          title: "Khatam Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3358.png",
+          title: "Khatam Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_3882.png",
+          title: "Mashraba Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4243.png",
+          title: "Mashraba Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4360.png",
+          title: "Mashraba Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4361.png",
+          title: "Mashraba Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4362.png",
+          title: "Mashraba Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4363.png",
+          title: "Mashraba Making 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3875.png",
+          title: "Mashraba Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3876.png",
+          title: "Mashraba Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3877.png",
+          title: "Mashraba Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3878.png",
+          title: "Mashraba Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3879.png",
+          title: "Mashraba Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 7",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3880.png",
+          title: "Mashraba Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4156.png",
+          title: "Pinjra Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4157.png",
+          title: "Pinjra Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4164.png",
+          title: "Pinjra Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4165.png",
+          title: "Pinjra Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4166.png",
+          title: "Pinjra Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4167.png",
+          title: "Pinjra Making 6",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM Content Loaded - Initializing custom carousel");
+
+        const carousel = document.getElementById("hero1-carousel");
+        const container = carousel.querySelector(".carousel-container");
+        const prevButton = carousel.querySelector(".carousel-button.prev");
+        const nextButton = carousel.querySelector(".carousel-button.next");
+
+        let currentSlide = 0;
+        let isTransitioning = false;
+        let autoPlayInterval;
+
+        // Create slides
+        function createSlides() {
+          console.log("Creating slides...");
+          carouselData.forEach((item, index) => {
+            const slide = document.createElement("div");
+            slide.className = "carousel-slide";
+            slide.style.cssText = `
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              margin: 0;
+              padding: 0;
+              background-color: #254365;
+              background-image: url('${item.image}');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              opacity: ${index === 0 ? 1 : 0};
+              transition: opacity 0.5s ease;
+              z-index: ${index === 0 ? 1 : 0};
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            `;
+            slide.setAttribute("data-index", index);
+            container.appendChild(slide);
+          });
+          console.log("Slides created successfully");
+        }
+
+        // Initialize first slide
+        function initializeFirstSlide() {
+          const firstSlide = container.querySelector(".carousel-slide");
+          if (firstSlide) {
+            firstSlide.style.opacity = "1";
+          }
+        }
+
+        // Handle slide transitions
+        function goToSlide(index) {
+          if (isTransitioning) return;
+          isTransitioning = true;
+
+          const slides = container.querySelectorAll(".carousel-slide");
+          const currentSlideElement = slides[currentSlide];
+          const nextSlideElement = slides[index];
+
+          if (currentSlideElement && nextSlideElement) {
+            currentSlideElement.style.opacity = "0";
+            currentSlideElement.style.zIndex = "1";
+            nextSlideElement.style.opacity = "1";
+            nextSlideElement.style.zIndex = "2";
+
+            setTimeout(() => {
+              currentSlide = index;
+              isTransitioning = false;
+              console.log("Slide changed to:", currentSlide);
+            }, 500);
+          }
+        }
+
+        // Handle next slide
+        function nextSlide() {
+          console.log("Next button clicked");
+          const nextIndex = (currentSlide + 1) % carouselData.length;
+          goToSlide(nextIndex);
+        }
+
+        // Handle previous slide
+        function prevSlide() {
+          console.log("Prev button clicked");
+          const prevIndex =
+            (currentSlide - 1 + carouselData.length) % carouselData.length;
+          goToSlide(prevIndex);
+        }
+
+        // Setup autoplay
+        function startAutoplay() {
+          autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Stop autoplay
+        function stopAutoplay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        // Event listeners
+        prevButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          stopAutoplay();
+          prevSlide();
+          startAutoplay();
+        });
+
+        nextButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          stopAutoplay();
+          nextSlide();
+          startAutoplay();
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            console.log("Left arrow key pressed");
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+          } else if (e.key === "ArrowRight") {
+            console.log("Right arrow key pressed");
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+          }
+        });
+
+        // Touch events
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener(
+          "touchstart",
+          function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoplay();
+          },
+          false
+        );
+
+        carousel.addEventListener(
+          "touchend",
+          function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoplay();
+          },
+          false
+        );
+
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          const diff = touchStartX - touchEndX;
+
+          if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+              console.log("Swipe left detected");
+              nextSlide();
+            } else {
+              console.log("Swipe right detected");
+              prevSlide();
+            }
+          }
+        }
+
+        // Initialize carousel
+        createSlides();
+        initializeFirstSlide();
+        startAutoplay();
+
+        // Hover effects for buttons
+        prevButton.addEventListener("mouseenter", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          this.style.transform = "translateY(-50%) scale(1.1)";
+        });
+
+        prevButton.addEventListener("mouseleave", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+          this.style.transform = "translateY(-50%)";
+        });
+
+        nextButton.addEventListener("mouseenter", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          this.style.transform = "translateY(-50%) scale(1.1)";
+        });
+
+        nextButton.addEventListener("mouseleave", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+          this.style.transform = "translateY(-50%)";
+        });
+
+        // Prevent text selection
+        carousel.addEventListener("selectstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        // Prevent context menu
+        carousel.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          return false;
+        });
       });
     </script>
   </body>
