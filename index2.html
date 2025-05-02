@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -184,8 +184,7 @@
         top: 0;
         right: -100%;
         /* Initially hidden off the right side */
-        box-shadow:
-          0 0.4px 0.4px rgba(128, 128, 128, 0.109),
+        box-shadow: 0 0.4px 0.4px rgba(128, 128, 128, 0.109),
           0 1px 1px rgba(128, 128, 128, 0.155),
           0 2.1px 2.1px rgba(128, 128, 128, 0.195),
           0 4.4px 4.4px rgba(128, 128, 128, 0.241),
@@ -363,7 +362,7 @@
           <div
             class="carousel-item active"
             style="
-              background-image: url(&quot;./assets/img/AssetPanels/Landing-01.png&quot;);
+              background-image: url('./assets/img/AssetPanels/Landing-01.png');
               width: 100vw;
               height: 100%;
               background-size: cover;
@@ -404,7 +403,7 @@
         </div>
       </section>
 
-          <section
+      <section
         id="ccl"
         class="nav hero section section2"
         style="background-color: #f1ca01; color: black"
@@ -490,9 +489,9 @@
           <!-- ... current design content ... -->
         </div>
       </section>
-     
+
       <!-- slider -->
-        <section
+      <section
         id="hero1"
         class="hero nav section section2"
         style="
@@ -698,7 +697,6 @@
           &lt;
         </button> -->
       </section>
-    
 
       <footer
         id="footer"
@@ -793,9 +791,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-
-    
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/carousel.js" defer></script>
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -899,12 +896,12 @@
       document.addEventListener("DOMContentLoaded", function () {
         function adjustTextForMobile() {
           const paragraph = document.querySelector(
-            ".animate__animated.animate__fadeInUp",
+            ".animate__animated.animate__fadeInUp"
           );
           if (window.innerWidth < 600) {
             paragraph.innerHTML = paragraph.innerHTML.replace(
               /<br\s*\/?>/gi,
-              " ",
+              " "
             );
           }
         }
@@ -918,7 +915,7 @@
     </script>
 
     <!-- focus area -->
-     <script>
+    <script>
       document.addEventListener("DOMContentLoaded", function () {
         const hero1 = document.getElementById("hero1");
         const focusArea = document.createElement("div");
@@ -935,7 +932,7 @@
     </script>
 
     <!-- carousel content loading -->
-        <script>
+    <script>
       // Carousel data array
       const carouselData = [
         {
@@ -1121,8 +1118,24 @@
         let currentSlide = 0;
         let isTransitioning = false;
         let autoPlayInterval;
+        let loadedImages = new Set();
 
-        // Create slides
+        // Preload next and previous images
+        function preloadAdjacentImages() {
+          const nextIndex = (currentSlide + 1) % carouselData.length;
+          const prevIndex =
+            (currentSlide - 1 + carouselData.length) % carouselData.length;
+
+          [nextIndex, prevIndex].forEach((index) => {
+            if (!loadedImages.has(index)) {
+              const img = new Image();
+              img.src = carouselData[index].image;
+              loadedImages.add(index);
+            }
+          });
+        }
+
+        // Create slides with lazy loading
         function createSlides() {
           console.log("Creating slides...");
           carouselData.forEach((item, index) => {
@@ -1137,7 +1150,6 @@
               margin: 0;
               padding: 0;
               background-color: #254365;
-              background-image: url('${item.image}');
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -1148,21 +1160,20 @@
               justify-content: center;
               align-items: center;
             `;
+
+            // Only load the first image immediately
+            if (index === 0) {
+              slide.style.backgroundImage = `url('${item.image}')`;
+              loadedImages.add(0);
+            }
+
             slide.setAttribute("data-index", index);
             container.appendChild(slide);
           });
           console.log("Slides created successfully");
         }
 
-        // Initialize first slide
-        function initializeFirstSlide() {
-          const firstSlide = container.querySelector(".carousel-slide");
-          if (firstSlide) {
-            firstSlide.style.opacity = "1";
-          }
-        }
-
-        // Handle slide transitions
+        // Handle slide transitions with lazy loading
         function goToSlide(index) {
           if (isTransitioning) return;
           isTransitioning = true;
@@ -1172,6 +1183,12 @@
           const nextSlideElement = slides[index];
 
           if (currentSlideElement && nextSlideElement) {
+            // Load the image if not already loaded
+            if (!loadedImages.has(index)) {
+              nextSlideElement.style.backgroundImage = `url('${carouselData[index].image}')`;
+              loadedImages.add(index);
+            }
+
             currentSlideElement.style.opacity = "0";
             currentSlideElement.style.zIndex = "1";
             nextSlideElement.style.opacity = "1";
@@ -1180,6 +1197,7 @@
             setTimeout(() => {
               currentSlide = index;
               isTransitioning = false;
+              preloadAdjacentImages(); // Preload next and previous images
               console.log("Slide changed to:", currentSlide);
             }, 500);
           }
@@ -1280,7 +1298,6 @@
 
         // Initialize carousel
         createSlides();
-        initializeFirstSlide();
         startAutoplay();
 
         // Hover effects for buttons
