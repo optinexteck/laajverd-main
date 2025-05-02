@@ -845,8 +845,7 @@
       });
     </script>
 
- 
-
+    <!-- invisible nav -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
         const header = document.querySelector(".header");
@@ -917,6 +916,8 @@
         window.addEventListener("resize", adjustTextForMobile);
       });
     </script>
+
+    <!-- focus area -->
      <script>
       document.addEventListener("DOMContentLoaded", function () {
         const hero1 = document.getElementById("hero1");
@@ -929,6 +930,390 @@
           const x = e.clientX - rect.left - focusArea.offsetWidth;
           const y = e.clientY - rect.top - focusArea.offsetHeight;
           focusArea.style.transform = `translate(${x - 550}px, ${y - 180}px)`;
+        });
+      });
+    </script>
+
+    <!-- carousel content loading -->
+        <script>
+      // Carousel data array
+      const carouselData = [
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4238.png",
+          title: "Iwan Story 2",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4239.png",
+          title: "Iwan Story 3",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4240.png",
+          title: "Iwan Story 4",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4241.png",
+          title: "Iwan Story 5",
+        },
+        {
+          image: "./assets/img/Story panel for website/Iwan story/IMG_4242.png",
+          title: "Iwan Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3338.png",
+          title: "Khatam Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3339.png",
+          title: "Khatam Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3340.png",
+          title: "Khatam Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3341.png",
+          title: "Khatam Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3330.png",
+          title: "Khatam Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3331.png",
+          title: "Khatam Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3332.png",
+          title: "Khatam Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3333.png",
+          title: "Khatam Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3334.png",
+          title: "Khatam Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam story/IMG_3358.png",
+          title: "Khatam Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_3882.png",
+          title: "Mashraba Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4243.png",
+          title: "Mashraba Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4360.png",
+          title: "Mashraba Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4361.png",
+          title: "Mashraba Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4362.png",
+          title: "Mashraba Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba making/IMG_4363.png",
+          title: "Mashraba Making 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3875.png",
+          title: "Mashraba Story 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3876.png",
+          title: "Mashraba Story 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3877.png",
+          title: "Mashraba Story 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3878.png",
+          title: "Mashraba Story 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3879.png",
+          title: "Mashraba Story 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Khatam making/IMG_3342.png",
+          title: "Khatam Making 7",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Mashraba story/IMG_3880.png",
+          title: "Mashraba Story 6",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4156.png",
+          title: "Pinjra Making 1",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4157.png",
+          title: "Pinjra Making 2",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4164.png",
+          title: "Pinjra Making 3",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4165.png",
+          title: "Pinjra Making 4",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4166.png",
+          title: "Pinjra Making 5",
+        },
+        {
+          image:
+            "./assets/img/Story panel for website/Pinjra making/IMG_4167.png",
+          title: "Pinjra Making 6",
+        },
+      ];
+
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("DOM Content Loaded - Initializing custom carousel");
+
+        const carousel = document.getElementById("hero1-carousel");
+        const container = carousel.querySelector(".carousel-container");
+        const prevButton = carousel.querySelector(".carousel-button.prev");
+        const nextButton = carousel.querySelector(".carousel-button.next");
+
+        let currentSlide = 0;
+        let isTransitioning = false;
+        let autoPlayInterval;
+
+        // Create slides
+        function createSlides() {
+          console.log("Creating slides...");
+          carouselData.forEach((item, index) => {
+            const slide = document.createElement("div");
+            slide.className = "carousel-slide";
+            slide.style.cssText = `
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100vw;
+              height: 100vh;
+              margin: 0;
+              padding: 0;
+              background-color: #254365;
+              background-image: url('${item.image}');
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              opacity: ${index === 0 ? 1 : 0};
+              transition: opacity 0.5s ease;
+              z-index: ${index === 0 ? 1 : 0};
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            `;
+            slide.setAttribute("data-index", index);
+            container.appendChild(slide);
+          });
+          console.log("Slides created successfully");
+        }
+
+        // Initialize first slide
+        function initializeFirstSlide() {
+          const firstSlide = container.querySelector(".carousel-slide");
+          if (firstSlide) {
+            firstSlide.style.opacity = "1";
+          }
+        }
+
+        // Handle slide transitions
+        function goToSlide(index) {
+          if (isTransitioning) return;
+          isTransitioning = true;
+
+          const slides = container.querySelectorAll(".carousel-slide");
+          const currentSlideElement = slides[currentSlide];
+          const nextSlideElement = slides[index];
+
+          if (currentSlideElement && nextSlideElement) {
+            currentSlideElement.style.opacity = "0";
+            currentSlideElement.style.zIndex = "1";
+            nextSlideElement.style.opacity = "1";
+            nextSlideElement.style.zIndex = "2";
+
+            setTimeout(() => {
+              currentSlide = index;
+              isTransitioning = false;
+              console.log("Slide changed to:", currentSlide);
+            }, 500);
+          }
+        }
+
+        // Handle next slide
+        function nextSlide() {
+          console.log("Next button clicked");
+          const nextIndex = (currentSlide + 1) % carouselData.length;
+          goToSlide(nextIndex);
+        }
+
+        // Handle previous slide
+        function prevSlide() {
+          console.log("Prev button clicked");
+          const prevIndex =
+            (currentSlide - 1 + carouselData.length) % carouselData.length;
+          goToSlide(prevIndex);
+        }
+
+        // Setup autoplay
+        function startAutoplay() {
+          autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Stop autoplay
+        function stopAutoplay() {
+          clearInterval(autoPlayInterval);
+        }
+
+        // Event listeners
+        prevButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          stopAutoplay();
+          prevSlide();
+          startAutoplay();
+        });
+
+        nextButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          stopAutoplay();
+          nextSlide();
+          startAutoplay();
+        });
+
+        // Keyboard navigation
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowLeft") {
+            console.log("Left arrow key pressed");
+            stopAutoplay();
+            prevSlide();
+            startAutoplay();
+          } else if (e.key === "ArrowRight") {
+            console.log("Right arrow key pressed");
+            stopAutoplay();
+            nextSlide();
+            startAutoplay();
+          }
+        });
+
+        // Touch events
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener(
+          "touchstart",
+          function (e) {
+            touchStartX = e.changedTouches[0].screenX;
+            stopAutoplay();
+          },
+          false
+        );
+
+        carousel.addEventListener(
+          "touchend",
+          function (e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+            startAutoplay();
+          },
+          false
+        );
+
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          const diff = touchStartX - touchEndX;
+
+          if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+              console.log("Swipe left detected");
+              nextSlide();
+            } else {
+              console.log("Swipe right detected");
+              prevSlide();
+            }
+          }
+        }
+
+        // Initialize carousel
+        createSlides();
+        initializeFirstSlide();
+        startAutoplay();
+
+        // Hover effects for buttons
+        prevButton.addEventListener("mouseenter", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          this.style.transform = "translateY(-50%) scale(1.1)";
+        });
+
+        prevButton.addEventListener("mouseleave", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+          this.style.transform = "translateY(-50%)";
+        });
+
+        nextButton.addEventListener("mouseenter", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
+          this.style.transform = "translateY(-50%) scale(1.1)";
+        });
+
+        nextButton.addEventListener("mouseleave", function () {
+          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+          this.style.transform = "translateY(-50%)";
+        });
+
+        // Prevent text selection
+        carousel.addEventListener("selectstart", function (e) {
+          e.preventDefault();
+          return false;
+        });
+
+        // Prevent context menu
+        carousel.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          return false;
         });
       });
     </script>
