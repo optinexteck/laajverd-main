@@ -1113,12 +1113,33 @@
         const container = carousel.querySelector(".carousel-container");
         const prevButton = carousel.querySelector(".carousel-button.prev");
         const nextButton = carousel.querySelector(".carousel-button.next");
+        const loadingIndicator = document.createElement("div");
+        loadingIndicator.className = "loading-indicator";
+        loadingIndicator.innerHTML = '<div class="spinner"></div>';
+        carousel.appendChild(loadingIndicator);
 
         let currentSlide = 0;
         let isTransitioning = false;
         let autoPlayInterval;
+        let loadedImages = new Set();
+        let preloadedImages = new Set();
 
-        // Create slides
+        // Preload next and previous images
+        function preloadAdjacentImages() {
+          const nextIndex = (currentSlide + 1) % carouselData.length;
+          const prevIndex =
+            (currentSlide - 1 + carouselData.length) % carouselData.length;
+
+          [nextIndex, prevIndex].forEach((index) => {
+            if (!preloadedImages.has(index)) {
+              const img = new Image();
+              img.src = carouselData[index].image;
+              preloadedImages.add(index);
+            }
+          });
+        }
+
+        // Create slides with lazy loading
         function createSlides() {
           console.log("Creating slides...");
           carouselData.forEach((item, index) => {
@@ -1133,7 +1154,6 @@
               margin: 0;
               padding: 0;
               background-color: #254365;
-              background-image: url('${item.image}');
               background-size: contain;
               background-position: center;
               background-repeat: no-repeat;
@@ -1145,29 +1165,63 @@
               align-items: center;
             `;
             slide.setAttribute("data-index", index);
+
+            // Add loading placeholder
+            const placeholder = document.createElement("div");
+            placeholder.className = "image-placeholder";
+            slide.appendChild(placeholder);
+
             container.appendChild(slide);
           });
           console.log("Slides created successfully");
         }
 
-        // Initialize first slide
-        function initializeFirstSlide() {
-          const firstSlide = container.querySelector(".carousel-slide");
-          if (firstSlide) {
-            firstSlide.style.opacity = "1";
-          }
+        // Load image for a specific slide
+        function loadImage(index) {
+          if (loadedImages.has(index)) return;
+
+          const slide = container.querySelector(
+            `.carousel-slide[data-index="${index}"]`
+          );
+          if (!slide) return;
+
+          const img = new Image();
+          img.onload = () => {
+            slide.style.backgroundImage = `url('${carouselData[index].image}')`;
+            loadedImages.add(index);
+            slide.querySelector(".image-placeholder")?.remove();
+            if (index === currentSlide) {
+              loadingIndicator.style.display = "none";
+            }
+          };
+
+          img.onerror = () => {
+            console.error(`Failed to load image: ${carouselData[index].image}`);
+            slide.querySelector(".image-placeholder")?.remove();
+            if (index === currentSlide) {
+              loadingIndicator.style.display = "none";
+            }
+          };
+
+          img.src = carouselData[index].image;
         }
 
         // Handle slide transitions
         function goToSlide(index) {
           if (isTransitioning) return;
           isTransitioning = true;
+          loadingIndicator.style.display = "flex";
 
           const slides = container.querySelectorAll(".carousel-slide");
           const currentSlideElement = slides[currentSlide];
           const nextSlideElement = slides[index];
 
           if (currentSlideElement && nextSlideElement) {
+            // Load the next image if not already loaded
+            if (!loadedImages.has(index)) {
+              loadImage(index);
+            }
+
             currentSlideElement.style.opacity = "0";
             currentSlideElement.style.zIndex = "1";
             nextSlideElement.style.opacity = "1";
@@ -1176,6 +1230,8 @@
             setTimeout(() => {
               currentSlide = index;
               isTransitioning = false;
+              loadingIndicator.style.display = "none";
+              preloadAdjacentImages();
               console.log("Slide changed to:", currentSlide);
             }, 500);
           }
@@ -1276,8 +1332,42 @@
 
         // Initialize carousel
         createSlides();
-        initializeFirstSlide();
+        loadImage(0); // Load first image
+        preloadAdjacentImages();
         startAutoplay();
+
+        // Add CSS for loading indicator
+        const style = document.createElement("style");
+        style.textContent = `
+          .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+          }
+          .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+          }
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+          .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 67, 101, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+        `;
+        document.head.appendChild(style);
 
         // Hover effects for buttons
         prevButton.addEventListener("mouseenter", function () {
