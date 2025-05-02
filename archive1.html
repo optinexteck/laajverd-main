@@ -838,11 +838,12 @@
       const cardsPerPage = 8; // Set to 8 cards per page
 
       function generateCards(filteredData = cardsData) {
-        const container = document.querySelector(".row");
         const container1 = document.querySelector(".row1");
         const container2 = document.querySelector(".row2");
 
-        container.innerHTML = "";
+        // Clear containers
+        container1.innerHTML = "";
+        container2.innerHTML = "";
 
         // Calculate the start and end indices for the current page
         const startIndex = (currentPage - 1) * cardsPerPage;
@@ -851,7 +852,11 @@
         // Slice the data to get only the cards for the current page
         const currentCards = filteredData.slice(startIndex, endIndex);
 
-        currentCards.forEach((card,key) => {
+        // Create a temporary container to hold all cards
+        const tempContainer = document.createElement('div');
+        tempContainer.style.display = 'none'; // Hide the temporary container
+
+        currentCards.forEach((card) => {
           const cardElement = document.createElement("div");
           cardElement.classList.add("archive-card");
           cardElement.innerHTML = `
@@ -863,12 +868,26 @@
             <p><strong>Assets:</strong> <span class="assets-text">${card.assets}</span></p>
             <p><strong>Material:</strong> <span class="material-text">${card.material}</span></p>
           `;
-          if(key <=3){
-            container2.appendChild(cardElement);
-          }else{
-            container1.appendChild(cardElement);
+          tempContainer.appendChild(cardElement);
+        });
+
+        // Add the temporary container to the document
+        document.body.appendChild(tempContainer);
+
+        // Get all cards from the temporary container
+        const allCards = tempContainer.querySelectorAll('.archive-card');
+
+        // Distribute cards between containers
+        allCards.forEach((card, index) => {
+          if (index < 4) {
+            container2.appendChild(card);
+          } else {
+            container1.appendChild(card);
           }
         });
+
+        // Remove the temporary container
+        document.body.removeChild(tempContainer);
 
         // Add event listeners for icon links
         document.querySelectorAll(".icon-link").forEach((iconLink) => {
@@ -926,6 +945,11 @@
           });
         });
 
+        // Ensure containers are visible
+        container1.style.display = 'grid';
+        container2.style.display = 'grid';
+
+        // Update pagination
         updatePagination(filteredData.length);
       }
 
@@ -944,6 +968,7 @@
           if (currentPage > 1) {
             currentPage--;
             generateCards();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
         paginationContainer.appendChild(prevButton);
@@ -960,6 +985,7 @@
             e.preventDefault();
             currentPage = i;
             generateCards();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           });
           paginationContainer.appendChild(pageButton);
         }
@@ -973,6 +999,7 @@
           if (currentPage < totalPages) {
             currentPage++;
             generateCards();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
         });
         paginationContainer.appendChild(nextButton);
