@@ -493,7 +493,7 @@
       <!-- slider -->
       <section
         id="hero1"
-        class="hero nav section section2"
+        class="hero nav section section2 lazy-load-section"
         style="
           background-color: #254365;
           height: 100vh;
@@ -516,6 +516,9 @@
             overflow: hidden;
           "
         >
+          <div class="carousel-placeholder">
+            <div class="spinner"></div>
+          </div>
           <div
             class="carousel-container"
             style="
@@ -525,6 +528,7 @@
               margin: 0;
               padding: 0;
               overflow: hidden;
+              display: none;
             "
           >
             <!-- Slides will be dynamically added here -->
@@ -555,6 +559,7 @@
               outline: none;
               -webkit-tap-highlight-color: transparent;
               pointer-events: auto;
+              display: none;
             "
           >
             &lt;
@@ -584,6 +589,7 @@
               outline: none;
               -webkit-tap-highlight-color: transparent;
               pointer-events: auto;
+              display: none;
             "
           >
             &gt;
@@ -1107,300 +1113,321 @@
       ];
 
       document.addEventListener("DOMContentLoaded", function () {
-        console.log("DOM Content Loaded - Initializing custom carousel");
+        // Initialize Intersection Observer
+        const carouselSection = document.querySelector(".lazy-load-section");
+        const carouselContainer = document.querySelector(".carousel-container");
+        const carouselPlaceholder = document.querySelector(
+          ".carousel-placeholder"
+        );
+        const prevButton = document.querySelector(".carousel-button.prev");
+        const nextButton = document.querySelector(".carousel-button.next");
 
-        const carousel = document.getElementById("hero1-carousel");
-        const container = carousel.querySelector(".carousel-container");
-        const prevButton = carousel.querySelector(".carousel-button.prev");
-        const nextButton = carousel.querySelector(".carousel-button.next");
-        const loadingIndicator = document.createElement("div");
-        loadingIndicator.className = "loading-indicator";
-        loadingIndicator.innerHTML = '<div class="spinner"></div>';
-        carousel.appendChild(loadingIndicator);
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // When carousel section comes into view, initialize the carousel
+                initializeCarousel();
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            rootMargin: "50px 0px",
+            threshold: 0.1,
+          }
+        );
 
-        let currentSlide = 0;
-        let isTransitioning = false;
-        let autoPlayInterval;
-        let loadedImages = new Set();
-        let preloadedImages = new Set();
+        observer.observe(carouselSection);
 
-        // Preload next and previous images
-        function preloadAdjacentImages() {
-          const nextIndex = (currentSlide + 1) % carouselData.length;
-          const prevIndex =
-            (currentSlide - 1 + carouselData.length) % carouselData.length;
+        function initializeCarousel() {
+          console.log("Initializing carousel...");
 
-          [nextIndex, prevIndex].forEach((index) => {
-            if (!preloadedImages.has(index)) {
+          // Show loading placeholder
+          carouselPlaceholder.style.display = "flex";
+
+          // Initialize carousel after a short delay to ensure smooth transition
+          setTimeout(() => {
+            const carousel = document.getElementById("hero1-carousel");
+            const container = carousel.querySelector(".carousel-container");
+            const prevButton = carousel.querySelector(".carousel-button.prev");
+            const nextButton = carousel.querySelector(".carousel-button.next");
+            const loadingIndicator = document.createElement("div");
+            loadingIndicator.className = "loading-indicator";
+            loadingIndicator.innerHTML = '<div class="spinner"></div>';
+            carousel.appendChild(loadingIndicator);
+
+            let currentSlide = 0;
+            let isTransitioning = false;
+            let autoPlayInterval;
+            let loadedImages = new Set();
+            let preloadedImages = new Set();
+
+            // Show carousel elements
+            container.style.display = "block";
+            prevButton.style.display = "flex";
+            nextButton.style.display = "flex";
+            carouselPlaceholder.style.display = "none";
+
+            // Preload next and previous images
+            function preloadAdjacentImages() {
+              const nextIndex = (currentSlide + 1) % carouselData.length;
+              const prevIndex =
+                (currentSlide - 1 + carouselData.length) % carouselData.length;
+
+              [nextIndex, prevIndex].forEach((index) => {
+                if (!preloadedImages.has(index)) {
+                  const img = new Image();
+                  img.src = carouselData[index].image;
+                  preloadedImages.add(index);
+                }
+              });
+            }
+
+            // Create slides with lazy loading
+            function createSlides() {
+              console.log("Creating slides...");
+              carouselData.forEach((item, index) => {
+                const slide = document.createElement("div");
+                slide.className = "carousel-slide";
+                slide.style.cssText = `
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100vw;
+                  height: 100vh;
+                  margin: 0;
+                  padding: 0;
+                  background-color: #254365;
+                  background-size: contain;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  opacity: ${index === 0 ? 1 : 0};
+                  transition: opacity 0.5s ease;
+                  z-index: ${index === 0 ? 1 : 0};
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                `;
+                slide.setAttribute("data-index", index);
+
+                // Add loading placeholder
+                const placeholder = document.createElement("div");
+                placeholder.className = "image-placeholder";
+                slide.appendChild(placeholder);
+
+                container.appendChild(slide);
+              });
+              console.log("Slides created successfully");
+            }
+
+            // Load image for a specific slide
+            function loadImage(index) {
+              if (loadedImages.has(index)) return;
+
+              const slide = container.querySelector(
+                `.carousel-slide[data-index="${index}"]`
+              );
+              if (!slide) return;
+
               const img = new Image();
+              img.onload = () => {
+                slide.style.backgroundImage = `url('${carouselData[index].image}')`;
+                loadedImages.add(index);
+                slide.querySelector(".image-placeholder")?.remove();
+                if (index === currentSlide) {
+                  loadingIndicator.style.display = "none";
+                }
+              };
+
+              img.onerror = () => {
+                console.error(
+                  `Failed to load image: ${carouselData[index].image}`
+                );
+                slide.querySelector(".image-placeholder")?.remove();
+                if (index === currentSlide) {
+                  loadingIndicator.style.display = "none";
+                }
+              };
+
               img.src = carouselData[index].image;
-              preloadedImages.add(index);
-            }
-          });
-        }
-
-        // Create slides with lazy loading
-        function createSlides() {
-          console.log("Creating slides...");
-          carouselData.forEach((item, index) => {
-            const slide = document.createElement("div");
-            slide.className = "carousel-slide";
-            slide.style.cssText = `
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100vw;
-              height: 100vh;
-              margin: 0;
-              padding: 0;
-              background-color: #254365;
-              background-size: contain;
-              background-position: center;
-              background-repeat: no-repeat;
-              opacity: ${index === 0 ? 1 : 0};
-              transition: opacity 0.5s ease;
-              z-index: ${index === 0 ? 1 : 0};
-              display: flex;
-              justify-content: center;
-              align-items: center;
-            `;
-            slide.setAttribute("data-index", index);
-
-            // Add loading placeholder
-            const placeholder = document.createElement("div");
-            placeholder.className = "image-placeholder";
-            slide.appendChild(placeholder);
-
-            container.appendChild(slide);
-          });
-          console.log("Slides created successfully");
-        }
-
-        // Load image for a specific slide
-        function loadImage(index) {
-          if (loadedImages.has(index)) return;
-
-          const slide = container.querySelector(
-            `.carousel-slide[data-index="${index}"]`
-          );
-          if (!slide) return;
-
-          const img = new Image();
-          img.onload = () => {
-            slide.style.backgroundImage = `url('${carouselData[index].image}')`;
-            loadedImages.add(index);
-            slide.querySelector(".image-placeholder")?.remove();
-            if (index === currentSlide) {
-              loadingIndicator.style.display = "none";
-            }
-          };
-
-          img.onerror = () => {
-            console.error(`Failed to load image: ${carouselData[index].image}`);
-            slide.querySelector(".image-placeholder")?.remove();
-            if (index === currentSlide) {
-              loadingIndicator.style.display = "none";
-            }
-          };
-
-          img.src = carouselData[index].image;
-        }
-
-        // Handle slide transitions
-        function goToSlide(index) {
-          if (isTransitioning) return;
-          isTransitioning = true;
-          loadingIndicator.style.display = "flex";
-
-          const slides = container.querySelectorAll(".carousel-slide");
-          const currentSlideElement = slides[currentSlide];
-          const nextSlideElement = slides[index];
-
-          if (currentSlideElement && nextSlideElement) {
-            // Load the next image if not already loaded
-            if (!loadedImages.has(index)) {
-              loadImage(index);
             }
 
-            currentSlideElement.style.opacity = "0";
-            currentSlideElement.style.zIndex = "1";
-            nextSlideElement.style.opacity = "1";
-            nextSlideElement.style.zIndex = "2";
+            // Handle slide transitions
+            function goToSlide(index) {
+              if (isTransitioning) return;
+              isTransitioning = true;
+              loadingIndicator.style.display = "flex";
 
-            setTimeout(() => {
-              currentSlide = index;
-              isTransitioning = false;
-              loadingIndicator.style.display = "none";
-              preloadAdjacentImages();
-              console.log("Slide changed to:", currentSlide);
-            }, 500);
-          }
-        }
+              const slides = container.querySelectorAll(".carousel-slide");
+              const currentSlideElement = slides[currentSlide];
+              const nextSlideElement = slides[index];
 
-        // Handle next slide
-        function nextSlide() {
-          console.log("Next button clicked");
-          const nextIndex = (currentSlide + 1) % carouselData.length;
-          goToSlide(nextIndex);
-        }
+              if (currentSlideElement && nextSlideElement) {
+                // Load the next image if not already loaded
+                if (!loadedImages.has(index)) {
+                  loadImage(index);
+                }
 
-        // Handle previous slide
-        function prevSlide() {
-          console.log("Prev button clicked");
-          const prevIndex =
-            (currentSlide - 1 + carouselData.length) % carouselData.length;
-          goToSlide(prevIndex);
-        }
+                currentSlideElement.style.opacity = "0";
+                currentSlideElement.style.zIndex = "1";
+                nextSlideElement.style.opacity = "1";
+                nextSlideElement.style.zIndex = "2";
 
-        // Setup autoplay
-        function startAutoplay() {
-          autoPlayInterval = setInterval(nextSlide, 5000);
-        }
+                setTimeout(() => {
+                  currentSlide = index;
+                  isTransitioning = false;
+                  loadingIndicator.style.display = "none";
+                  preloadAdjacentImages();
+                  console.log("Slide changed to:", currentSlide);
+                }, 500);
+              }
+            }
 
-        // Stop autoplay
-        function stopAutoplay() {
-          clearInterval(autoPlayInterval);
-        }
+            // Handle next slide
+            function nextSlide() {
+              console.log("Next button clicked");
+              const nextIndex = (currentSlide + 1) % carouselData.length;
+              goToSlide(nextIndex);
+            }
 
-        // Event listeners
-        prevButton.addEventListener("click", function (e) {
-          e.preventDefault();
-          stopAutoplay();
-          prevSlide();
-          startAutoplay();
-        });
+            // Handle previous slide
+            function prevSlide() {
+              console.log("Prev button clicked");
+              const prevIndex =
+                (currentSlide - 1 + carouselData.length) % carouselData.length;
+              goToSlide(prevIndex);
+            }
 
-        nextButton.addEventListener("click", function (e) {
-          e.preventDefault();
-          stopAutoplay();
-          nextSlide();
-          startAutoplay();
-        });
+            // Setup autoplay
+            function startAutoplay() {
+              autoPlayInterval = setInterval(nextSlide, 5000);
+            }
 
-        // Keyboard navigation
-        document.addEventListener("keydown", function (e) {
-          if (e.key === "ArrowLeft") {
-            console.log("Left arrow key pressed");
-            stopAutoplay();
-            prevSlide();
-            startAutoplay();
-          } else if (e.key === "ArrowRight") {
-            console.log("Right arrow key pressed");
-            stopAutoplay();
-            nextSlide();
-            startAutoplay();
-          }
-        });
+            // Stop autoplay
+            function stopAutoplay() {
+              clearInterval(autoPlayInterval);
+            }
 
-        // Touch events
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        carousel.addEventListener(
-          "touchstart",
-          function (e) {
-            touchStartX = e.changedTouches[0].screenX;
-            stopAutoplay();
-          },
-          false
-        );
-
-        carousel.addEventListener(
-          "touchend",
-          function (e) {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-            startAutoplay();
-          },
-          false
-        );
-
-        function handleSwipe() {
-          const swipeThreshold = 50;
-          const diff = touchStartX - touchEndX;
-
-          if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-              console.log("Swipe left detected");
-              nextSlide();
-            } else {
-              console.log("Swipe right detected");
+            // Event listeners
+            prevButton.addEventListener("click", function (e) {
+              e.preventDefault();
+              stopAutoplay();
               prevSlide();
+              startAutoplay();
+            });
+
+            nextButton.addEventListener("click", function (e) {
+              e.preventDefault();
+              stopAutoplay();
+              nextSlide();
+              startAutoplay();
+            });
+
+            // Keyboard navigation
+            document.addEventListener("keydown", function (e) {
+              if (e.key === "ArrowLeft") {
+                console.log("Left arrow key pressed");
+                stopAutoplay();
+                prevSlide();
+                startAutoplay();
+              } else if (e.key === "ArrowRight") {
+                console.log("Right arrow key pressed");
+                stopAutoplay();
+                nextSlide();
+                startAutoplay();
+              }
+            });
+
+            // Touch events
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            carousel.addEventListener(
+              "touchstart",
+              function (e) {
+                touchStartX = e.changedTouches[0].screenX;
+                stopAutoplay();
+              },
+              false
+            );
+
+            carousel.addEventListener(
+              "touchend",
+              function (e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startAutoplay();
+              },
+              false
+            );
+
+            function handleSwipe() {
+              const swipeThreshold = 50;
+              const diff = touchStartX - touchEndX;
+
+              if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                  console.log("Swipe left detected");
+                  nextSlide();
+                } else {
+                  console.log("Swipe right detected");
+                  prevSlide();
+                }
+              }
             }
-          }
+
+            // Initialize carousel
+            createSlides();
+            loadImage(0);
+            preloadAdjacentImages();
+            startAutoplay();
+
+            // Add CSS for loading indicator and placeholder
+            const style = document.createElement("style");
+            style.textContent = `
+              .loading-indicator {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                z-index: 1000;
+                display: none;
+              }
+              .spinner {
+                width: 40px;
+                height: 40px;
+                border: 4px solid rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                border-top-color: #fff;
+                animation: spin 1s ease-in-out infinite;
+              }
+              @keyframes spin {
+                to { transform: rotate(360deg); }
+              }
+              .image-placeholder {
+                width: 100%;
+                height: 100%;
+                background: rgba(37, 67, 101, 0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              .carousel-placeholder {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #254365;
+              }
+            `;
+            document.head.appendChild(style);
+          }, 100);
         }
-
-        // Initialize carousel
-        createSlides();
-        loadImage(0); // Load first image
-        preloadAdjacentImages();
-        startAutoplay();
-
-        // Add CSS for loading indicator
-        const style = document.createElement("style");
-        style.textContent = `
-          .loading-indicator {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1000;
-            display: none;
-          }
-          .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-          }
-          @keyframes spin {
-            to { transform: rotate(360deg); }
-          }
-          .image-placeholder {
-            width: 100%;
-            height: 100%;
-            background: rgba(37, 67, 101, 0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        `;
-        document.head.appendChild(style);
-
-        // Hover effects for buttons
-        prevButton.addEventListener("mouseenter", function () {
-          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-          this.style.transform = "translateY(-50%) scale(1.1)";
-        });
-
-        prevButton.addEventListener("mouseleave", function () {
-          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-          this.style.transform = "translateY(-50%)";
-        });
-
-        nextButton.addEventListener("mouseenter", function () {
-          this.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
-          this.style.transform = "translateY(-50%) scale(1.1)";
-        });
-
-        nextButton.addEventListener("mouseleave", function () {
-          this.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-          this.style.transform = "translateY(-50%)";
-        });
-
-        // Prevent text selection
-        carousel.addEventListener("selectstart", function (e) {
-          e.preventDefault();
-          return false;
-        });
-
-        // Prevent context menu
-        carousel.addEventListener("contextmenu", function (e) {
-          e.preventDefault();
-          return false;
-        });
       });
     </script>
   </body>
