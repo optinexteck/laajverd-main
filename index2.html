@@ -490,90 +490,214 @@
           <!-- ... current design content ... -->
         </div>
       </section>
-      <!-- new section -->
-      <!-- <section id="ccl" class="hero-section section1">
-      <!-- Current/New Design -->
-      <!-- <div class="info-container">
-        <img src="./assets/img/AssetPanels/final logoo.png" class="c" />
-        <!-- <h2 class="main-heading">WHAT IS</h2>  -->
-      <!-- <div class="content-container">
-          <div class="column">
-            <h3>What is an</h3> 
-            <h3>ARTEFACT?</h3>
-            <p>The conservation lab covers a wide<br> 
-              range of artifacts, encompassing<br> 
-              both material and immaterial <br>
-              heritage. These include stories, <br> 
-              techniques, buildings and objects. <br> 
-              Our approach to artefact considers <br> 
-              its affiliations with human, non- <br>
-              human and spiritual entities; whilst <br> 
-              acknowledging its agency in the <br> 
-              natural ecology and landscape and <br> 
-              produces guidelines, methods, and <br> 
-              strategies for care, maintenance <br> 
-              and long-term preservation in <br> 
-              collaboration with local communities.</p>
-          </div>
-
-          <div class="column">
-            <h3>WHAT IS</h3>
-            <h3>KNOWLEDGE?</h3>
-            <p>Modes of knowledge production<br> 
-              refer to the various methods,<br> 
-              approaches, and systems through<br> 
-              which knowledge about the<br> 
-              artefact or site is generated and<br> 
-              validated within a particular field or<br>
-              community. Our approach recognizes<br> 
-              tacit, observational, experimental,<br> 
-              empirical, and the experiential<br> 
-              as valuable modes of knowledge<br> 
-              production in our conservation<br> 
-              endeavors.</p>
-          </div>
-
-          <div class="column">
-            <h3> CONSERVATION</h3>
-            <h3> PRACTICE?</h3>
-            <p>We work collaboratively with local<br> 
-              communities in the entire process of<br> 
-              thinking and practicing conservation.<br> 
-              This includes choosing artefacts<br> 
-              and determining conservation methods,<br> 
-              encompassing documentation,<br> 
-              condition assessment, preservation,<br> 
-              and upkeep. Our approach involves finding synergies
-              between scientific and local conservation techniques; we learn from each other in terms of how to read, understand and engage with the materials and assets 
-              and how to assess risks, decay and deterioration.</p>
-          </div> -->
-      <!-- </div>... current design content ... -->
-      <!-- </div> -->
-
-      <!-- Old Design (Commented for backup) -->
-      <!--
-  <div class="yellow-section">
-    <div class="content-container">
-      <div class="column">
-        <h2>WHAT IS AN ARTEFACT?</h2>
-        <p>The conservation lab covers a wide range of artifacts, encompassing both material and immaterial heritage. These include stories, techniques, buildings and objects. Our approach to artefact considers its affiliations with human, non-human and spiritual entities; whilst acknowledging its agency in the natural ecology and landscape and produces guidelines, methods, and strategies for care, maintenance and long-term preservation in collaboration with local communities.</p>
-      </div>
-
-      <div class="column">
-        <h2>WHAT IS KNOWLEDGE?</h2>
-        <p>Modes of knowledge production refer to the various methods, approaches, and systems through which knowledge about the artefact or site is generated and validated within a particular field or community. Our approach recognizes tacit, observational, experimental, empirical, and the experiential as valuable modes of knowledge production in our conservation endeavors.</p>
-      </div>
-
-      <div class="column">
-        <h2>CONSERVATION PRACTICE?</h2>
-        <p>We work collaboratively with local communities in the entire process of thinking and practicing conservation. This includes choosing artefacts and determining conservation methods, encompassing documentation, condition assessment, preservation, and upkeep. Our approach involves finding synergies between scientific and local conservation techniques; we learn from each other in terms of how to read, understand and engage with the materials and assets and how to assess risks, decay and deterioration.</p>
-      </div>
-    </div>
-  </div>
-  -->
-      <!-- </section>  -->
-
+     
       <!-- slider -->
+        <section
+        id="hero1"
+        class="hero nav section section2"
+        style="
+          background-color: #254365;
+          height: 100vh;
+          width: 100vw;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        "
+      >
+        <!-- Custom Carousel -->
+        <div
+          class="custom-carousel"
+          id="hero1-carousel"
+          style="
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="carousel-container"
+            style="
+              width: 100vw;
+              height: 100vh;
+              position: relative;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+            "
+          >
+            <!-- Slides will be dynamically added here -->
+          </div>
+
+          <!-- Navigation buttons -->
+          <button
+            class="carousel-button prev"
+            style="
+              position: absolute;
+              left: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 60px;
+              height: 60px;
+              background-color: rgba(0, 0, 0, 0.5);
+              border-radius: 50%;
+              color: white;
+              font-weight: bold;
+              font-size: 24px;
+              border: none;
+              cursor: pointer;
+              z-index: 1000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+              outline: none;
+              -webkit-tap-highlight-color: transparent;
+              pointer-events: auto;
+            "
+          >
+            &lt;
+          </button>
+
+          <button
+            class="carousel-button next"
+            style="
+              position: absolute;
+              right: 20px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 60px;
+              height: 60px;
+              background-color: rgba(0, 0, 0, 0.5);
+              border-radius: 50%;
+              color: white;
+              font-weight: bold;
+              font-size: 24px;
+              border: none;
+              cursor: pointer;
+              z-index: 1000;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: all 0.3s ease;
+              outline: none;
+              -webkit-tap-highlight-color: transparent;
+              pointer-events: auto;
+            "
+          >
+            &gt;
+          </button>
+        </div>
+
+        <!-- Location Create Card -->
+        <form
+          id="uploadForm"
+          class="login-form"
+          action="javascript:void(0);"
+          style="
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1050;
+          "
+        >
+          <h1 style="font-size: 18px; text-align: center; color: #333">
+            Upload Image
+          </h1>
+          <div class="mb-3" style="width: 100%">
+            <label
+              for="title"
+              class="form-label"
+              style="font-size: 14px; color: #555"
+              >Title</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="title"
+              placeholder="Laajverd"
+              required
+              style="
+                width: 100%;
+                border-radius: 4px;
+                padding: 8px;
+                border: 1px solid #ccc;
+              "
+            />
+          </div>
+          <div class="mb-3" style="width: 100%">
+            <label
+              for="description"
+              class="form-label"
+              style="font-size: 14px; color: #555"
+              >Description</label
+            >
+            <textarea
+              class="form-control"
+              id="description"
+              rows="3"
+              placeholder="we know that"
+              required
+              style="
+                width: 100%;
+                border-radius: 4px;
+                padding: 8px;
+                border: 1px solid #ccc;
+              "
+            ></textarea>
+          </div>
+          <div class="mb-3" style="width: 100%">
+            <label
+              for="image"
+              class="form-label"
+              style="font-size: 14px; color: #555"
+              >Image</label
+            >
+            <input
+              type="file"
+              class="form-control"
+              id="image"
+              accept="image/*"
+              required
+              style="
+                width: 100%;
+                border-radius: 4px;
+                padding: 8px;
+                border: 1px solid #ccc;
+              "
+            />
+          </div>
+          <div style="width: 100%; text-align: start">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="
+                width: 40%;
+                background-color: rgb(42, 44, 57);
+                color: white;
+                border: none;
+                padding: 10px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+              "
+            >
+              Upload
+            </button>
+          </div>
+        </form>
+        <!-- Add Route Button -->
+        <!-- <button
+          id="addRouteButton"
+          class="add-route-button"
+          aria-label="Toggle Form"
+        >
+          &lt;
+        </button> -->
+      </section>
     
 
       <footer
@@ -721,68 +845,7 @@
       });
     </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const button = document.querySelector(".add-route-button");
-        const form = document.querySelector(".login-form");
-        const blueSection = document.querySelector("#hero1");
-
-        // Intersection Observer for visibility
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                document.body.classList.add("section-visible");
-              } else {
-                document.body.classList.remove("section-visible");
-                // Reset states when section is not visible
-                closeForm();
-              }
-            });
-          },
-          {
-            threshold: 0.3,
-          },
-        );
-
-        // Start observing the blue section
-        if (blueSection) {
-          observer.observe(blueSection);
-        }
-
-        // Function to close form
-        function closeForm() {
-          form.classList.remove("active");
-          button.classList.remove("active");
-          form.style.right = "-100%";
-        }
-
-        // Button click handler
-        button.addEventListener("click", function (e) {
-          e.stopPropagation();
-          this.classList.toggle("active");
-          form.classList.toggle("active");
-
-          if (form.classList.contains("active")) {
-            form.style.right = "0";
-          } else {
-            form.style.right = "-100%";
-          }
-        });
-
-        // Close form when clicking outside
-        document.addEventListener("click", function (e) {
-          if (!form.contains(e.target) && !button.contains(e.target)) {
-            closeForm();
-          }
-        });
-
-        // Prevent form clicks from closing
-        form.addEventListener("click", function (e) {
-          e.stopPropagation();
-        });
-      });
-    </script>
+ 
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -852,6 +915,21 @@
 
         // Adjust on window resize
         window.addEventListener("resize", adjustTextForMobile);
+      });
+    </script>
+     <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hero1 = document.getElementById("hero1");
+        const focusArea = document.createElement("div");
+        focusArea.classList.add("focus-area");
+        hero1.appendChild(focusArea);
+
+        hero1.addEventListener("mousemove", function (e) {
+          const rect = hero1.getBoundingClientRect();
+          const x = e.clientX - rect.left - focusArea.offsetWidth;
+          const y = e.clientY - rect.top - focusArea.offsetHeight;
+          focusArea.style.transform = `translate(${x - 550}px, ${y - 180}px)`;
+        });
       });
     </script>
   </body>
