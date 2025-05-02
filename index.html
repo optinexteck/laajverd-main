@@ -54,7 +54,7 @@
       }
     </style>
     <link href="assets/css/main.css" rel="stylesheet" />
-    <link href="assets/css/image-slider.css" rel="stylesheet" />
+    <!-- <link href="assets/css/image-slider.css" rel="stylesheet" /> -->
     <link href="assets/css/carousel.css" rel="stylesheet" />
 
     <style>
@@ -501,6 +501,7 @@
           margin: 0;
           padding: 0;
           overflow: hidden;
+          position: relative;
         "
       >
         <!-- Custom Carousel -->
@@ -1169,6 +1170,39 @@
             nextButton.style.display = "flex";
             carouselPlaceholder.style.display = "none";
 
+            // Set initial styling for the container
+            container.style.cssText = `
+              width: 100vw;
+              height: 100vh;
+              position: relative;
+              margin: 0;
+              padding: 0;
+              overflow: hidden;
+              background-color: #254365;
+              background-size: contain;
+              background-position: center;
+              background-repeat: no-repeat;
+              transition: background-image 0.5s ease;
+            `;
+
+            // Initial load of the first image
+            const initialImage = new Image();
+            initialImage.onload = () => {
+              container.style.backgroundImage = `url('${carouselData[0].image}')`;
+              loadedImages.add(0);
+              loadingIndicator.style.display = "none";
+              preloadAdjacentImages();
+            };
+
+            initialImage.onerror = () => {
+              console.error(
+                `Failed to load initial image: ${carouselData[0].image}`
+              );
+              loadingIndicator.style.display = "none";
+            };
+
+            initialImage.src = carouselData[0].image;
+
             // Preload next and previous images
             function preloadAdjacentImages() {
               const nextIndex = (currentSlide + 1) % carouselData.length;
@@ -1178,110 +1212,79 @@
               [nextIndex, prevIndex].forEach((index) => {
                 if (!preloadedImages.has(index)) {
                   const img = new Image();
+                  img.onload = () => {
+                    preloadedImages.add(index);
+                    console.log(`Preloaded image ${index}`);
+                  };
                   img.src = carouselData[index].image;
-                  preloadedImages.add(index);
                 }
               });
             }
 
-            // Create slides with lazy loading
-            function createSlides() {
-              console.log("Creating slides...");
-              carouselData.forEach((item, index) => {
-                const slide = document.createElement("div");
-                slide.className = "carousel-slide";
-                slide.style.cssText = `
+            // Handle slide transitions
+            function goToSlide(index) {
+              if (isTransitioning || index === currentSlide) return;
+
+              console.log(
+                `Transitioning from slide ${currentSlide} to ${index}`
+              );
+              isTransitioning = true;
+              loadingIndicator.style.display = "flex";
+
+              // Preload the image before attempting transition
+              const img = new Image();
+              img.onload = () => {
+                currentSlide = index;
+
+                // Create a temporary div to handle the transition
+                const tempDiv = document.createElement("div");
+                tempDiv.style.cssText = `
                   position: absolute;
                   top: 0;
                   left: 0;
-                  width: 100vw;
-                  height: 100vh;
-                  margin: 0;
-                  padding: 0;
-                  background-color: #254365;
+                  width: 100%;
+                  height: 100%;
+                  background-image: url('${carouselData[index].image}');
                   background-size: contain;
                   background-position: center;
                   background-repeat: no-repeat;
-                  opacity: ${index === 0 ? 1 : 0};
+                  opacity: 0;
                   transition: opacity 0.5s ease;
-                  z-index: ${index === 0 ? 1 : 0};
-                  display: flex;
-                  justify-content: center;
-                  align-items: center;
+                  z-index: 10;
                 `;
-                slide.setAttribute("data-index", index);
 
-                // Add loading placeholder
-                const placeholder = document.createElement("div");
-                placeholder.className = "image-placeholder";
-                slide.appendChild(placeholder);
+                container.appendChild(tempDiv);
 
-                container.appendChild(slide);
-              });
-              console.log("Slides created successfully");
-            }
+                // Immediately fade in the temp div
+                requestAnimationFrame(() => {
+                  tempDiv.style.opacity = "1";
+                });
 
-            // Load image for a specific slide
-            function loadImage(index) {
-              if (loadedImages.has(index)) return;
-
-              const slide = container.querySelector(
-                `.carousel-slide[data-index="${index}"]`
-              );
-              if (!slide) return;
-
-              const img = new Image();
-              img.onload = () => {
-                slide.style.backgroundImage = `url('${carouselData[index].image}')`;
-                loadedImages.add(index);
-                slide.querySelector(".image-placeholder")?.remove();
-                if (index === currentSlide) {
-                  loadingIndicator.style.display = "none";
-                }
+                // After transition completes, update the container background
+                tempDiv.addEventListener(
+                  "transitionend",
+                  function () {
+                    container.style.backgroundImage = `url('${carouselData[index].image}')`;
+                    tempDiv.remove();
+                    isTransitioning = false;
+                    loadingIndicator.style.display = "none";
+                    preloadAdjacentImages();
+                    console.log(`Transition to slide ${index} complete`);
+                  },
+                  { once: true }
+                );
               };
 
               img.onerror = () => {
                 console.error(
                   `Failed to load image: ${carouselData[index].image}`
                 );
-                slide.querySelector(".image-placeholder")?.remove();
-                if (index === currentSlide) {
-                  loadingIndicator.style.display = "none";
-                }
+                isTransitioning = false;
+                loadingIndicator.style.display = "none";
               };
 
+              // Start loading the image
               img.src = carouselData[index].image;
-            }
-
-            // Handle slide transitions
-            function goToSlide(index) {
-              if (isTransitioning) return;
-              isTransitioning = true;
-              loadingIndicator.style.display = "flex";
-
-              const slides = container.querySelectorAll(".carousel-slide");
-              const currentSlideElement = slides[currentSlide];
-              const nextSlideElement = slides[index];
-
-              if (currentSlideElement && nextSlideElement) {
-                // Load the next image if not already loaded
-                if (!loadedImages.has(index)) {
-                  loadImage(index);
-                }
-
-                currentSlideElement.style.opacity = "0";
-                currentSlideElement.style.zIndex = "1";
-                nextSlideElement.style.opacity = "1";
-                nextSlideElement.style.zIndex = "2";
-
-                setTimeout(() => {
-                  currentSlide = index;
-                  isTransitioning = false;
-                  loadingIndicator.style.display = "none";
-                  preloadAdjacentImages();
-                  console.log("Slide changed to:", currentSlide);
-                }, 500);
-              }
             }
 
             // Handle next slide
@@ -1301,7 +1304,7 @@
 
             // Setup autoplay
             function startAutoplay() {
-              autoPlayInterval = setInterval(nextSlide, 5000);
+              autoPlayInterval = setInterval(nextSlide, 3000);
             }
 
             // Stop autoplay
@@ -1312,6 +1315,7 @@
             // Event listeners
             prevButton.addEventListener("click", function (e) {
               e.preventDefault();
+              console.log("Prev button clicked");
               stopAutoplay();
               prevSlide();
               startAutoplay();
@@ -1319,6 +1323,7 @@
 
             nextButton.addEventListener("click", function (e) {
               e.preventDefault();
+              console.log("Next button clicked");
               stopAutoplay();
               nextSlide();
               startAutoplay();
@@ -1377,10 +1382,7 @@
               }
             }
 
-            // Initialize carousel
-            createSlides();
-            loadImage(0);
-            preloadAdjacentImages();
+            // Start autoplay
             startAutoplay();
 
             // Add CSS for loading indicator and placeholder
@@ -1404,14 +1406,6 @@
               }
               @keyframes spin {
                 to { transform: rotate(360deg); }
-              }
-              .image-placeholder {
-                width: 100%;
-                height: 100%;
-                background: rgba(37, 67, 101, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
               }
               .carousel-placeholder {
                 position: absolute;
