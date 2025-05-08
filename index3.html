@@ -327,6 +327,7 @@
       .our {
         display: flex;
         width: 100%;
+        margin-bottom: 20px;
       }
 
       .column {
@@ -339,6 +340,8 @@
       .our-title {
         margin-left: 6.1%;
         font-family: aaa-inktraps !important;
+        font-size: 2em !important;
+        line-height: 1.2 !important;
       }
 
       .content-container h3,
@@ -348,6 +351,16 @@
         text-transform: capitalize;
         margin-top: -20px;
         color: black;
+      }
+
+      .content-container h2 {
+        font-size: 2em !important;
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+      }
+
+      .mobile-our {
+        display: none;
       }
 
       @media (max-width: 600px) {
@@ -366,7 +379,15 @@
           margin-left: 0;
           display: none;
         }
+
+        .mobile-our {
+          display: block;
+          font-size: 2em !important;
+          line-height: 1.2 !important;
+          margin-bottom: 15px !important;
+        }
       }
+
       @media (max-width: 990px) {
         .our {
           display: none;

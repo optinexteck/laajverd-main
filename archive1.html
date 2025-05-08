@@ -224,95 +224,136 @@
       }
     </style>
     <style>
-      /* Global paragraph and title styling with Avenir font */
-      p, h1, h2, h3, h4, h5, h6, .filter-group label {
-        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
-      }
-
-      /* Specific elements with Avenir font */
-      .rght p,
-      .libHeading p,
-      .library p,
-      .archive-card p,
-      .heading h1,
-      .heading h3,
-      .archive-card h4,
-      .filters select,
-      .filters input,
-      .filters button,
-      .filter-group label {
-        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
-      }
-
-      /* Updated button styling */
-      .archiveBtn {
-        padding: 8px 20px;
-        border-radius: 25px;
-        font-size: 14px;
-        font-family: 'Avenir', 'Helvetica Neue', sans-serif;
-        transition: all 0.3s ease;
-        border: none;
-        background-color: #8f9197;
-        color: white;
-      }
-
-      .archiveBtn:hover {
-        background-color: #737680;
-        transform: translateY(-2px);
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      }
-
-      .archiveBtn.btn-secondary {
-        background-color: #d1d3d8;
-        color: #4a4a4a;
-      }
-
-      .archiveBtn.btn-secondary:hover {
-        background-color: #c1c3c8;
+      /* Global font styling with !important to override any inline styles */
+      body, .archive-card, .filters, .select2-container, .archiveBtn,
+      .select2-container--default .select2-selection--multiple,
+      .select2-container--default .select2-selection--multiple .select2-selection__choice,
+      .select2-container--default .select2-selection--multiple .select2-selection__placeholder,
+      .select2-results__option {
+        font-family: 'Avenir', 'Helvetica Neue', sans-serif !important;
       }
 
       /* Filter section styling */
       .filters {
-        padding: 25px;
-        border-radius: 12px;
-        margin-bottom: 30px;
+        padding: 40px 60px !important;
+        margin-bottom: 30px !important;
+        margin: 0 auto !important;
+      }
+
+      .filter-group {
+        min-width: 250px !important; /* Increased from 180px */
+        flex: 1;
+        max-width: 300px !important; /* Increased from 250px */
       }
 
       .filter-group label {
-        color: #4a4a4a;
-        font-weight: 600;
-        margin-bottom: 8px;
+        color: #4a4a4a !important;
+        font-weight: 600 !important;
+        margin-bottom: 10px !important;
+        display: block !important;
+        font-size: 16px !important;
       }
 
-      /* Filter title styling */
-      .filterCover h3 {
-        color: #4a4a4a;
-        font-weight: 600;
-        margin-bottom: 25px;
-        font-size: 24px;
+      /* Select2 custom styling with increased size */
+      .select2-container {
+        width: 100% !important;
+        min-width: 250px !important; /* Increased from 180px */
+      }
+
+      .select2-container--default .select2-selection--multiple {
+        border: 1px solid #d7d1d1 !important;
+        border-radius: 6px !important;
+        min-height: 45px !important; /* Increased from 38px */
+        font-size: 15px !important;
+        padding: 5px !important;
+      }
+
+      .select2-container--default .select2-selection--multiple .select2-selection__choice {
+        font-size: 14px !important;
+        padding: 6px 10px !important; /* Increased padding */
+        margin: 4px !important;
+        background-color: #f8f9fa !important;
+        border: 1px solid #e9ecef !important;
+        border-radius: 4px !important;
+      }
+
+      .select2-container--default .select2-selection--multiple .select2-selection__placeholder {
+        color: #495057 !important;
+        font-size: 15px !important;
+        line-height: 35px !important; /* Added to vertically center placeholder */
+      }
+
+      .select2-container--default .select2-results__option {
+        font-size: 15px !important;
+        padding: 8px 12px !important; /* Increased padding */
+      }
+
+      /* Archive card styling */
+      .archive-card {
+        padding: 20px !important;
+        border: 1px solid #ddd !important;
+        border-radius: 8px !important;
+        background: white !important;
+        transition: transform 0.3s ease !important;
+      }
+
+      .archive-card h4 {
+        font-size: 18px !important;
+        margin-bottom: 15px !important;
+        font-weight: 600 !important;
+      }
+
+      .archive-card p {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 10px !important;
+      }
+
+      .archive-card strong {
+        font-weight: 600 !important;
+      }
+
+      /* Button styling */
+      .archiveBtn {
+        font-size: 15px !important;
+        padding: 10px 24px !important; /* Increased padding */
+        border-radius: 6px !important;
+        font-weight: 500 !important;
+        min-width: 140px !important; /* Increased from 120px */
+        height: 45px !important; /* Increased from 38px */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .filter-group {
+          min-width: 200px !important;
+          max-width: 100% !important;
+      }
+
+      .filter-group label {
+          font-size: 15px !important;
+        }
+
+        .archive-card h4 {
+          font-size: 17px !important;
+        }
+
+        .archive-card p {
+          font-size: 14px !important;
+        }
+
+        .archiveBtn {
+          font-size: 14px !important;
+          min-width: 120px !important;
+          height: 40px !important;
+        }
       }
     </style>
     <!-- Add Select2 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     
     <style>
-      /* Select2 custom styling */
-      .select2-container {
-        min-width: 150px;
-        margin-right: 10px;
-      }
-      .select2-container--default .select2-selection--multiple {
-        border: 1px solid #d7d1d1;
-        border-radius: 6px;
-        min-height: 38px;
-      }
-      .select2-container--default.select2-container--focus .select2-selection--multiple {
-        border-color: #86b7fe;
-        outline: 0;
-        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
-      }
-
-      /* Updated button styling to match inputs */
+      /* Updated button styling */
       .archiveBtn {
         min-width: 120px;
         height: 38px;
